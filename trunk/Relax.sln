@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax", "Relax\Relax.csproj", "{783A1A3D-CDB4-4121-9655-AA34516331A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Infrastructure", "Relax.Infrastructure\Relax.Infrastructure.csproj", "{893AD8AB-D318-4690-8B24-EE1D6FE254F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.FileBackingStore", "Relax.FileBackingStore\Relax.FileBackingStore.csproj", "{3E1C299C-EA0F-478A-AA71-D5ABD44939C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{783A1A3D-CDB4-4121-9655-AA34516331A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{783A1A3D-CDB4-4121-9655-AA34516331A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{783A1A3D-CDB4-4121-9655-AA34516331A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{893AD8AB-D318-4690-8B24-EE1D6FE254F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{893AD8AB-D318-4690-8B24-EE1D6FE254F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{893AD8AB-D318-4690-8B24-EE1D6FE254F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{893AD8AB-D318-4690-8B24-EE1D6FE254F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E1C299C-EA0F-478A-AA71-D5ABD44939C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E1C299C-EA0F-478A-AA71-D5ABD44939C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E1C299C-EA0F-478A-AA71-D5ABD44939C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E1C299C-EA0F-478A-AA71-D5ABD44939C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
