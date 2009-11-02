@@ -81,6 +81,7 @@
     <Compile Include="Services\Interfaces\ISerializer.cs" />
     <Compile Include="Services\Interfaces\IStartupFileLocator.cs" />
     <Compile Include="Services\Serializer.cs" />
+    <Compile Include="Services\WorkspaceSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Relax.Infrastructure\Relax.Infrastructure.csproj">

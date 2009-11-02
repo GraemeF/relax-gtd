@@ -1,4 +1,5 @@
 using System.IO;
+using Caliburn.Core.Metadata;
 using Relax.FileBackingStore.Services.Interfaces;
 using Relax.Infrastructure.Helpers;
 
@@ -7,6 +8,7 @@ namespace Relax.FileBackingStore.Services
     /// <summary>
     /// Gets file streams for reading and writing to a file.
     /// </summary>
+    [PerRequest(typeof (IFileStreamService))]
     public class FileStreamService : IFileStreamService
     {
         #region IFileStreamService Members

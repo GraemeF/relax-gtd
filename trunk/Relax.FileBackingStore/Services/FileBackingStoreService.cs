@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using Autofac.Builder;
+using Caliburn.Core.Metadata;
 using Relax.FileBackingStore.Models;
 using Relax.FileBackingStore.Services.Interfaces;
 using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Models.Interfaces;
+using Relax.Infrastructure.Services.Interfaces;
 
 namespace Relax.FileBackingStore.Services
 {
+    [Singleton(typeof (IBackingStore))]
     public class FileBackingStoreService : IFileBackingStore
     {
         /// <summary>
@@ -81,20 +83,6 @@ namespace Relax.FileBackingStore.Services
         public string Path { get; set; }
 
         #endregion
-
-        public static void RegisterTypes(ContainerBuilder builder)
-        {
-            builder.Register<Models.Action>().As<IAction>();
-            builder.Register<Context>().As<IContext>();
-            builder.Register<ReviewChecklistItem>().As<IReviewChecklistItem>();
-            builder.Register<Completion>().As<ICompletion>();
-            builder.Register<Deadline>().As<IDeadline>();
-            builder.Register<Deferral>().As<IDeferral>();
-            builder.Register<Cost>().As<ICost>();
-            builder.Register<Delegation>().As<IDelegation>();
-            builder.Register<Review>().As<IReview>();
-            builder.Register<ItemNotes>().As<INotes>();
-        }
 
         public void Initialize()
         {
