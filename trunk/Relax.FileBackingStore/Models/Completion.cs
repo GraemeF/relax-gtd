@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.FileBackingStore.Models
 {
     [DataContract]
+    [PerRequest(typeof (ICompletion))]
     public class Completion : Model, ICompletion
     {
-        private DateTime _CompletedDate;
+        private DateTime _completedDate;
 
         public Completion()
         {
@@ -19,12 +21,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public DateTime CompletedDate
         {
-            get { return _CompletedDate; }
+            get { return _completedDate; }
             set
             {
-                if (value != _CompletedDate)
+                if (value != _completedDate)
                 {
-                    _CompletedDate = value;
+                    _completedDate = value;
                     RaisePropertyChanged("CompletedDate");
                 }
             }

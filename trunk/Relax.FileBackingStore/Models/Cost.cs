@@ -1,28 +1,30 @@
 using System;
 using System.Runtime.Serialization;
+using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.FileBackingStore.Models
 {
     [DataContract]
+    [PerRequest(typeof (ICost))]
     public class Cost : Model, ICost
     {
-        private EnergyLevel? _MentalEnergyRequired;
-        private EnergyLevel? _PhysicalEnergyRequired;
-        private TimeSpan? _TimeRequired;
+        private EnergyLevel? _mentalEnergyRequired;
+        private EnergyLevel? _physicalEnergyRequired;
+        private TimeSpan? _timeRequired;
 
         #region ICost Members
 
         [DataMember]
         public EnergyLevel? MentalEnergyRequired
         {
-            get { return _MentalEnergyRequired; }
+            get { return _mentalEnergyRequired; }
             set
             {
-                if (value != _MentalEnergyRequired)
+                if (value != _mentalEnergyRequired)
                 {
-                    _MentalEnergyRequired = value;
+                    _mentalEnergyRequired = value;
                     RaisePropertyChanged("MentalEnergyRequired");
                 }
             }
@@ -31,12 +33,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public TimeSpan? TimeRequired
         {
-            get { return _TimeRequired; }
+            get { return _timeRequired; }
             set
             {
-                if (value != _TimeRequired)
+                if (value != _timeRequired)
                 {
-                    _TimeRequired = value;
+                    _timeRequired = value;
                     RaisePropertyChanged("TimeRequired");
                 }
             }
@@ -45,12 +47,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public EnergyLevel? PhysicalEnergyRequired
         {
-            get { return _PhysicalEnergyRequired; }
+            get { return _physicalEnergyRequired; }
             set
             {
-                if (value != _PhysicalEnergyRequired)
+                if (value != _physicalEnergyRequired)
                 {
-                    _PhysicalEnergyRequired = value;
+                    _physicalEnergyRequired = value;
                     RaisePropertyChanged("PhysicalEnergyRequired");
                 }
             }

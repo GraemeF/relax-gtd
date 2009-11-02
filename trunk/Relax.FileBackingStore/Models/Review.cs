@@ -1,28 +1,30 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.FileBackingStore.Models
 {
     [DataContract]
+    [PerRequest(typeof (IReview))]
     internal class Review : Model, IReview
     {
-        private HorizonOfFocus _HorizonOfFocus;
-        private DateTime? _LastReviewed;
-        private TimeSpan _ReviewFrequency;
+        private HorizonOfFocus _horizonOfFocus;
+        private DateTime? _lastReviewed;
+        private TimeSpan _reviewFrequency;
 
         #region IReview Members
 
         [DataMember]
         public DateTime? LastReviewed
         {
-            get { return _LastReviewed; }
+            get { return _lastReviewed; }
             set
             {
-                if (value != _LastReviewed)
+                if (value != _lastReviewed)
                 {
-                    _LastReviewed = value;
+                    _lastReviewed = value;
                     RaisePropertyChanged("LastReviewed");
                 }
             }
@@ -31,12 +33,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public TimeSpan ReviewFrequency
         {
-            get { return _ReviewFrequency; }
+            get { return _reviewFrequency; }
             set
             {
-                if (value != _ReviewFrequency)
+                if (value != _reviewFrequency)
                 {
-                    _ReviewFrequency = value;
+                    _reviewFrequency = value;
                     RaisePropertyChanged("ReviewFrequency");
                 }
             }
@@ -45,12 +47,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public HorizonOfFocus HorizonOfFocus
         {
-            get { return _HorizonOfFocus; }
+            get { return _horizonOfFocus; }
             set
             {
-                if (value != _HorizonOfFocus)
+                if (value != _horizonOfFocus)
                 {
-                    _HorizonOfFocus = value;
+                    _horizonOfFocus = value;
                     RaisePropertyChanged("HorizonOfFocus");
                 }
             }

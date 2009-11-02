@@ -1,27 +1,29 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.FileBackingStore.Models
 {
     [DataContract]
+    [PerRequest(typeof (IDelegation))]
     internal class Delegation : Model, IDelegation
     {
-        private DateTime _DelegationDate;
+        private DateTime _delegationDate;
 
-        private string _Owner;
+        private string _owner;
 
         #region IDelegation Members
 
         [DataMember]
         public DateTime DelegationDate
         {
-            get { return _DelegationDate; }
+            get { return _delegationDate; }
             set
             {
-                if (value != _DelegationDate)
+                if (value != _delegationDate)
                 {
-                    _DelegationDate = value;
+                    _delegationDate = value;
                     RaisePropertyChanged("DelegationDate");
                 }
             }
@@ -30,12 +32,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public string Owner
         {
-            get { return _Owner; }
+            get { return _owner; }
             set
             {
-                if (value != _Owner)
+                if (value != _owner)
                 {
-                    _Owner = value;
+                    _owner = value;
                     RaisePropertyChanged("Owner");
                 }
             }

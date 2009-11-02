@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.FileBackingStore.Models
 {
     [DataContract(IsReference = true)]
+    [PerRequest(typeof (IContext))]
     public class Context : Model, IContext
     {
-        private static int _NextId = 1;
-        private DateTime _Created;
-        private string _Description;
-        private string _Title;
+        private static int _nextId = 1;
+        private DateTime _created;
+        private string _description;
+        private string _title;
 
         public Context()
         {
             Created = DateTime.UtcNow;
-            Id = _NextId++;
+            Id = _nextId++;
         }
 
         #region IContext Members
@@ -23,12 +25,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public string Description
         {
-            get { return _Description; }
+            get { return _description; }
             set
             {
-                if (_Description != value)
+                if (_description != value)
                 {
-                    _Description = value;
+                    _description = value;
                     RaisePropertyChanged("Description");
                 }
             }
@@ -37,12 +39,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public string Title
         {
-            get { return _Title; }
+            get { return _title; }
             set
             {
-                if (_Title != value)
+                if (_title != value)
                 {
-                    _Title = value;
+                    _title = value;
                     RaisePropertyChanged("Title");
                 }
             }
@@ -51,12 +53,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public DateTime Created
         {
-            get { return _Created; }
+            get { return _created; }
             set
             {
-                if (_Created != value)
+                if (_created != value)
                 {
-                    _Created = value;
+                    _created = value;
                     RaisePropertyChanged("Created");
                 }
             }

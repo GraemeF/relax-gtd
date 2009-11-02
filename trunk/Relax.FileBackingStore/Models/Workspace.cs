@@ -1,10 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
+using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.FileBackingStore.Models
 {
     [DataContract(Namespace = "http://schemas.datacontract.org/2004/07/Relax.Modules.FileBackingStore.Models")]
+    [PerRequest(typeof (IWorkspace))]
     public class Workspace : IWorkspace
     {
         public Workspace()

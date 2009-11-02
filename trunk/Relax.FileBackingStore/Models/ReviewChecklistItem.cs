@@ -1,24 +1,26 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.FileBackingStore.Models
 {
     [DataContract(IsReference = true)]
+    [PerRequest(typeof (IReviewChecklistItem))]
     public class ReviewChecklistItem : Model, IReviewChecklistItem
     {
-        private static int _NextId;
-        private DateTime _Created;
-        private HorizonOfFocus _HorizonOfFocus;
-        private DateTime? _LastReviewed;
-        private TimeSpan _ReviewFrequency;
-        private string _Title;
+        private static int _nextId;
+        private DateTime _created;
+        private HorizonOfFocus _horizonOfFocus;
+        private DateTime? _lastReviewed;
+        private TimeSpan _reviewFrequency;
+        private string _title;
 
         public ReviewChecklistItem()
         {
             Created = DateTime.UtcNow;
-            Id = _NextId++;
+            Id = _nextId++;
         }
 
         #region IReviewChecklistItem Members
@@ -26,12 +28,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public DateTime? LastReviewed
         {
-            get { return _LastReviewed; }
+            get { return _lastReviewed; }
             set
             {
-                if (_LastReviewed != value)
+                if (_lastReviewed != value)
                 {
-                    _LastReviewed = value;
+                    _lastReviewed = value;
                     RaisePropertyChanged("LastReviewed");
                 }
             }
@@ -40,12 +42,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public TimeSpan ReviewFrequency
         {
-            get { return _ReviewFrequency; }
+            get { return _reviewFrequency; }
             set
             {
-                if (_ReviewFrequency != value)
+                if (_reviewFrequency != value)
                 {
-                    _ReviewFrequency = value;
+                    _reviewFrequency = value;
                     RaisePropertyChanged("ReviewFrequency");
                 }
             }
@@ -54,12 +56,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public HorizonOfFocus HorizonOfFocus
         {
-            get { return _HorizonOfFocus; }
+            get { return _horizonOfFocus; }
             set
             {
-                if (_HorizonOfFocus != value)
+                if (_horizonOfFocus != value)
                 {
-                    _HorizonOfFocus = value;
+                    _horizonOfFocus = value;
                     RaisePropertyChanged("HorizonOfFocus");
                 }
             }
@@ -68,12 +70,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public string Title
         {
-            get { return _Title; }
+            get { return _title; }
             set
             {
-                if (_Title != value)
+                if (_title != value)
                 {
-                    _Title = value;
+                    _title = value;
                     RaisePropertyChanged("Title");
                 }
             }
@@ -82,12 +84,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public DateTime Created
         {
-            get { return _Created; }
+            get { return _created; }
             set
             {
-                if (_Created != value)
+                if (_created != value)
                 {
-                    _Created = value;
+                    _created = value;
                     RaisePropertyChanged("Created");
                 }
             }

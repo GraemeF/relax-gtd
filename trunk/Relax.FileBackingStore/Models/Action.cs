@@ -1,37 +1,39 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
+using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.FileBackingStore.Models
 {
     [DataContract(IsReference = true)]
+    [PerRequest(typeof (IAction))]
     public class Action : Model, IAction
     {
-        private static int _NextId = 1;
+        private static int _nextId = 1;
 
         public Action()
         {
             Created = DateTime.UtcNow;
-            Id = _NextId++;
+            Id = _nextId++;
         }
 
         #region Implementation of IItem
 
-        private DateTime _Created;
-        private int _Id;
-        private string _Title;
+        private DateTime _created;
+        private int _id;
+        private string _title;
 
         [DataMember]
         public string Title
         {
-            get { return _Title; }
+            get { return _title; }
             set
             {
-                if (_Title != value)
+                if (_title != value)
                 {
-                    _Title = value;
+                    _title = value;
                     RaisePropertyChanged("Title");
                 }
             }
@@ -40,12 +42,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public DateTime Created
         {
-            get { return _Created; }
+            get { return _created; }
             set
             {
-                if (_Created != value)
+                if (_created != value)
                 {
-                    _Created = value;
+                    _created = value;
                     RaisePropertyChanged("Created");
                 }
             }
@@ -53,12 +55,12 @@ namespace Relax.FileBackingStore.Models
 
         public int Id
         {
-            get { return _Id; }
+            get { return _id; }
             set
             {
-                if (_Id != value)
+                if (_id != value)
                 {
-                    _Id = value;
+                    _id = value;
                     RaisePropertyChanged("Id");
                 }
             }
@@ -69,17 +71,17 @@ namespace Relax.FileBackingStore.Models
         #region Implementation of IAction
 
         private State _actionState;
-        private ObservableCollection<IAction> _BlockingActions = new ObservableCollection<IAction>();
-        private ICompletion _Completion;
-        private IContext _Context;
-        private ICost _Cost;
-        private IDeadline _Deadline;
-        private IDeferral _Deferral;
-        private IDelegation _Delegation;
-        private INotes _Notes;
-        private IPriority _Priority;
-        private IRepetition _Repetition;
-        private IReview _Review;
+        private ObservableCollection<IAction> _blockingActions = new ObservableCollection<IAction>();
+        private ICompletion _completion;
+        private IContext _context;
+        private ICost _cost;
+        private IDeadline _deadline;
+        private IDeferral _deferral;
+        private IDelegation _delegation;
+        private INotes _notes;
+        private IPriority _priority;
+        private IRepetition _repetition;
+        private IReview _review;
 
         [DataMember]
         public State ActionState
@@ -98,12 +100,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember]
         public ObservableCollection<IAction> BlockingActions
         {
-            get { return _BlockingActions; }
+            get { return _blockingActions; }
             set
             {
-                if (_BlockingActions != value)
+                if (_blockingActions != value)
                 {
-                    _BlockingActions = value;
+                    _blockingActions = value;
                     RaisePropertyChanged("BlockingActions");
                 }
             }
@@ -112,12 +114,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember(EmitDefaultValue = false)]
         public IDeadline Deadline
         {
-            get { return _Deadline; }
+            get { return _deadline; }
             set
             {
-                if (_Deadline != value)
+                if (_deadline != value)
                 {
-                    _Deadline = value;
+                    _deadline = value;
                     RaisePropertyChanged("Deadline");
                 }
             }
@@ -126,12 +128,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember(EmitDefaultValue = false)]
         public IDelegation Delegation
         {
-            get { return _Delegation; }
+            get { return _delegation; }
             set
             {
-                if (_Delegation != value)
+                if (_delegation != value)
                 {
-                    _Delegation = value;
+                    _delegation = value;
                     RaisePropertyChanged("Delegation");
                 }
             }
@@ -140,12 +142,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember(EmitDefaultValue = false)]
         public IDeferral Deferral
         {
-            get { return _Deferral; }
+            get { return _deferral; }
             set
             {
-                if (_Deferral != value)
+                if (_deferral != value)
                 {
-                    _Deferral = value;
+                    _deferral = value;
                     RaisePropertyChanged("Deferral");
                 }
             }
@@ -154,12 +156,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember(EmitDefaultValue = false)]
         public ICompletion Completion
         {
-            get { return _Completion; }
+            get { return _completion; }
             set
             {
-                if (_Completion != value)
+                if (_completion != value)
                 {
-                    _Completion = value;
+                    _completion = value;
                     RaisePropertyChanged("Completion");
                 }
             }
@@ -168,12 +170,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember(EmitDefaultValue = false)]
         public IReview Review
         {
-            get { return _Review; }
+            get { return _review; }
             set
             {
-                if (_Review != value)
+                if (_review != value)
                 {
-                    _Review = value;
+                    _review = value;
                     RaisePropertyChanged("Review");
                 }
             }
@@ -182,12 +184,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember(EmitDefaultValue = false)]
         public INotes Notes
         {
-            get { return _Notes; }
+            get { return _notes; }
             set
             {
-                if (_Notes != value)
+                if (_notes != value)
                 {
-                    _Notes = value;
+                    _notes = value;
                     RaisePropertyChanged("Notes");
                 }
             }
@@ -196,12 +198,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember(EmitDefaultValue = false)]
         public IPriority Priority
         {
-            get { return _Priority; }
+            get { return _priority; }
             set
             {
-                if (_Priority != value)
+                if (_priority != value)
                 {
-                    _Priority = value;
+                    _priority = value;
                     RaisePropertyChanged("Priority");
                 }
             }
@@ -210,12 +212,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember(EmitDefaultValue = false)]
         public IRepetition Repetition
         {
-            get { return _Repetition; }
+            get { return _repetition; }
             set
             {
-                if (_Repetition != value)
+                if (_repetition != value)
                 {
-                    _Repetition = value;
+                    _repetition = value;
                     RaisePropertyChanged("Repetition");
                 }
             }
@@ -224,12 +226,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember(EmitDefaultValue = false)]
         public ICost Cost
         {
-            get { return _Cost; }
+            get { return _cost; }
             set
             {
-                if (_Cost != value)
+                if (_cost != value)
                 {
-                    _Cost = value;
+                    _cost = value;
                     RaisePropertyChanged("Cost");
                 }
             }
@@ -238,12 +240,12 @@ namespace Relax.FileBackingStore.Models
         [DataMember(EmitDefaultValue = false)]
         public IContext Context
         {
-            get { return _Context; }
+            get { return _context; }
             set
             {
-                if (_Context != value)
+                if (_context != value)
                 {
-                    _Context = value;
+                    _context = value;
                     RaisePropertyChanged("Context");
                 }
             }
