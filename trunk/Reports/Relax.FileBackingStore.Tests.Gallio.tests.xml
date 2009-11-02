@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gallio.org/">
+  <testPackage shadowCopy="false" debug="false">
+    <files>
+      <file>C:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\bin\Release\Relax.FileBackingStore.Tests.dll</file>
+    </files>
+    <hintDirectories />
+    <excludedFrameworkIds />
+    <properties>
+      <entry key="NCoverArguments" value="//at ..\..\..\..\Reports\Relax.FileBackingStore.Tests.Gallio.coverage.xml.trend //ea Relax.Infrastructure.NoCoverageAttribute;MbUnit.Framework.TestFixtureAttribute;MbUnit.Framework.TestAttribute;System.Runtime.CompilerServices.CompilerGeneratedAttribute;System.CodeDom.Compiler.GeneratedCodeAttribute;System.Diagnostics.DebuggerNonUserCodeAttribute //x ..\..\..\..\Reports\Relax.FileBackingStore.Tests.Gallio.coverage.xml //l bin\Release\Coverage.Gallio.log //a Relax.FileBackingStore" />
+    </properties>
+  </testPackage>
+  <testModel>
+    <test id="c2722843734a7a54" name="Root" fullName="" isTestCase="false">
+      <codeReference />
+      <codeLocation />
+      <metadata>
+        <entry key="TestKind">
+          <value>Root</value>
+        </entry>
+      </metadata>
+      <children>
+        <test id="ea3f86c7476f8499" name="Relax.FileBackingStore.Tests" fullName="Relax.FileBackingStore.Tests" isTestCase="false">
+          <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" />
+          <codeLocation path="C:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\bin\Release\Relax.FileBackingStore.Tests.DLL" />
+          <metadata>
+            <entry key="TestKind">
+              <value>MbUnit v3 Assembly</value>
+            </entry>
+            <entry key="File">
+              <value>C:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\bin\Release\Relax.FileBackingStore.Tests.DLL</value>
+            </entry>
+            <entry key="CodeBase">
+              <value>C:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\bin\Release\Relax.FileBackingStore.Tests.DLL</value>
+            </entry>
+            <entry key="Copyright">
+              <value>Copyright ©  2009</value>
+            </entry>
+            <entry key="FileVersion">
+              <value>0.0.0.1244</value>
+            </entry>
+            <entry key="Product">
+              <value>Relax.FileBackingStore.Tests</value>
+            </entry>
+            <entry key="Title">
+              <value>Relax.FileBackingStore.Tests</value>
+            </entry>
+            <entry key="Version">
+              <value>0.0.0.1244</value>
+            </entry>
+            <entry key="Framework">
+              <value>MbUnit v3.1 build 313</value>
+            </entry>
+          </metadata>
+          <children>
+            <test id="3690cedcd71edd80" name="CustomPathStartupFileLocatorTestFixture" fullName="Relax.FileBackingStore.Tests/CustomPathStartupFileLocatorTestFixture" isTestCase="false">
+              <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.CustomPathStartupFileLocatorTestFixture" />
+              <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\CustomPathStartupFileLocatorTestFixture.cs" />
+              <metadata>
+                <entry key="TestKind">
+                  <value>Fixture</value>
+                </entry>
+              </metadata>
+              <children>
+                <test id="a0e8709becd60dfa" name="Construct_GivenNull_Throws" fullName="Relax.FileBackingStore.Tests/CustomPathStartupFileLocatorTestFixture/Construct_GivenNull_Throws" isTestCase="true">
+                  <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.CustomPathStartupFileLocatorTestFixture" member="Construct_GivenNull_Throws" />
+                  <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\CustomPathStartupFileLocatorTestFixture.cs" line="20" />
+                  <metadata>
+                    <entry key="TestKind">
+                      <value>Test</value>
+                    </entry>
+                  </metadata>
+                  <children />
+                  <parameters />
+                </test>
+                <test id="31ecb2a0676fb5db" name="Construct_GivenPath_Succeeds" fullName="Relax.FileBackingStore.Tests/CustomPathStartupFileLocatorTestFixture/Construct_GivenPath_Succeeds" isTestCase="true">
+                  <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.CustomPathStartupFileLocatorTestFixture" member="Construct_GivenPath_Succeeds" />
+                  <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\CustomPathStartupFileLocatorTestFixture.cs" line="14" />
+                  <metadata>
+                    <entry key="TestKind">
+                      <value>Test</value>
+                    </entry>
+                  </metadata>
+                  <children />
+                  <parameters />
+                </test>
+                <test id="9d360f2e8aa0406" name="LoadOnStartup_AfterSetToFalse_ReturnsFalse" fullName="Relax.FileBackingStore.Tests/CustomPathStartupFileLocatorTestFixture/LoadOnStartup_AfterSetToFalse_ReturnsFalse" isTestCase="true">
+                  <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.CustomPathStartupFileLocatorTestFixture" member="LoadOnStartup_AfterSetToFalse_ReturnsFalse" />
+                  <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\CustomPathStartupFileLocatorTestFixture.cs" line="40" />
+                  <metadata>
+                    <entry key="TestKind">
+                      <value>Test</value>
+                    </entry>
+                  </metadata>
+                  <children />
+                  <parameters />
+                </test>
+                <test id="81e85583da14c052" name="LoadOnStartup_WithoutBeingSet_ReturnsTrue" fullName="Relax.FileBackingStore.Tests/CustomPathStartupFileLocatorTestFixture/LoadOnStartup_WithoutBeingSet_ReturnsTrue" isTestCase="true">
+                  <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.CustomPathStartupFileLocatorTestFixture" member="LoadOnStartup_WithoutBeingSet_ReturnsTrue" />
+                  <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\CustomPathStartupFileLocatorTestFixture.cs" line="33" />
+                  <metadata>
+                    <entry key="TestKind">
+                      <value>Test</value>
+                    </entry>
+                  </metadata>
+                  <children />
+                  <parameters />
+                </test>
+                <test id="8bd442ec02f9619b" name="Path_GivenPath_ReturnsPath" fullName="Relax.FileBackingStore.Tests/CustomPathStartupFileLocatorTestFixture/Path_GivenPath_ReturnsPath" isTestCase="true">
+                  <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.CustomPathStartupFileLocatorTestFixture" member="Path_GivenPath_ReturnsPath" />
+                  <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\CustomPathStartupFileLocatorTestFixture.cs" line="26" />
+                  <metadata>
+                    <entry key="TestKind">
+                      <value>Test</value>
+                    </entry>
+                  </metadata>
+                  <children />
+                  <parameters />
+                </test>
+              </children>
+              <parameters />
+            </test>
+            <test id="79ed49cd4f46e74a" name="FileStreamServiceTestFixture" fullName="Relax.FileBackingStore.Tests/FileStreamServiceTestFixture" isTestCase="false">
+              <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.FileStreamServiceTestFixture" />
+              <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\FileStreamServiceTestFixture.cs" />
+              <metadata>
+                <entry key="TestKind">
+                  <value>Fixture</value>
+                </entry>
+              </metadata>
+              <children>
+                <test id="9e2cd7aa20bf200f" name="GetWriteStream_NullPath_Throws" fullName="Relax.FileBackingStore.Tests/FileStreamServiceTestFixture/GetWriteStream_NullPath_Throws" isTestCase="true">
+                  <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.FileStreamServiceTestFixture" member="GetWriteStream_NullPath_Throws" />
+                  <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\FileStreamServiceTestFixture.cs" line="12" />
+                  <metadata>
+                    <entry key="TestKind">
+                      <value>Test</value>
+                    </entry>
+                    <entry key="ExpectedException">
+                      <value>System.ArgumentNullException</value>
+                    </entry>
+                  </metadata>
+                  <children />
+                  <parameters />
+                </test>
+                <test id="24f5c697d2cb605a" name="GetReadStream_NullPath_Throws" fullName="Relax.FileBackingStore.Tests/FileStreamServiceTestFixture/GetReadStream_NullPath_Throws" isTestCase="true">
+                  <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.FileStreamServiceTestFixture" member="GetReadStream_NullPath_Throws" />
+                  <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\FileStreamServiceTestFixture.cs" line="19" />
+                  <metadata>
+                    <entry key="TestKind">
+                      <value>Test</value>
+                    </entry>
+                    <entry key="ExpectedException">
+                      <value>System.ArgumentNullException</value>
+                    </entry>
+                  </metadata>
+                  <children />
+                  <parameters />
+                </test>
+              </children>
+              <parameters />
+            </test>
+            <test id="8a0482f7a86b4291" name="SerializerTestFixture" fullName="Relax.FileBackingStore.Tests/SerializerTestFixture" isTestCase="false">
+              <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.SerializerTestFixture" />
+              <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\SerializerTestFixture.cs" />
+              <metadata>
+                <entry key="TestKind">
+                  <value>Fixture</value>
+                </entry>
+              </metadata>
+              <children>
+                <test id="7a26941f26e8501c" name="Save_GivenStream_WritesSomething" fullName="Relax.FileBackingStore.Tests/SerializerTestFixture/Save_GivenStream_WritesSomething" isTestCase="true">
+                  <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.SerializerTestFixture" member="Save_GivenStream_WritesSomething" />
+                  <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\SerializerTestFixture.cs" line="19" />
+                  <metadata>
+                    <entry key="TestKind">
+                      <value>Test</value>
+                    </entry>
+                  </metadata>
+                  <children />
+                  <parameters />
+                </test>
+                <test id="723299840d70e51e" name="Load_GivenSerializedSolutionModel_MatchesSaved" fullName="Relax.FileBackingStore.Tests/SerializerTestFixture/Load_GivenSerializedSolutionModel_MatchesSaved" isTestCase="true">
+                  <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.SerializerTestFixture" member="Load_GivenSerializedSolutionModel_MatchesSaved" />
+                  <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\SerializerTestFixture.cs" line="31" />
+                  <metadata>
+                    <entry key="TestKind">
+                      <value>Test</value>
+                    </entry>
+                  </metadata>
+                  <children />
+                  <parameters />
+                </test>
+              </children>
+              <parameters />
+            </test>
+            <test id="292eaff47cb95005" name="FileBackingStoreServiceTestFixture" fullName="Relax.FileBackingStore.Tests/FileBackingStoreServiceTestFixture" isTestCase="false">
+              <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.FileBackingStoreServiceTestFixture" />
+              <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\SolutionFileServiceTestFixture.cs" />
+              <metadata>
+                <entry key="TestKind">
+                  <value>Fixture</value>
+                </entry>
+              </metadata>
+              <children>
+                <test id="130a8bfcb502a84d" name="Save_WithoutSettingPath_UsesPathFromLocator" fullName="Relax.FileBackingStore.Tests/FileBackingStoreServiceTestFixture/Save_WithoutSettingPath_UsesPathFromLocator" isTestCase="true">
+                  <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.FileBackingStoreServiceTestFixture" member="Save_WithoutSettingPath_UsesPathFromLocator" />
+                  <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\SolutionFileServiceTestFixture.cs" line="29" />
+                  <metadata>
+                    <entry key="TestKind">
+                      <value>Test</value>
+                    </entry>
+                  </metadata>
+                  <children />
+                  <parameters />
+                </test>
+              </children>
+              <parameters />
+            </test>
+          </children>
+          <parameters />
+        </test>
+      </children>
+      <parameters />
+    </test>
+    <annotations />
+  </testModel>
+  <testPackageRun startTime="2009-11-01T20:13:40.15384+00:00" endTime="2009-11-01T20:13:45.4781445+00:00">
+    <testStepRun startTime="2009-11-01T20:13:42.9029972+00:00" endTime="2009-11-01T20:13:45.4781445+00:00">
+      <testStep id="93f65e4cc84c04ce" name="Root" fullName="" testId="c2722843734a7a54" isPrimary="true" isTestCase="false" isDynamic="false">
+        <codeReference />
+        <codeLocation />
+        <metadata>
+          <entry key="TestKind">
+            <value>Root</value>
+          </entry>
+        </metadata>
+      </testStep>
+      <children>
+        <testStepRun startTime="2009-11-01T20:13:42.9580004+00:00" endTime="2009-11-01T20:13:44.2260729+00:00">
+          <testStep id="130c10717b0b91af" name="Relax.FileBackingStore.Tests" fullName="Relax.FileBackingStore.Tests" testId="ea3f86c7476f8499" isPrimary="true" isTestCase="false" isDynamic="false">
+            <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" />
+            <codeLocation path="C:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\bin\Release\Relax.FileBackingStore.Tests.DLL" />
+            <metadata>
+              <entry key="TestKind">
+                <value>MbUnit v3 Assembly</value>
+              </entry>
+              <entry key="File">
+                <value>C:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\bin\Release\Relax.FileBackingStore.Tests.DLL</value>
+              </entry>
+              <entry key="CodeBase">
+                <value>C:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\bin\Release\Relax.FileBackingStore.Tests.DLL</value>
+              </entry>
+              <entry key="Copyright">
+                <value>Copyright ©  2009</value>
+              </entry>
+              <entry key="FileVersion">
+                <value>0.0.0.1244</value>
+              </entry>
+              <entry key="Product">
+                <value>Relax.FileBackingStore.Tests</value>
+              </entry>
+              <entry key="Title">
+                <value>Relax.FileBackingStore.Tests</value>
+              </entry>
+              <entry key="Version">
+                <value>0.0.0.1244</value>
+              </entry>
+              <entry key="Framework">
+                <value>MbUnit v3.1 build 313</value>
+              </entry>
+            </metadata>
+          </testStep>
+          <children>
+            <testStepRun startTime="2009-11-01T20:13:42.9830018+00:00" endTime="2009-11-01T20:13:43.1860134+00:00">
+              <testStep id="c46e2067cd79a443" name="CustomPathStartupFileLocatorTestFixture" fullName="Relax.FileBackingStore.Tests/CustomPathStartupFileLocatorTestFixture" testId="3690cedcd71edd80" isPrimary="true" isTestCase="false" isDynamic="false">
+                <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.CustomPathStartupFileLocatorTestFixture" />
+                <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\CustomPathStartupFileLocatorTestFixture.cs" />
+                <metadata>
+                  <entry key="TestKind">
+                    <value>Fixture</value>
+                  </entry>
+                </metadata>
+              </testStep>
+              <children>
+                <testStepRun startTime="2009-11-01T20:13:42.9990027+00:00" endTime="2009-11-01T20:13:43.1190096+00:00">
+                  <testStep id="7cdc46408c1c0475" name="Construct_GivenNull_Throws" fullName="Relax.FileBackingStore.Tests/CustomPathStartupFileLocatorTestFixture/Construct_GivenNull_Throws" testId="a0e8709becd60dfa" isPrimary="true" isTestCase="true" isDynamic="false">
+                    <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.CustomPathStartupFileLocatorTestFixture" member="Construct_GivenNull_Throws" />
+                    <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\CustomPathStartupFileLocatorTestFixture.cs" line="20" />
+                    <metadata>
+                      <entry key="TestKind">
+                        <value>Test</value>
+                      </entry>
+                    </metadata>
+                  </testStep>
+                  <children />
+                  <result assertCount="0" duration="0.1208146">
+                    <outcome status="passed" />
+                  </result>
+                  <testLog>
+                    <streams />
+                    <attachments />
+                  </testLog>
+                </testStepRun>
+                <testStepRun startTime="2009-11-01T20:13:43.12701+00:00" endTime="2009-11-01T20:13:43.1360105+00:00">
+                  <testStep id="d2f62077605474bd" name="Construct_GivenPath_Succeeds" fullName="Relax.FileBackingStore.Tests/CustomPathStartupFileLocatorTestFixture/Construct_GivenPath_Succeeds" testId="31ecb2a0676fb5db" isPrimary="true" isTestCase="true" isDynamic="false">
+                    <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.CustomPathStartupFileLocatorTestFixture" member="Construct_GivenPath_Succeeds" />
+                    <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\CustomPathStartupFileLocatorTestFixture.cs" line="14" />
+                    <metadata>
+                      <entry key="TestKind">
+                        <value>Test</value>
+                      </entry>
+                    </metadata>
+                  </testStep>
+                  <children />
+                  <result assertCount="0" duration="0.0026741">
+                    <outcome status="passed" />
+                  </result>
+                  <testLog>
+                    <streams />
+                    <attachments />
+                  </testLog>
+                </testStepRun>
+                <testStepRun startTime="2009-11-01T20:13:43.1380107+00:00" endTime="2009-11-01T20:13:43.1470112+00:00">
+                  <testStep id="ccb658e0d987ca14" name="LoadOnStartup_AfterSetToFalse_ReturnsFalse" fullName="Relax.FileBackingStore.Tests/CustomPathStartupFileLocatorTestFixture/LoadOnStartup_AfterSetToFalse_ReturnsFalse" testId="9d360f2e8aa0406" isPrimary="true" isTestCase="true" isDynamic="false">
+                    <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.CustomPathStartupFileLocatorTestFixture" member="LoadOnStartup_AfterSetToFalse_ReturnsFalse" />
+                    <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\CustomPathStartupFileLocatorTestFixture.cs" line="40" />
+                    <metadata>
+                      <entry key="TestKind">
+                        <value>Test</value>
+                      </entry>
+                    </metadata>
+                  </testStep>
+                  <children />
+                  <result assertCount="1" duration="0.0111789">
+                    <outcome status="passed" />
+                  </result>
+                  <testLog>
+                    <streams />
+                    <attachments />
+                  </testLog>
+                </testStepRun>
+                <testStepRun startTime="2009-11-01T20:13:43.1500113+00:00" endTime="2009-11-01T20:13:43.1570117+00:00">
+                  <testStep id="6b354171908c7b66" name="LoadOnStartup_WithoutBeingSet_ReturnsTrue" fullName="Relax.FileBackingStore.Tests/CustomPathStartupFileLocatorTestFixture/LoadOnStartup_WithoutBeingSet_ReturnsTrue" testId="81e85583da14c052" isPrimary="true" isTestCase="true" isDynamic="false">
+                    <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.CustomPathStartupFileLocatorTestFixture" member="LoadOnStartup_WithoutBeingSet_ReturnsTrue" />
+                    <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\CustomPathStartupFileLocatorTestFixture.cs" line="33" />
+                    <metadata>
+                      <entry key="TestKind">
+                        <value>Test</value>
+                      </entry>
+                    </metadata>
+                  </testStep>
+                  <children />
+                  <result assertCount="1" duration="0.0073853999999999994">
+                    <outcome status="passed" />
+                  </result>
+                  <testLog>
+                    <streams />
+                    <attachments />
+                  </testLog>
+                </testStepRun>
+                <testStepRun startTime="2009-11-01T20:13:43.1600119+00:00" endTime="2009-11-01T20:13:43.1820132+00:00">
+                  <testStep id="8121c0097c3be5" name="Path_GivenPath_ReturnsPath" fullName="Relax.FileBackingStore.Tests/CustomPathStartupFileLocatorTestFixture/Path_GivenPath_ReturnsPath" testId="8bd442ec02f9619b" isPrimary="true" isTestCase="true" isDynamic="false">
+                    <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.CustomPathStartupFileLocatorTestFixture" member="Path_GivenPath_ReturnsPath" />
+                    <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\CustomPathStartupFileLocatorTestFixture.cs" line="26" />
+                    <metadata>
+                      <entry key="TestKind">
+                        <value>Test</value>
+                      </entry>
+                    </metadata>
+                  </testStep>
+                  <children />
+                  <result assertCount="1" duration="0.024576999999999998">
+                    <outcome status="passed" />
+                  </result>
+                  <testLog>
+                    <streams />
+                    <attachments />
+                  </testLog>
+                </testStepRun>
+              </children>
+              <result assertCount="3" duration="0.1999538">
+                <outcome status="passed" />
+              </result>
+              <testLog>
+                <streams />
+                <attachments />
+              </testLog>
+            </testStepRun>
+            <testStepRun startTime="2009-11-01T20:13:43.1880135+00:00" endTime="2009-11-01T20:13:43.6780415+00:00">
+              <testStep id="5be753350cd28ac6" name="FileBackingStoreServiceTestFixture" fullName="Relax.FileBackingStore.Tests/FileBackingStoreServiceTestFixture" testId="292eaff47cb95005" isPrimary="true" isTestCase="false" isDynamic="false">
+                <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.FileBackingStoreServiceTestFixture" />
+                <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\SolutionFileServiceTestFixture.cs" />
+                <metadata>
+                  <entry key="TestKind">
+                    <value>Fixture</value>
+                  </entry>
+                </metadata>
+              </testStep>
+              <children>
+                <testStepRun startTime="2009-11-01T20:13:43.1930138+00:00" endTime="2009-11-01T20:13:43.6730413+00:00">
+                  <testStep id="d7ec5f677031e4de" name="Save_WithoutSettingPath_UsesPathFromLocator" fullName="Relax.FileBackingStore.Tests/FileBackingStoreServiceTestFixture/Save_WithoutSettingPath_UsesPathFromLocator" testId="130a8bfcb502a84d" isPrimary="true" isTestCase="true" isDynamic="false">
+                    <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.FileBackingStoreServiceTestFixture" member="Save_WithoutSettingPath_UsesPathFromLocator" />
+                    <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\SolutionFileServiceTestFixture.cs" line="29" />
+                    <metadata>
+                      <entry key="TestKind">
+                        <value>Test</value>
+                      </entry>
+                    </metadata>
+                  </testStep>
+                  <children />
+                  <result assertCount="0" duration="0.4823067">
+                    <outcome status="passed" />
+                  </result>
+                  <testLog>
+                    <streams />
+                    <attachments />
+                  </testLog>
+                </testStepRun>
+              </children>
+              <result assertCount="0" duration="0.48982329999999996">
+                <outcome status="passed" />
+              </result>
+              <testLog>
+                <streams />
+                <attachments />
+              </testLog>
+            </testStepRun>
+            <testStepRun startTime="2009-11-01T20:13:43.6800417+00:00" endTime="2009-11-01T20:13:43.721044+00:00">
+              <testStep id="1d33a93d819653e3" name="FileStreamServiceTestFixture" fullName="Relax.FileBackingStore.Tests/FileStreamServiceTestFixture" testId="79ed49cd4f46e74a" isPrimary="true" isTestCase="false" isDynamic="false">
+                <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.FileStreamServiceTestFixture" />
+                <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\FileStreamServiceTestFixture.cs" />
+                <metadata>
+                  <entry key="TestKind">
+                    <value>Fixture</value>
+                  </entry>
+                </metadata>
+              </testStep>
+              <children>
+                <testStepRun startTime="2009-11-01T20:13:43.6850419+00:00" endTime="2009-11-01T20:13:43.6970426+00:00">
+                  <testStep id="59f91fb111d4f625" name="GetReadStream_NullPath_Throws" fullName="Relax.FileBackingStore.Tests/FileStreamServiceTestFixture/GetReadStream_NullPath_Throws" testId="24f5c697d2cb605a" isPrimary="true" isTestCase="true" isDynamic="false">
+                    <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.FileStreamServiceTestFixture" member="GetReadStream_NullPath_Throws" />
+                    <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\FileStreamServiceTestFixture.cs" line="19" />
+                    <metadata>
+                      <entry key="TestKind">
+                        <value>Test</value>
+                      </entry>
+                      <entry key="ExpectedException">
+                        <value>System.ArgumentNullException</value>
+                      </entry>
+                    </metadata>
+                  </testStep>
+                  <children />
+                  <result assertCount="0" duration="0.0140215">
+                    <outcome status="passed" />
+                  </result>
+                  <testLog>
+                    <streams />
+                    <attachments />
+                  </testLog>
+                </testStepRun>
+                <testStepRun startTime="2009-11-01T20:13:43.7000428+00:00" endTime="2009-11-01T20:13:43.7160437+00:00">
+                  <testStep id="2a86c16842014c97" name="GetWriteStream_NullPath_Throws" fullName="Relax.FileBackingStore.Tests/FileStreamServiceTestFixture/GetWriteStream_NullPath_Throws" testId="9e2cd7aa20bf200f" isPrimary="true" isTestCase="true" isDynamic="false">
+                    <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.FileStreamServiceTestFixture" member="GetWriteStream_NullPath_Throws" />
+                    <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\FileStreamServiceTestFixture.cs" line="12" />
+                    <metadata>
+                      <entry key="TestKind">
+                        <value>Test</value>
+                      </entry>
+                      <entry key="ExpectedException">
+                        <value>System.ArgumentNullException</value>
+                      </entry>
+                    </metadata>
+                  </testStep>
+                  <children />
+                  <result assertCount="0" duration="0.015564999999999999">
+                    <outcome status="passed" />
+                  </result>
+                  <testLog>
+                    <streams />
+                    <attachments />
+                  </testLog>
+                </testStepRun>
+              </children>
+              <result assertCount="0" duration="0.0388916">
+                <outcome status="passed" />
+              </result>
+              <testLog>
+                <streams />
+                <attachments />
+              </testLog>
+            </testStepRun>
+            <testStepRun startTime="2009-11-01T20:13:43.7230441+00:00" endTime="2009-11-01T20:13:44.2220727+00:00">
+              <testStep id="77e681b8243a5a0f" name="SerializerTestFixture" fullName="Relax.FileBackingStore.Tests/SerializerTestFixture" testId="8a0482f7a86b4291" isPrimary="true" isTestCase="false" isDynamic="false">
+                <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.SerializerTestFixture" />
+                <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\SerializerTestFixture.cs" />
+                <metadata>
+                  <entry key="TestKind">
+                    <value>Fixture</value>
+                  </entry>
+                </metadata>
+              </testStep>
+              <children>
+                <testStepRun startTime="2009-11-01T20:13:43.7270444+00:00" endTime="2009-11-01T20:13:44.1920709+00:00">
+                  <testStep id="88f146059ac5239d" name="Load_GivenSerializedSolutionModel_MatchesSaved" fullName="Relax.FileBackingStore.Tests/SerializerTestFixture/Load_GivenSerializedSolutionModel_MatchesSaved" testId="723299840d70e51e" isPrimary="true" isTestCase="true" isDynamic="false">
+                    <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.SerializerTestFixture" member="Load_GivenSerializedSolutionModel_MatchesSaved" />
+                    <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\SerializerTestFixture.cs" line="31" />
+                    <metadata>
+                      <entry key="TestKind">
+                        <value>Test</value>
+                      </entry>
+                    </metadata>
+                  </testStep>
+                  <children />
+                  <result assertCount="3" duration="0.4673207">
+                    <outcome status="passed" />
+                  </result>
+                  <testLog>
+                    <streams />
+                    <attachments />
+                  </testLog>
+                </testStepRun>
+                <testStepRun startTime="2009-11-01T20:13:44.1940711+00:00" endTime="2009-11-01T20:13:44.2160723+00:00">
+                  <testStep id="dba38e710e500281" name="Save_GivenStream_WritesSomething" fullName="Relax.FileBackingStore.Tests/SerializerTestFixture/Save_GivenStream_WritesSomething" testId="7a26941f26e8501c" isPrimary="true" isTestCase="true" isDynamic="false">
+                    <codeReference assembly="Relax.FileBackingStore.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.FileBackingStore.Tests.Services" type="Relax.FileBackingStore.Tests.Services.SerializerTestFixture" member="Save_GivenStream_WritesSomething" />
+                    <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\Services\SerializerTestFixture.cs" line="19" />
+                    <metadata>
+                      <entry key="TestKind">
+                        <value>Test</value>
+                      </entry>
+                    </metadata>
+                  </testStep>
+                  <children />
+                  <result assertCount="1" duration="0.0203309">
+                    <outcome status="passed" />
+                  </result>
+                  <testLog>
+                    <streams />
+                    <attachments />
+                  </testLog>
+                </testStepRun>
+              </children>
+              <result assertCount="4" duration="0.4967454">
+                <outcome status="passed" />
+              </result>
+              <testLog>
+                <streams />
+                <attachments />
+              </testLog>
+            </testStepRun>
+          </children>
+          <result assertCount="7" duration="1.2624347999999999">
+            <outcome status="passed" />
+          </result>
+          <testLog>
+            <streams />
+            <attachments />
+          </testLog>
+        </testStepRun>
+      </children>
+      <result assertCount="7" duration="5.3237333">
+        <outcome status="passed" />
+      </result>
+      <testLog>
+        <streams />
+        <attachments />
+      </testLog>
+    </testStepRun>
+    <statistics assertCount="7" duration="5.3237711" runCount="10" passedCount="10" failedCount="0" inconclusiveCount="0" skippedCount="0" testCount="10" stepCount="16">
+      <outcomeSummaries>
+        <outcomeSummary count="10">
+          <outcome status="passed" />
+        </outcomeSummary>
+      </outcomeSummaries>
+    </statistics>
+  </testPackageRun>
+  <logEntries>
+    <logEntry severity="info" message="Starting NCover v3: &quot;C:\Program Files\NCover\NCover.Console.exe&quot; &quot;C:\Development\relax-gtd\trunk\Library\Gallio\bin\Gallio.Host.exe&quot; /ipc-port:IsolatedProcessHost.896b6dfc20af84c7 /timeout:120 /owner-process:5840 /application-base-directory:&quot;C:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\bin\Release&quot; /configuration-file:&quot;C:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\bin\Release\896c515ce0ee686b.tmp.config&quot; /severity-prefix //w &quot;C:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\bin\Release&quot; //x &quot;C:\Users\Graeme\AppData\Local\Temp\Gallio\NCover\vhuvzlvb.03q&quot; //at ..\..\..\..\Reports\Relax.FileBackingStore.Tests.Gallio.coverage.xml.trend //ea Relax.Infrastructure.NoCoverageAttribute;MbUnit.Framework.TestFixtureAttribute;MbUnit.Framework.TestAttribute;System.Runtime.CompilerServices.CompilerGeneratedAttribute;System.CodeDom.Compiler.GeneratedCodeAttribute;System.Diagnostics.DebuggerNonUserCodeAttribute //x ..\..\..\..\Reports\Relax.FileBackingStore.Tests.Gallio.coverage.xml //l bin\Release\Coverage.Gallio.log //a Relax.FileBackingStore" />
+    <logEntry severity="info" message="NCover Complete v3.3.0 x86&#xA;Copyright (c) 2007 - 2009 Gnoso Inc.&#xA;License Key: FHG2QOJOXE8YIJWE&#xA;Registered to Customer #: 520 for 1 Machine&#xA;" />
+    <logEntry severity="info" message="&#xA;Command: &quot;C:\Development\relax-gtd\trunk\Library\Gallio\bin\Gallio.Host.exe&quot;&#xA;Command Args: &quot;/ipc-port:IsolatedProcessHost.896b6dfc20af84c7&quot; &quot;/timeout:120&quot; &quot;/owner-process:5840&quot; &quot;/application-base-directory:C:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\bin\Release&quot; &quot;/configuration-file:C:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\bin\Release\896c515ce0ee686b.tmp.config&quot; &quot;/severity-prefix&quot;&#xA;Working Directory: C:\Development\relax-gtd\trunk\UnitTests\Relax.FileBackingStore.Tests\bin\Release&#xA;Included Assemblies: Relax.FileBackingStore&#xA;Excluded Attributes: Relax.Infrastructure.NoCoverageAttribute;MbUnit.Framework.TestFixtureAttribute;MbUnit.Framework.TestAttribute;System.Runtime.CompilerServices.CompilerGeneratedAttribute;System.CodeDom.Compiler.GeneratedCodeAttribute;System.Diagnostics.DebuggerNonUserCodeAttribute&#xA;&#xA;******************* Program Output *******************" />
+    <logEntry severity="info" message="Host started at 01/11/2009 20:13:40." />
+    <logEntry severity="info" message="Running under CLR v2.0.50727 runtime." />
+    <logEntry severity="debug" message="Listening for connections on IPC port: 'IsolatedProcessHost.896b6dfc20af84c7'" />
+    <logEntry severity="debug" message="Disabled plugin 'Gallio.VisualStudio.Shell': The plugin enable condition was not satisfied: '${process:DEVENV.EXE} or ${process:VSTESTHOST.EXE} or ${process:QTAGENT.EXE} or ${process:QTAGENT32.EXE} or ${process:QTDCAGENT.EXE} or ${process:QTDCAGENT32.EXE}'." />
+    <logEntry severity="debug" message="Disabled plugin 'Gallio40': The plugin enable condition was not satisfied: '${minFramework:NET40}'." />
+    <logEntry severity="debug" message="Disabled plugin 'Gallio.VisualStudio.Shell90': The plugin depends on another disabled plugin.  Reason: The plugin enable condition was not satisfied: '${process:DEVENV.EXE} or ${process:VSTESTHOST.EXE} or ${process:QTAGENT.EXE} or ${process:QTAGENT32.EXE} or ${process:QTDCAGENT.EXE} or ${process:QTDCAGENT32.EXE}'." />
+    <logEntry severity="debug" message="Disabled plugin 'MbUnit40': The plugin depends on another disabled plugin.  Reason: The plugin enable condition was not satisfied: '${minFramework:NET40}'." />
+    <logEntry severity="debug" message="Disabled plugin 'Gallio.VisualStudio.Tip90': The plugin depends on another disabled plugin.  Reason: The plugin depends on another disabled plugin.  Reason: The plugin enable condition was not satisfied: '${process:DEVENV.EXE} or ${process:VSTESTHOST.EXE} or ${process:QTAGENT.EXE} or ${process:QTAGENT32.EXE} or ${process:QTDCAGENT.EXE} or ${process:QTDCAGENT32.EXE}'." />
+    <logEntry severity="info" message="Host stopped at 01/11/2009 20:13:44." />
+    <logEntry severity="info" message="&#xA;***************** End Program Output *****************&#xA;&#xA;Execution Time: 3.8192 s&#xA;Symbol Coverage: 16.61%&#xA;Branch Coverage: 10.69%&#xA;&#xA;Coverage Xml: C:\Development\relax-gtd\trunk\Reports\Relax.FileBackingStore.Tests.Gallio.coverage.xml&#xA;Trend File: C:\Development\relax-gtd\trunk\Reports\Relax.FileBackingStore.Tests.Gallio.coverage.xml.trend" />
+    <logEntry severity="info" message="Host process exited with code: 0" />
+  </logEntries>
+</report>

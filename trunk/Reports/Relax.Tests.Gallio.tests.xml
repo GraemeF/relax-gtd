@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gallio.org/">
+  <testPackage shadowCopy="false" debug="false">
+    <files>
+      <file>C:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\bin\Release\Relax.Tests.dll</file>
+    </files>
+    <hintDirectories />
+    <excludedFrameworkIds />
+    <properties>
+      <entry key="NCoverArguments" value="//at ..\..\..\..\Reports\Relax.Tests.Gallio.coverage.xml.trend //ea Relax.Infrastructure.NoCoverageAttribute;MbUnit.Framework.TestFixtureAttribute;MbUnit.Framework.TestAttribute;System.Runtime.CompilerServices.CompilerGeneratedAttribute;System.CodeDom.Compiler.GeneratedCodeAttribute;System.Diagnostics.DebuggerNonUserCodeAttribute //x ..\..\..\..\Reports\Relax.Tests.Gallio.coverage.xml //l bin\Release\Coverage.Gallio.log //a Relax" />
+    </properties>
+  </testPackage>
+  <testModel>
+    <test id="c2722843734a7a54" name="Root" fullName="" isTestCase="false">
+      <codeReference />
+      <codeLocation />
+      <metadata>
+        <entry key="TestKind">
+          <value>Root</value>
+        </entry>
+      </metadata>
+      <children>
+        <test id="df814f657c7e990a" name="Relax.Tests" fullName="Relax.Tests" isTestCase="false">
+          <codeReference assembly="Relax.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" />
+          <codeLocation path="C:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\bin\Release\Relax.Tests.DLL" />
+          <metadata>
+            <entry key="TestKind">
+              <value>MbUnit v3 Assembly</value>
+            </entry>
+            <entry key="File">
+              <value>C:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\bin\Release\Relax.Tests.DLL</value>
+            </entry>
+            <entry key="CodeBase">
+              <value>C:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\bin\Release\Relax.Tests.DLL</value>
+            </entry>
+            <entry key="Copyright">
+              <value>Copyright ©  2009</value>
+            </entry>
+            <entry key="FileVersion">
+              <value>0.0.0.1244</value>
+            </entry>
+            <entry key="Product">
+              <value>Relax.Tests</value>
+            </entry>
+            <entry key="Title">
+              <value>Relax.Tests</value>
+            </entry>
+            <entry key="Version">
+              <value>0.0.0.1244</value>
+            </entry>
+            <entry key="Framework">
+              <value>MbUnit v3.1 build 313</value>
+            </entry>
+          </metadata>
+          <children>
+            <test id="c882b3062723684" name="TestFixture1" fullName="Relax.Tests/TestFixture1" isTestCase="false">
+              <codeReference assembly="Relax.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.Tests" type="Relax.Tests.TestFixture1" />
+              <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\TestFixture1.cs" />
+              <metadata>
+                <entry key="TestKind">
+                  <value>Fixture</value>
+                </entry>
+              </metadata>
+              <children>
+                <test id="27a2da01e8100355" name="Test" fullName="Relax.Tests/TestFixture1/Test" isTestCase="true">
+                  <codeReference assembly="Relax.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.Tests" type="Relax.Tests.TestFixture1" member="Test" />
+                  <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\TestFixture1.cs" line="20" />
+                  <metadata>
+                    <entry key="TestKind">
+                      <value>Test</value>
+                    </entry>
+                  </metadata>
+                  <children />
+                  <parameters />
+                </test>
+              </children>
+              <parameters />
+            </test>
+          </children>
+          <parameters />
+        </test>
+      </children>
+      <parameters />
+    </test>
+    <annotations />
+  </testModel>
+  <testPackageRun startTime="2009-11-01T20:13:32.759417+00:00" endTime="2009-11-01T20:13:38.2247296+00:00">
+    <testStepRun startTime="2009-11-01T20:13:36.9336558+00:00" endTime="2009-11-01T20:13:38.2247296+00:00">
+      <testStep id="bc58d848c1320a2b" name="Root" fullName="" testId="c2722843734a7a54" isPrimary="true" isTestCase="false" isDynamic="false">
+        <codeReference />
+        <codeLocation />
+        <metadata>
+          <entry key="TestKind">
+            <value>Root</value>
+          </entry>
+        </metadata>
+      </testStep>
+      <children>
+        <testStepRun startTime="2009-11-01T20:13:36.9936592+00:00" endTime="2009-11-01T20:13:37.1046656+00:00">
+          <testStep id="56ab18483433e142" name="Relax.Tests" fullName="Relax.Tests" testId="df814f657c7e990a" isPrimary="true" isTestCase="false" isDynamic="false">
+            <codeReference assembly="Relax.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" />
+            <codeLocation path="C:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\bin\Release\Relax.Tests.DLL" />
+            <metadata>
+              <entry key="TestKind">
+                <value>MbUnit v3 Assembly</value>
+              </entry>
+              <entry key="File">
+                <value>C:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\bin\Release\Relax.Tests.DLL</value>
+              </entry>
+              <entry key="CodeBase">
+                <value>C:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\bin\Release\Relax.Tests.DLL</value>
+              </entry>
+              <entry key="Copyright">
+                <value>Copyright ©  2009</value>
+              </entry>
+              <entry key="FileVersion">
+                <value>0.0.0.1244</value>
+              </entry>
+              <entry key="Product">
+                <value>Relax.Tests</value>
+              </entry>
+              <entry key="Title">
+                <value>Relax.Tests</value>
+              </entry>
+              <entry key="Version">
+                <value>0.0.0.1244</value>
+              </entry>
+              <entry key="Framework">
+                <value>MbUnit v3.1 build 313</value>
+              </entry>
+            </metadata>
+          </testStep>
+          <children>
+            <testStepRun startTime="2009-11-01T20:13:37.0186607+00:00" endTime="2009-11-01T20:13:37.0966651+00:00">
+              <testStep id="6655f77c54df7d9f" name="TestFixture1" fullName="Relax.Tests/TestFixture1" testId="c882b3062723684" isPrimary="true" isTestCase="false" isDynamic="false">
+                <codeReference assembly="Relax.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.Tests" type="Relax.Tests.TestFixture1" />
+                <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\TestFixture1.cs" />
+                <metadata>
+                  <entry key="TestKind">
+                    <value>Fixture</value>
+                  </entry>
+                </metadata>
+              </testStep>
+              <children>
+                <testStepRun startTime="2009-11-01T20:13:37.0366617+00:00" endTime="2009-11-01T20:13:37.0536627+00:00">
+                  <testStep id="49a38d1ac7413d07" name="Test" fullName="Relax.Tests/TestFixture1/Test" testId="27a2da01e8100355" isPrimary="true" isTestCase="true" isDynamic="false">
+                    <codeReference assembly="Relax.Tests, Version=0.0.0.1244, Culture=neutral, PublicKeyToken=null" namespace="Relax.Tests" type="Relax.Tests.TestFixture1" member="Test" />
+                    <codeLocation path="c:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\TestFixture1.cs" line="20" />
+                    <metadata>
+                      <entry key="TestKind">
+                        <value>Test</value>
+                      </entry>
+                    </metadata>
+                  </testStep>
+                  <children />
+                  <result assertCount="0" duration="0.0175709">
+                    <outcome status="passed" />
+                  </result>
+                  <testLog>
+                    <streams />
+                    <attachments />
+                  </testLog>
+                </testStepRun>
+              </children>
+              <result assertCount="0" duration="0.0556194">
+                <outcome status="passed" />
+              </result>
+              <testLog>
+                <streams />
+                <attachments />
+              </testLog>
+            </testStepRun>
+          </children>
+          <result assertCount="0" duration="0.1048809">
+            <outcome status="passed" />
+          </result>
+          <testLog>
+            <streams />
+            <attachments />
+          </testLog>
+        </testStepRun>
+      </children>
+      <result assertCount="0" duration="5.4608656999999994">
+        <outcome status="passed" />
+      </result>
+      <testLog>
+        <streams />
+        <attachments />
+      </testLog>
+    </testStepRun>
+    <statistics assertCount="0" duration="5.4760713999999995" runCount="1" passedCount="1" failedCount="0" inconclusiveCount="0" skippedCount="0" testCount="1" stepCount="4">
+      <outcomeSummaries>
+        <outcomeSummary count="1">
+          <outcome status="passed" />
+        </outcomeSummary>
+      </outcomeSummaries>
+    </statistics>
+  </testPackageRun>
+  <logEntries>
+    <logEntry severity="info" message="Starting NCover v3: &quot;C:\Program Files\NCover\NCover.Console.exe&quot; &quot;C:\Development\relax-gtd\trunk\Library\Gallio\bin\Gallio.Host.exe&quot; /ipc-port:IsolatedProcessHost.72293ad55ed723b1 /timeout:120 /owner-process:5840 /application-base-directory:&quot;C:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\bin\Release&quot; /configuration-file:&quot;C:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\bin\Release\dac88d7347214126.tmp.config&quot; /severity-prefix //w &quot;C:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\bin\Release&quot; //x &quot;C:\Users\Graeme\AppData\Local\Temp\Gallio\NCover\pi2bcfco.0fc&quot; //at ..\..\..\..\Reports\Relax.Tests.Gallio.coverage.xml.trend //ea Relax.Infrastructure.NoCoverageAttribute;MbUnit.Framework.TestFixtureAttribute;MbUnit.Framework.TestAttribute;System.Runtime.CompilerServices.CompilerGeneratedAttribute;System.CodeDom.Compiler.GeneratedCodeAttribute;System.Diagnostics.DebuggerNonUserCodeAttribute //x ..\..\..\..\Reports\Relax.Tests.Gallio.coverage.xml //l bin\Release\Coverage.Gallio.log //a Relax" />
+    <logEntry severity="info" message="NCover Complete v3.3.0 x86&#xA;Copyright (c) 2007 - 2009 Gnoso Inc.&#xA;License Key: FHG2QOJOXE8YIJWE&#xA;Registered to Customer #: 520 for 1 Machine&#xA;" />
+    <logEntry severity="info" message="&#xA;Command: &quot;C:\Development\relax-gtd\trunk\Library\Gallio\bin\Gallio.Host.exe&quot;&#xA;Command Args: &quot;/ipc-port:IsolatedProcessHost.72293ad55ed723b1&quot; &quot;/timeout:120&quot; &quot;/owner-process:5840&quot; &quot;/application-base-directory:C:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\bin\Release&quot; &quot;/configuration-file:C:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\bin\Release\dac88d7347214126.tmp.config&quot; &quot;/severity-prefix&quot;&#xA;Working Directory: C:\Development\relax-gtd\trunk\UnitTests\Relax.Tests\bin\Release&#xA;Included Assemblies: Relax&#xA;Excluded Attributes: Relax.Infrastructure.NoCoverageAttribute;MbUnit.Framework.TestFixtureAttribute;MbUnit.Framework.TestAttribute;System.Runtime.CompilerServices.CompilerGeneratedAttribute;System.CodeDom.Compiler.GeneratedCodeAttribute;System.Diagnostics.DebuggerNonUserCodeAttribute&#xA;&#xA;******************* Program Output *******************" />
+    <logEntry severity="info" message="Host started at 01/11/2009 20:13:34." />
+    <logEntry severity="info" message="Running under CLR v2.0.50727 runtime." />
+    <logEntry severity="debug" message="Listening for connections on IPC port: 'IsolatedProcessHost.72293ad55ed723b1'" />
+    <logEntry severity="debug" message="Disabled plugin 'Gallio.VisualStudio.Shell': The plugin enable condition was not satisfied: '${process:DEVENV.EXE} or ${process:VSTESTHOST.EXE} or ${process:QTAGENT.EXE} or ${process:QTAGENT32.EXE} or ${process:QTDCAGENT.EXE} or ${process:QTDCAGENT32.EXE}'." />
+    <logEntry severity="debug" message="Disabled plugin 'Gallio40': The plugin enable condition was not satisfied: '${minFramework:NET40}'." />
+    <logEntry severity="debug" message="Disabled plugin 'Gallio.VisualStudio.Shell90': The plugin depends on another disabled plugin.  Reason: The plugin enable condition was not satisfied: '${process:DEVENV.EXE} or ${process:VSTESTHOST.EXE} or ${process:QTAGENT.EXE} or ${process:QTAGENT32.EXE} or ${process:QTDCAGENT.EXE} or ${process:QTDCAGENT32.EXE}'." />
+    <logEntry severity="debug" message="Disabled plugin 'MbUnit40': The plugin depends on another disabled plugin.  Reason: The plugin enable condition was not satisfied: '${minFramework:NET40}'." />
+    <logEntry severity="debug" message="Disabled plugin 'Gallio.VisualStudio.Tip90': The plugin depends on another disabled plugin.  Reason: The plugin depends on another disabled plugin.  Reason: The plugin enable condition was not satisfied: '${process:DEVENV.EXE} or ${process:VSTESTHOST.EXE} or ${process:QTAGENT.EXE} or ${process:QTAGENT32.EXE} or ${process:QTDCAGENT.EXE} or ${process:QTDCAGENT32.EXE}'." />
+    <logEntry severity="info" message="Host stopped at 01/11/2009 20:13:37." />
+    <logEntry severity="info" message="&#xA;***************** End Program Output *****************&#xA;&#xA;Execution Time: 3.2252 s&#xA;&#xA;Coverage Xml: C:\Development\relax-gtd\trunk\Reports\Relax.Tests.Gallio.coverage.xml&#xA;Trend File: C:\Development\relax-gtd\trunk\Reports\Relax.Tests.Gallio.coverage.xml.trend" />
+    <logEntry severity="info" message="Host process exited with code: 0" />
+  </logEntries>
+</report>
