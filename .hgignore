@@ -1,6 +1,9 @@
-glob:bin
-glob:obj
-glob:_ReSharper.*
-glob:*.user
-glob:*.suo
-glob:*.cache
+syntax: glob
+
+bin
+obj
+_ReSharper.*
+*.user
+*.suo
+*.cache
+trunk/Reports
