@@ -1,16 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Windows;
+﻿using Autofac;
+using Autofac.Builder;
+using Caliburn.Autofac;
+using Caliburn.PresentationFramework.ApplicationModel;
+using Microsoft.Practices.ServiceLocation;
+using Relax.Presenters;
+using Relax.Presenters.Interfaces;
 
 namespace Relax
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    public partial class App : CaliburnApplication
     {
+        protected override IServiceLocator CreateContainer()
+        {
+            var builder = new ContainerBuilder();
+            builder.Register<ShellPresenter>();
+
+            IContainer container = builder.Build();
+            var adapter = new AutofacAdapter(container);
+
+            return adapter;
+        }
+
+        protected override object CreateRootModel()
+        {
+            var binder = (DefaultBinder) Container.GetInstance<IBinder>();
+            binder.EnableMessageConventions();
+            binder.EnableBindingConventions();
+
+            return Container.GetInstance<IShellPresenter>();
+        }
     }
 }

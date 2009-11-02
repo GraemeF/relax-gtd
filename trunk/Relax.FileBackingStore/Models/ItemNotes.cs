@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using Relax.Infrastructure.Interfaces;
+using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.FileBackingStore.Models
 {

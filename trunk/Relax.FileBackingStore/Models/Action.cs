@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
-using Relax.Infrastructure.Interfaces;
+using Relax.Infrastructure.Models;
+using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.FileBackingStore.Models
 {

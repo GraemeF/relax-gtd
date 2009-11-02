@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Xml;
-using Autofac;
 using Autofac.Builder;
 using Relax.FileBackingStore.Models;
-using Relax.Infrastructure.Interfaces;
+using Relax.FileBackingStore.Services.Interfaces;
+using Relax.Infrastructure.Helpers;
+using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.FileBackingStore.Services
 {
-    public class FileBackingStoreService : IBackingStore
+    public class FileBackingStoreService : IFileBackingStore
     {
         /// <summary>
         /// Gets a list of all of the types that may be required during serialization.
@@ -30,91 +30,63 @@ namespace Relax.FileBackingStore.Services
                                                                 typeof (ReviewChecklistItem)
                                                             };
 
-        public FileBackingStoreService(IFactory factory)
+        private readonly IStartupFileLocator _locator;
+        private readonly ISerializer<Workspace> _serializer;
+        private readonly IFileStreamService _streamService;
+        private IWorkspace _model;
+
+        public FileBackingStoreService(IFileStreamService streamService,
+                                       IWorkspace initialModel,
+                                       IStartupFileLocator locator,
+                                       ISerializer<Workspace> serializer)
         {
-            Factory = factory;
+            _streamService = streamService;
+            _serializer = serializer;
+            _locator = locator;
+            Path = _locator.Path;
+            Workspace = initialModel;
+        }
+
+        #region IFileBackingStore Members
+
+        public IWorkspace Workspace
+        {
+            get { return _model; }
+            private set
+            {
+                if (_model != value)
+                {
+                    _model = value;
+                    PropertyChanged.Raise(x => Workspace);
+                }
+            }
+        }
+
+        public void Load()
+        {
+            ValidatePath();
+
+            using (Stream stream = _streamService.GetReadStream(Path))
+                Workspace = _serializer.Load(stream, KnownTypes);
+        }
+
+        public void Save()
+        {
+            ValidatePath();
+
+            using (Stream stream = _streamService.GetWriteStream(Path))
+                _serializer.Save(stream, (Workspace) Workspace, KnownTypes);
         }
 
         public string Path { get; set; }
 
-        #region IBackingStore Members
-
-        public IFactory Factory{ get; private set;}
-
-        /// <summary>
-        /// Saves the data to the file using it's path.
-        /// </summary>
-        public void Save()
-        {
-            Directory.CreateDirectory(System.IO.Path.GetDirectoryName(Path));
-            using (var saveStream = new FileStream(Path, FileMode.Create))
-                Save(saveStream);
-        }
-
         #endregion
 
-        /// <summary>
-        /// Loads a file from the given path.
-        /// </summary>
-        /// <param name="path">Path to load from.</param>
-        /// <param name="container"></param>
-        /// <returns>Backing store loaded from the file.</returns>
-        public static FileBackingStoreService Load(string path, IContainer container)
+        public static void RegisterTypes(ContainerBuilder builder)
         {
-            using (var stream = new FileStream(path, FileMode.Open))
-            {
-                FileBackingStoreService fileBackingStore = Load(stream, container);
-                fileBackingStore.Path = path;
-                return fileBackingStore;
-            }
-        }
-
-        /// <summary>
-        /// Loads a FileBackingStore from the specified stream.
-        /// </summary>
-        /// <param name="stream">The stream.</param>
-        /// <param name="container"></param>
-        /// <returns></returns>
-        public static FileBackingStoreService Load(Stream stream, IContainer container)
-        {
-            using (XmlReader reader = XmlReader.Create(stream))
-                return Load(reader, container);
-        }
-
-        /// <summary>
-        /// Loads a FileBackingStore from the specified reader.
-        /// </summary>
-        /// <param name="reader">The reader.</param>
-        /// <returns></returns>
-        public static FileBackingStoreService Load(XmlReader reader, IContainer container)
-        {
-            using (XmlDictionaryReader dictionaryReader = XmlDictionaryReader.CreateDictionaryReader(reader))
-            {
-                DataContractSerializer dcs = GetSerializer();
-                var backingStore = (FileBackingStoreService) dcs.ReadObject(dictionaryReader);
-
-                return backingStore;
-            }
-        }
-
-        /// <summary>
-        /// Changes the path of the file and saves it.
-        /// </summary>
-        /// <param name="path">New path to be used.</param>
-        public void Save(string path)
-        {
-            Path = path;
-            Save();
-        }
-
-        public void RegisterTypes(ContainerBuilder builder)
-        {
-            builder.Register<Factory>().As<IFactory>();
-
             builder.Register<Models.Action>().As<IAction>();
-            builder.Register<Context>().As<Infrastructure.Interfaces.IContext>();
+            builder.Register<Context>().As<IContext>();
             builder.Register<ReviewChecklistItem>().As<IReviewChecklistItem>();
-
             builder.Register<Completion>().As<ICompletion>();
             builder.Register<Deadline>().As<IDeadline>();
             builder.Register<Deferral>().As<IDeferral>();
@@ -124,36 +96,18 @@ namespace Relax.FileBackingStore.Services
             builder.Register<ItemNotes>().As<INotes>();
         }
 
-        /// <summary>
-        /// Save the data to a stream.
-        /// </summary>
-        /// <param name="saveStream">Stream to save to.</param>
-        public void Save(FileStream saveStream)
+        public void Initialize()
         {
-            using (XmlWriter writer = XmlWriter.Create(saveStream, new XmlWriterSettings {Indent = true}))
-                Save(writer);
+            if (_locator.LoadOnStartup)
+                Load();
         }
 
-        /// <summary>
-        /// Saves the data to the specified writer.
-        /// </summary>
-        /// <param name="writer">The writer to save to.</param>
-        public void Save(XmlWriter writer)
-        {
-            using (XmlDictionaryWriter xdw = XmlDictionaryWriter.CreateDictionaryWriter(writer))
-            {
-                DataContractSerializer dcs = GetSerializer();
-                dcs.WriteObject(xdw, this);
-            }
-        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        /// <summary>
-        /// Gets a serializer fot the FileBackingStore.
-        /// </summary>
-        /// <returns>Serializer.</returns>
-        private static DataContractSerializer GetSerializer()
+        private void ValidatePath()
         {
-            return new DataContractSerializer(typeof (FileBackingStoreService), KnownTypes);
+            if (Path == null)
+                throw new InvalidOperationException("A path is required.");
         }
     }
 }

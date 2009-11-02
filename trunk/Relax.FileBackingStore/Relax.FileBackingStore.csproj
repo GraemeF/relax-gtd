@@ -63,14 +63,20 @@
     <Compile Include="Models\Deferral.cs" />
     <Compile Include="Models\Delegation.cs" />
     <Compile Include="Models\ItemNotes.cs" />
-    <Compile Include="Models\IWorkspace.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\ReviewChecklistItem.cs" />
     <Compile Include="Models\Workspace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Factory.cs" />
+    <Compile Include="Services\CustomPathStartupFileLocator.cs" />
     <Compile Include="Services\FileBackingStoreService.cs" />
+    <Compile Include="Services\FileStreamService.cs" />
+    <Compile Include="Services\Interfaces\IFileBackingStore.cs" />
+    <Compile Include="Services\Interfaces\IFileLocator.cs" />
+    <Compile Include="Services\Interfaces\IFileStreamService.cs" />
+    <Compile Include="Services\Interfaces\ISerializer.cs" />
+    <Compile Include="Services\Interfaces\IStartupFileLocator.cs" />
+    <Compile Include="Services\Serializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Relax.Infrastructure\Relax.Infrastructure.csproj">
@@ -78,12 +84,11 @@
       <Name>Relax.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
+  <PropertyGroup>
+    <!-- Give the correct path to the library stuff -->
+    <LibraryPath Condition=" '$(LibraryPath)' == '' ">..\Library\</LibraryPath>
+    <ReportsPath Condition=" '$(ReportsPath)' == '' ">..\Reports\</ReportsPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="$(LibraryPath)\Extensions.targets" />
 </Project>

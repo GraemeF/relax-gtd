@@ -48,36 +48,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\EnergyLevel.cs" />
-    <Compile Include="Interfaces\HorizonOfFocus.cs" />
-    <Compile Include="Interfaces\IAction.cs" />
-    <Compile Include="Interfaces\IBackingStore.cs" />
-    <Compile Include="Interfaces\ICompletion.cs" />
-    <Compile Include="Interfaces\IContext.cs" />
-    <Compile Include="Interfaces\ICost.cs" />
-    <Compile Include="Interfaces\IDeadline.cs" />
-    <Compile Include="Interfaces\IDeferral.cs" />
-    <Compile Include="Interfaces\IDelegation.cs" />
-    <Compile Include="Interfaces\IFactory.cs" />
-    <Compile Include="Interfaces\IItem.cs" />
-    <Compile Include="Interfaces\ILocation.cs" />
-    <Compile Include="Interfaces\INote.cs" />
-    <Compile Include="Interfaces\INotes.cs" />
-    <Compile Include="Interfaces\IPriority.cs" />
-    <Compile Include="Interfaces\IRepetition.cs" />
-    <Compile Include="Interfaces\IReview.cs" />
-    <Compile Include="Interfaces\IReviewChecklistItem.cs" />
-    <Compile Include="Interfaces\Priority.cs" />
-    <Compile Include="Interfaces\RepeatType.cs" />
-    <Compile Include="Interfaces\State.cs" />
+    <Compile Include="Helpers\NoCoverageAttribute.cs" />
+    <Compile Include="Helpers\PropertyHelper.cs" />
+    <Compile Include="Models\EnergyLevel.cs" />
+    <Compile Include="Models\HorizonOfFocus.cs" />
+    <Compile Include="Models\Interfaces\IAction.cs" />
+    <Compile Include="Services\Interfaces\IBackingStore.cs" />
+    <Compile Include="Models\Interfaces\ICompletion.cs" />
+    <Compile Include="Models\Interfaces\IContext.cs" />
+    <Compile Include="Models\Interfaces\ICost.cs" />
+    <Compile Include="Models\Interfaces\IDeadline.cs" />
+    <Compile Include="Models\Interfaces\IDeferral.cs" />
+    <Compile Include="Models\Interfaces\IDelegation.cs" />
+    <Compile Include="Models\Interfaces\IItem.cs" />
+    <Compile Include="Models\Interfaces\ILocation.cs" />
+    <Compile Include="Models\Interfaces\INote.cs" />
+    <Compile Include="Models\Interfaces\INotes.cs" />
+    <Compile Include="Models\Interfaces\IPriority.cs" />
+    <Compile Include="Models\Interfaces\IRepetition.cs" />
+    <Compile Include="Models\Interfaces\IReview.cs" />
+    <Compile Include="Models\Interfaces\IReviewChecklistItem.cs" />
+    <Compile Include="Models\Interfaces\IWorkspace.cs" />
+    <Compile Include="Models\Priority.cs" />
+    <Compile Include="Models\RepeatType.cs" />
+    <Compile Include="Models\State.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <PropertyGroup>
+    <!-- Give the correct path to the library stuff -->
+    <LibraryPath Condition=" '$(AstonLibPath)' == '' ">..\Library\</LibraryPath>
+    <ReportsPath Condition=" '$(ReportsPath)' == '' ">..\Reports\</ReportsPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="$(LibraryPath)\Extensions.targets" />
 </Project>
