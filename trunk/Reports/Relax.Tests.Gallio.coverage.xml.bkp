@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<!-- saved from NCover 3.0 Export url='http://www.ncover.com/' -->
-<coverage profilerVersion="3.3.0.6070" driverVersion="3.3.0" exportversion="3" viewdisplayname="" startTime="2009-11-01T19:58:22.7633682Z" measureTime="2009-11-01T19:58:25.0184972Z" projectName="" buildid="359f75d2-b8f4-4deb-82c6-f09043b7298d" coveragenodeid="0" failed="false" satisfactorybranchthreshold="95" satisfactorycoveragethreshold="95" satisfactorycyclomaticcomplexitythreshold="20" satisfactoryfunctionthreshold="80" satisfactoryunvisitedsequencepoints="10" uiviewtype="TreeView" viewguid="C:\Development\relax-gtd\trunk\Reports\Relax.Tests.Gallio.coverage.xml" viewfilterstyle="None" viewreportstyle="SequencePointCoveragePercentage" viewsortstyle="Name">
-  <rebasedpaths />
-  <filters />
-  <documents>
-    <doc id="0" excluded="false" url="None" cs="" csa="00000000-0000-0000-0000-000000000000" om="0" nid="0" />
-  </documents>
-</coverage>
