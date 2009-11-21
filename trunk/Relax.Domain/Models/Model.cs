@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace Relax.FileBackingStore.Models
+namespace Relax.Domain.Models
 {
     /// <summary>
     /// Defines the base class for a model.

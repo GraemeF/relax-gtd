@@ -3,11 +3,11 @@ using System.Runtime.Serialization;
 using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models.Interfaces;
 
-namespace Relax.FileBackingStore.Models
+namespace Relax.Domain.Models
 {
     [DataContract]
     [PerRequest(typeof (IDeadline))]
-    internal class Deadline : Model, IDeadline
+    public class Deadline : Model, IDeadline
     {
         private DateTime _deadlineDate;
 

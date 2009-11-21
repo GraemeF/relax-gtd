@@ -1,7 +1,7 @@
 using System.IO;
 using MbUnit.Framework;
 using Moq;
-using Relax.FileBackingStore.Models;
+using Relax.Domain.Models;
 using Relax.FileBackingStore.Services;
 using Relax.FileBackingStore.Services.Interfaces;
 

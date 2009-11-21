@@ -4,7 +4,7 @@ using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 
-namespace Relax.FileBackingStore.Models
+namespace Relax.Domain.Models
 {
     [DataContract]
     [PerRequest(typeof (ICost))]

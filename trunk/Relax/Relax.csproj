@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -35,23 +35,7 @@
   <ItemGroup>
     <Reference Include="Autofac, Version=1.4.4.561, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Library\Caliburn v1 RTW\Bin\NET-3.5\release\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.Autofac, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Library\Caliburn v1 RTW\Bin\NET-3.5\release\Caliburn.Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.Core, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Library\Caliburn v1 RTW\Bin\NET-3.5\release\Caliburn.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.PresentationFramework, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Library\Caliburn v1 RTW\Bin\NET-3.5\release\Caliburn.PresentationFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.Prism, Version=1.0.0.26006, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Library\Caliburn v1 RTW\Bin\NET-3.5\release\Caliburn.Prism.dll</HintPath>
+      <HintPath>..\Library\Caliburn\Bin\NET-3.5\release\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -118,6 +102,30 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Library\Caliburn\src\Caliburn.Autofac\Caliburn.Autofac.csproj">
+      <Project>{AFBDDB74-139F-4C7D-AC94-99C5173F76C7}</Project>
+      <Name>Caliburn.Autofac</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\Caliburn\src\Caliburn.Core\Caliburn.Core.csproj">
+      <Project>{D7357C4C-BFFF-4EE4-8D40-0803FAAFF38A}</Project>
+      <Name>Caliburn.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\Caliburn\src\Caliburn.MEF\Caliburn.MEF.csproj">
+      <Project>{F350C4CB-48AE-4A1F-9BAE-C836D6C7C0E4}</Project>
+      <Name>Caliburn.MEF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\Caliburn\src\Caliburn.ModelFramework\Caliburn.ModelFramework.csproj">
+      <Project>{79504818-6612-414D-BBF4-F8F0BB7ABBDC}</Project>
+      <Name>Caliburn.ModelFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\Caliburn\src\Caliburn.PresentationFramework\Caliburn.PresentationFramework.csproj">
+      <Project>{4B343291-DB03-4ADA-96CD-3CFFA3C838D7}</Project>
+      <Name>Caliburn.PresentationFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\MEF\src\ComponentModel\ComponentModel.csproj">
+      <Project>{A36AEF66-2411-4225-B68E-F2D29368A31B}</Project>
+      <Name>ComponentModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Relax.FileBackingStore\Relax.FileBackingStore.csproj">
       <Project>{3E1C299C-EA0F-478A-AA71-D5ABD44939C0}</Project>
       <Name>Relax.FileBackingStore</Name>

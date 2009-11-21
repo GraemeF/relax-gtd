@@ -2,7 +2,7 @@
 using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models.Interfaces;
 
-namespace Relax.FileBackingStore.Models
+namespace Relax.Domain.Models
 {
     [PerRequest(typeof (INotes))]
     internal class ItemNotes : Model, INotes

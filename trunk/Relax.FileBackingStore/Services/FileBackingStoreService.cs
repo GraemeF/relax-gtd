@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using Caliburn.Core.Metadata;
-using Relax.FileBackingStore.Models;
+using Relax.Domain.Models;
 using Relax.FileBackingStore.Services.Interfaces;
 using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Models.Interfaces;
@@ -20,7 +20,7 @@ namespace Relax.FileBackingStore.Services
         /// <returns>List of types.</returns>
         private static readonly List<Type> KnownTypes = new List<Type>
                                                             {
-                                                                typeof (Models.Action),
+                                                                typeof (Domain.Models.Action),
                                                                 typeof (Completion),
                                                                 typeof (Context),
                                                                 typeof (Cost),
