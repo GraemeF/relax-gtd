@@ -1,13 +1,15 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 using Caliburn.Core.Metadata;
+using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.Domain.Models
 {
     [DataContract]
     [PerRequest(typeof (IDeadline))]
-    public class Deadline : Model, IDeadline
+    public class Deadline : IDeadline
     {
         private DateTime _deadlineDate;
 
@@ -22,10 +24,12 @@ namespace Relax.Domain.Models
                 if (value != _deadlineDate)
                 {
                     _deadlineDate = value;
-                    RaisePropertyChanged("DeadlineDate");
+                    PropertyChanged.Raise(x => DeadlineDate);
                 }
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
     }

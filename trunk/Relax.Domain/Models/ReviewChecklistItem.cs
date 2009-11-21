@@ -1,6 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 using Caliburn.Core.Metadata;
+using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 
@@ -8,7 +10,7 @@ namespace Relax.Domain.Models
 {
     [DataContract(IsReference = true)]
     [PerRequest(typeof (IReviewChecklistItem))]
-    public class ReviewChecklistItem : Model, IReviewChecklistItem
+    public class ReviewChecklistItem : IReviewChecklistItem
     {
         private static int _nextId;
         private DateTime _created;
@@ -34,7 +36,7 @@ namespace Relax.Domain.Models
                 if (_lastReviewed != value)
                 {
                     _lastReviewed = value;
-                    RaisePropertyChanged("LastReviewed");
+                    PropertyChanged.Raise(x => LastReviewed);
                 }
             }
         }
@@ -48,7 +50,7 @@ namespace Relax.Domain.Models
                 if (_reviewFrequency != value)
                 {
                     _reviewFrequency = value;
-                    RaisePropertyChanged("ReviewFrequency");
+                    PropertyChanged.Raise(x => ReviewFrequency);
                 }
             }
         }
@@ -62,7 +64,7 @@ namespace Relax.Domain.Models
                 if (_horizonOfFocus != value)
                 {
                     _horizonOfFocus = value;
-                    RaisePropertyChanged("HorizonOfFocus");
+                    PropertyChanged.Raise(x => HorizonOfFocus);
                 }
             }
         }
@@ -76,7 +78,7 @@ namespace Relax.Domain.Models
                 if (_title != value)
                 {
                     _title = value;
-                    RaisePropertyChanged("Title");
+                    PropertyChanged.Raise(x => Title);
                 }
             }
         }
@@ -90,12 +92,14 @@ namespace Relax.Domain.Models
                 if (_created != value)
                 {
                     _created = value;
-                    RaisePropertyChanged("Created");
+                    PropertyChanged.Raise(x => Created);
                 }
             }
         }
 
         public int Id { get; private set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
     }

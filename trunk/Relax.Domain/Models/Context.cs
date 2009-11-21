@@ -1,13 +1,15 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 using Caliburn.Core.Metadata;
+using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.Domain.Models
 {
     [DataContract(IsReference = true)]
     [PerRequest(typeof (IContext))]
-    public class Context : Model, IContext
+    public class Context : IContext
     {
         private static int _nextId = 1;
         private DateTime _created;
@@ -31,7 +33,7 @@ namespace Relax.Domain.Models
                 if (_description != value)
                 {
                     _description = value;
-                    RaisePropertyChanged("Description");
+                    PropertyChanged.Raise(x => Description);
                 }
             }
         }
@@ -45,7 +47,7 @@ namespace Relax.Domain.Models
                 if (_title != value)
                 {
                     _title = value;
-                    RaisePropertyChanged("Title");
+                    PropertyChanged.Raise(x => Title);
                 }
             }
         }
@@ -59,12 +61,14 @@ namespace Relax.Domain.Models
                 if (_created != value)
                 {
                     _created = value;
-                    RaisePropertyChanged("Created");
+                    PropertyChanged.Raise(x => Created);
                 }
             }
         }
 
         public int Id { get; private set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
 

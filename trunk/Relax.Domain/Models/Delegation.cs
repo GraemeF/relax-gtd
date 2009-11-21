@@ -1,13 +1,15 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 using Caliburn.Core.Metadata;
+using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.Domain.Models
 {
     [DataContract]
     [PerRequest(typeof (IDelegation))]
-    public class Delegation : Model, IDelegation
+    public class Delegation : IDelegation
     {
         private DateTime _delegationDate;
 
@@ -24,7 +26,7 @@ namespace Relax.Domain.Models
                 if (value != _delegationDate)
                 {
                     _delegationDate = value;
-                    RaisePropertyChanged("DelegationDate");
+                    PropertyChanged.Raise(x => DelegationDate);
                 }
             }
         }
@@ -38,10 +40,12 @@ namespace Relax.Domain.Models
                 if (value != _owner)
                 {
                     _owner = value;
-                    RaisePropertyChanged("Owner");
+                    PropertyChanged.Raise(x => Owner);
                 }
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
     }

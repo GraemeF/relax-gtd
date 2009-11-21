@@ -1,6 +1,8 @@
 using System;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 using Caliburn.Core.Metadata;
+using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 
@@ -8,7 +10,7 @@ namespace Relax.Domain.Models
 {
     [DataContract]
     [PerRequest(typeof (ICost))]
-    public class Cost : Model, ICost
+    public class Cost : ICost
     {
         private EnergyLevel? _mentalEnergyRequired;
         private EnergyLevel? _physicalEnergyRequired;
@@ -25,7 +27,7 @@ namespace Relax.Domain.Models
                 if (value != _mentalEnergyRequired)
                 {
                     _mentalEnergyRequired = value;
-                    RaisePropertyChanged("MentalEnergyRequired");
+                    PropertyChanged.Raise(x => MentalEnergyRequired);
                 }
             }
         }
@@ -39,7 +41,7 @@ namespace Relax.Domain.Models
                 if (value != _timeRequired)
                 {
                     _timeRequired = value;
-                    RaisePropertyChanged("TimeRequired");
+                    PropertyChanged.Raise(x => TimeRequired);
                 }
             }
         }
@@ -53,10 +55,12 @@ namespace Relax.Domain.Models
                 if (value != _physicalEnergyRequired)
                 {
                     _physicalEnergyRequired = value;
-                    RaisePropertyChanged("PhysicalEnergyRequired");
+                    PropertyChanged.Raise(x => PhysicalEnergyRequired);
                 }
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
     }

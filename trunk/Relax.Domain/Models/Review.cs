@@ -1,6 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 using Caliburn.Core.Metadata;
+using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 
@@ -8,7 +10,7 @@ namespace Relax.Domain.Models
 {
     [DataContract]
     [PerRequest(typeof (IReview))]
-    public class Review : Model, IReview
+    public class Review : IReview
     {
         private HorizonOfFocus _horizonOfFocus;
         private DateTime? _lastReviewed;
@@ -25,7 +27,7 @@ namespace Relax.Domain.Models
                 if (value != _lastReviewed)
                 {
                     _lastReviewed = value;
-                    RaisePropertyChanged("LastReviewed");
+                    PropertyChanged.Raise(x => LastReviewed);
                 }
             }
         }
@@ -39,7 +41,7 @@ namespace Relax.Domain.Models
                 if (value != _reviewFrequency)
                 {
                     _reviewFrequency = value;
-                    RaisePropertyChanged("ReviewFrequency");
+                    PropertyChanged.Raise(x => ReviewFrequency);
                 }
             }
         }
@@ -53,10 +55,12 @@ namespace Relax.Domain.Models
                 if (value != _horizonOfFocus)
                 {
                     _horizonOfFocus = value;
-                    RaisePropertyChanged("HorizonOfFocus");
+                    PropertyChanged.Raise(x => HorizonOfFocus);
                 }
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
     }

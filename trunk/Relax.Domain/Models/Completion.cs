@@ -1,13 +1,15 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 using Caliburn.Core.Metadata;
+using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.Domain.Models
 {
     [DataContract]
     [PerRequest(typeof (ICompletion))]
-    public class Completion : Model, ICompletion
+    public class Completion : ICompletion
     {
         private DateTime _completedDate;
 
@@ -27,10 +29,12 @@ namespace Relax.Domain.Models
                 if (value != _completedDate)
                 {
                     _completedDate = value;
-                    RaisePropertyChanged("CompletedDate");
+                    PropertyChanged.Raise(x => CompletedDate);
                 }
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
     }

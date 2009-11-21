@@ -1,13 +1,15 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 using Caliburn.Core.Metadata;
+using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.Domain.Models
 {
     [DataContract]
     [PerRequest(typeof (IDeferral))]
-    public class Deferral : Model, IDeferral
+    public class Deferral : IDeferral
     {
         private DateTime _deferUntil;
 
@@ -22,10 +24,12 @@ namespace Relax.Domain.Models
                 if (value != _deferUntil)
                 {
                     _deferUntil = value;
-                    RaisePropertyChanged("DeferUntil");
+                    PropertyChanged.Raise(x => DeferUntil);
                 }
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
     }
