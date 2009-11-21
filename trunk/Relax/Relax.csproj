@@ -76,6 +76,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presenters\ContextsPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IContextsPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

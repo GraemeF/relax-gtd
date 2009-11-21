@@ -1,6 +1,8 @@
-﻿namespace Relax.Presenters.Interfaces
+﻿using System.ComponentModel;
+
+namespace Relax.Presenters.Interfaces
 {
-    internal interface IShellPresenter
+    internal interface IShellPresenter : INotifyPropertyChanged
     {
     }
 }

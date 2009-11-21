@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
+using System.ComponentModel.Composition.Primitives;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -18,6 +19,8 @@ namespace Relax
 {
     public partial class App : CaliburnApplication
     {
+        private ComposablePartCatalog _catalog;
+
         [Import]
         public IRelaxModule MessageSender { get; set; }
 
@@ -32,19 +35,12 @@ namespace Relax
             return adapter;
         }
 
-        private void Compose(DirectoryCatalog catalog)
-        {
-            var container = new CompositionContainer(catalog);
-            container.ComposeParts(this);
-        }
-
         protected override Assembly[] SelectAssemblies()
         {
-            using (var catalog = new DirectoryCatalog(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)))
-            {
-                Compose(catalog);
-                return FindAssemblies(catalog).ToArray();
-            }
+            var directoryCatalog = new DirectoryCatalog(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            _catalog = new AggregateCatalog(new AssemblyCatalog(Assembly.GetExecutingAssembly()), directoryCatalog);
+
+            return FindAssemblies(directoryCatalog).ToArray();
         }
 
         private IEnumerable<Assembly> FindAssemblies(DirectoryCatalog catalog)
@@ -89,7 +85,12 @@ namespace Relax
             binder.EnableMessageConventions();
             binder.EnableBindingConventions();
 
-            return Container.GetInstance<IShellPresenter>();
+            var shell = Container.GetInstance<IShellPresenter>();
+
+            var container = new CompositionContainer(_catalog);
+            container.ComposeParts(this, shell);
+
+            return shell;
         }
     }
 }
