@@ -4,7 +4,6 @@ namespace Relax.Infrastructure.Services.Interfaces
 {
     public interface IRelaxModule
     {
-        void RegisterComponents(ContainerBuilder containerBuilder);
-        void Compose();
+        void Initialize(ContainerBuilder builder);
     }
 }

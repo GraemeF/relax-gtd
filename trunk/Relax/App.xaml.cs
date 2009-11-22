@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Autofac;
 using Autofac.Builder;
 using Caliburn.Autofac;
 using Caliburn.PresentationFramework.ApplicationModel;
@@ -21,18 +21,22 @@ namespace Relax
     {
         private ComposablePartCatalog _catalog;
 
-        [Import]
-        public IRelaxModule MessageSender { get; set; }
+        [ImportMany(AllowRecomposition = true)]
+        public ObservableCollection<IRelaxModule> Modules { get; private set; }
 
         protected override IServiceLocator CreateContainer()
         {
             var builder = new ContainerBuilder();
             builder.Register<ShellPresenter>();
 
-            IContainer container = builder.Build();
-            var adapter = new AutofacAdapter(container);
+            Modules = new ObservableCollection<IRelaxModule>();
+            using (var container = new CompositionContainer(_catalog))
+                container.ComposeParts(this);
 
-            return adapter;
+            foreach (IRelaxModule module in Modules)
+                module.Initialize(builder);
+
+            return new AutofacAdapter(builder.Build());
         }
 
         protected override Assembly[] SelectAssemblies()
@@ -86,9 +90,6 @@ namespace Relax
             binder.EnableBindingConventions();
 
             var shell = Container.GetInstance<IShellPresenter>();
-
-            var container = new CompositionContainer(_catalog);
-            container.ComposeParts(this, shell);
 
             return shell;
         }
