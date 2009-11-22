@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\CollectionSync.cs" />
     <Compile Include="Helpers\NoCoverageAttribute.cs" />
     <Compile Include="Helpers\PropertyHelper.cs" />
     <Compile Include="Models\EnergyLevel.cs" />

@@ -82,15 +82,24 @@ namespace Relax.FileBackingStore.Services
 
         public string Path { get; set; }
 
-        #endregion
-
         public void Initialize()
         {
             if (_locator.LoadOnStartup)
-                Load();
+                try
+                {
+                    Load();
+                }
+                catch (DirectoryNotFoundException)
+                {
+                }
+                catch (FileNotFoundException)
+                {
+                }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
 
         private void ValidatePath()
         {

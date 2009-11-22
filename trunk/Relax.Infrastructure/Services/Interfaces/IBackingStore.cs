@@ -1,8 +1,9 @@
-﻿using Relax.Infrastructure.Models.Interfaces;
+﻿using System.ComponentModel;
+using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.Infrastructure.Services.Interfaces
 {
-    public interface IBackingStore
+    public interface IBackingStore : INotifyPropertyChanged
     {
         /// <summary>
         /// Gets the model.
@@ -19,5 +20,7 @@ namespace Relax.Infrastructure.Services.Interfaces
         /// Saves the model.
         /// </summary>
         void Save();
+
+        void Initialize();
     }
 }

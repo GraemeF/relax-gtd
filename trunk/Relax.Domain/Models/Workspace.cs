@@ -14,6 +14,10 @@ namespace Relax.Domain.Models
             Actions = new ObservableCollection<IAction>();
             Contexts = new ObservableCollection<IContext>();
             ReviewChecklistItems = new ObservableCollection<IReviewChecklistItem>();
+
+            Contexts.Add(new Context() { Title = "Home" });
+            Contexts.Add(new Context() { Title = "Office" });
+            Contexts.Add(new Context() { Title = "Errands" });
         }
 
         #region IWorkspace Members

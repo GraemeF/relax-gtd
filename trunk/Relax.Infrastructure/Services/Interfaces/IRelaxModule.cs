@@ -1,9 +1,9 @@
-﻿using Autofac.Builder;
+﻿using Autofac;
 
 namespace Relax.Infrastructure.Services.Interfaces
 {
     public interface IRelaxModule
     {
-        void Initialize(ContainerBuilder builder);
+        void Initialize(IContainer container);
     }
 }

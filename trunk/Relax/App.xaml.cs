@@ -7,8 +7,10 @@ using System.ComponentModel.Composition.Primitives;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Autofac;
 using Autofac.Builder;
 using Caliburn.Autofac;
+using Caliburn.Core;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Microsoft.Practices.ServiceLocation;
 using Relax.Infrastructure.Services.Interfaces;
@@ -20,6 +22,7 @@ namespace Relax
     public partial class App : CaliburnApplication
     {
         private ComposablePartCatalog _catalog;
+        private Autofac.IContainer _container;
 
         [ImportMany(AllowRecomposition = true)]
         public ObservableCollection<IRelaxModule> Modules { get; private set; }
@@ -27,16 +30,8 @@ namespace Relax
         protected override IServiceLocator CreateContainer()
         {
             var builder = new ContainerBuilder();
-            builder.Register<ShellPresenter>();
-
-            Modules = new ObservableCollection<IRelaxModule>();
-            using (var container = new CompositionContainer(_catalog))
-                container.ComposeParts(this);
-
-            foreach (IRelaxModule module in Modules)
-                module.Initialize(builder);
-
-            return new AutofacAdapter(builder.Build());
+            _container = builder.Build();
+            return new AutofacAdapter(_container);
         }
 
         protected override Assembly[] SelectAssemblies()
@@ -81,6 +76,20 @@ namespace Relax
             {
                 return null;
             }
+        }
+
+        protected override void BeforeStart(CoreConfiguration core)
+        {
+            var builder = new ContainerBuilder();
+
+            Modules = new ObservableCollection<IRelaxModule>();
+            using (var compositionContainer = new CompositionContainer(_catalog))
+                compositionContainer.ComposeParts(this);
+
+            foreach (IRelaxModule module in Modules)
+                module.Initialize(_container);
+
+            builder.Build(_container);
         }
 
         protected override object CreateRootModel()
