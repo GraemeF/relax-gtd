@@ -14,11 +14,11 @@ namespace Relax.Presenters
 
         #endregion
 
-        private readonly IContext _context;
-
         public ContextPresenter(IContext context)
         {
-            _context = context;
+            Context = context;
         }
+
+        public IContext Context { get; private set; }
     }
 }

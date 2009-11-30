@@ -1,7 +1,25 @@
 ﻿<UserControl x:Class="Relax.Views.ContextsView"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid>
-        <ListBox ItemsSource="{Binding Presenters}" />
-    </Grid>
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cal="clr-namespace:Caliburn.PresentationFramework.ApplicationModel;assembly=Caliburn.PresentationFramework">
+    <UserControl.Resources>
+        <ItemsPanelTemplate x:Key="ItemsWrapPanel">
+            <WrapPanel IsItemsHost="True"
+                       Orientation="Horizontal" />
+        </ItemsPanelTemplate>
+    </UserControl.Resources>
+    <DockPanel>
+        <Button Content="Add"
+                x:Name="AddContext"
+                DockPanel.Dock="Right" />
+        <ListBox ItemsSource="{Binding Presenters}"
+                 ItemsPanel="{DynamicResource ItemsWrapPanel}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ContentControl cal:View.Model="{Binding}"
+                                    Margin="2" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
 </UserControl>

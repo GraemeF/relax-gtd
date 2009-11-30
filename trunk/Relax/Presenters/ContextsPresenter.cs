@@ -40,5 +40,10 @@ namespace Relax.Presenters
         {
             return "Hello from ContextsPresenter";
         }
+
+        public void AddContext()
+        {
+            return;
+        }
     }
 }

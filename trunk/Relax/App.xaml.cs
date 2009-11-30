@@ -7,14 +7,12 @@ using System.ComponentModel.Composition.Primitives;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Autofac;
 using Autofac.Builder;
 using Caliburn.Autofac;
 using Caliburn.Core;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Microsoft.Practices.ServiceLocation;
 using Relax.Infrastructure.Services.Interfaces;
-using Relax.Presenters;
 using Relax.Presenters.Interfaces;
 
 namespace Relax

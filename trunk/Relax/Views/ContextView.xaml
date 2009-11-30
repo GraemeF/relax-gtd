@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="Relax.Views.ContextView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border BorderBrush="CornflowerBlue"
+            BorderThickness="3"
+            CornerRadius="2">
+        <Label Content="{Binding Path=Context.Title, FallbackValue=Context}"
+               ToolTip="The title of the context." />
+    </Border>
+</UserControl>
