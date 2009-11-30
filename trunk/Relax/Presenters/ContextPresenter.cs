@@ -5,20 +5,20 @@ using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
-    [PerRequest(typeof (IContextPresenter))]
-    public class ContextPresenter : Presenter, IContextPresenter
+    [PerRequest(typeof (IGtdContextPresenter))]
+    public class ContextPresenter : Presenter, IGtdContextPresenter
     {
         #region Delegates
 
-        public delegate IContextPresenter Factory(IContext context);
+        public delegate IGtdContextPresenter Factory(IGtdContext context);
 
         #endregion
 
-        public ContextPresenter(IContext context)
+        public ContextPresenter(IGtdContext context)
         {
             Context = context;
         }
 
-        public IContext Context { get; private set; }
+        public IGtdContext Context { get; private set; }
     }
 }

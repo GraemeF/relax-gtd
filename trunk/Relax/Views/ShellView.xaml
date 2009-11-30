@@ -97,16 +97,17 @@
                            Text="Details" />
             </Grid>
             <!-- contexts -->
-            <Grid x:Name="ContextsGrid"
-                  Grid.Row="1"
-                  Grid.ColumnSpan="3"
-                  Margin="10,10,10,10">
+            <DockPanel x:Name="ContextsGrid"
+                       Grid.Row="1"
+                       Grid.ColumnSpan="3"
+                       Margin="10,10,10,10">
+                <TextBlock Style="{DynamicResource RegionLabel}"
+                           Text="Contexts"
+                           DockPanel.Dock="Left" />
                 <ContentControl x:Name="ContextsContent"
                                 Margin="10,0,10,0"
                                 cal:View.Model="{Binding Contexts}" />
-                <TextBlock Style="{DynamicResource RegionLabel}"
-                           Text="Contexts" />
-            </Grid>
+            </DockPanel>
         </Grid>
     </Grid>
 </Window>

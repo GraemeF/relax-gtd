@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -11,13 +12,17 @@ namespace Relax.Presenters
     [PerRequest(typeof (IContextsPresenter))]
     public class ContextsPresenter : MultiPresenter, IContextsPresenter
     {
-        private readonly ContextPresenter.Factory _contextPresenterFactory;
+        private readonly Func<IGtdContext> _contextFactory;
+        private readonly Func<IGtdContext, IGtdContextPresenter> _contextPresenterFactory;
         private readonly IWorkspace _workspace;
 
-        public ContextsPresenter(IWorkspace workspace, ContextPresenter.Factory contextPresenterFactory)
+        public ContextsPresenter(IWorkspace workspace,
+                                 Func<IGtdContext, IGtdContextPresenter> contextPresenterFactory,
+                                 Func<IGtdContext> contextFactory)
         {
             _workspace = workspace;
             _contextPresenterFactory = contextPresenterFactory;
+            _contextFactory = contextFactory;
 
             _workspace.Contexts.CollectionChanged += Contexts_CollectionChanged;
 
@@ -27,12 +32,12 @@ namespace Relax.Presenters
         private void Contexts_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
-                OpenContexts(e.NewItems.Cast<IContext>());
+                OpenContexts(e.NewItems.Cast<IGtdContext>());
         }
 
-        private void OpenContexts(IEnumerable<IContext> newItems)
+        private void OpenContexts(IEnumerable<IGtdContext> newItems)
         {
-            foreach (IContext newItem in newItems)
+            foreach (IGtdContext newItem in newItems)
                 Open(_contextPresenterFactory(newItem), isSuccess => { });
         }
 
@@ -43,7 +48,10 @@ namespace Relax.Presenters
 
         public void AddContext()
         {
-            return;
+            IGtdContext context = _contextFactory();
+            context.Title = "New Context";
+            
+            _workspace.Contexts.Add(context);
         }
     }
 }

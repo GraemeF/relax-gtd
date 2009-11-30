@@ -75,7 +75,7 @@ namespace Relax.Domain.Models
         private State _actionState;
         private ObservableCollection<IAction> _blockingActions = new ObservableCollection<IAction>();
         private ICompletion _completion;
-        private IContext _context;
+        private IGtdContext _context;
         private ICost _cost;
         private IDeadline _deadline;
         private IDeferral _deferral;
@@ -240,7 +240,7 @@ namespace Relax.Domain.Models
         }
 
         [DataMember(EmitDefaultValue = false)]
-        public IContext Context
+        public IGtdContext Context
         {
             get { return _context; }
             set

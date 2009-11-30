@@ -8,21 +8,21 @@ using Relax.Infrastructure.Models.Interfaces;
 namespace Relax.Domain.Models
 {
     [DataContract(IsReference = true)]
-    [PerRequest(typeof (IContext))]
-    public class Context : IContext
+    [PerRequest(typeof (IGtdContext))]
+    public class GtdContext : IGtdContext
     {
         private static int _nextId = 1;
         private DateTime _created;
         private string _description;
         private string _title;
 
-        public Context()
+        public GtdContext()
         {
             Created = DateTime.UtcNow;
             Id = _nextId++;
         }
 
-        #region IContext Members
+        #region IGtdContext Members
 
         [DataMember]
         public string Description

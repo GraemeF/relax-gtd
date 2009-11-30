@@ -22,6 +22,6 @@ namespace Relax.Infrastructure.Models.Interfaces
         IRepetition Repetition { get; set; }
         ICost Cost { get; set; }
         State ActionState { get; set; }
-        IContext Context { get; set; }
+        IGtdContext Context { get; set; }
     }
 }

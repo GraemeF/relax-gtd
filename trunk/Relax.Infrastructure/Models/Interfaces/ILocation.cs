@@ -7,6 +7,6 @@ namespace Relax.Infrastructure.Models.Interfaces
     /// </summary>
     public interface ILocation : IItem
     {
-        ObservableCollection<IContext> Contexts { get; set; }
+        ObservableCollection<IGtdContext> Contexts { get; set; }
     }
 }

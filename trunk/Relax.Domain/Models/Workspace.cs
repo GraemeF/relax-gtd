@@ -12,18 +12,18 @@ namespace Relax.Domain.Models
         public Workspace()
         {
             Actions = new ObservableCollection<IAction>();
-            Contexts = new ObservableCollection<IContext>();
+            Contexts = new ObservableCollection<IGtdContext>();
             ReviewChecklistItems = new ObservableCollection<IReviewChecklistItem>();
 
-            Contexts.Add(new Context() { Title = "Home" });
-            Contexts.Add(new Context() { Title = "Office" });
-            Contexts.Add(new Context() { Title = "Errands" });
+            Contexts.Add(new GtdContext() { Title = "Home" });
+            Contexts.Add(new GtdContext() { Title = "Office" });
+            Contexts.Add(new GtdContext() { Title = "Errands" });
         }
 
         #region IWorkspace Members
 
         [DataMember(Order = 1)]
-        public ObservableCollection<IContext> Contexts { get; private set; }
+        public ObservableCollection<IGtdContext> Contexts { get; private set; }
 
         [DataMember(Order = 2)]
         public ObservableCollection<IAction> Actions { get; private set; }

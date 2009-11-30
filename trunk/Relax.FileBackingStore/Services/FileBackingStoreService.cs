@@ -22,7 +22,7 @@ namespace Relax.FileBackingStore.Services
                                                             {
                                                                 typeof (Domain.Models.Action),
                                                                 typeof (Completion),
-                                                                typeof (Context),
+                                                                typeof (GtdContext),
                                                                 typeof (Cost),
                                                                 typeof (Deadline),
                                                                 typeof (Deferral),

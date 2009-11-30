@@ -53,7 +53,7 @@
   <ItemGroup>
     <Compile Include="Models\Action.cs" />
     <Compile Include="Models\Completion.cs" />
-    <Compile Include="Models\Context.cs" />
+    <Compile Include="Models\GtdContext.cs" />
     <Compile Include="Models\Cost.cs" />
     <Compile Include="Models\Deadline.cs" />
     <Compile Include="Models\Deferral.cs" />

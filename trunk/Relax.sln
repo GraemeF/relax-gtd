@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax", "Relax\Relax.csproj", "{783A1A3D-CDB4-4121-9655-AA34516331A2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B153BEDB-EA89-447E-A4DB-6993ED6143D1} = {B153BEDB-EA89-447E-A4DB-6993ED6143D1}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Infrastructure", "Relax.Infrastructure\Relax.Infrastructure.csproj", "{893AD8AB-D318-4690-8B24-EE1D6FE254F9}"
 EndProject

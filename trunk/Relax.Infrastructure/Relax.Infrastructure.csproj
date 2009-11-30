@@ -60,7 +60,7 @@
     <Compile Include="Models\Interfaces\IAction.cs" />
     <Compile Include="Services\Interfaces\IBackingStore.cs" />
     <Compile Include="Models\Interfaces\ICompletion.cs" />
-    <Compile Include="Models\Interfaces\IContext.cs" />
+    <Compile Include="Models\Interfaces\IGtdContext.cs" />
     <Compile Include="Models\Interfaces\ICost.cs" />
     <Compile Include="Models\Interfaces\IDeadline.cs" />
     <Compile Include="Models\Interfaces\IDeferral.cs" />

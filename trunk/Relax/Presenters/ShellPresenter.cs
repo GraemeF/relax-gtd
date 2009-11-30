@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using Autofac.Builder;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
@@ -28,7 +29,10 @@ namespace Relax.Presenters
             _backingStore.Initialize();
 
             builder.Register(_backingStore.Workspace).As<IWorkspace>();
-            builder.RegisterGeneratedFactory<ContextPresenter.Factory>(new TypedService(typeof(IContextPresenter)));
+            builder.RegisterGeneratedFactory<Func<IGtdContext, IGtdContextPresenter>>(
+                new TypedService(typeof (IGtdContextPresenter)));
+            builder.RegisterGeneratedFactory<Func<IGtdContext>>(
+                new TypedService(typeof (IGtdContext)));
 
             builder.Build(_container);
 
