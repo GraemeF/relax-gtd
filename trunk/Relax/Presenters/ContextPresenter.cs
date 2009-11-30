@@ -8,12 +8,6 @@ namespace Relax.Presenters
     [PerRequest(typeof (IGtdContextPresenter))]
     public class ContextPresenter : Presenter, IGtdContextPresenter
     {
-        #region Delegates
-
-        public delegate IGtdContextPresenter Factory(IGtdContext context);
-
-        #endregion
-
         public ContextPresenter(IGtdContext context)
         {
             Context = context;
