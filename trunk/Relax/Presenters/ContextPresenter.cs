@@ -14,7 +14,7 @@ namespace Relax.Presenters
         {
             Context = context;
             _isReadOnly = true;
-       }
+        }
 
         public IGtdContext Context { get; private set; }
 

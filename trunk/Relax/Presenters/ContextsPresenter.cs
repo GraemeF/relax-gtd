@@ -31,6 +31,8 @@ namespace Relax.Presenters
 
         private void Contexts_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+            if (e.OldItems != null)
+                CloseContexts(e.OldItems.Cast<IGtdContext>());
             if (e.NewItems != null)
                 OpenContexts(e.NewItems.Cast<IGtdContext>());
         }
@@ -41,16 +43,17 @@ namespace Relax.Presenters
                 Open(_contextPresenterFactory(newItem), isSuccess => { });
         }
 
-        public override string ToString()
+        private void CloseContexts(IEnumerable<IGtdContext> oldItems)
         {
-            return "Hello from ContextsPresenter";
+            foreach (IGtdContext oldItem in oldItems)
+                Shutdown(Presenters.First(x => ((IGtdContextPresenter) x).Context == oldItem), isSuccess => { });
         }
 
         public void AddContext()
         {
             IGtdContext context = _contextFactory();
             context.Title = "New Context";
-            
+
             _workspace.Contexts.Add(context);
         }
     }

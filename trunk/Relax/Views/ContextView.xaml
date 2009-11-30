@@ -7,7 +7,6 @@
             CornerRadius="2">
         <TextBox Text="{Binding Path=Context.Title, FallbackValue=Context}"
                  ToolTip="The title of the context."
-                 IsEnabled="{Binding IsEnabled}"
                  IsReadOnly="{Binding IsReadOnly}"
                  cal:Message.Attach="[Gesture Key: F2] = [Action Rename]; [Gesture Key: Return] = [Action FinishRename]" />
     </Border>
