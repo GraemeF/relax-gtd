@@ -147,6 +147,7 @@
     <Compile Include="ActionDetails.xaml.cs">
       <DependentUpon>ActionDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TabSizeConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
