@@ -4,7 +4,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	xmlns:local="clr-namespace:RelaxPrototypeScreens" xmlns:ps="clr-namespace:Microsoft.Expression.Prototyping.SketchControls;assembly=Microsoft.Expression.Prototyping.SketchControls" x:Name="ProcessActivity"
+	xmlns:local="clr-namespace:RelaxPrototypeScreens" xmlns:ps="clr-namespace:Microsoft.Expression.Prototyping.SketchControls;assembly=Microsoft.Expression.Prototyping.SketchControls" xmlns:Custom="http://schemas.microsoft.com/wpf/2008/toolkit" x:Name="ProcessActivity"
 	x:Class="RelaxPrototypeScreens.Screen_1_1">
 	<UserControl.Resources>
     <local:TabSizeConverter x:Key="tabSizeConverter" />
@@ -119,18 +119,18 @@
 				<RowDefinition Height="1*"/>
 				<RowDefinition Height="1*"/>
 				<RowDefinition Height="1*"/>
-			</Grid.RowDefinitions>
-			<Grid Grid.ColumnSpan="4" Background="#FF47664E">
-				<TextBlock Style="{DynamicResource BasicTextBlock-Sketch}" Text="Actionable" d:LayoutOverrides="Height" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+			</Grid.RowDefinitions>			
+			<Grid Background="#FF47664E" Grid.ColumnSpan="4">
+				<TextBlock HorizontalAlignment="Center" Style="{DynamicResource BasicTextBlock-Sketch}" VerticalAlignment="Center" Foreground="White" Text="Actionable" d:LayoutOverrides="Height"/>
 			</Grid>
-			<Grid Grid.Column="4" Grid.ColumnSpan="5" Grid.RowSpan="2" Background="#FFBA5136">
-				<TextBlock HorizontalAlignment="Center" Style="{DynamicResource BasicTextBlock-Sketch}" Text="Not Actionable" d:LayoutOverrides="Height" VerticalAlignment="Center" Foreground="White"/>
+			<Grid Background="#FFBA5136" Grid.Column="4" Grid.ColumnSpan="5" Grid.RowSpan="2">
+				<TextBlock HorizontalAlignment="Center" Style="{DynamicResource BasicTextBlock-Sketch}" VerticalAlignment="Center" Foreground="White" Text="Not Actionable" d:LayoutOverrides="Height"/>
 			</Grid>
-			<Grid Grid.ColumnSpan="3" Grid.Row="1" Background="#FF7A8B46">
+			<Grid Background="#FF7A8B46" Grid.ColumnSpan="3" Grid.Row="1">
 				<TextBlock HorizontalAlignment="Center" Style="{DynamicResource BasicTextBlock-Sketch}" VerticalAlignment="Center" Foreground="White" d:LayoutOverrides="Height"><Run Text="Single "/><Run Text="Step"/></TextBlock>
 			</Grid>
-			<Grid Grid.Row="1" Grid.Column="3" Background="#FFAEB545">
-				<TextBlock HorizontalAlignment="Center" Style="{DynamicResource BasicTextBlock-Sketch}" VerticalAlignment="Center" Text="Multi Step" d:LayoutOverrides="Height" Foreground="White"/>
+			<Grid Background="#FFAEB545" Grid.Column="3" Grid.Row="1">
+				<TextBlock HorizontalAlignment="Center" Style="{DynamicResource BasicTextBlock-Sketch}" VerticalAlignment="Center" Foreground="White" Text="Multi Step" d:LayoutOverrides="Height"/>
 			</Grid>
 		</Grid>
 		<TabControl Style="{DynamicResource TabControl-Sketch}" DockPanel.Dock="Bottom">
@@ -155,7 +155,7 @@
 							<RowDefinition/>
 						</Grid.RowDefinitions>
 						<TextBlock HorizontalAlignment="Right" Style="{DynamicResource BasicTextBlock-Sketch}" VerticalAlignment="Center" Text="Delegate to"/>
-						<TextBox Style="{DynamicResource ComboBoxEditableTextBox-Sketch}" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Grid.Column="1" Margin="6,0,0,0" MinWidth="240"/>
+						<TextBox Margin="6,0,0,0" MinWidth="240" Style="{DynamicResource ComboBoxEditableTextBox-Sketch}" TextWrapping="Wrap" Grid.Column="1" d:LayoutOverrides="Width, Height"/>
 					</Grid>
 				</DockPanel>
 			</TabItem>
@@ -169,13 +169,19 @@
 				<Grid/>
 			</TabItem>
 			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Defer">
-				<Grid/>
+				<Grid>
+					<Custom:Calendar/>
+				</Grid>
 			</TabItem>
 			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Calendar">
-				<Grid/>
+				<Grid>
+					<TextBlock HorizontalAlignment="Center" Style="{DynamicResource TextBlock-Sketch}" VerticalAlignment="Center" Text="Host plugins to provide access to Outlook/Google/other calendars here"/>
+				</Grid>
 			</TabItem>
 			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Reference">
-				<Grid/>
+				<Grid>
+					<TextBlock HorizontalAlignment="Center" Style="{DynamicResource TextBlock-Sketch}" VerticalAlignment="Center"><Run Text="Host p"/><Run Text="lugin"/><Run Text="s here"/><Run Text=" to send to Evernote etc."/></TextBlock>
+				</Grid>
 			</TabItem>
 		</TabControl>
 	</DockPanel>
