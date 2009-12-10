@@ -146,6 +146,17 @@
 			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Delegate">
 				<DockPanel>
 					<local:Screen_1_6 d:IsPrototypingComposition="True" HorizontalAlignment="Left"/>
+					<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+						<TextBlock HorizontalAlignment="Right" Style="{DynamicResource BasicTextBlock-Sketch}" VerticalAlignment="Center" Text="Delegate to"/>
+						<TextBox Style="{DynamicResource ComboBoxEditableTextBox-Sketch}" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Grid.Column="1" Margin="6,0,0,0" MinWidth="240"/>
+					</Grid>
 				</DockPanel>
 			</TabItem>
 			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Project">
