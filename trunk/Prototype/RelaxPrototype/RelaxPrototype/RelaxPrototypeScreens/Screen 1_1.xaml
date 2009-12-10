@@ -133,6 +133,10 @@
 				<TextBlock HorizontalAlignment="Center" Style="{DynamicResource BasicTextBlock-Sketch}" VerticalAlignment="Center" Foreground="White" Text="Multi Step" d:LayoutOverrides="Height"/>
 			</Grid>
 		</Grid>
+		<StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="6">
+			<Button Style="{DynamicResource Button-Sketch}" Content="Skip" Margin="0,0,6,0"/>
+			<Button Style="{DynamicResource Button-Sketch}" Content="Next/Done" IsDefault="True"/>
+		</StackPanel>
 		<TabControl Style="{DynamicResource TabControl-Sketch}" DockPanel.Dock="Bottom">
 			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Now">
 				<Grid/>
