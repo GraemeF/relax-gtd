@@ -5,13 +5,44 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
 	xmlns:local="clr-namespace:RelaxPrototypeScreens" x:Name="Screen_1_1_Name"
-	x:Class="RelaxPrototypeScreens.Screen_1_1"
-	Width="640" Height="480">
+	x:Class="RelaxPrototypeScreens.Screen_1_1">
 
-	<DockPanel x:Name="LayoutRoot" Background="White">
-		<local:Screen_1_6 d:IsPrototypingComposition="True"/>
-		<local:Screen_1_5 DockPanel.Dock="Bottom" d:IsPrototypingComposition="True"/>
-		<local:Screen_1_7 DockPanel.Dock="Top" d:IsPrototypingComposition="True"/>
-		<local:Inbox DockPanel.Dock="Top" d:IsPrototypingComposition="True"/>
-	</DockPanel>
+	<Grid Height="519.562">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1*"/>
+			<ColumnDefinition Width="1*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="55"/>
+			<RowDefinition Height="55"/>
+			<RowDefinition Height="55"/>
+			<RowDefinition Height="55"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<DockPanel x:Name="LayoutRoot" Background="White" d:IsHidden="True" Grid.RowSpan="4" Grid.ColumnSpan="2">
+			<local:Screen_1_6 d:IsPrototypingComposition="True"/>
+			<local:Screen_1_5 DockPanel.Dock="Bottom" d:IsPrototypingComposition="True"/>
+			<local:Screen_1_7 DockPanel.Dock="Top" d:IsPrototypingComposition="True"/>
+			<local:Inbox DockPanel.Dock="Top" d:IsPrototypingComposition="True"/>
+		</DockPanel>
+		<TextBox Margin="8" Style="{DynamicResource BasicTextBox-Sketch}" Text="Title" TextWrapping="Wrap" Grid.ColumnSpan="2"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Actionable" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Not Actionable" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+		<UniformGrid Grid.Row="2" Rows="1">
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Single Action" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Project" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+		</UniformGrid>
+		<UniformGrid Grid.Row="2" Rows="1" Grid.Column="1">
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Delete" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Someday/Maybe" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Defer" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Calendar" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Reference" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+		</UniformGrid>
+		<UniformGrid Grid.Row="3" Rows="1" Grid.ColumnSpan="2">
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Do" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Later" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Delegate" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+		</UniformGrid>
+	</Grid>
 </UserControl>
