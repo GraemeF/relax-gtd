@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SchemaVersion="2">
+  <SketchFlowGuid>8f191632-7ad6-442b-adb7-0e95132b4874</SketchFlowGuid>
+  <StartScreen>RelaxPrototypeScreens.Screen_1</StartScreen>
+  <Screens>
+    <Screen>
+      <Type>Navigation</Type>
+      <ClassName>RelaxPrototypeScreens.Screen_1</ClassName>
+      <DisplayName>Collect</DisplayName>
+      <FileName>Screen 1.xaml</FileName>
+      <Annotations />
+      <Position>
+        <X>0</X>
+        <Y>0</Y>
+      </Position>
+      <VisualTag>0</VisualTag>
+    </Screen>
+    <Screen>
+      <Type>Navigation</Type>
+      <ClassName>RelaxPrototypeScreens.Screen_1_1</ClassName>
+      <DisplayName>Process</DisplayName>
+      <FileName>Screen 1_1.xaml</FileName>
+      <Annotations />
+      <Position>
+        <X>125</X>
+        <Y>0</Y>
+      </Position>
+      <VisualTag>0</VisualTag>
+    </Screen>
+    <Screen>
+      <Type>Navigation</Type>
+      <ClassName>RelaxPrototypeScreens.Screen_1_2</ClassName>
+      <DisplayName>Review</DisplayName>
+      <FileName>Screen 1_2.xaml</FileName>
+      <Annotations />
+      <Position>
+        <X>521</X>
+        <Y>4</Y>
+      </Position>
+      <VisualTag>0</VisualTag>
+    </Screen>
+    <Screen>
+      <Type>Navigation</Type>
+      <ClassName>RelaxPrototypeScreens.Screen_1_3</ClassName>
+      <DisplayName>Organise</DisplayName>
+      <FileName>Screen 1_3.xaml</FileName>
+      <Annotations />
+      <Position>
+        <X>256</X>
+        <Y>1</Y>
+      </Position>
+      <VisualTag>0</VisualTag>
+    </Screen>
+    <Screen>
+      <Type>Navigation</Type>
+      <ClassName>RelaxPrototypeScreens.Screen_1_4</ClassName>
+      <DisplayName>Do</DisplayName>
+      <FileName>Screen 1_4.xaml</FileName>
+      <Annotations />
+      <Position>
+        <X>385</X>
+        <Y>2</Y>
+      </Position>
+      <VisualTag>0</VisualTag>
+    </Screen>
+    <Screen>
+      <Type>Composition</Type>
+      <ClassName>RelaxPrototypeScreens.Inbox</ClassName>
+      <DisplayName>Inbox</DisplayName>
+      <FileName>Inbox.xaml</FileName>
+      <Annotations />
+      <Position>
+        <X>4</X>
+        <Y>64</Y>
+      </Position>
+      <VisualTag>1</VisualTag>
+    </Screen>
+    <Screen>
+      <Type>Composition</Type>
+      <ClassName>RelaxPrototypeScreens.Screen_1_5</ClassName>
+      <DisplayName>Contexts</DisplayName>
+      <FileName>Screen 1_5.xaml</FileName>
+      <Annotations />
+      <Position>
+        <X>289</X>
+        <Y>78</Y>
+      </Position>
+      <VisualTag>1</VisualTag>
+    </Screen>
+    <Screen>
+      <Type>Composition</Type>
+      <ClassName>RelaxPrototypeScreens.Screen_1_6</ClassName>
+      <DisplayName>Projects</DisplayName>
+      <FileName>Screen 1_6.xaml</FileName>
+      <Annotations />
+      <Position>
+        <X>135</X>
+        <Y>74</Y>
+      </Position>
+      <VisualTag>1</VisualTag>
+    </Screen>
+    <Screen>
+      <Type>Composition</Type>
+      <ClassName>RelaxPrototypeScreens.Screen_1_7</ClassName>
+      <DisplayName>Filters</DisplayName>
+      <FileName>Screen 1_7.xaml</FileName>
+      <Annotations />
+      <Position>
+        <X>256</X>
+        <Y>132</Y>
+      </Position>
+      <VisualTag>1</VisualTag>
+    </Screen>
+    <Screen>
+      <Type>Composition</Type>
+      <ClassName>RelaxPrototypeScreens.Screen_1_8</ClassName>
+      <DisplayName>Action Details</DisplayName>
+      <FileName>Screen 1_8.xaml</FileName>
+      <Annotations />
+      <Position>
+        <X>381</X>
+        <Y>117</Y>
+      </Position>
+      <VisualTag>1</VisualTag>
+    </Screen>
+  </Screens>
+  <Connections>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_3</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_5</Target>
+      <Type>Composition</Type>
+      <TransitionType>None</TransitionType>
+      <VisualTag>1</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_4</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_5</Target>
+      <Type>Composition</Type>
+      <TransitionType>None</TransitionType>
+      <VisualTag>1</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_2</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_5</Target>
+      <Type>Composition</Type>
+      <TransitionType>None</TransitionType>
+      <VisualTag>1</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_1</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_5</Target>
+      <Type>Composition</Type>
+      <TransitionType>None</TransitionType>
+      <VisualTag>1</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_1</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_6</Target>
+      <Type>Composition</Type>
+      <TransitionType>None</TransitionType>
+      <VisualTag>1</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_1</Source>
+      <Target>RelaxPrototypeScreens.Inbox</Target>
+      <Type>Composition</Type>
+      <TransitionType>None</TransitionType>
+      <VisualTag>1</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_1</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_7</Target>
+      <Type>Composition</Type>
+      <TransitionType>None</TransitionType>
+      <VisualTag>1</VisualTag>
+    </Connection>
+  </Connections>
+  <BrandingText>Microsoft SketchFlow Prototype</BrandingText>
+  <RuntimeOptions>
+    <HideNavigation>false</HideNavigation>
+    <HideFlowGraph>false</HideFlowGraph>
+    <HideAnnotationAndInk>false</HideAnnotationAndInk>
+    <DisableInking>false</DisableInking>
+    <HideDesignTimeAnnotations>false</HideDesignTimeAnnotations>
+  </RuntimeOptions>
+  <VisualTags>
+    <VisualTag>
+      <Name>Navigation</Name>
+      <Color>FF1E2AD6</Color>
+    </VisualTag>
+    <VisualTag>
+      <Name>Component</Name>
+      <Color>FF178F11</Color>
+    </VisualTag>
+    <VisualTag>
+      <Name>Yellow</Name>
+      <Color>FFFEC600</Color>
+    </VisualTag>
+    <VisualTag>
+      <Name>Orange</Name>
+      <Color>FFF06000</Color>
+    </VisualTag>
+    <VisualTag>
+      <Name>Red</Name>
+      <Color>FFCC0202</Color>
+    </VisualTag>
+    <VisualTag>
+      <Name>Violet</Name>
+      <Color>FF780099</Color>
+    </VisualTag>
+    <VisualTag>
+      <Name>Gray</Name>
+      <Color>FF6B6B6B</Color>
+    </VisualTag>
+    <VisualTag>
+      <Name>White</Name>
+      <Color>FFFFFFFF</Color>
+    </VisualTag>
+  </VisualTags>
+  <ViewState>
+    <Zoom>1</Zoom>
+    <Center>
+      <X>381</X>
+      <Y>76.685</Y>
+    </Center>
+  </ViewState>
+</Data>
