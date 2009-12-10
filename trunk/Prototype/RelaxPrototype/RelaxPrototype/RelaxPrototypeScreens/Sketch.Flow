@@ -94,8 +94,8 @@
       <FileName>Screen 1_6.xaml</FileName>
       <Annotations />
       <Position>
-        <X>135</X>
-        <Y>74</Y>
+        <X>107</X>
+        <Y>100</Y>
       </Position>
       <VisualTag>1</VisualTag>
     </Screen>
@@ -115,7 +115,7 @@
       <Type>Composition</Type>
       <ClassName>RelaxPrototypeScreens.Screen_1_8</ClassName>
       <DisplayName>Action Details</DisplayName>
-      <FileName>Screen 1_8.xaml</FileName>
+      <FileName>ActionDetails.xaml</FileName>
       <Annotations />
       <Position>
         <X>381</X>
@@ -161,18 +161,32 @@
       <VisualTag>1</VisualTag>
     </Connection>
     <Connection>
-      <Source>RelaxPrototypeScreens.Screen_1_1</Source>
-      <Target>RelaxPrototypeScreens.Inbox</Target>
-      <Type>Composition</Type>
-      <TransitionType>None</TransitionType>
-      <VisualTag>1</VisualTag>
+      <Source>RelaxPrototypeScreens.Screen_1</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_1</Target>
+      <Type>Navigation</Type>
+      <TransitionType>Fade</TransitionType>
+      <VisualTag>0</VisualTag>
     </Connection>
     <Connection>
       <Source>RelaxPrototypeScreens.Screen_1_1</Source>
-      <Target>RelaxPrototypeScreens.Screen_1_7</Target>
-      <Type>Composition</Type>
-      <TransitionType>None</TransitionType>
-      <VisualTag>1</VisualTag>
+      <Target>RelaxPrototypeScreens.Screen_1_3</Target>
+      <Type>Navigation</Type>
+      <TransitionType>Fade</TransitionType>
+      <VisualTag>0</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_3</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_4</Target>
+      <Type>Navigation</Type>
+      <TransitionType>Fade</TransitionType>
+      <VisualTag>0</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_4</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_2</Target>
+      <Type>Navigation</Type>
+      <TransitionType>Fade</TransitionType>
+      <VisualTag>0</VisualTag>
     </Connection>
   </Connections>
   <BrandingText>Microsoft SketchFlow Prototype</BrandingText>

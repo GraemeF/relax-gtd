@@ -4,45 +4,61 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	xmlns:local="clr-namespace:RelaxPrototypeScreens" x:Name="Screen_1_1_Name"
+	xmlns:local="clr-namespace:RelaxPrototypeScreens" x:Name="ProcessActivity"
 	x:Class="RelaxPrototypeScreens.Screen_1_1">
+	<UserControl.Resources>
+		<ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+			<UniformGrid IsItemsHost="True" Rows="0" Columns="1"/>
+		</ItemsPanelTemplate>
+	</UserControl.Resources>
 
-	<Grid Height="519.562">
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="1*"/>
-			<ColumnDefinition Width="1*"/>
-		</Grid.ColumnDefinitions>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="55"/>
-			<RowDefinition Height="55"/>
-			<RowDefinition Height="55"/>
-			<RowDefinition Height="55"/>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
-		<DockPanel x:Name="LayoutRoot" Background="White" d:IsHidden="True" Grid.RowSpan="4" Grid.ColumnSpan="2">
-			<local:Screen_1_6 d:IsPrototypingComposition="True"/>
-			<local:Screen_1_5 DockPanel.Dock="Bottom" d:IsPrototypingComposition="True"/>
-			<local:Screen_1_7 DockPanel.Dock="Top" d:IsPrototypingComposition="True"/>
-			<local:Inbox DockPanel.Dock="Top" d:IsPrototypingComposition="True"/>
-		</DockPanel>
-		<TextBox Margin="8" Style="{DynamicResource BasicTextBox-Sketch}" Text="Title" TextWrapping="Wrap" Grid.ColumnSpan="2"/>
-			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Actionable" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
-			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Not Actionable" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
-		<UniformGrid Grid.Row="2" Rows="1">
-			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Single Action" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Project" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-		</UniformGrid>
-		<UniformGrid Grid.Row="2" Rows="1" Grid.Column="1">
-			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Delete" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Someday/Maybe" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Defer" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Calendar" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Reference" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-		</UniformGrid>
-		<UniformGrid Grid.Row="3" Rows="1" Grid.ColumnSpan="2">
-			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Do" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Later" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Delegate" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-		</UniformGrid>
-	</Grid>
+	<DockPanel Width="800" Height="600">
+		<TextBox Style="{DynamicResource BasicTextBox-Sketch}" Text="Title" TextWrapping="Wrap" DockPanel.Dock="Top" Height="80"/>
+		<Grid DockPanel.Dock="Top">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="1*"/>
+				<RowDefinition Height="1*"/>
+				<RowDefinition Height="1*"/>
+			</Grid.RowDefinitions>			
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Actionable" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Not Actionable" Grid.Column="4" Grid.ColumnSpan="5" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Single Action" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Project" Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Delete" Grid.Column="4" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Someday/Maybe" Grid.Row="2" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Defer" Grid.Row="2" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Calendar" Grid.Row="2" Grid.Column="7" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Reference" Grid.Row="2" Grid.Column="8" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Do" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Later" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+			<RadioButton Style="{DynamicResource RadioButton-Sketch}" Content="Delegate" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+		</Grid>
+		<TabControl Style="{DynamicResource TabControl-Sketch}" DockPanel.Dock="Bottom" ItemsPanel="{DynamicResource ItemsPanelTemplate1}">
+			<TabItem Style="{DynamicResource TabItem-Sketch}" Header="Do">
+				<Grid/>
+			</TabItem>
+			<TabItem Style="{DynamicResource TabItem-Sketch}" Header="Later">
+				<DockPanel>
+					<local:Screen_1_6 d:IsPrototypingComposition="True" HorizontalAlignment="Left"/>
+					<local:Screen_1_5 DockPanel.Dock="Bottom" d:IsPrototypingComposition="True" VerticalAlignment="Bottom"/>
+				</DockPanel>
+			</TabItem>
+			<TabItem Style="{DynamicResource TabItem-Sketch}" Header="Delegate">
+				<DockPanel>
+					<local:Screen_1_6 d:IsPrototypingComposition="True" HorizontalAlignment="Left"/>
+				</DockPanel>
+			</TabItem>
+		</TabControl>
+	</DockPanel>
 </UserControl>

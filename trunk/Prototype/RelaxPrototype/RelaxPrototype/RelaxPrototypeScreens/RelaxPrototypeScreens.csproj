@@ -100,7 +100,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Screen 1_8.xaml">
+    <Page Include="ActionDetails.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -144,8 +144,8 @@
     <Compile Include="Screen 1_7.xaml.cs">
       <DependentUpon>Screen 1_7.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Screen 1_8.xaml.cs">
-      <DependentUpon>Screen 1_8.xaml</DependentUpon>
+    <Compile Include="ActionDetails.xaml.cs">
+      <DependentUpon>ActionDetails.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

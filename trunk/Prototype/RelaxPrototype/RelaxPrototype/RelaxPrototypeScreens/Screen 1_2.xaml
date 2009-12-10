@@ -4,7 +4,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	xmlns:local="clr-namespace:RelaxPrototypeScreens" x:Name="Screen_1_2_Name"
+	xmlns:local="clr-namespace:RelaxPrototypeScreens" x:Name="ReviewActivity"
 	x:Class="RelaxPrototypeScreens.Screen_1_2"
 	Width="640" Height="480">
 
