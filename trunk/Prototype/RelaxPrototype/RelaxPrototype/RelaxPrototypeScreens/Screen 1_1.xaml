@@ -145,6 +145,7 @@
 				<DockPanel>
 					<local:Screen_1_6 d:IsPrototypingComposition="True" HorizontalAlignment="Left"/>
 					<local:Screen_1_5 DockPanel.Dock="Bottom" d:IsPrototypingComposition="True" VerticalAlignment="Bottom"/>
+					<local:Screen_1_8 d:IsPrototypingComposition="True"/>
 				</DockPanel>
 			</TabItem>
 			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Delegate">

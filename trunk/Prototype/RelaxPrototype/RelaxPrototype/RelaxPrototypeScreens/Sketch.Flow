@@ -118,8 +118,8 @@
       <FileName>ActionDetails.xaml</FileName>
       <Annotations />
       <Position>
-        <X>381</X>
-        <Y>117</Y>
+        <X>190</X>
+        <Y>84</Y>
       </Position>
       <VisualTag>1</VisualTag>
     </Screen>
@@ -191,6 +191,13 @@
     <Connection>
       <Source>RelaxPrototypeScreens.Screen_1_1</Source>
       <Target>RelaxPrototypeScreens.Inbox</Target>
+      <Type>Composition</Type>
+      <TransitionType>None</TransitionType>
+      <VisualTag>1</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_1</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_8</Target>
       <Type>Composition</Type>
       <TransitionType>None</TransitionType>
       <VisualTag>1</VisualTag>
