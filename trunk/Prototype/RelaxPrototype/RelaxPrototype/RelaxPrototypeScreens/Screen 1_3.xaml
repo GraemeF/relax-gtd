@@ -8,7 +8,11 @@
 	x:Class="RelaxPrototypeScreens.Screen_1_3"
 	Width="640" Height="480">
 
-	<Grid x:Name="LayoutRoot" Background="White">
-		<local:Screen_1_5 HorizontalAlignment="Left" VerticalAlignment="Bottom" d:IsPrototypingComposition="True" Margin="125,0,0,0"/>
-	</Grid>
+	<DockPanel x:Name="LayoutRoot" Background="White">
+		<local:Screen_1_6 d:IsPrototypingComposition="True"/>
+		<local:Screen_1_5 d:IsPrototypingComposition="True" DockPanel.Dock="Bottom"/>
+		<local:Screen_1_7 d:IsPrototypingComposition="True" DockPanel.Dock="Top"/>
+		<local:Screen_1_8 d:IsPrototypingComposition="True" DockPanel.Dock="Bottom"/>
+		<local:Screen_1_9 d:IsPrototypingComposition="True"/>
+	</DockPanel>
 </UserControl>

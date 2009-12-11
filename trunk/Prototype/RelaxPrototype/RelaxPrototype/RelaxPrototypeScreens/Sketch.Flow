@@ -46,8 +46,8 @@
       <FileName>Screen 1_3.xaml</FileName>
       <Annotations />
       <Position>
-        <X>256</X>
-        <Y>1</Y>
+        <X>264</X>
+        <Y>25</Y>
       </Position>
       <VisualTag>0</VisualTag>
     </Screen>
@@ -82,8 +82,8 @@
       <FileName>Screen 1_5.xaml</FileName>
       <Annotations />
       <Position>
-        <X>289</X>
-        <Y>78</Y>
+        <X>271</X>
+        <Y>-66</Y>
       </Position>
       <VisualTag>1</VisualTag>
     </Screen>
@@ -106,8 +106,8 @@
       <FileName>Screen 1_7.xaml</FileName>
       <Annotations />
       <Position>
-        <X>256</X>
-        <Y>132</Y>
+        <X>158</X>
+        <Y>-51</Y>
       </Position>
       <VisualTag>1</VisualTag>
     </Screen>
@@ -118,8 +118,20 @@
       <FileName>ActionDetails.xaml</FileName>
       <Annotations />
       <Position>
-        <X>190</X>
-        <Y>84</Y>
+        <X>242</X>
+        <Y>87</Y>
+      </Position>
+      <VisualTag>1</VisualTag>
+    </Screen>
+    <Screen>
+      <Type>Composition</Type>
+      <ClassName>RelaxPrototypeScreens.Screen_1_9</ClassName>
+      <DisplayName>Actions</DisplayName>
+      <FileName>Screen 1_9.xaml</FileName>
+      <Annotations />
+      <Position>
+        <X>367</X>
+        <Y>67</Y>
       </Position>
       <VisualTag>1</VisualTag>
     </Screen>
@@ -202,6 +214,76 @@
       <TransitionType>None</TransitionType>
       <VisualTag>1</VisualTag>
     </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_3</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_6</Target>
+      <Type>Composition</Type>
+      <TransitionType>None</TransitionType>
+      <VisualTag>1</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_3</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_8</Target>
+      <Type>Composition</Type>
+      <TransitionType>None</TransitionType>
+      <VisualTag>1</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_3</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_7</Target>
+      <Type>Composition</Type>
+      <TransitionType>None</TransitionType>
+      <VisualTag>1</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_3</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_9</Target>
+      <Type>Composition</Type>
+      <TransitionType>None</TransitionType>
+      <VisualTag>1</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_4</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_9</Target>
+      <Type>Composition</Type>
+      <TransitionType>None</TransitionType>
+      <VisualTag>1</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_4</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_8</Target>
+      <Type>Composition</Type>
+      <TransitionType>None</TransitionType>
+      <VisualTag>1</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_2</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_4</Target>
+      <Type>Navigation</Type>
+      <TransitionType>Fade</TransitionType>
+      <VisualTag>0</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_4</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_3</Target>
+      <Type>Navigation</Type>
+      <TransitionType>Fade</TransitionType>
+      <VisualTag>0</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_3</Source>
+      <Target>RelaxPrototypeScreens.Screen_1_1</Target>
+      <Type>Navigation</Type>
+      <TransitionType>Fade</TransitionType>
+      <VisualTag>0</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>RelaxPrototypeScreens.Screen_1_1</Source>
+      <Target>RelaxPrototypeScreens.Screen_1</Target>
+      <Type>Navigation</Type>
+      <TransitionType>Fade</TransitionType>
+      <VisualTag>0</VisualTag>
+    </Connection>
   </Connections>
   <BrandingText>Microsoft SketchFlow Prototype</BrandingText>
   <RuntimeOptions>
@@ -246,10 +328,10 @@
     </VisualTag>
   </VisualTags>
   <ViewState>
-    <Zoom>1</Zoom>
+    <Zoom>1.1669078947368421</Zoom>
     <Center>
-      <X>381</X>
-      <Y>76.685</Y>
+      <X>308</X>
+      <Y>-4.5302767065248259</Y>
     </Center>
   </ViewState>
 </Data>

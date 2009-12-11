@@ -104,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Screen 1_9.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -146,6 +150,9 @@
     </Compile>
     <Compile Include="ActionDetails.xaml.cs">
       <DependentUpon>ActionDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screen 1_9.xaml.cs">
+      <DependentUpon>Screen 1_9.xaml</DependentUpon>
     </Compile>
     <Compile Include="TabSizeConverter.cs" />
   </ItemGroup>
