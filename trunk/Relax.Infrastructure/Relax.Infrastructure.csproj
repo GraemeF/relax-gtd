@@ -91,6 +91,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Interfaces\IRelaxModule.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\Action.cd" />
+    <None Include="Models\Workspace.cd" />
+  </ItemGroup>
   <PropertyGroup>
     <!-- Give the correct path to the library stuff -->
     <LibraryPath Condition=" '$(AstonLibPath)' == '' ">..\Library\</LibraryPath>

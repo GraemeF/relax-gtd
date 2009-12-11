@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.IAction">
+    <Position X="11.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgEKQAAgAAAAAEAAAAABACAAAAAACAAAGAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\IAction.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Completion" />
+      <Property Name="Context" />
+      <Property Name="Cost" />
+      <Property Name="Deadline" />
+      <Property Name="Deferral" />
+      <Property Name="Delegation" />
+      <Property Name="Notes" />
+      <Property Name="Priority" />
+      <Property Name="Repetition" />
+      <Property Name="Review" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="BlockingActions" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.ICompletion">
+    <Position X="14.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\ICompletion.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.IGtdContext">
+    <Position X="14.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\IGtdContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.ICost">
+    <Position X="8.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAACAAA=</HashCode>
+      <FileName>Models\Interfaces\ICost.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.IDeadline">
+    <Position X="14.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Models\Interfaces\IDeadline.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.IDeferral">
+    <Position X="14.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\IDeferral.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.IDelegation">
+    <Position X="8.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\Interfaces\IDelegation.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.INotes">
+    <Position X="11.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\INotes.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.IPriority">
+    <Position X="11.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\IPriority.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.IRepetition">
+    <Position X="14.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\IRepetition.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.IReview">
+    <Position X="8.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAEAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\Interfaces\IReview.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
