@@ -4,6 +4,7 @@ using System.Windows.Controls;
 
 namespace Relax.Infrastructure.Helpers
 {
+    [NoCoverage]
     public class StateManager : DependencyObject
     {
         public static readonly DependencyProperty VisualStatePropertyProperty =

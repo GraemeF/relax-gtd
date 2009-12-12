@@ -12,9 +12,9 @@ namespace Relax.Infrastructure.Helpers
     /// <typeparam name="TDestination">The type of the destination items.</typeparam>
     public class CollectionSync<TSource, TDestination> : IDisposable
     {
+        private readonly WeakEventListener<NotifyCollectionChangedEventArgs> _collectionObserver;
         private readonly Func<TSource, TDestination> _destItemFactory;
         private readonly Action<TDestination> _destItemRemover;
-
         private readonly IList<TDestination> _destList;
         private readonly IList<TSource> _sourceList;
 
@@ -23,8 +23,8 @@ namespace Relax.Infrastructure.Helpers
         /// </summary>
         /// <param name="sourceList">The source list.</param>
         /// <param name="destList">The destination list.</param>
-        /// <param name="destItemFactory">Factory method which creates a TDestination for a given TSource.</param>
-        /// <param name="destItemRemover">Method called when a TDestination is removed.</param>
+        /// <param name="destItemFactory">Factory method which creates a <typeparamref name="TDestination"/> for a given <typeparamref name="TSource"/>.</param>
+        /// <param name="destItemRemover">Method called when a <typeparamref name="TDestination"/> is removed.</param>
         public CollectionSync(IList<TSource> sourceList,
                               IList<TDestination> destList,
                               Func<TSource, TDestination> destItemFactory,
@@ -44,7 +44,10 @@ namespace Relax.Infrastructure.Helpers
 
             var notifier = _sourceList as INotifyCollectionChanged;
             if (notifier != null)
-                notifier.CollectionChanged += SourceCollection_CollectionChanged;
+            {
+                _collectionObserver = new WeakEventListener<NotifyCollectionChangedEventArgs>(SourceCollection_CollectionChanged);
+                CollectionChangedEventManager.AddListener(notifier, _collectionObserver);
+            }
 
             PopulateWithAllItems();
         }
@@ -52,11 +55,12 @@ namespace Relax.Infrastructure.Helpers
         #region IDisposable Members
 
         /// <summary>
-        /// Releases all resources used by an instance of the <see cref="CollectionSync" /> class.
+        /// Releases all resources used by an instance of the CollectionSync class.
         /// </summary>
         /// <remarks>
-        /// This method calls the virtual <see cref="Dispose(bool)" /> method, passing in <strong>true</strong>, and then suppresses 
-        /// finalization of the instance.
+        /// This method calls the virtual <see cref="Dispose(bool)" /> method,
+        /// passing in <strong>true</strong>, and then suppresses  finalization
+        /// of the instance.
         /// </remarks>
         public void Dispose()
         {
@@ -129,7 +133,7 @@ namespace Relax.Infrastructure.Helpers
         }
 
         /// <summary>
-        /// Releases unmanaged resources before an instance of the <see cref="CollectionSync" /> class is reclaimed by garbage collection.
+        /// Releases unmanaged resources before an instance of the CollectionSync class is reclaimed by garbage collection.
         /// </summary>
         /// <remarks>
         /// This method releases unmanaged resources by calling the virtual <see cref="Dispose(bool)" /> method, passing in <strong>false</strong>.
@@ -140,14 +144,17 @@ namespace Relax.Infrastructure.Helpers
         }
 
         /// <summary>
-        /// Releases the unmanaged resources used by an instance of the <see cref="CollectionSync" /> class and optionally releases the managed resources.
+        /// Releases the unmanaged resources used by an instance of the CollectionSync class and optionally releases the managed resources.
         /// </summary>
         /// <param name="disposing"><strong>true</strong> to release both managed and unmanaged resources; <strong>false</strong> to release only unmanaged resources.</param>
         protected virtual void Dispose(bool disposing)
         {
-            var notifier = _sourceList as INotifyCollectionChanged;
-            if (notifier != null)
-                notifier.CollectionChanged -= SourceCollection_CollectionChanged;
+            if (disposing)
+            {
+                var notifier = _sourceList as INotifyCollectionChanged;
+                if (notifier != null)
+                    CollectionChangedEventManager.RemoveListener(notifier, _collectionObserver);
+            }
         }
     }
 }

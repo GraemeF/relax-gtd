@@ -36,7 +36,7 @@
       <FileName>Models\Interfaces\IGtdContext.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="Relax.Infrastructure.Models.Interfaces.ICost">
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.ICost" Collapsed="true">
     <Position X="8.5" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAACAAA=</HashCode>

@@ -66,6 +66,7 @@
     <Compile Include="Helpers\NoCoverageAttribute.cs" />
     <Compile Include="Helpers\PropertyHelper.cs" />
     <Compile Include="Helpers\StateManager.cs" />
+    <Compile Include="Helpers\WeakEventListener.cs" />
     <Compile Include="Models\EnergyLevel.cs" />
     <Compile Include="Models\HorizonOfFocus.cs" />
     <Compile Include="Models\Interfaces\IAction.cs" />
