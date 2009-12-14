@@ -10,7 +10,7 @@ namespace Relax.Infrastructure.Models.Interfaces
         /// <summary>
         /// Actions that stop this action from being completed.
         /// </summary>
-        ObservableCollection<IAction> BlockingActions { get; set; }
+        ObservableCollection<IAction> BlockingActions { get; }
 
         IDeadline Deadline { get; set; }
         IDelegation Delegation { get; set; }

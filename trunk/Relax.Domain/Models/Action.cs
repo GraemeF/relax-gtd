@@ -13,18 +13,14 @@ namespace Relax.Domain.Models
     [PerRequest(typeof (IAction))]
     public class Action : IAction
     {
-        private static int _nextId = 1;
-
         public Action()
         {
+            BlockingActions = new ObservableCollection<IAction>();
             Created = DateTime.UtcNow;
-            Id = _nextId++;
         }
 
         #region Implementation of IItem
 
-        private DateTime _created;
-        private int _id;
         private string _title;
 
         [DataMember]
@@ -42,38 +38,13 @@ namespace Relax.Domain.Models
         }
 
         [DataMember]
-        public DateTime Created
-        {
-            get { return _created; }
-            set
-            {
-                if (_created != value)
-                {
-                    _created = value;
-                    PropertyChanged.Raise(x => Created);
-                }
-            }
-        }
-
-        public int Id
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    _id = value;
-                    PropertyChanged.Raise(x => Id);
-                }
-            }
-        }
+        public DateTime Created { get; private set; }
 
         #endregion
 
         #region Implementation of IAction
 
         private State _actionState;
-        private ObservableCollection<IAction> _blockingActions = new ObservableCollection<IAction>();
         private ICompletion _completion;
         private IGtdContext _context;
         private ICost _cost;
@@ -100,18 +71,7 @@ namespace Relax.Domain.Models
         }
 
         [DataMember]
-        public ObservableCollection<IAction> BlockingActions
-        {
-            get { return _blockingActions; }
-            set
-            {
-                if (_blockingActions != value)
-                {
-                    _blockingActions = value;
-                    PropertyChanged.Raise(x => BlockingActions);
-                }
-            }
-        }
+        public ObservableCollection<IAction> BlockingActions { get; private set; }
 
         [DataMember(EmitDefaultValue = false)]
         public IDeadline Deadline

@@ -9,7 +9,6 @@ namespace Relax.Infrastructure.Models.Interfaces
     public interface IItem : INotifyPropertyChanged
     {
         string Title { get; set; }
-        DateTime Created { get; set; }
-        int Id { get; }
+        DateTime Created { get; }
     }
 }
