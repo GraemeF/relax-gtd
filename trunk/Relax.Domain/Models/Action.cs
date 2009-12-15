@@ -16,6 +16,8 @@ namespace Relax.Domain.Models
         public Action()
         {
             BlockingActions = new ObservableCollection<IAction>();
+            Notes = new ObservableCollection<INote>();
+
             Created = DateTime.UtcNow;
         }
 
@@ -51,8 +53,7 @@ namespace Relax.Domain.Models
         private IDeadline _deadline;
         private IDeferral _deferral;
         private IDelegation _delegation;
-        private INotes _notes;
-        private IPriority _priority;
+        private Priority _priority;
         private IRepetition _repetition;
         private IReview _review;
 
@@ -144,21 +145,10 @@ namespace Relax.Domain.Models
         }
 
         [DataMember(EmitDefaultValue = false)]
-        public INotes Notes
-        {
-            get { return _notes; }
-            set
-            {
-                if (_notes != value)
-                {
-                    _notes = value;
-                    PropertyChanged.Raise(x => Notes);
-                }
-            }
-        }
+        public ObservableCollection<INote> Notes { get; private set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public IPriority Priority
+        public Priority Priority
         {
             get { return _priority; }
             set

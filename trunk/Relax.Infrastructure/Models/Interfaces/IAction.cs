@@ -5,7 +5,7 @@ namespace Relax.Infrastructure.Models.Interfaces
     /// <summary>
     /// Something that can be done.
     /// </summary>
-    public interface IAction : IItem
+    public interface IAction : IItem, IPriority
     {
         /// <summary>
         /// Actions that stop this action from being completed.
@@ -17,8 +17,7 @@ namespace Relax.Infrastructure.Models.Interfaces
         IDeferral Deferral { get; set; }
         ICompletion Completion { get; set; }
         IReview Review { get; set; }
-        INotes Notes { get; set; }
-        IPriority Priority { get; set; }
+        ObservableCollection<INote> Notes { get; }
         IRepetition Repetition { get; set; }
         ICost Cost { get; set; }
         State ActionState { get; set; }

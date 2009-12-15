@@ -2,6 +2,7 @@
 {
     public enum Priority
     {
+        None,
         Must,
         Should,
         Would,

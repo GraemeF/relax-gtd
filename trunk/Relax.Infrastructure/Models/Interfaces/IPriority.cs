@@ -5,6 +5,6 @@
     /// </summary>
     public interface IPriority
     {
-        Priority? Priority { get; set; }
+        Priority Priority { get; set; }
     }
 }

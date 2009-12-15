@@ -70,6 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ActionTestFixture.cs" />
+    <Compile Include="Models\CompletionTestFixture.cs" />
+    <Compile Include="Models\CostTestFixture.cs" />
+    <Compile Include="Models\DeadlineTestFixture.cs" />
+    <Compile Include="Models\DeferralTestFixture.cs" />
+    <Compile Include="Models\DelegationTestFixture.cs" />
+    <Compile Include="Models\WorkspaceTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

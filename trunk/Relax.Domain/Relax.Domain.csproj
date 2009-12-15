@@ -58,7 +58,6 @@
     <Compile Include="Models\Deadline.cs" />
     <Compile Include="Models\Deferral.cs" />
     <Compile Include="Models\Delegation.cs" />
-    <Compile Include="Models\ItemNotes.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\ReviewChecklistItem.cs" />
     <Compile Include="Models\Workspace.cs" />
