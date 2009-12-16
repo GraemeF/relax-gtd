@@ -76,6 +76,7 @@
     <Compile Include="Models\DeferralTestFixture.cs" />
     <Compile Include="Models\DelegationTestFixture.cs" />
     <Compile Include="Models\GtdContextTestFixture.cs" />
+    <Compile Include="Models\ReviewTestFixture.cs" />
     <Compile Include="Models\WorkspaceTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
