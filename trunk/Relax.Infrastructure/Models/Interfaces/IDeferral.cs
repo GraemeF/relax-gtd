@@ -8,6 +8,6 @@ namespace Relax.Infrastructure.Models.Interfaces
     /// </summary>
     public interface IDeferral : INotifyPropertyChanged
     {
-        DateTime DeferUntil { get; set; }
+        DateTime? DeferUntil { get; set; }
     }
 }

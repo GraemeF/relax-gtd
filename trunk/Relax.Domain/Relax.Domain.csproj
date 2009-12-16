@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -52,11 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Action.cs" />
-    <Compile Include="Models\Completion.cs" />
     <Compile Include="Models\GtdContext.cs" />
-    <Compile Include="Models\Cost.cs" />
-    <Compile Include="Models\Deadline.cs" />
-    <Compile Include="Models\Deferral.cs" />
     <Compile Include="Models\Delegation.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Review.cs" />

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models;
@@ -19,15 +20,32 @@ namespace Relax.Domain.Models
         #region Implementation of IAction
 
         private State _actionState;
-        private ICompletion _completion;
+        private DateTime? _completed;
+
         private IGtdContext _context;
-        private ICost _cost;
-        private IDeadline _deadline;
-        private IDeferral _deferral;
+        private DateTime? _deadlineDate;
+        private DateTime? _deferUntil;
         private IDelegation _delegation;
+        private EnergyLevel? _mentalEnergyRequired;
+        private EnergyLevel? _physicalEnergyRequired;
         private Priority _priority;
         private IRepetition _repetition;
         private IReview _review;
+        private TimeSpan? _timeRequired;
+
+        [DataMember]
+        public DateTime? DeferUntil
+        {
+            get { return _deferUntil; }
+            set
+            {
+                if (value != _deferUntil)
+                {
+                    _deferUntil = value;
+                    NotifyPropertyChanged(x => DeferUntil);
+                }
+            }
+        }
 
         [DataMember]
         public State ActionState
@@ -44,21 +62,80 @@ namespace Relax.Domain.Models
         }
 
         [DataMember]
-        public ObservableCollection<IAction> BlockingActions { get; private set; }
-
-        [DataMember(EmitDefaultValue = false)]
-        public IDeadline Deadline
+        public DateTime? Deadline
         {
-            get { return _deadline; }
+            get { return _deadlineDate; }
             set
             {
-                if (_deadline != value)
+                if (value != _deadlineDate)
                 {
-                    _deadline = value;
+                    _deadlineDate = value;
                     NotifyPropertyChanged(x => Deadline);
                 }
             }
         }
+
+        [DataMember]
+        public DateTime? CompletedDate
+        {
+            get { return _completed; }
+            set
+            {
+                if (value > DateTime.UtcNow)
+                    throw new ArgumentOutOfRangeException("value", value, "The date and time of completion must not be in the future.");
+
+                if (value != _completed)
+                {
+                    _completed = value;
+                    NotifyPropertyChanged(x => CompletedDate);
+                }
+            }
+        }
+
+        [DataMember]
+        public EnergyLevel? MentalEnergyRequired
+        {
+            get { return _mentalEnergyRequired; }
+            set
+            {
+                if (value != _mentalEnergyRequired)
+                {
+                    _mentalEnergyRequired = value;
+                    NotifyPropertyChanged(x => MentalEnergyRequired);
+                }
+            }
+        }
+
+        [DataMember]
+        public TimeSpan? TimeRequired
+        {
+            get { return _timeRequired; }
+            set
+            {
+                if (value != _timeRequired)
+                {
+                    _timeRequired = value;
+                    NotifyPropertyChanged(x => TimeRequired);
+                }
+            }
+        }
+
+        [DataMember]
+        public EnergyLevel? PhysicalEnergyRequired
+        {
+            get { return _physicalEnergyRequired; }
+            set
+            {
+                if (value != _physicalEnergyRequired)
+                {
+                    _physicalEnergyRequired = value;
+                    NotifyPropertyChanged(x => PhysicalEnergyRequired);
+                }
+            }
+        }
+
+        [DataMember]
+        public ObservableCollection<IAction> BlockingActions { get; private set; }
 
         [DataMember(EmitDefaultValue = false)]
         public IDelegation Delegation
@@ -70,34 +147,6 @@ namespace Relax.Domain.Models
                 {
                     _delegation = value;
                     NotifyPropertyChanged(x => Delegation);
-                }
-            }
-        }
-
-        [DataMember(EmitDefaultValue = false)]
-        public IDeferral Deferral
-        {
-            get { return _deferral; }
-            set
-            {
-                if (_deferral != value)
-                {
-                    _deferral = value;
-                    NotifyPropertyChanged(x => Deferral);
-                }
-            }
-        }
-
-        [DataMember(EmitDefaultValue = false)]
-        public ICompletion Completion
-        {
-            get { return _completion; }
-            set
-            {
-                if (_completion != value)
-                {
-                    _completion = value;
-                    NotifyPropertyChanged(x => Completion);
                 }
             }
         }
@@ -143,20 +192,6 @@ namespace Relax.Domain.Models
                 {
                     _repetition = value;
                     NotifyPropertyChanged(x => Repetition);
-                }
-            }
-        }
-
-        [DataMember(EmitDefaultValue = false)]
-        public ICost Cost
-        {
-            get { return _cost; }
-            set
-            {
-                if (_cost != value)
-                {
-                    _cost = value;
-                    NotifyPropertyChanged(x => Cost);
                 }
             }
         }

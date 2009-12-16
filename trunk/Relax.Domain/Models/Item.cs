@@ -24,6 +24,11 @@ namespace Relax.Domain.Models
             get { return _title; }
             set
             {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                if (value == string.Empty)
+                    throw new ArgumentException("A title is required.", "value");
+
                 if (_title != value)
                 {
                     _title = value;
@@ -36,12 +41,12 @@ namespace Relax.Domain.Models
         public DateTime Created { get; private set; }
 
         public virtual event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
+
         protected void NotifyPropertyChanged(Expression<Func<object, object>> property)
         {
             PropertyChanged.Raise(property);
         }
-
- 
-        #endregion
     }
 }

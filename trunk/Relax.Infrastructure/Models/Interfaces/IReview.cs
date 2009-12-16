@@ -10,7 +10,7 @@ namespace Relax.Infrastructure.Models.Interfaces
     {
         DateTime? LastReviewed { get; set; }
 
-        TimeSpan ReviewFrequency { get; set; }
+        TimeSpan ReviewPeriod { get; set; }
 
         HorizonOfFocus HorizonOfFocus { get; set; }
     }

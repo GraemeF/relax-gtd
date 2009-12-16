@@ -1,6 +1,7 @@
 ﻿using System;
 using Caliburn.Testability.Extensions;
 using MbUnit.Framework;
+using MbUnit.Framework.ContractVerifiers;
 using Moq;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
@@ -10,33 +11,202 @@ namespace Relax.Domain.Tests.Models
     [TestFixture]
     public class ActionTestFixture
     {
+        [VerifyContract]
+        public readonly IContract ActionState__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, State>
+                                                                           {
+                                                                               PropertyName = "ActionState",
+                                                                               AcceptNullValue = false,
+                                                                               ValidValues =
+                                                                                   {
+                                                                                       State.Committed,
+                                                                                       State.Hold,
+                                                                                       State.Inbox,
+                                                                                       State.SomedayMaybe
+                                                                                   }
+                                                                           };
+
+        [VerifyContract]
+        public readonly IContract CompletedDate__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, DateTime?>
+                                                                             {
+                                                                                 PropertyName = "CompletedDate",
+                                                                                 AcceptNullValue = true,
+                                                                                 ValidValues =
+                                                                                     {
+                                                                                         DateTime.UtcNow,
+                                                                                         DateTime.Today
+                                                                                     },
+                                                                                 InvalidValues =
+                                                                                     {
+                                                                                         {
+                                                                                             typeof (ArgumentOutOfRangeException),
+                                                                                             DateTime.MaxValue
+                                                                                             }
+                                                                                     }
+                                                                             };
+
+        [VerifyContract]
+        public readonly IContract Context__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, IGtdContext>
+                                                                       {
+                                                                           PropertyName = "Context",
+                                                                           AcceptNullValue = true,
+                                                                           ValidValues =
+                                                                               {
+                                                                                   new Mock<IGtdContext>().Object
+                                                                               }
+                                                                       };
+
+        [VerifyContract]
+        public readonly IContract Deadline__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, DateTime?>
+                                                                        {
+                                                                            PropertyName = "Deadline",
+                                                                            AcceptNullValue = true,
+                                                                            ValidValues =
+                                                                                {
+                                                                                    DateTime.UtcNow,
+                                                                                    DateTime.Today,
+                                                                                    DateTime.MinValue,
+                                                                                    DateTime.MaxValue
+                                                                                }
+                                                                        };
+
+        [VerifyContract]
+        public readonly IContract DeferUntil__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, DateTime?>
+                                                                          {
+                                                                              PropertyName = "DeferUntil",
+                                                                              AcceptNullValue = true,
+                                                                              ValidValues =
+                                                                                  {
+                                                                                      DateTime.UtcNow,
+                                                                                      DateTime.Today,
+                                                                                      DateTime.MinValue,
+                                                                                      DateTime.MaxValue
+                                                                                  }
+                                                                          };
+
+        [VerifyContract]
+        public readonly IContract Delegation__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, IDelegation>
+                                                                          {
+                                                                              PropertyName = "Delegation",
+                                                                              AcceptNullValue = true,
+                                                                              ValidValues =
+                                                                                  {
+                                                                                      new Mock<IDelegation>().Object
+                                                                                  }
+                                                                          };
+
+        [VerifyContract]
+        public readonly IContract MentalEnergyRequired__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, EnergyLevel>
+                                                                                    {
+                                                                                        PropertyName = "MentalEnergyRequired",
+                                                                                        AcceptNullValue = true,
+                                                                                        ValidValues =
+                                                                                            {
+                                                                                                EnergyLevel.None,
+                                                                                                EnergyLevel.Low,
+                                                                                                EnergyLevel.Medium,
+                                                                                                EnergyLevel.High
+                                                                                            }
+                                                                                    };
+
+        [VerifyContract]
+        public readonly IContract PhysicalEnergyRequired__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, EnergyLevel>
+                                                                                      {
+                                                                                          PropertyName = "PhysicalEnergyRequired",
+                                                                                          AcceptNullValue = true,
+                                                                                          ValidValues =
+                                                                                              {
+                                                                                                  EnergyLevel.None,
+                                                                                                  EnergyLevel.Low,
+                                                                                                  EnergyLevel.Medium,
+                                                                                                  EnergyLevel.High
+                                                                                              }
+                                                                                      };
+
+        [VerifyContract]
+        public readonly IContract Priority__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, Priority>
+                                                                        {
+                                                                            PropertyName = "Priority",
+                                                                            AcceptNullValue = false,
+                                                                            ValidValues =
+                                                                                {
+                                                                                    Priority.None,
+                                                                                    Priority.Could,
+                                                                                    Priority.Should,
+                                                                                    Priority.Would,
+                                                                                    Priority.Must
+                                                                                }
+                                                                        };
+
+        [VerifyContract]
+        public readonly IContract Repetition__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, IRepetition>
+                                                                          {
+                                                                              PropertyName = "Repetition",
+                                                                              AcceptNullValue = true,
+                                                                              ValidValues =
+                                                                                  {
+                                                                                      new Mock<IRepetition>().Object
+                                                                                  }
+                                                                          };
+
+        [VerifyContract]
+        public readonly IContract Review__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, IReview>
+                                                                      {
+                                                                          PropertyName = "Review",
+                                                                          AcceptNullValue = true,
+                                                                          ValidValues =
+                                                                              {
+                                                                                  new Mock<IReview>().Object
+                                                                              }
+                                                                      };
+
+        [VerifyContract]
+        public readonly IContract TimeRequired__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, TimeSpan>
+                                                                            {
+                                                                                PropertyName = "TimeRequired",
+                                                                                AcceptNullValue = false,
+                                                                                ValidValues = {TimeSpan.FromHours(1)}
+                                                                            };
+
         [Test]
-        public void TitleSet__UpdatesTitle()
+        public void TimeRequired_WhenSet_RaisesPropertyChanged()
         {
             var test = new Domain.Models.Action();
 
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.Title).When(() => test.Title = "test title");
-
-            Assert.AreEqual("test title", test.Title);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.TimeRequired).When(() => test.TimeRequired = TimeSpan.FromMinutes(30));
         }
 
         [Test]
-        public void CreatedGet__ReturnsDateTimeOfWhenActionWasCreated()
+        public void MentalEnergyRequired_WhenSet_RaisesPropertyChanged()
         {
-            DateTime createTime = DateTime.Now;
             var test = new Domain.Models.Action();
 
-            Assert.GreaterThanOrEqualTo(createTime, test.Created);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.MentalEnergyRequired).When(
+                () => test.MentalEnergyRequired = EnergyLevel.Medium);
         }
 
         [Test]
-        public void ActionState_WhenSet_UpdatesActionState()
+        public void PhysicalEnergyRequired_WhenSet_RaisesPropertyChanged()
+        {
+            var test = new Domain.Models.Action();
+
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.PhysicalEnergyRequired).When(
+                () => test.PhysicalEnergyRequired = EnergyLevel.Medium);
+        }
+
+        [Test]
+        public void ActionState_WhenSet_RaisesPropertyChanged()
         {
             var test = new Domain.Models.Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.ActionState).When(() => test.ActionState = State.SomedayMaybe);
+        }
 
-            Assert.AreEqual(State.SomedayMaybe, test.ActionState);
+        [Test]
+        public void ActionState_Initially_IsInbox()
+        {
+            var test = new Domain.Models.Action();
+
+            Assert.AreEqual(State.Inbox, test.ActionState);
         }
 
         [Test]
@@ -52,101 +222,67 @@ namespace Relax.Domain.Tests.Models
         }
 
         [Test]
-        public void Deadline_WhenSet_UpdatesProperty()
+        public void Deadline_WhenSet_RaisesPropertyChanged()
         {
             var test = new Domain.Models.Action();
 
-            var stubDeadline = new Mock<IDeadline>();
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.Deadline).When(() => test.Deadline = stubDeadline.Object);
-
-            Assert.AreSame(stubDeadline.Object, test.Deadline);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.Deadline).When(() => test.Deadline = DateTime.UtcNow);
         }
 
         [Test]
-        public void Delegation_WhenSet_UpdatesProperty()
+        public void Delegation_WhenSet_RaisesPropertyChanged()
         {
             var test = new Domain.Models.Action();
 
-            var stubDelegation = new Mock<IDelegation>();
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.Delegation).When(() => test.Delegation = stubDelegation.Object);
-
-            Assert.AreSame(stubDelegation.Object, test.Delegation);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.Delegation).When(() => test.Delegation = new Mock<IDelegation>().Object);
         }
 
         [Test]
-        public void Deferral_WhenSet_UpdatesProperty()
+        public void DeferUntil_WhenSet_RaisesPropertyChanged()
         {
             var test = new Domain.Models.Action();
 
-            var stubDeferral = new Mock<IDeferral>();
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.Deferral).When(() => test.Deferral = stubDeferral.Object);
-
-            Assert.AreSame(stubDeferral.Object, test.Deferral);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.DeferUntil).When(() => test.DeferUntil = DateTime.UtcNow);
         }
 
         [Test]
-        public void Completion_WhenSet_UpdatesProperty()
+        public void CompletedDate_WhenSet_RaisesPropertyChanged()
         {
             var test = new Domain.Models.Action();
 
-            var stubCompletion = new Mock<ICompletion>();
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.Completion).When(() => test.Completion = stubCompletion.Object);
-
-            Assert.AreSame(stubCompletion.Object, test.Completion);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.CompletedDate).When(() => test.CompletedDate = DateTime.UtcNow);
         }
 
         [Test]
-        public void Review_WhenSet_UpdatesProperty()
+        public void Review_WhenSet_RaisesPropertyChanged()
         {
             var test = new Domain.Models.Action();
 
-            var stubReview = new Mock<IReview>();
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.Review).When(() => test.Review = stubReview.Object);
-
-            Assert.AreSame(stubReview.Object, test.Review);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.Review).When(() => test.Review = new Mock<IReview>().Object);
         }
 
         [Test]
-        public void Priority_WhenSet_UpdatesProperty()
+        public void Priority_WhenSet_RaisesPropertyChanged()
         {
             var test = new Domain.Models.Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.Priority).When(() => test.Priority = Priority.Should);
-
-            Assert.AreEqual(Priority.Should, test.Priority);
         }
 
         [Test]
-        public void Repetition_WhenSet_UpdatesProperty()
+        public void Repetition_WhenSet_RaisesPropertyChanged()
         {
             var test = new Domain.Models.Action();
 
-            var stubRepetition = new Mock<IRepetition>();
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.Repetition).When(() => test.Repetition = stubRepetition.Object);
-
-            Assert.AreSame(stubRepetition.Object, test.Repetition);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.Repetition).When(() => test.Repetition = new Mock<IRepetition>().Object);
         }
 
         [Test]
-        public void Cost_WhenSet_UpdatesProperty()
+        public void Context_WhenSet_RaisesPropertyChanged()
         {
             var test = new Domain.Models.Action();
 
-            var stubCost = new Mock<ICost>();
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.Cost).When(() => test.Cost = stubCost.Object);
-
-            Assert.AreSame(stubCost.Object, test.Cost);
-        }
-
-        [Test]
-        public void Context_WhenSet_UpdatesProperty()
-        {
-            var test = new Domain.Models.Action();
-
-            var stubContext = new Mock<IGtdContext>();
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.Context).When(() => test.Context = stubContext.Object);
-
-            Assert.AreSame(stubContext.Object, test.Context);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.Context).When(() => test.Context = new Mock<IGtdContext>().Object);
         }
     }
 }

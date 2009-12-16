@@ -14,7 +14,7 @@ namespace Relax.Domain.Models
     {
         private HorizonOfFocus _horizonOfFocus;
         private DateTime? _lastReviewed;
-        private TimeSpan _reviewFrequency;
+        private TimeSpan _reviewPeriod;
 
         #region IReview Members
 
@@ -24,6 +24,9 @@ namespace Relax.Domain.Models
             get { return _lastReviewed; }
             set
             {
+                if (value > DateTime.UtcNow)
+                    throw new ArgumentOutOfRangeException("value", value, "The date and time of the last review must not be in the future.");
+
                 if (value != _lastReviewed)
                 {
                     _lastReviewed = value;
@@ -33,15 +36,15 @@ namespace Relax.Domain.Models
         }
 
         [DataMember]
-        public TimeSpan ReviewFrequency
+        public TimeSpan ReviewPeriod
         {
-            get { return _reviewFrequency; }
+            get { return _reviewPeriod; }
             set
             {
-                if (value != _reviewFrequency)
+                if (value != _reviewPeriod)
                 {
-                    _reviewFrequency = value;
-                    PropertyChanged.Raise(x => ReviewFrequency);
+                    _reviewPeriod = value;
+                    PropertyChanged.Raise(x => ReviewPeriod);
                 }
             }
         }

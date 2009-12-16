@@ -21,13 +21,8 @@ namespace Relax.FileBackingStore.Services
         private static readonly List<Type> KnownTypes = new List<Type>
                                                             {
                                                                 typeof (Domain.Models.Action),
-                                                                typeof (Completion),
                                                                 typeof (GtdContext),
-                                                                typeof (Cost),
-                                                                typeof (Deadline),
-                                                                typeof (Deferral),
                                                                 typeof (Delegation),
-                                                                //typeof (ItemNotes),
                                                                 typeof (Review),
                                                                 typeof (ReviewChecklistItem)
                                                             };

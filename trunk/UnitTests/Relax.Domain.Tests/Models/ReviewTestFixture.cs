@@ -1,4 +1,5 @@
 ﻿using System;
+using Caliburn.Testability.Extensions;
 using MbUnit.Framework;
 using MbUnit.Framework.ContractVerifiers;
 using Relax.Domain.Models;
@@ -30,10 +31,43 @@ namespace Relax.Domain.Tests.Models
                                                          InvalidValues =
                                                              {
                                                                  {
-                                                                     typeof (System.ArgumentOutOfRangeException), DateTime.MaxValue,
+                                                                     typeof (ArgumentOutOfRangeException), DateTime.MaxValue,
                                                                      DateTime.UtcNow + TimeSpan.FromHours(1)
                                                                      }
                                                              }
                                                      };
+
+        [VerifyContract]
+        public readonly IContract ReviewPeriod = new AccessorContract<Review, TimeSpan>
+                                                     {
+                                                         PropertyName = "ReviewPeriod",
+                                                         AcceptNullValue = false,
+                                                         ValidValues = {TimeSpan.FromDays(7)}
+                                                     };
+
+        [Test]
+        public void HorizonOfFocus_WhenSet_RaisesPropertyChanged()
+        {
+            var test = new Review();
+
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.HorizonOfFocus).When(
+                () => test.HorizonOfFocus = Infrastructure.Models.HorizonOfFocus.Project);
+        }
+
+        [Test]
+        public void LastReviewed_WhenSet_RaisesPropertyChanged()
+        {
+            var test = new Review();
+
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.LastReviewed).When(() => test.LastReviewed = DateTime.Today);
+        }
+
+        [Test]
+        public void ReviewPeriod_WhenSet_RaisesPropertyChanged()
+        {
+            var test = new Review();
+
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.ReviewPeriod).When(() => test.ReviewPeriod = TimeSpan.FromDays(7));
+        }
     }
 }

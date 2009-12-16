@@ -8,6 +8,6 @@ namespace Relax.Infrastructure.Models.Interfaces
     /// </summary>
     public interface IDeadline : INotifyPropertyChanged
     {
-        DateTime DeadlineDate { get; set; }
+        DateTime? Deadline { get; set; }
     }
 }

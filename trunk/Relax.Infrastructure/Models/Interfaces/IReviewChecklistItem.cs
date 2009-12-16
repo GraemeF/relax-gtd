@@ -3,7 +3,8 @@
     /// <summary>
     /// Prompts thinking about a particular topic that might generate stuff.
     /// </summary>
-    public interface IReviewChecklistItem : IReview, IItem
+    public interface IReviewChecklistItem : IItem
     {
+        IReview Review { get; }
     }
 }
