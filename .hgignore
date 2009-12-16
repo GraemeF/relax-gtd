@@ -10,3 +10,4 @@ trunk/Reports
 glob:trunk/Library/MEF
 glob:trunk/Library/Caliburn/src
 glob:trunk/Library/Caliburn/lib
+glob:*.typemock

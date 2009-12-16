@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Caliburn.Core.Metadata;
-using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 
@@ -11,38 +8,13 @@ namespace Relax.Domain.Models
 {
     [DataContract(IsReference = true)]
     [PerRequest(typeof (IAction))]
-    public class Action : IAction
+    public class Action : Item, IAction
     {
         public Action()
         {
             BlockingActions = new ObservableCollection<IAction>();
             Notes = new ObservableCollection<INote>();
-
-            Created = DateTime.UtcNow;
         }
-
-        #region Implementation of IItem
-
-        private string _title;
-
-        [DataMember]
-        public string Title
-        {
-            get { return _title; }
-            set
-            {
-                if (_title != value)
-                {
-                    _title = value;
-                    PropertyChanged.Raise(x => Title);
-                }
-            }
-        }
-
-        [DataMember]
-        public DateTime Created { get; private set; }
-
-        #endregion
 
         #region Implementation of IAction
 
@@ -66,7 +38,7 @@ namespace Relax.Domain.Models
                 if (_actionState != value)
                 {
                     _actionState = value;
-                    PropertyChanged.Raise(x => ActionState);
+                    NotifyPropertyChanged(x => ActionState);
                 }
             }
         }
@@ -83,7 +55,7 @@ namespace Relax.Domain.Models
                 if (_deadline != value)
                 {
                     _deadline = value;
-                    PropertyChanged.Raise(x => Deadline);
+                    NotifyPropertyChanged(x => Deadline);
                 }
             }
         }
@@ -97,7 +69,7 @@ namespace Relax.Domain.Models
                 if (_delegation != value)
                 {
                     _delegation = value;
-                    PropertyChanged.Raise(x => Delegation);
+                    NotifyPropertyChanged(x => Delegation);
                 }
             }
         }
@@ -111,7 +83,7 @@ namespace Relax.Domain.Models
                 if (_deferral != value)
                 {
                     _deferral = value;
-                    PropertyChanged.Raise(x => Deferral);
+                    NotifyPropertyChanged(x => Deferral);
                 }
             }
         }
@@ -125,7 +97,7 @@ namespace Relax.Domain.Models
                 if (_completion != value)
                 {
                     _completion = value;
-                    PropertyChanged.Raise(x => Completion);
+                    NotifyPropertyChanged(x => Completion);
                 }
             }
         }
@@ -139,7 +111,7 @@ namespace Relax.Domain.Models
                 if (_review != value)
                 {
                     _review = value;
-                    PropertyChanged.Raise(x => Review);
+                    NotifyPropertyChanged(x => Review);
                 }
             }
         }
@@ -156,7 +128,7 @@ namespace Relax.Domain.Models
                 if (_priority != value)
                 {
                     _priority = value;
-                    PropertyChanged.Raise(x => Priority);
+                    NotifyPropertyChanged(x => Priority);
                 }
             }
         }
@@ -170,7 +142,7 @@ namespace Relax.Domain.Models
                 if (_repetition != value)
                 {
                     _repetition = value;
-                    PropertyChanged.Raise(x => Repetition);
+                    NotifyPropertyChanged(x => Repetition);
                 }
             }
         }
@@ -184,7 +156,7 @@ namespace Relax.Domain.Models
                 if (_cost != value)
                 {
                     _cost = value;
-                    PropertyChanged.Raise(x => Cost);
+                    NotifyPropertyChanged(x => Cost);
                 }
             }
         }
@@ -198,16 +170,10 @@ namespace Relax.Domain.Models
                 if (_context != value)
                 {
                     _context = value;
-                    PropertyChanged.Raise(x => Context);
+                    NotifyPropertyChanged(x => Context);
                 }
             }
         }
-
-        #endregion
-
-        #region IAction Members
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
     }
