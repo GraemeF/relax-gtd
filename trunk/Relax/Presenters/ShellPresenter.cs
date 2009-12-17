@@ -28,7 +28,6 @@ namespace Relax.Presenters
             var builder = new ContainerBuilder();
             _backingStore.Initialize();
 
-            builder.Register(_backingStore.Workspace).As<IWorkspace>();
             builder.RegisterGeneratedFactory<Func<IGtdContext, IGtdContextPresenter>>(
                 new TypedService(typeof (IGtdContextPresenter)));
             builder.RegisterGeneratedFactory<Func<IGtdContext>>(

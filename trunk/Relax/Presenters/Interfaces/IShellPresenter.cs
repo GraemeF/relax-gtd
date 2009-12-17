@@ -1,8 +1,8 @@
-﻿using System.ComponentModel;
+﻿using Caliburn.PresentationFramework.ApplicationModel;
 
 namespace Relax.Presenters.Interfaces
 {
-    internal interface IShellPresenter : INotifyPropertyChanged
+    internal interface IShellPresenter : IPresenterHost
     {
     }
 }

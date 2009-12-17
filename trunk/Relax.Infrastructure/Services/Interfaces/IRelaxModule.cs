@@ -2,8 +2,7 @@
 
 namespace Relax.Infrastructure.Services.Interfaces
 {
-    public interface IRelaxModule
+    public interface IRelaxModule : IModule
     {
-        void Initialize(IContainer container);
     }
 }

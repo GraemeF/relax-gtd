@@ -75,9 +75,10 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CustomPathStartupFileLocatorTestFixture.cs" />
+    <Compile Include="Services\DefaultWorkspaceFileLocatorTestFixture.cs" />
     <Compile Include="Services\FileStreamServiceTestFixture.cs" />
     <Compile Include="Services\SerializerTestFixture.cs" />
-    <Compile Include="Services\SolutionFileServiceTestFixture.cs" />
+    <Compile Include="Services\FileBackingStoreServiceTestFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Relax.Domain\Relax.Domain.csproj">

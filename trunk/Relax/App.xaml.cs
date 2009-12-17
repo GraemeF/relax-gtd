@@ -85,7 +85,7 @@ namespace Relax
                 compositionContainer.ComposeParts(this);
 
             foreach (IRelaxModule module in Modules)
-                module.Initialize(_container);
+                builder.RegisterModule(module);
 
             builder.Build(_container);
         }
