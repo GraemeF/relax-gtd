@@ -46,7 +46,13 @@ namespace Relax.Presenters
         private void CloseContexts(IEnumerable<IGtdContext> oldItems)
         {
             foreach (IGtdContext oldItem in oldItems)
-                Shutdown(Presenters.First(x => ((IGtdContextPresenter) x).Context == oldItem), isSuccess => { });
+            {
+                IGtdContext context = oldItem;
+                IPresenter presenter = Presenters.First(x => ((IGtdContextPresenter) x).Context == context);
+                
+                Shutdown(presenter, isSuccess => { });
+                Presenters.Remove(presenter);
+            }
         }
 
         public void AddContext()

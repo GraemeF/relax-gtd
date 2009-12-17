@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Presenters\ContextPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ContextsPresenterTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ContextsViewTestFixture.cs" />
     <Compile Include="Views\ContextViewTestFixture.cs" />
