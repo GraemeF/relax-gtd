@@ -3,21 +3,48 @@ using MbUnit.Framework;
 using Moq;
 using Relax.Infrastructure.Services.Interfaces;
 using Relax.Presenters;
+using Relax.Presenters.Interfaces;
 
 namespace Relax.Tests.Presenters
 {
     [TestFixture]
     public class ShellPresenterTestFixture
     {
+        private Mock<IBackingStore> _fakeBackingStore;
+        private Mock<IContainer> _stubContainer;
+
+        [SetUp]
+        public void Setup()
+        {
+            _fakeBackingStore = new Mock<IBackingStore>();
+            _stubContainer = new Mock<IContainer>();
+        }
+
+        private ShellPresenter BuildDefaultShellPresenter()
+        {
+            return new ShellPresenter(_stubContainer.Object, _fakeBackingStore.Object);
+        }
+
         [Test]
         public void Initialize__InitializesBackingStore()
         {
-            var mockBackingStore = new Mock<IBackingStore>();
-            var test = new ShellPresenter(new Mock<IContainer>().Object, mockBackingStore.Object);
+            ShellPresenter test = BuildDefaultShellPresenter();
 
             test.Initialize();
 
-            mockBackingStore.Verify(x => x.Initialize());
+            _fakeBackingStore.Verify(x => x.Initialize());
+        }
+
+        [Test]
+        public void Initialize__PresentsContexts()
+        {
+            var stubContextsPresenter = new Mock<IContextsPresenter>();
+            _stubContainer.Setup(x => x.Resolve<IContextsPresenter>()).Returns(stubContextsPresenter.Object);
+
+            ShellPresenter test = BuildDefaultShellPresenter();
+            test.Initialize();
+
+            Assert.AreSame(stubContextsPresenter.Object, test.Contexts);
         }
     }
 }
