@@ -35,7 +35,18 @@ namespace Relax.Domain.Tests.Models
             DateTime createTime = DateTime.UtcNow;
             var test = new TestItem();
 
-            Assert.GreaterThanOrEqualTo(createTime, test.Created);
+            Assert.GreaterThanOrEqualTo(test.Created, createTime);
+        }
+
+        [Test]
+        public void PropertyChanged_RemoveHandler_()
+        {
+            // AssertThatChangeNotificationIsRaisedBy doesn't seem to remove
+            // handlers so this is just to get 100% coverage.
+            var test = new TestItem();
+
+            test.PropertyChanged += delegate { };
+            test.PropertyChanged -= delegate { };
         }
 
         #region Nested type: TestItem

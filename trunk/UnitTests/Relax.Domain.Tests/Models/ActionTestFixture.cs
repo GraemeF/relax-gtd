@@ -164,7 +164,7 @@ namespace Relax.Domain.Tests.Models
                                                                             {
                                                                                 PropertyName = "TimeRequired",
                                                                                 AcceptNullValue = false,
-                                                                                ValidValues = {TimeSpan.FromHours(1)}
+                                                                                ValidValues = {TimeSpan.FromHours(1), TimeSpan.MinValue}
                                                                             };
 
         [Test]

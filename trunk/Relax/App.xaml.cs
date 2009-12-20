@@ -12,11 +12,13 @@ using Caliburn.Autofac;
 using Caliburn.Core;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Microsoft.Practices.ServiceLocation;
+using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Services.Interfaces;
 using Relax.Presenters.Interfaces;
 
 namespace Relax
 {
+    [NoCoverage]
     public partial class App : CaliburnApplication
     {
         private ComposablePartCatalog _catalog;

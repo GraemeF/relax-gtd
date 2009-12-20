@@ -40,7 +40,7 @@ namespace Relax.Domain.Models
         [DataMember]
         public DateTime Created { get; private set; }
 
-        public virtual event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
 

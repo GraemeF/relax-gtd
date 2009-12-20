@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
 using System.Xml;
 using Relax.FileBackingStore.Services.Interfaces;
 
@@ -67,31 +66,6 @@ namespace Relax.FileBackingStore.Services
         }
 
         #endregion
-
-        /// <summary>
-        /// Save the data to a stringbuilder.
-        /// </summary>
-        /// <param name="strBuilder">String to save to.</param>
-        ///<param name="model"></param>
-        ///<param name="knownTypes"></param>
-        public void Save(StringBuilder strBuilder, T model, IEnumerable<Type> knownTypes)
-        {
-            using (XmlWriter writer = XmlWriter.Create(strBuilder, new XmlWriterSettings {Indent = true}))
-                Save(writer, model, knownTypes);
-        }
-
-        /// <summary>
-        /// Loads a FileBackingStore from the specified string.
-        /// </summary>
-        /// <param name="str">The string.</param>
-        ///<param name="knownTypes"></param>
-        ///<returns></returns>
-        public T Load(string str, IEnumerable<Type> knownTypes)
-        {
-            var strReader = new StringReader(str);
-            using (XmlReader reader = XmlReader.Create(strReader))
-                return Load(reader, knownTypes);
-        }
 
         /// <summary>
         /// Gets a serializer fot the FileBackingStore.

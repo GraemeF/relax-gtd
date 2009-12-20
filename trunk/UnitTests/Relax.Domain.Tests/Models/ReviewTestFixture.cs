@@ -69,5 +69,16 @@ namespace Relax.Domain.Tests.Models
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.ReviewPeriod).When(() => test.ReviewPeriod = TimeSpan.FromDays(7));
         }
+
+        [Test]
+        public void PropertyChanged_RemoveHandler_()
+        {
+            // AssertThatChangeNotificationIsRaisedBy doesn't seem to remove
+            // handlers so this is just to get 100% coverage.
+            var test = new Review();
+
+            test.PropertyChanged += delegate { };
+            test.PropertyChanged -= delegate { };
+        }
     }
 }
