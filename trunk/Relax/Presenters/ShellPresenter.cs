@@ -14,6 +14,7 @@ namespace Relax.Presenters
     {
         private readonly IBackingStore _backingStore;
         private readonly IContainer _container;
+        private IPresenter _dialogModel;
 
         public ShellPresenter(IContainer container, IBackingStore backingStore)
         {
@@ -22,6 +23,16 @@ namespace Relax.Presenters
         }
 
         public IContextsPresenter Contexts { get; private set; }
+
+        public IPresenter DialogModel
+        {
+            get { return _dialogModel; }
+            private set
+            {
+                _dialogModel = value;
+                NotifyOfPropertyChange("DialogModel");
+            }
+        }
 
         #region IShellPresenter Members
 
@@ -33,6 +44,7 @@ namespace Relax.Presenters
             builder.Register(_backingStore.Workspace);
             builder.RegisterGeneratedFactory<Func<IGtdContext, IGtdContextPresenter>>(new TypedService(typeof (IGtdContextPresenter)));
             builder.RegisterGeneratedFactory<Func<IGtdContext>>(new TypedService(typeof (IGtdContext)));
+            builder.RegisterGeneratedFactory<Func<IInputPresenter>>(new TypedService(typeof (IGtdContext)));
 
             builder.Build(_container);
 
@@ -44,6 +56,26 @@ namespace Relax.Presenters
         public void Save()
         {
             _backingStore.Save();
+        }
+
+        public void ShowDialog<T>(T presenter)
+            where T : IPresenter, ILifecycleNotifier
+        {
+            presenter.WasShutdown +=
+                delegate { DialogModel = null; };
+
+            DialogModel = presenter;
+        }
+
+        public void ShowDialog<T>()
+            where T : IPresenter, ILifecycleNotifier
+        {
+            ShowDialog(_container.Resolve<T>());
+        }
+
+        public void AddInboxAction()
+        {
+            ShowDialog<IInputPresenter>();
         }
     }
 }

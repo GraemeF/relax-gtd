@@ -99,10 +99,10 @@
   <ItemGroup>
     <Compile Include="Presenters\ContextsPresenter.cs" />
     <Compile Include="Presenters\ContextPresenter.cs" />
-    <Compile Include="Presenters\InputViewPresenter.cs" />
+    <Compile Include="Presenters\InputPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IGtdContextPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IContextsPresenter.cs" />
-    <Compile Include="Presenters\Interfaces\IInputViewPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IInputPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -157,6 +157,10 @@
     <ProjectReference Include="..\Library\Caliburn\src\Caliburn.PresentationFramework\Caliburn.PresentationFramework.csproj">
       <Project>{4B343291-DB03-4ADA-96CD-3CFFA3C838D7}</Project>
       <Name>Caliburn.PresentationFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\Caliburn\src\Caliburn.WPF.ApplicationFramework\Caliburn.WPF.ApplicationFramework.csproj">
+      <Project>{0567B942-B5ED-430F-8E45-FE639039B75B}</Project>
+      <Name>Caliburn.WPF.ApplicationFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Library\MEF\src\ComponentModel\ComponentModel.csproj">
       <Project>{A36AEF66-2411-4225-B68E-F2D29368A31B}</Project>

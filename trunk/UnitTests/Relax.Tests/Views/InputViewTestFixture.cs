@@ -6,13 +6,13 @@ using Relax.Views;
 namespace Relax.Tests.Views
 {
     [TestFixture]
-    public class InputViewTestFixture
+    public class InputViewTestFixture : ViewTestFixtureBase
     {
         [Test]
         public void Constructor__BindsWithoutError()
         {
-            BindingValidator<InputViewPresenter> validator = Validator.For<InputView, InputViewPresenter>();
-            ValidationResult<InputViewPresenter> result = validator.Validate();
+            BindingValidator<InputPresenter> validator = Validator.For<InputView, InputPresenter>();
+            ValidationResult<InputPresenter> result = validator.Validate();
 
             result.AssertNoErrors();
         }
@@ -20,8 +20,8 @@ namespace Relax.Tests.Views
         [Test]
         public void ActionTitle__IsBound()
         {
-            BindingValidator<InputViewPresenter> validator = Validator.For<InputView, InputViewPresenter>();
-            ValidationResult<InputViewPresenter> result = validator.Validate();
+            BindingValidator<InputPresenter> validator = Validator.For<InputView, InputPresenter>();
+            ValidationResult<InputPresenter> result = validator.Validate();
 
             result.AssertWasBound(x => x.Action.Title);
         }

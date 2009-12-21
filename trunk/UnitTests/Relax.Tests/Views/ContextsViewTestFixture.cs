@@ -6,7 +6,7 @@ using Relax.Views;
 namespace Relax.Tests.Views
 {
     [TestFixture]
-    public class ContextsViewTestFixture
+    public class ContextsViewTestFixture : ViewTestFixtureBase
     {
         [Test]
         public void Presenters__IsBound()

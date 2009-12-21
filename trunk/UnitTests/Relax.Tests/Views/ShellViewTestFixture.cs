@@ -6,7 +6,7 @@ using Relax.Views;
 namespace Relax.Tests.Views
 {
     [TestFixture]
-    public class ShellViewTestFixture
+    public class ShellViewTestFixture : ViewTestFixtureBase
     {
         [Test]
         public void Constructor__BindsWithoutError()

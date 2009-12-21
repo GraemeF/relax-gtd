@@ -81,13 +81,14 @@
   <ItemGroup>
     <Compile Include="Presenters\ContextPresenterTestFixture.cs" />
     <Compile Include="Presenters\ContextsPresenterTestFixture.cs" />
-    <Compile Include="Presenters\InputViewPresenterTestFixture.cs" />
+    <Compile Include="Presenters\InputPresenterTestFixture.cs" />
     <Compile Include="Presenters\ShellPresenterTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ContextsViewTestFixture.cs" />
     <Compile Include="Views\ContextViewTestFixture.cs" />
     <Compile Include="Views\InputViewTestFixture.cs" />
     <Compile Include="Views\ShellViewTestFixture.cs" />
+    <Compile Include="Views\ViewTestFixtureBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Library\Caliburn\src\Caliburn.Core\Caliburn.Core.csproj">
@@ -101,6 +102,10 @@
     <ProjectReference Include="..\..\Library\Caliburn\src\Caliburn.Testability\Caliburn.Testability.csproj">
       <Project>{88B9DA1A-E26F-423F-A051-77CF03A62077}</Project>
       <Name>Caliburn.Testability</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Library\Caliburn\src\Caliburn.WPF.ApplicationFramework\Caliburn.WPF.ApplicationFramework.csproj">
+      <Project>{0567B942-B5ED-430F-8E45-FE639039B75B}</Project>
+      <Name>Caliburn.WPF.ApplicationFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Relax.Infrastructure\Relax.Infrastructure.csproj">
       <Project>{893AD8AB-D318-4690-8B24-EE1D6FE254F9}</Project>

@@ -2,7 +2,7 @@ using Caliburn.PresentationFramework.ApplicationModel;
 
 namespace Relax.Presenters.Interfaces
 {
-    public interface IInputViewPresenter : IPresenter
+    public interface IInputPresenter : IPresenter, ILifecycleNotifier
     {
     }
 }

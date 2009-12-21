@@ -59,5 +59,18 @@ namespace Relax.Tests.Presenters
 
             _fakeBackingStore.Verify(x => x.Save());
         }
+
+        [Test]
+        public void AddInboxAction__ShowsInput()
+        {
+            var stubInputPresenter = new Mock<IInputPresenter>();
+            _stubContainer.Setup(x => x.Resolve<IInputPresenter>()).Returns(stubInputPresenter.Object);
+
+            ShellPresenter test = BuildDefaultShellPresenter();
+
+            test.AddInboxAction();
+
+            Assert.AreSame(stubInputPresenter.Object, test.DialogModel);
+        }
     }
 }

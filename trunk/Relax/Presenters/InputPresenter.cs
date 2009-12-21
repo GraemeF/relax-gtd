@@ -1,15 +1,18 @@
+using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Filters;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
-    public class InputViewPresenter : Presenter, IInputViewPresenter
+    [PerRequest(typeof (IInputPresenter))]
+    public class InputPresenter : Presenter, IInputPresenter
     {
         private readonly IWorkspace _workspace;
 
-        public InputViewPresenter(IWorkspace workspace, IAction newAction)
+        public InputPresenter(IWorkspace workspace, IAction newAction)
         {
             _workspace = workspace;
             Action = newAction;
@@ -18,10 +21,17 @@ namespace Relax.Presenters
 
         public IAction Action { get; private set; }
 
+        [Preview("CanAdd")]
+        [Dependencies("Action.Title")]
         public void Add()
         {
             _workspace.Add(Action);
             Shutdown();
+        }
+
+        public bool CanAdd()
+        {
+            return Action.Title != string.Empty;
         }
     }
 }

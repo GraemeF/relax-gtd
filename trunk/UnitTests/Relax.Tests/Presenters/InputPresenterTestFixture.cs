@@ -7,7 +7,7 @@ using Relax.Presenters;
 namespace Relax.Tests.Presenters
 {
     [TestFixture]
-    public class InputViewPresenterTestFixture
+    public class InputPresenterTestFixture
     {
         private Mock<IAction> _fakeAction;
         private Mock<IWorkspace> _fakeWorkspace;
@@ -19,15 +19,15 @@ namespace Relax.Tests.Presenters
             _fakeAction = new Mock<IAction>();
         }
 
-        private InputViewPresenter BuildDefaultInputViewPresenter()
+        private InputPresenter BuildDefaultInputViewPresenter()
         {
-            return new InputViewPresenter(_fakeWorkspace.Object, _fakeAction.Object);
+            return new InputPresenter(_fakeWorkspace.Object, _fakeAction.Object);
         }
 
         [Test]
         public void Action__ReturnsAction()
         {
-            InputViewPresenter test = BuildDefaultInputViewPresenter();
+            InputPresenter test = BuildDefaultInputViewPresenter();
 
             Assert.AreSame(_fakeAction.Object, test.Action);
         }
@@ -35,7 +35,7 @@ namespace Relax.Tests.Presenters
         [Test]
         public void Add_WhenTitleIsNotEmpty_AddsItemToInbox()
         {
-            InputViewPresenter test = BuildDefaultInputViewPresenter();
+            InputPresenter test = BuildDefaultInputViewPresenter();
 
             test.Add();
 
@@ -43,9 +43,29 @@ namespace Relax.Tests.Presenters
         }
 
         [Test]
+        public void CanAdd_WhenTitleIsEmpty_IsFalse()
+        {
+            _fakeAction.Setup(x => x.Title).Returns(string.Empty);
+
+            InputPresenter test = BuildDefaultInputViewPresenter();
+
+            Assert.IsFalse(test.CanAdd());
+        }
+
+        [Test]
+        public void CanAdd_WhenTitleIsNotEmpty_IsTrue()
+        {
+            _fakeAction.Setup(x => x.Title).Returns("This action has a title");
+
+            InputPresenter test = BuildDefaultInputViewPresenter();
+
+            Assert.IsTrue(test.CanAdd());
+        }
+
+        [Test]
         public void Constructor__SetsActionStateToInbox()
         {
-            InputViewPresenter test = BuildDefaultInputViewPresenter();
+            InputPresenter test = BuildDefaultInputViewPresenter();
 
             _fakeAction.VerifySet(x => x.ActionState = State.Inbox);
         }

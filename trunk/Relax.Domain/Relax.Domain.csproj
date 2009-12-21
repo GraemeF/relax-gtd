@@ -66,6 +66,10 @@
       <Project>{D7357C4C-BFFF-4EE4-8D40-0803FAAFF38A}</Project>
       <Name>Caliburn.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Library\Caliburn\src\Caliburn.WPF.ApplicationFramework\Caliburn.WPF.ApplicationFramework.csproj">
+      <Project>{0567B942-B5ED-430F-8E45-FE639039B75B}</Project>
+      <Name>Caliburn.WPF.ApplicationFramework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Relax.Infrastructure\Relax.Infrastructure.csproj">
       <Project>{893AD8AB-D318-4690-8B24-EE1D6FE254F9}</Project>
       <Name>Relax.Infrastructure</Name>

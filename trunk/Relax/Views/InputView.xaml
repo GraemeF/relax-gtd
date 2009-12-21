@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cm="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework">
     <StackPanel Orientation="Horizontal">
-        <TextBox MinWidth="600" Text="{Binding Action.Title}" />
+        <TextBox MinWidth="600" Text="{Binding Action.Title, UpdateSourceTrigger=PropertyChanged}" />
         <Button Content="Add" Padding="10"
                 cm:Message.Attach="[Event Click] = [Action Add]" />
     </StackPanel>

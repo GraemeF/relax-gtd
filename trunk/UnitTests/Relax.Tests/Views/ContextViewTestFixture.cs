@@ -6,7 +6,7 @@ using Relax.Views;
 namespace Relax.Tests.Views
 {
     [TestFixture]
-    public class ContextViewTestFixture
+    public class ContextViewTestFixture : ViewTestFixtureBase
     {
         [Test]
         public void IsReadOnly__IsBound()
