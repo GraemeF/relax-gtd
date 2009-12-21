@@ -7,11 +7,11 @@ namespace Relax.Domain.Tests.Models
     public class WorkspaceTestFixture
     {
         [Test]
-        public void Contexts_Initially_Contains3Items()
+        public void Contexts_Initially_IsEmpty()
         {
             var test = new Workspace();
 
-            Assert.AreEqual(3, test.Contexts.Count);
+            Assert.IsEmpty(test.Contexts);
         }
     }
 }

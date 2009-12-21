@@ -46,5 +46,15 @@ namespace Relax.Tests.Presenters
 
             Assert.AreSame(stubContextsPresenter.Object, test.Contexts);
         }
+
+        [Test]
+        public void Save__SavesToBackingStore()
+        {
+            ShellPresenter test = BuildDefaultShellPresenter();
+
+            test.Save();
+
+            _fakeBackingStore.Verify(x => x.Save());
+        }
     }
 }

@@ -7,6 +7,7 @@ using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.Domain.Models
 {
+    [DataContract(IsReference = true)]
     public abstract class Item : IItem
     {
         private string _title;

@@ -23,19 +23,27 @@ namespace Relax.Presenters
 
         public IContextsPresenter Contexts { get; private set; }
 
+        #region IShellPresenter Members
+
         public override void Initialize()
         {
             var builder = new ContainerBuilder();
             _backingStore.Initialize();
 
-            builder.RegisterGeneratedFactory<Func<IGtdContext, IGtdContextPresenter>>(
-                new TypedService(typeof (IGtdContextPresenter)));
-            builder.RegisterGeneratedFactory<Func<IGtdContext>>(
-                new TypedService(typeof (IGtdContext)));
+            builder.Register(_backingStore.Workspace);
+            builder.RegisterGeneratedFactory<Func<IGtdContext, IGtdContextPresenter>>(new TypedService(typeof (IGtdContextPresenter)));
+            builder.RegisterGeneratedFactory<Func<IGtdContext>>(new TypedService(typeof (IGtdContext)));
 
             builder.Build(_container);
 
             Contexts = _container.Resolve<IContextsPresenter>();
+        }
+
+        #endregion
+
+        public void Save()
+        {
+            _backingStore.Save();
         }
     }
 }
