@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using MbUnit.Framework;
 using Moq;
+using Relax.Infrastructure.Models.Interfaces;
 using Relax.Infrastructure.Services.Interfaces;
 using Relax.Presenters;
 using Relax.Presenters.Interfaces;
@@ -18,6 +19,8 @@ namespace Relax.Tests.Presenters
         {
             _fakeBackingStore = new Mock<IBackingStore>();
             _stubContainer = new Mock<IContainer>();
+
+            _fakeBackingStore.Setup(x => x.Workspace).Returns(new Mock<IWorkspace>().Object);
         }
 
         private ShellPresenter BuildDefaultShellPresenter()

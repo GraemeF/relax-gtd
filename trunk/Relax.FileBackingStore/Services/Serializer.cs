@@ -39,7 +39,7 @@ namespace Relax.FileBackingStore.Services
         }
 
         /// <summary>
-        /// Loads a FileBackingStore from the specified stream.
+        /// Loads a <see cref="FileBackingStore"/> from the specified stream.
         /// </summary>
         /// <param name="stream">The stream.</param>
         ///<param name="knownTypes"></param>
@@ -51,7 +51,7 @@ namespace Relax.FileBackingStore.Services
         }
 
         /// <summary>
-        /// Loads a FileBackingStore from the specified reader.
+        /// Loads a <see cref="FileBackingStore"/> from the specified reader.
         /// </summary>
         /// <param name="reader">The reader.</param>
         ///<param name="knownTypes"></param>
@@ -68,9 +68,9 @@ namespace Relax.FileBackingStore.Services
         #endregion
 
         /// <summary>
-        /// Gets a serializer fot the FileBackingStore.
+        /// Gets a serializer for the <see cref="FileBackingStore"/>.
         /// </summary>
-        /// <returns>Serializer.</returns>
+        /// <returns><see cref="Serializer"/>.</returns>
         private static DataContractSerializer GetSerializer(IEnumerable<Type> knownTypes)
         {
             return new DataContractSerializer(typeof (T), knownTypes);
