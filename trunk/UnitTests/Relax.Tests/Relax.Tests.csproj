@@ -81,10 +81,12 @@
   <ItemGroup>
     <Compile Include="Presenters\ContextPresenterTestFixture.cs" />
     <Compile Include="Presenters\ContextsPresenterTestFixture.cs" />
+    <Compile Include="Presenters\InputViewPresenterTestFixture.cs" />
     <Compile Include="Presenters\ShellPresenterTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ContextsViewTestFixture.cs" />
     <Compile Include="Views\ContextViewTestFixture.cs" />
+    <Compile Include="Views\InputViewTestFixture.cs" />
     <Compile Include="Views\ShellViewTestFixture.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -27,6 +27,11 @@ namespace Relax.Domain.Models
         [DataMember(Order = 3)]
         public ObservableCollection<IReviewChecklistItem> ReviewChecklistItems { get; private set; }
 
+        public void Add(IAction action)
+        {
+            Actions.Add(action);
+        }
+
         #endregion
     }
 }

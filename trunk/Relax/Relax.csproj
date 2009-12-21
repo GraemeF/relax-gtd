@@ -99,8 +99,10 @@
   <ItemGroup>
     <Compile Include="Presenters\ContextsPresenter.cs" />
     <Compile Include="Presenters\ContextPresenter.cs" />
+    <Compile Include="Presenters\InputViewPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IGtdContextPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IContextsPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IInputViewPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
