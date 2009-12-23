@@ -97,8 +97,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presenters\ActionPresenter.cs" />
     <Compile Include="Presenters\ContextsPresenter.cs" />
     <Compile Include="Presenters\ContextPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IActionPresenter.cs" />
     <Compile Include="Presenters\InputPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IGtdContextPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IContextsPresenter.cs" />
@@ -165,6 +167,10 @@
     <ProjectReference Include="..\Library\MEF\src\ComponentModel\ComponentModel.csproj">
       <Project>{A36AEF66-2411-4225-B68E-F2D29368A31B}</Project>
       <Name>ComponentModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\MvvmFoundation.Wpf\MvvmFoundation.Wpf.csproj">
+      <Project>{2E922430-EAAC-4589-A8F4-F35FBB9799B8}</Project>
+      <Name>MvvmFoundation.Wpf</Name>
     </ProjectReference>
     <ProjectReference Include="..\Relax.FileBackingStore\Relax.FileBackingStore.csproj">
       <Project>{3E1C299C-EA0F-478A-AA71-D5ABD44939C0}</Project>
