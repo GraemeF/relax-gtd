@@ -74,22 +74,11 @@
                         </Grid>
                         <!-- actions -->
                         <Grid x:Name="ActionsListGrid">
-                            <ContentControl x:Name="ActionsContent"
-                                            Margin="0,10,0,0"
-                                            ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                            HorizontalContentAlignment="Stretch"
-                                            VerticalContentAlignment="Stretch">
-                                <ContentControl.Template>
-                                    <ControlTemplate TargetType="{x:Type ContentControl}">
-                                        <Grid>
-                                            <ContentPresenter Margin="10,0,10,0"
-                                                              Content="{TemplateBinding Content}" />
-                                        </Grid>
-                                    </ControlTemplate>
-                                </ContentControl.Template>
-                            </ContentControl>
                             <TextBlock Style="{DynamicResource RegionLabel}"
                                        Text="Actions" />
+                            <ContentControl x:Name="ActionsContent"
+                                            Margin="10,0,10,0"
+                                            cal:View.Model="{Binding Actions}" />
                         </Grid>
                     </DockPanel>
                     <!-- details -->

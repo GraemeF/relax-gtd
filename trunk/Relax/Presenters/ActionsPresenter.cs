@@ -9,14 +9,14 @@ namespace Relax.Presenters
     [PerRequest(typeof (IActionsPresenter))]
     public class ActionsPresenter : PresenterManager, IActionsPresenter
     {
-        private readonly Func<IAction, IActionPresenter> _contextPresenterFactory;
+        private readonly Func<IAction, IActionPresenter> _actionPresenterFactory;
         private readonly IWorkspace _workspace;
 
         public ActionsPresenter(IWorkspace workspace,
                                 Func<IAction, IActionPresenter> contextPresenterFactory)
         {
             _workspace = workspace;
-            _contextPresenterFactory = contextPresenterFactory;
+            _actionPresenterFactory = contextPresenterFactory;
         }
     }
 }

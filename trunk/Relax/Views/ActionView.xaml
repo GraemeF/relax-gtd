@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="Relax.Views.ActionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cal="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework">
+    <Border BorderBrush="Salmon"
+            BorderThickness="3"
+            CornerRadius="2">
+        <TextBox Text="{Binding Path=DisplayName, FallbackValue=Action}"
+                 ToolTip="The title of the action." />
+    </Border>
+</UserControl>
