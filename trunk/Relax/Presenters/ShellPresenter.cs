@@ -23,6 +23,7 @@ namespace Relax.Presenters
         }
 
         public IContextsPresenter Contexts { get; private set; }
+        public IActionsPresenter Actions { get; private set; }
 
         public IPresenter DialogModel
         {
@@ -45,10 +46,12 @@ namespace Relax.Presenters
             builder.RegisterGeneratedFactory<Func<IGtdContext, IGtdContextPresenter>>(new TypedService(typeof (IGtdContextPresenter)));
             builder.RegisterGeneratedFactory<Func<IGtdContext>>(new TypedService(typeof (IGtdContext)));
             builder.RegisterGeneratedFactory<Func<IInputPresenter>>(new TypedService(typeof (IGtdContext)));
+            builder.RegisterGeneratedFactory<Func<IAction, IActionPresenter>>(new TypedService(typeof(IActionPresenter)));
 
             builder.Build(_container);
 
             Contexts = _container.Resolve<IContextsPresenter>();
+            Actions = _container.Resolve<IActionsPresenter>();
         }
 
         #endregion

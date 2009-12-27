@@ -14,11 +14,7 @@ namespace Relax.Domain.Tests.Models
                                               {
                                                   PropertyName = "Title",
                                                   AcceptNullValue = false,
-                                                  ValidValues = {"Some title"},
-                                                  InvalidValues =
-                                                      {
-                                                          {typeof (ArgumentException), string.Empty}
-                                                      }
+                                                  ValidValues = {"Some title", string.Empty}
                                               };
 
         [Test]

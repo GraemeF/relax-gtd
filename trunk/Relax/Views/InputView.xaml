@@ -4,7 +4,14 @@
     xmlns:cm="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework">
     <StackPanel Orientation="Horizontal">
         <TextBox MinWidth="600" Text="{Binding Action.Title, UpdateSourceTrigger=PropertyChanged}" />
-        <Button Content="Add" Padding="10"
-                cm:Message.Attach="[Event Click] = [Action Add]" />
+        <Button Content="Add"
+                Padding="10"
+                cm:Message.Attach="[Event Click] = [Action Add]"
+                IsDefault="True" />
+        <Button Content="Cancel"
+                Padding="10"
+                cm:Message.Attach="[Event Click] = [Action Shutdown]"
+                IsCancel="True"
+                Visibility="Visible" />
     </StackPanel>
 </UserControl>

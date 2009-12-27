@@ -53,10 +53,10 @@ namespace Relax.Tests.Presenters
         public void Presenters_WhenAContextIsRemovedFromTheWorkspace_ShutsDownContextPresenter()
         {
             var stubContext = new Mock<IGtdContext>();
-            _stubContextPresenter.Setup(x => x.Context).Returns(stubContext.Object);
+            _stubContextPresenter.Setup(x => x.Model).Returns(stubContext.Object);
             _stubWorkspace.Object.Contexts.Add(stubContext.Object);
 
-            var test = BuildDefaultContextsPresenter();
+            ContextsPresenter test = BuildDefaultContextsPresenter();
 
             _stubWorkspace.Object.Contexts.RemoveAt(0);
 
