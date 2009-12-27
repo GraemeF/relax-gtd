@@ -32,35 +32,11 @@ namespace Relax.Tests.Presenters
         }
 
         [Test]
-        public void Constructor_WhenThereIsAContext_OpensContextPresenter()
-        {
-            _stubWorkspace.Object.Contexts.Add(new Mock<IGtdContext>().Object);
-
-            BuildDefaultContextsPresenter();
-
-            _stubContextPresenter.Verify(x => x.Initialize());
-        }
-
-        [Test]
         public void AddContext__AddsAContextToTheWorkspace()
         {
             BuildDefaultContextsPresenter().AddContext();
 
             Assert.Contains(_stubWorkspace.Object.Contexts, _stubNewContext.Object);
-        }
-
-        [Test]
-        public void Presenters_WhenAContextIsRemovedFromTheWorkspace_ShutsDownContextPresenter()
-        {
-            var stubContext = new Mock<IGtdContext>();
-            _stubContextPresenter.Setup(x => x.Model).Returns(stubContext.Object);
-            _stubWorkspace.Object.Contexts.Add(stubContext.Object);
-
-            ContextsPresenter test = BuildDefaultContextsPresenter();
-
-            _stubWorkspace.Object.Contexts.RemoveAt(0);
-
-            Assert.IsEmpty(test.Presenters);
         }
     }
 }
