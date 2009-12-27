@@ -12,11 +12,9 @@ namespace Relax.Presenters
 
         public ContextPresenter(IGtdContext context)
         {
-            Context = context;
+            Model = context;
             _isReadOnly = true;
         }
-
-        public IGtdContext Context { get; private set; }
 
         public bool IsReadOnly
         {
@@ -30,6 +28,12 @@ namespace Relax.Presenters
                 }
             }
         }
+
+        #region IGtdContextPresenter Members
+
+        public IGtdContext Model { get; private set; }
+
+        #endregion
 
         public void Rename()
         {

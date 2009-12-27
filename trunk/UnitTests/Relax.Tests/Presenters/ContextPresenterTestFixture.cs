@@ -34,7 +34,7 @@ namespace Relax.Tests.Presenters
         public void AllProperties_WhenChanged_RaisePropertyChanged()
         {
             var test = new ContextPresenter(new Mock<IGtdContext>().Object);
-            test.AssertThatAllProperties().Ignoring(x => x.Context).RaiseChangeNotification();
+            test.AssertThatAllProperties().Ignoring(x => x.Model).RaiseChangeNotification();
         }
     }
 }

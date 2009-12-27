@@ -6,7 +6,7 @@ using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
-    [PerRequest(typeof (IActionPresenter))]
+    [PerRequest(typeof(IActionPresenter))]
     public class ActionPresenter : Presenter, IActionPresenter
     {
         private readonly IAction _action;

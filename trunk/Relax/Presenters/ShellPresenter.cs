@@ -23,6 +23,7 @@ namespace Relax.Presenters
         }
 
         public IContextsPresenter Contexts { get; private set; }
+        public IActionsPresenter Actions { get; private set; }
 
         public IPresenter DialogModel
         {
@@ -49,6 +50,7 @@ namespace Relax.Presenters
             builder.Build(_container);
 
             Contexts = _container.Resolve<IContextsPresenter>();
+            Actions = _container.Resolve<IActionsPresenter>();
         }
 
         #endregion

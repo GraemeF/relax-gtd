@@ -27,8 +27,6 @@ namespace Relax.Domain.Models
             {
                 if (value == null)
                     throw new ArgumentNullException("value");
-                if (value == string.Empty)
-                    throw new ArgumentException("A title is required.", "value");
 
                 if (_title != value)
                 {
