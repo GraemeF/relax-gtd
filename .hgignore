@@ -1,0 +1,13 @@
+syntax: glob
+
+bin
+obj
+_ReSharper.*
+*.user
+*.suo
+*.cache
+trunk/Reports
+glob:trunk/Library/MEF
+glob:trunk/Library/Caliburn/src
+glob:trunk/Library/Caliburn/lib
+glob:*.typemock
