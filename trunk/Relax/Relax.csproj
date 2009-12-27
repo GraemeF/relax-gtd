@@ -108,6 +108,7 @@
     <Compile Include="Presenters\Interfaces\IContextsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IInputPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IModelPresenter.cs" />
+    <Compile Include="Presenters\ItemPresenter.cs" />
     <Compile Include="Presenters\ListPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

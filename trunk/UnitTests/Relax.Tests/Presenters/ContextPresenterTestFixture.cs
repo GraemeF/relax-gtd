@@ -9,6 +9,29 @@ namespace Relax.Tests.Presenters
     [TestFixture]
     public class ContextPresenterTestFixture
     {
+        private const string TestTitle = "Test Title";
+
+        [Test]
+        public void DisplayNameGet__ReturnsModelTitle()
+        {
+            var stubContext = new Mock<IGtdContext>();
+            stubContext.Setup(x => x.Title).Returns(TestTitle);
+
+            var test = new ContextPresenter(stubContext.Object);
+
+            Assert.AreEqual(TestTitle, test.DisplayName);
+        }
+
+        [Test]
+        public void DisplayNameSet__UpdatesModelTitle()
+        {
+            var mockContext = new Mock<IGtdContext>();
+
+            new ContextPresenter(mockContext.Object) {DisplayName = TestTitle};
+
+            mockContext.VerifySet(x => x.Title = TestTitle);
+        }
+
         [Test]
         public void Rename__SetsReadOnlyToFalse()
         {
@@ -34,7 +57,7 @@ namespace Relax.Tests.Presenters
         public void AllProperties_WhenChanged_RaisePropertyChanged()
         {
             var test = new ContextPresenter(new Mock<IGtdContext>().Object);
-            test.AssertThatAllProperties().Ignoring(x => x.Model).RaiseChangeNotification();
+            test.AssertThatAllProperties().Ignoring(x => x.Model).Ignoring(x => x.DisplayName).RaiseChangeNotification();
         }
     }
 }
