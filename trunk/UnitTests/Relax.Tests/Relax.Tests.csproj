@@ -79,10 +79,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Presenters\ActionPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ActionsPresenterTestFixture.cs" />
     <Compile Include="Presenters\ContextPresenterTestFixture.cs" />
     <Compile Include="Presenters\ContextsPresenterTestFixture.cs" />
     <Compile Include="Presenters\InputPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ItemPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ListPresenterTestFixture.cs" />
+    <Compile Include="TestEntities\ITestItem.cs" />
     <Compile Include="Presenters\ShellPresenterTestFixture.cs" />
+    <Compile Include="TestEntities\ITestItemPresenter.cs" />
+    <Compile Include="TestEntities\TestItemPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ContextsViewTestFixture.cs" />
     <Compile Include="Views\ContextViewTestFixture.cs" />

@@ -1,13 +1,14 @@
-﻿using MbUnit.Framework;
+using Caliburn.Testability.Extensions;
+using MbUnit.Framework;
 using Moq;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters;
+using Relax.Tests.TestEntities;
 
 namespace Relax.Tests.Presenters
 {
     [TestFixture]
-    [Ignore]
-    public class ContextPresenterTestFixture
+    public class ItemPresenterTestFixture
     {
         private const string TestTitle = "Test Title";
 
@@ -51,6 +52,13 @@ namespace Relax.Tests.Presenters
             test.FinishRename();
 
             Assert.IsTrue(test.IsReadOnly);
+        }
+
+        [Test]
+        public void AllProperties_WhenChanged_RaisePropertyChanged()
+        {
+            var test = new TestItemPresenter(new Mock<ITestItem>().Object);
+            test.AssertThatAllProperties().Ignoring(x => x.Model).Ignoring(x => x.DisplayName).RaiseChangeNotification();
         }
     }
 }
