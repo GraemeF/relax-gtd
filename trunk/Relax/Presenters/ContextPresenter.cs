@@ -1,22 +1,18 @@
 using Caliburn.Core.Metadata;
-using Caliburn.PresentationFramework.ApplicationModel;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
     [PerRequest(typeof (IGtdContextPresenter))]
-    public class ContextPresenter : Presenter, IGtdContextPresenter
+    public class ContextPresenter : ItemPresenter<IGtdContext>, IGtdContextPresenter
     {
         private bool _isReadOnly;
 
-        public ContextPresenter(IGtdContext context)
+        public ContextPresenter(IGtdContext context) : base(context)
         {
-            Context = context;
             _isReadOnly = true;
         }
-
-        public IGtdContext Context { get; private set; }
 
         public bool IsReadOnly
         {

@@ -16,5 +16,14 @@ namespace Relax.Tests.Views
 
             Assert.IsTrue(result.WasBoundTo(x => x.IsReadOnly));
         }
+
+        [Test]
+        public void DisplayName__IsBound()
+        {
+            BindingValidator<ContextPresenter> validator = Validator.For<ContextView, ContextPresenter>();
+            ValidationResult<ContextPresenter> result = validator.Validate();
+
+            Assert.IsTrue(result.WasBoundTo(x => x.DisplayName));
+        }
     }
 }
