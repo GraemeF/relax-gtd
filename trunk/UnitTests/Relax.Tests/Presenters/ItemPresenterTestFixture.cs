@@ -36,7 +36,7 @@ namespace Relax.Tests.Presenters
         [Test]
         public void Rename__SetsReadOnlyToFalse()
         {
-            var test = new ContextPresenter(new Mock<IGtdContext>().Object);
+            var test = new TestItemPresenter(new Mock<ITestItem>().Object);
 
             test.Rename();
 
@@ -46,7 +46,7 @@ namespace Relax.Tests.Presenters
         [Test]
         public void FinishRename__SetsReadOnlyToTrue()
         {
-            var test = new ContextPresenter(new Mock<IGtdContext>().Object);
+            var test = new TestItemPresenter(new Mock<ITestItem>().Object);
 
             test.Rename();
             test.FinishRename();

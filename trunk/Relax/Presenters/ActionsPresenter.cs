@@ -1,22 +1,17 @@
 using System;
 using Caliburn.Core.Metadata;
-using Caliburn.PresentationFramework.ApplicationModel;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
     [PerRequest(typeof (IActionsPresenter))]
-    public class ActionsPresenter : PresenterManager, IActionsPresenter
+    public class ActionsPresenter : ListPresenter<IAction, IActionPresenter>, IActionsPresenter
     {
-        private readonly Func<IAction, IActionPresenter> _actionPresenterFactory;
-        private readonly IWorkspace _workspace;
-
         public ActionsPresenter(IWorkspace workspace,
-                                Func<IAction, IActionPresenter> contextPresenterFactory)
+                                Func<IAction, IActionPresenter> actionPresenterFactory)
+            : base(workspace.Actions, actionPresenterFactory)
         {
-            _workspace = workspace;
-            _actionPresenterFactory = contextPresenterFactory;
         }
     }
 }
