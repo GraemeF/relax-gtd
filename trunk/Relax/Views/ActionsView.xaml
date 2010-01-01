@@ -10,7 +10,7 @@
     </UserControl.Resources>
     <DockPanel>
         <ListBox ItemsSource="{Binding Presenters}"
-                 ItemsPanel="{DynamicResource ItemsWrapPanel}">
+                 ItemsPanel="{DynamicResource ItemsWrapPanel}" Background="{x:Null}" BorderBrush="{x:Null}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <ContentControl cal:View.Model="{Binding}"

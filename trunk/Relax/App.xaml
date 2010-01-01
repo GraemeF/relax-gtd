@@ -10,5 +10,13 @@
         <Converters:CollapsedWhenNullConverter x:Key="collapsedWhenNullConverter" />
         <SolidColorBrush x:Key="redBrush"
                          Color="#FFAA2C27" />
+        <Style x:Key="RegionLabel" TargetType="{x:Type TextBlock}">
+        	<Setter Property="TextWrapping" Value="NoWrap"/>
+        	<Setter Property="TextTrimming" Value="None"/>
+        	<Setter Property="FontStyle" Value="Italic"/>
+        	<Setter Property="FontWeight" Value="Bold"/>
+        	<Setter Property="FontSize" Value="32"/>
+        	<Setter Property="Foreground" Value="#4C000000"/>
+        </Style>
     </Application.Resources>
 </cal:CaliburnApplication>
