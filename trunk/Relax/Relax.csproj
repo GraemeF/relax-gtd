@@ -79,6 +79,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\CollectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ContextsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -88,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\InputView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProcessView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,8 +115,11 @@
   <ItemGroup>
     <Compile Include="Presenters\ActionPresenter.cs" />
     <Compile Include="Presenters\ActionsPresenter.cs" />
+    <Compile Include="Presenters\CollectPresenter.cs" />
     <Compile Include="Presenters\ContextsPresenter.cs" />
     <Compile Include="Presenters\ContextPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IInboxActionsPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\ICollectPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IActionsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IActionPresenter.cs" />
     <Compile Include="Presenters\InputPresenter.cs" />
@@ -139,6 +150,9 @@
     <Compile Include="Views\ActionView.xaml.cs">
       <DependentUpon>ActionView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CollectView.xaml.cs">
+      <DependentUpon>CollectView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ContextsView.xaml.cs">
       <DependentUpon>ContextsView.xaml</DependentUpon>
     </Compile>
@@ -147,6 +161,9 @@
     </Compile>
     <Compile Include="Views\InputView.xaml.cs">
       <DependentUpon>InputView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProcessView.xaml.cs">
+      <DependentUpon>ProcessView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

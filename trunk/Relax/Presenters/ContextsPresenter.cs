@@ -1,4 +1,5 @@
 using System;
+using System.Windows.Data;
 using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters.Interfaces;
@@ -14,7 +15,7 @@ namespace Relax.Presenters
         public ContextsPresenter(IWorkspace workspace,
                                  Func<IGtdContext, IGtdContextPresenter> contextPresenterFactory,
                                  Func<IGtdContext> contextFactory)
-            : base(workspace.Contexts, contextPresenterFactory)
+            : base(CollectionViewSource.GetDefaultView(workspace.Contexts), contextPresenterFactory)
         {
             _workspace = workspace;
             _contextFactory = contextFactory;
