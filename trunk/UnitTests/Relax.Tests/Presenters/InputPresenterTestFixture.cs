@@ -21,7 +21,7 @@ namespace Relax.Tests.Presenters
 
         private InputPresenter BuildDefaultInputViewPresenter()
         {
-            return new InputPresenter(_fakeWorkspace.Object, _fakeAction.Object);
+            return new InputPresenter(_fakeWorkspace.Object, () => _fakeAction.Object);
         }
 
         [Test]

@@ -10,10 +10,10 @@ namespace Relax.Presenters
         public CollectPresenter(IInputPresenter inputPresenter, IInboxActionsPresenter inboxPresenter)
         {
             Input = inputPresenter;
-            Inbox = inboxPresenter;
+            InboxActions = inboxPresenter;
         }
 
-        public IInboxActionsPresenter Inbox { get; private set; }
+        public IInboxActionsPresenter InboxActions { get; private set; }
         public IInputPresenter Input { get; private set; }
     }
 }

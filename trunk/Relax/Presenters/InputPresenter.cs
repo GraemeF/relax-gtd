@@ -1,3 +1,4 @@
+using System;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Filters;
@@ -10,23 +11,36 @@ namespace Relax.Presenters
     [PerRequest(typeof (IInputPresenter))]
     public class InputPresenter : Presenter, IInputPresenter
     {
+        private readonly Func<IAction> _actionFactory;
         private readonly IWorkspace _workspace;
 
-        public InputPresenter(IWorkspace workspace, IAction newAction)
+        private IAction _action;
+
+        public InputPresenter(IWorkspace workspace, Func<IAction> actionFactory)
         {
             _workspace = workspace;
-            Action = newAction;
+            _actionFactory = actionFactory;
+
+            Action = _actionFactory();
             Action.ActionState = State.Inbox;
         }
 
-        public IAction Action { get; private set; }
+        public IAction Action
+        {
+            get { return _action; }
+            private set
+            {
+                _action = value;
+                NotifyOfPropertyChange("Action");
+            }
+        }
 
         [Preview("CanAdd")]
         [Dependencies("Action.Title")]
         public void Add()
         {
             _workspace.Add(Action);
-            Shutdown();
+            Action = _actionFactory();
         }
 
         public bool CanAdd()

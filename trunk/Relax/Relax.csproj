@@ -118,6 +118,7 @@
     <Compile Include="Presenters\CollectPresenter.cs" />
     <Compile Include="Presenters\ContextsPresenter.cs" />
     <Compile Include="Presenters\ContextPresenter.cs" />
+    <Compile Include="Presenters\InboxActionsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IInboxActionsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\ICollectPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IActionsPresenter.cs" />
