@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Windows.Data;
 using MbUnit.Framework;
 using Moq;
 using Relax.Presenters;
@@ -64,7 +65,7 @@ namespace Relax.Tests.Presenters
         private class TestListPresenter : ListPresenter<ITestItem, ITestItemPresenter>
         {
             public TestListPresenter(ObservableCollection<ITestItem> models, Func<ITestItem, ITestItemPresenter> func)
-                : base(models, func)
+                : base(CollectionViewSource.GetDefaultView(models), func)
             {
             }
         }
