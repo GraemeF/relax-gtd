@@ -5,7 +5,7 @@
     <DockPanel>
         <ContentControl cal:View.Model="{Binding Input}"
                         DockPanel.Dock="Top" />
-        <ContentControl cal:View.Model="{Binding Actions}"
+        <ContentControl cal:View.Model="{Binding InboxActions}"
                         DockPanel.Dock="Bottom" />
     </DockPanel>
 </UserControl>

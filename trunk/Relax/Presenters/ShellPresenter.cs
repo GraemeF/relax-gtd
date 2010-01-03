@@ -10,7 +10,7 @@ using Relax.Presenters.Interfaces;
 namespace Relax.Presenters
 {
     [Singleton(typeof (IShellPresenter))]
-    public class ShellPresenter : MultiPresenter, IShellPresenter
+    public class ShellPresenter : Navigator, IShellPresenter
     {
         private readonly IBackingStore _backingStore;
         private readonly IContainer _container;
@@ -43,10 +43,12 @@ namespace Relax.Presenters
             _backingStore.Initialize();
 
             builder.Register(_backingStore.Workspace);
-            builder.RegisterGeneratedFactory<Func<IGtdContext, IGtdContextPresenter>>(new TypedService(typeof (IGtdContextPresenter)));
+            builder.RegisterGeneratedFactory<Func<IGtdContext, IGtdContextPresenter>>(
+                new TypedService(typeof (IGtdContextPresenter)));
             builder.RegisterGeneratedFactory<Func<IGtdContext>>(new TypedService(typeof (IGtdContext)));
             builder.RegisterGeneratedFactory<Func<IInputPresenter>>(new TypedService(typeof (IGtdContext)));
-            builder.RegisterGeneratedFactory<Func<IAction, IActionPresenter>>(new TypedService(typeof(IActionPresenter)));
+            builder.RegisterGeneratedFactory<Func<IAction, IActionPresenter>>(new TypedService(typeof (IActionPresenter)));
+            builder.RegisterGeneratedFactory<Func<IAction>>(new TypedService(typeof (IAction)));
 
             builder.Build(_container);
 
@@ -76,9 +78,21 @@ namespace Relax.Presenters
             ShowDialog(_container.Resolve<T>());
         }
 
+        public void Open<T>() where T : IPresenter
+        {
+            var presenter = _container.Resolve<T>();
+            this.Open(presenter);
+        }
+
+
         public void AddInboxAction()
         {
             ShowDialog<IInputPresenter>();
+        }
+
+        public void GoCollect()
+        {
+            Open<ICollectPresenter>();
         }
     }
 }
