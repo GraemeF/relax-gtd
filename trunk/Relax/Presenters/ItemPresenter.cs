@@ -25,7 +25,11 @@ namespace Relax.Presenters
         public override string DisplayName
         {
             get { return Model.Title; }
-            set { Model.Title = value; }
+            set
+            {
+                Model.Title = value;
+                NotifyOfPropertyChange("DisplayName");
+            }
         }
 
         public bool IsReadOnly
