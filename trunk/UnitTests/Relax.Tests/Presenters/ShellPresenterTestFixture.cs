@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Caliburn.PresentationFramework.ApplicationModel;
 using MbUnit.Framework;
 using Moq;
 using Relax.Infrastructure.Models.Interfaces;
@@ -71,6 +72,32 @@ namespace Relax.Tests.Presenters
             test.AddInboxAction();
 
             Assert.AreSame(stubInputPresenter.Object, test.DialogModel);
+        }
+
+        [Test]
+        public void Open_GivenPresenterType_ActivatesThePresenter()
+        {
+            var mockPresenter = new Mock<IPresenter>();
+            _stubContainer.Setup(x => x.Resolve<IPresenter>()).Returns(mockPresenter.Object);
+
+            ShellPresenter test = BuildDefaultShellPresenter();
+
+            test.Open<IPresenter>();
+
+            mockPresenter.Verify(x => x.Activate());
+        }
+
+        [Test]
+        public void GoCollect__ActivatesCollectPresenter()
+        {
+            var mockPresenter = new Mock<ICollectPresenter>();
+            _stubContainer.Setup(x => x.Resolve<ICollectPresenter>()).Returns(mockPresenter.Object);
+
+            ShellPresenter test = BuildDefaultShellPresenter();
+
+            test.GoCollect();
+
+            mockPresenter.Verify(x => x.Activate());
         }
     }
 }

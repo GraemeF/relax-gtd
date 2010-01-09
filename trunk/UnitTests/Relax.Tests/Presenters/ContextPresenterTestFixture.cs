@@ -6,7 +6,6 @@ using Relax.Presenters;
 namespace Relax.Tests.Presenters
 {
     [TestFixture]
-    [Ignore]
     public class ContextPresenterTestFixture
     {
         [Test]
