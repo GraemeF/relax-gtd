@@ -57,11 +57,11 @@
     <Compile Include="WorkspaceBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\relax-gtd\trunk\Relax.Domain\Relax.Domain.csproj">
+    <ProjectReference Include="..\..\Relax.Domain\Relax.Domain.csproj">
       <Project>{B153BEDB-EA89-447E-A4DB-6993ED6143D1}</Project>
       <Name>Relax.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\relax-gtd\trunk\Relax.Infrastructure\Relax.Infrastructure.csproj">
+    <ProjectReference Include="..\..\Relax.Infrastructure\Relax.Infrastructure.csproj">
       <Project>{893AD8AB-D318-4690-8B24-EE1D6FE254F9}</Project>
       <Name>Relax.Infrastructure</Name>
     </ProjectReference>

@@ -46,7 +46,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmFoundation.Wpf", "Libra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caliburn.WPF.ApplicationFramework", "Library\Caliburn\src\Caliburn.WPF.ApplicationFramework\Caliburn.WPF.ApplicationFramework.csproj", "{0567B942-B5ED-430F-8E45-FE639039B75B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.TestDataBuilders", "..\..\Softel\Dashboard\trunk\UnitTests\Relax.TestDataBuilders\Relax.TestDataBuilders.csproj", "{DC8E749B-48EE-4FB4-8108-7472288CCB54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.TestDataBuilders", "UnitTests\Relax.TestDataBuilders\Relax.TestDataBuilders.csproj", "{DC8E749B-48EE-4FB4-8108-7472288CCB54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

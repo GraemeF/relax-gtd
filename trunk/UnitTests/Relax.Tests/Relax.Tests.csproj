@@ -104,10 +104,6 @@
     <Compile Include="Views\ViewTestFixtureBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Softel\Dashboard\trunk\UnitTests\Relax.TestDataBuilders\Relax.TestDataBuilders.csproj">
-      <Project>{DC8E749B-48EE-4FB4-8108-7472288CCB54}</Project>
-      <Name>Relax.TestDataBuilders</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Library\Caliburn\src\Caliburn.Core\Caliburn.Core.csproj">
       <Project>{D7357C4C-BFFF-4EE4-8D40-0803FAAFF38A}</Project>
       <Name>Caliburn.Core</Name>
@@ -131,6 +127,10 @@
     <ProjectReference Include="..\..\Relax\Relax.csproj">
       <Project>{783A1A3D-CDB4-4121-9655-AA34516331A2}</Project>
       <Name>Relax</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Relax.TestDataBuilders\Relax.TestDataBuilders.csproj">
+      <Project>{DC8E749B-48EE-4FB4-8108-7472288CCB54}</Project>
+      <Name>Relax.TestDataBuilders</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
