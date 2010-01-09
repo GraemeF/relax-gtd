@@ -1,4 +1,3 @@
-using Caliburn.Testability;
 using MbUnit.Framework;
 using Relax.Presenters;
 using Relax.Views;
@@ -11,10 +10,7 @@ namespace Relax.Tests.Views
         [Test]
         public void Presenters__IsBound()
         {
-            BindingValidator<ActionsPresenter> validator = Validator.For<ActionsView, ActionsPresenter>();
-            ValidationResult<ActionsPresenter> result = validator.Validate();
-
-            Assert.IsTrue(result.WasBoundTo(x => x.Presenters));
+            Assert.IsTrue(BoundView<ActionsView, ActionsPresenter>().WasBoundTo(x => x.Presenters));
         }
     }
 }
