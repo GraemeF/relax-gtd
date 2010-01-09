@@ -99,5 +99,18 @@ namespace Relax.Tests.Presenters
 
             mockPresenter.Verify(x => x.Activate());
         }
+
+        [Test]
+        public void GoProcess__ActivatesProcessPresenter()
+        {
+            var mockPresenter = new Mock<IProcessPresenter>();
+            _stubContainer.Setup(x => x.Resolve<IProcessPresenter>()).Returns(mockPresenter.Object);
+
+            ShellPresenter test = BuildDefaultShellPresenter();
+
+            test.GoProcess();
+
+            mockPresenter.Verify(x => x.Activate());
+        }
     }
 }

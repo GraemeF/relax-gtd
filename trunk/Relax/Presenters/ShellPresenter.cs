@@ -94,5 +94,10 @@ namespace Relax.Presenters
         {
             Open<ICollectPresenter>();
         }
+
+        public void GoProcess()
+        {
+            Open<IProcessPresenter>();
+        }
     }
 }

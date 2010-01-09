@@ -118,6 +118,8 @@
     <Compile Include="Presenters\CollectPresenter.cs" />
     <Compile Include="Presenters\ContextsPresenter.cs" />
     <Compile Include="Presenters\ContextPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IDoLaterPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IDoNowPresenter.cs" />
     <Compile Include="Presenters\InboxActionsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IInboxActionsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\ICollectPresenter.cs" />
@@ -128,6 +130,8 @@
     <Compile Include="Presenters\Interfaces\IContextsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IInputPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IModelPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IProcessPresenter.cs" />
+    <Compile Include="Presenters\ProcessPresenter.cs" />
     <Compile Include="Presenters\ItemPresenter.cs" />
     <Compile Include="Presenters\ListPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

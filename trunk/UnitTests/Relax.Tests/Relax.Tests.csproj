@@ -87,6 +87,7 @@
     <Compile Include="Presenters\InputPresenterTestFixture.cs" />
     <Compile Include="Presenters\ItemPresenterTestFixture.cs" />
     <Compile Include="Presenters\ListPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ProcessPresenterTestFixture.cs" />
     <Compile Include="TestEntities\ITestItem.cs" />
     <Compile Include="Presenters\ShellPresenterTestFixture.cs" />
     <Compile Include="TestEntities\ITestItemPresenter.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Views\ContextsViewTestFixture.cs" />
     <Compile Include="Views\ContextViewTestFixture.cs" />
     <Compile Include="Views\InputViewTestFixture.cs" />
+    <Compile Include="Views\ProcessViewTestFixture.cs" />
     <Compile Include="Views\ShellViewTestFixture.cs" />
     <Compile Include="Views\ViewTestFixtureBase.cs" />
   </ItemGroup>

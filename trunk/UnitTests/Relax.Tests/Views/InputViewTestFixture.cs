@@ -1,5 +1,4 @@
-﻿using Caliburn.Testability;
-using MbUnit.Framework;
+﻿using MbUnit.Framework;
 using Relax.Presenters;
 using Relax.Views;
 
@@ -11,19 +10,13 @@ namespace Relax.Tests.Views
         [Test]
         public void Constructor__BindsWithoutError()
         {
-            BindingValidator<InputPresenter> validator = Validator.For<InputView, InputPresenter>();
-            ValidationResult<InputPresenter> result = validator.Validate();
-
-            result.AssertNoErrors();
+            BoundView<InputView, InputPresenter>().AssertNoErrors();
         }
 
         [Test]
         public void ActionTitle__IsBound()
         {
-            BindingValidator<InputPresenter> validator = Validator.For<InputView, InputPresenter>();
-            ValidationResult<InputPresenter> result = validator.Validate();
-
-            result.AssertWasBound(x => x.Action.Title);
+            BoundView<InputView, InputPresenter>().AssertWasBound(x => x.Action.Title);
         }
     }
 }
