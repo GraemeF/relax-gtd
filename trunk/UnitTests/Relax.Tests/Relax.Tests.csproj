@@ -80,8 +80,10 @@
   <ItemGroup>
     <Compile Include="Presenters\ActionPresenterTestFixture.cs" />
     <Compile Include="Presenters\ActionsPresenterTestFixture.cs" />
+    <Compile Include="Presenters\CollectPresenterTestFixture.cs" />
     <Compile Include="Presenters\ContextPresenterTestFixture.cs" />
     <Compile Include="Presenters\ContextsPresenterTestFixture.cs" />
+    <Compile Include="Presenters\InboxActionsPresenterTestFixture.cs" />
     <Compile Include="Presenters\InputPresenterTestFixture.cs" />
     <Compile Include="Presenters\ItemPresenterTestFixture.cs" />
     <Compile Include="Presenters\ListPresenterTestFixture.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ActionsViewTestFixture.cs" />
     <Compile Include="Views\ActionViewTestFixture.cs" />
+    <Compile Include="Views\CollectViewTestFixture.cs" />
     <Compile Include="Views\ContextsViewTestFixture.cs" />
     <Compile Include="Views\ContextViewTestFixture.cs" />
     <Compile Include="Views\InputViewTestFixture.cs" />
@@ -99,6 +102,10 @@
     <Compile Include="Views\ViewTestFixtureBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Softel\Dashboard\trunk\UnitTests\Relax.TestDataBuilders\Relax.TestDataBuilders.csproj">
+      <Project>{DC8E749B-48EE-4FB4-8108-7472288CCB54}</Project>
+      <Name>Relax.TestDataBuilders</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Library\Caliburn\src\Caliburn.Core\Caliburn.Core.csproj">
       <Project>{D7357C4C-BFFF-4EE4-8D40-0803FAAFF38A}</Project>
       <Name>Caliburn.Core</Name>
