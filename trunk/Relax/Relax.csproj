@@ -127,12 +127,16 @@
   <ItemGroup>
     <Compile Include="Presenters\ActionPresenter.cs" />
     <Compile Include="Presenters\ActionsPresenter.cs" />
+    <Compile Include="Presenters\BlockingActionsPresenter.cs" />
     <Compile Include="Presenters\CollectPresenter.cs" />
     <Compile Include="Presenters\ContextsPresenter.cs" />
     <Compile Include="Presenters\ContextPresenter.cs" />
     <Compile Include="Presenters\DoLaterPresenter.cs" />
     <Compile Include="Presenters\DoNowPresenter.cs" />
     <Compile Include="Presenters\ActionDetailsPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IBlockingActionsPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IHierarchicalActionPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IListPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IActionDetailsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IDoLaterPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IDoNowPresenter.cs" />
@@ -147,12 +151,13 @@
     <Compile Include="Presenters\Interfaces\IInputPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IModelPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IProcessPresenter.cs" />
-    <Compile Include="Presenters\Interfaces\IProjectPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IProjectsPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IActionTreeNodePresenter.cs" />
     <Compile Include="Presenters\ProjectsPresenter.cs" />
     <Compile Include="Presenters\ProcessPresenter.cs" />
     <Compile Include="Presenters\ItemPresenter.cs" />
     <Compile Include="Presenters\ListPresenter.cs" />
+    <Compile Include="Presenters\ActionTreeNodePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

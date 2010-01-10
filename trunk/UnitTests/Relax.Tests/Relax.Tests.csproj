@@ -81,6 +81,8 @@
     <Compile Include="Presenters\ActionDetailsPresenterTestFixture.cs" />
     <Compile Include="Presenters\ActionPresenterTestFixture.cs" />
     <Compile Include="Presenters\ActionsPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ActionTreeNodePresenterTestFixture.cs" />
+    <Compile Include="Presenters\BlockingActionsPresenterTestFixture.cs" />
     <Compile Include="Presenters\CollectPresenterTestFixture.cs" />
     <Compile Include="Presenters\ContextPresenterTestFixture.cs" />
     <Compile Include="Presenters\ContextsPresenterTestFixture.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Views\DoNowViewTestFixture.cs" />
     <Compile Include="Views\InputViewTestFixture.cs" />
     <Compile Include="Views\ProcessViewTestFixture.cs" />
+    <Compile Include="Views\ProjectsViewTestFixture.cs" />
     <Compile Include="Views\ShellViewTestFixture.cs" />
     <Compile Include="Views\ViewTestFixtureBase.cs" />
   </ItemGroup>
