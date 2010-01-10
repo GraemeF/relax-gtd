@@ -1,6 +1,6 @@
 namespace Relax.Presenters.Interfaces
 {
-    public interface IProjectsPresenter
+    public interface IBlockingActionsPresenter
     {
     }
 }

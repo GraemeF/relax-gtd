@@ -8,10 +8,10 @@ using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
-    public class ListPresenter<TModel, TModelPresenter> : MultiPresenter
+    public class ListPresenter<TModel, TModelPresenter> : MultiPresenter, IListPresenter<TModel, TModelPresenter>
         where TModelPresenter : IModelPresenter<TModel>
     {
-        protected Func<TModel, TModelPresenter> _itemPresenterFactory;
+        private readonly Func<TModel, TModelPresenter> _itemPresenterFactory;
 
         protected ListPresenter(ICollectionView collection, Func<TModel, TModelPresenter> factory)
         {

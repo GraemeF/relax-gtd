@@ -14,6 +14,7 @@ namespace Relax.TestDataBuilders
         {
             var mock = new Mock<IAction>();
             mock.Setup(x => x.ActionState).Returns(_state);
+            mock.Setup(x => x.BlockingActions).Returns(new ObservableCollection<IAction>(_blockingActions));
 
             return mock;
         }

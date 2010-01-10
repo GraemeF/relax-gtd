@@ -8,6 +8,14 @@ namespace Relax.TestDataBuilders
     {
         private ObservableCollection<IAction> _actions = new ObservableCollection<IAction>();
 
+        public Mock<IWorkspace> Build()
+        {
+            var mock = new Mock<IWorkspace>();
+            mock.Setup(x => x.Actions).Returns(new ObservableCollection<IAction>(_actions));
+
+            return mock;
+        }
+
         public WorkspaceBuilder With(ActionBuilder actionBuilder)
         {
             return With(actionBuilder.Build().Object);
@@ -16,14 +24,6 @@ namespace Relax.TestDataBuilders
         public WorkspaceBuilder With(IAction action)
         {
             return new WorkspaceBuilder {_actions = new ObservableCollection<IAction>(_actions) {action}};
-        }
-
-        public Mock<IWorkspace> Build()
-        {
-            var mock = new Mock<IWorkspace>();
-            mock.Setup(x => x.Actions).Returns(_actions);
-
-            return mock;
         }
     }
 }

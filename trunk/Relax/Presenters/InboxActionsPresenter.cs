@@ -11,8 +11,8 @@ using Relax.Views;
 
 namespace Relax.Presenters
 {
-    [PerRequest(typeof (IInboxActionsPresenter))]
-    [View(typeof (ActionsView))]
+    [PerRequest(typeof(IInboxActionsPresenter))]
+    [View(typeof(ActionsView))]
     public class InboxActionsPresenter : ListPresenter<IAction, IActionPresenter>, IInboxActionsPresenter
     {
         public InboxActionsPresenter(IWorkspace workspace,
@@ -24,9 +24,9 @@ namespace Relax.Presenters
         private static ICollectionView GetFilteredView(ObservableCollection<IAction> actions)
         {
             ICollectionView view = CollectionViewSource.GetDefaultView(actions);
-            view.Filter = action => ((IAction) action).ActionState == State.Inbox;
+            view.Filter = action => ((IAction)action).ActionState == State.Inbox;
 
             return view;
         }
-    }
+}
 }
