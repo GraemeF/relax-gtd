@@ -4,8 +4,8 @@ using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
-    [PerRequest(typeof (IDoLaterPresenter))]
-    public class DoLaterPresenter : Presenter, IDoLaterPresenter
+    [PerRequest(typeof (IDoNowPresenter))]
+    public class DoNowPresenter : Presenter, IDoNowPresenter
     {
     }
 }
