@@ -8,12 +8,12 @@ namespace Relax.TestDataBuilders
     {
         private ObservableCollection<IAction> _actions = new ObservableCollection<IAction>();
 
-        public WorkspaceBuilder WithAction(ActionBuilder actionBuilder)
+        public WorkspaceBuilder With(ActionBuilder actionBuilder)
         {
-            return WithAction(actionBuilder.Build().Object);
+            return With(actionBuilder.Build().Object);
         }
 
-        public WorkspaceBuilder WithAction(IAction action)
+        public WorkspaceBuilder With(IAction action)
         {
             return new WorkspaceBuilder {_actions = new ObservableCollection<IAction>(_actions) {action}};
         }

@@ -9,29 +9,19 @@ using Relax.TestDataBuilders;
 namespace Relax.Tests.Presenters
 {
     [TestFixture]
-    public class InboxActionsPresenterTestFixture
+    public class InboxActionsPresenterTestFixture : TestDataBuilder
     {
-        private static ActionBuilder AnAction
-        {
-            get { return new ActionBuilder(); }
-        }
-
-        private static WorkspaceBuilder AWorkspace
-        {
-            get { return new WorkspaceBuilder(); }
-        }
-
         [Test]
         public void Constructor_GivenMixedActions_ActivatesOnlyInboxActions()
         {
-            Mock<IAction> inboxAction = AnAction.With(State.Inbox).Build();
+            Mock<IAction> inboxAction = AnAction.InState(State.Inbox).Build();
 
             Mock<IWorkspace> stubWorkspace =
                 AWorkspace
-                    .WithAction(AnAction.With(State.Committed))
-                    .WithAction(inboxAction.Object)
-                    .WithAction(AnAction.With(State.Hold))
-                    .WithAction(AnAction.With(State.SomedayMaybe)).Build();
+                    .With(AnAction.InState(State.Committed))
+                    .With(inboxAction.Object)
+                    .With(AnAction.InState(State.Hold))
+                    .With(AnAction.InState(State.SomedayMaybe)).Build();
 
             var mockActionPresenter = new Mock<IActionPresenter>();
 
@@ -51,14 +41,14 @@ namespace Relax.Tests.Presenters
         [Test]
         public void Presenters_GivenMixedActions_ContainsOnlyInboxActions()
         {
-            Mock<IAction> inboxAction = AnAction.With(State.Inbox).Build();
+            Mock<IAction> inboxAction = AnAction.InState(State.Inbox).Build();
 
             Mock<IWorkspace> stubWorkspace =
                 AWorkspace
-                    .WithAction(AnAction.With(State.Committed))
-                    .WithAction(inboxAction.Object)
-                    .WithAction(AnAction.With(State.Hold))
-                    .WithAction(AnAction.With(State.SomedayMaybe)).Build();
+                    .With(AnAction.InState(State.Committed))
+                    .With(inboxAction.Object)
+                    .With(AnAction.InState(State.Hold))
+                    .With(AnAction.InState(State.SomedayMaybe)).Build();
 
             var stubActionPresenter = new Mock<IActionPresenter>();
 

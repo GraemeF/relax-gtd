@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presenters\ActionDetailsPresenterTestFixture.cs" />
     <Compile Include="Presenters\ActionPresenterTestFixture.cs" />
     <Compile Include="Presenters\ActionsPresenterTestFixture.cs" />
     <Compile Include="Presenters\CollectPresenterTestFixture.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Presenters\ItemPresenterTestFixture.cs" />
     <Compile Include="Presenters\ListPresenterTestFixture.cs" />
     <Compile Include="Presenters\ProcessPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ProjectsPresenterTestFixture.cs" />
     <Compile Include="TestEntities\ITestItem.cs" />
     <Compile Include="Presenters\ShellPresenterTestFixture.cs" />
     <Compile Include="TestEntities\ITestItemPresenter.cs" />

@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="ActionBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestDataBuilder.cs" />
     <Compile Include="WorkspaceBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
