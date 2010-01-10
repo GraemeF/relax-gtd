@@ -12,5 +12,11 @@ namespace Relax.Tests.Views
         {
             BoundView<DoLaterView, DoLaterPresenter>().AssertNoErrors();
         }
+
+        [Test]
+        public void ActionTitle__IsBound()
+        {
+            BoundView<DoLaterView, DoLaterPresenter>().AssertWasBound(x => x.Projects);
+        }
     }
 }
