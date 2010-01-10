@@ -83,6 +83,7 @@
     <Compile Include="Presenters\CollectPresenterTestFixture.cs" />
     <Compile Include="Presenters\ContextPresenterTestFixture.cs" />
     <Compile Include="Presenters\ContextsPresenterTestFixture.cs" />
+    <Compile Include="Presenters\DoLaterPresenterTestFixture.cs" />
     <Compile Include="Presenters\InboxActionsPresenterTestFixture.cs" />
     <Compile Include="Presenters\InputPresenterTestFixture.cs" />
     <Compile Include="Presenters\ItemPresenterTestFixture.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Views\CollectViewTestFixture.cs" />
     <Compile Include="Views\ContextsViewTestFixture.cs" />
     <Compile Include="Views\ContextViewTestFixture.cs" />
+    <Compile Include="Views\DoLaterViewTestFixture.cs" />
     <Compile Include="Views\InputViewTestFixture.cs" />
     <Compile Include="Views\ProcessViewTestFixture.cs" />
     <Compile Include="Views\ShellViewTestFixture.cs" />

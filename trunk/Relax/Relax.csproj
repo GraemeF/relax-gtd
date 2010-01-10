@@ -91,6 +91,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DoLaterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\InputView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -118,6 +122,7 @@
     <Compile Include="Presenters\CollectPresenter.cs" />
     <Compile Include="Presenters\ContextsPresenter.cs" />
     <Compile Include="Presenters\ContextPresenter.cs" />
+    <Compile Include="Presenters\DoLaterPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IDoLaterPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IDoNowPresenter.cs" />
     <Compile Include="Presenters\InboxActionsPresenter.cs" />
@@ -163,6 +168,9 @@
     </Compile>
     <Compile Include="Views\ContextView.xaml.cs">
       <DependentUpon>ContextView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DoLaterView.xaml.cs">
+      <DependentUpon>DoLaterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InputView.xaml.cs">
       <DependentUpon>InputView.xaml</DependentUpon>
