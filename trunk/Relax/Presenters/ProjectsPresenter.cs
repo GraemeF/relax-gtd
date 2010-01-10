@@ -10,10 +10,10 @@ using Relax.Presenters.Interfaces;
 namespace Relax.Presenters
 {
     [PerRequest(typeof (IProjectsPresenter))]
-    public class ProjectsPresenter : ListPresenter<IAction, IHierarchicalActionPresenter>, IProjectsPresenter
+    public class ProjectsPresenter : ListPresenter<IAction, IActionTreeNodePresenter>, IProjectsPresenter
     {
         public ProjectsPresenter(IWorkspace workspace,
-                                 Func<IAction, IHierarchicalActionPresenter> actionPresenterFactory)
+                                 Func<IAction, IActionTreeNodePresenter> actionPresenterFactory)
             : base(GetFilteredView(workspace.Actions), actionPresenterFactory)
         {
         }

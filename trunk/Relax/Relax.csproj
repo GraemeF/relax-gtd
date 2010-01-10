@@ -71,6 +71,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\ActionDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ActionsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -173,6 +177,9 @@
     </Compile>
     <Compile Include="Presenters\Interfaces\IShellPresenter.cs" />
     <Compile Include="Presenters\ShellPresenter.cs" />
+    <Compile Include="Views\ActionDetailsView.xaml.cs">
+      <DependentUpon>ActionDetailsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ActionsView.xaml.cs">
       <DependentUpon>ActionsView.xaml</DependentUpon>
     </Compile>
