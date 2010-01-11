@@ -13,7 +13,7 @@ namespace Relax.Tests.Presenters
         [Test]
         public void TopLevelProjects_WhenWorkspaceContainsAnActionThatIsBlockedButNotBlocking_ReturnsAction()
         {
-            var stubProjectPresenter = new Mock<IHierarchicalActionPresenter>();
+            var stubProjectPresenter = new Mock<IActionTreeNodePresenter>();
 
             Mock<IAction> unblockedAction = AnAction.Build();
             Mock<IAction> blockedAction = AnAction.BlockedBy(unblockedAction.Object).Build();
