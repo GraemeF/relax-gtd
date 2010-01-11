@@ -20,7 +20,7 @@ namespace Relax.AcceptanceTests.TestEntities
 #else
         private const string Configuration = "Release";
 #endif
-        private const string ApplicationPath = @"..\..\..\..\Relax\bin\" + Configuration + @"\Relax.exe";
+        private const string ApplicationPath = @"..\..\..\..\bin\" + Configuration + @"\Relax.exe";
 
         #endregion
 
@@ -46,13 +46,12 @@ namespace Relax.AcceptanceTests.TestEntities
                 .WithTimeout(StartUpTimeout)
                 .Until(delegate
                            {
-                               Console.WriteLine("Looking for Relax . . . ");
                                shell = desktop.FindFirst(TreeScope.Children,
                                                          new PropertyCondition(
                                                              AutomationElement.NameProperty,
                                                              "Relax GTD"));
 
-                               return shell != null;
+                               return process.HasExited || shell != null;
                            });
 
             if (shell == null)
@@ -120,13 +119,41 @@ namespace Relax.AcceptanceTests.TestEntities
             get { return new FileInfo(DefaultWorkspaceFilePath); }
         }
 
-        #region IDisposable Members
-
+        /// <summary>
+        /// Releases all resources used by an instance of the <see cref="RelaxApplication" /> class.
+        /// </summary>
+        /// <remarks>
+        /// This method calls the virtual <see cref="Dispose(bool)" /> method, passing in <strong>true</strong>, and then suppresses 
+        /// finalization of the instance.
+        /// </remarks>
         public void Dispose()
         {
-            _process.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
-        #endregion
+        /// <summary>
+        /// Releases unmanaged resources before an instance of the <see cref="RelaxApplication" /> class is reclaimed by garbage collection.
+        /// </summary>
+        /// <remarks>
+        /// This method releases unmanaged resources by calling the virtual <see cref="Dispose(bool)" /> method, passing in <strong>false</strong>.
+        /// </remarks>
+        ~RelaxApplication()
+        {
+            Dispose(false);
+        }
+
+        /// <summary>
+        /// Releases the unmanaged resources used by an instance of the <see cref="RelaxApplication" /> class and optionally releases the managed resources.
+        /// </summary>
+        /// <param name="disposing"><strong>true</strong> to release both managed and unmanaged resources; <strong>false</strong> to release only unmanaged resources.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _process.CloseMainWindow();
+                _process.Dispose();
+            }
+        }
     }
 }

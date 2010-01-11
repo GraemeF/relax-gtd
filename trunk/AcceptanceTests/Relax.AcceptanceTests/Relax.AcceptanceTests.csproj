@@ -62,7 +62,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LaunchTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Relax.AcceptanceTests.TestEntities\Relax.AcceptanceTests.TestEntities.csproj">
+      <Project>{A435B7CD-B99C-4E96-9FF2-7E41B1AEFE1D}</Project>
+      <Name>Relax.AcceptanceTests.TestEntities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
