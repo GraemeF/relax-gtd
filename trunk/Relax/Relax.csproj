@@ -143,7 +143,6 @@
     <Compile Include="Presenters\DoNowPresenter.cs" />
     <Compile Include="Presenters\ActionDetailsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IBlockingActionsPresenter.cs" />
-    <Compile Include="Presenters\Interfaces\IHierarchicalActionPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IListPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IActionDetailsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IDoLaterPresenter.cs" />

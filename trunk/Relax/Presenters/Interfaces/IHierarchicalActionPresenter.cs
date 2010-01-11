@@ -1,8 +1,0 @@
-using Relax.Infrastructure.Models.Interfaces;
-
-namespace Relax.Presenters.Interfaces
-{
-    public interface IHierarchicalActionPresenter : IActionsPresenter, IModelPresenter<IAction>
-    {
-    }
-}
