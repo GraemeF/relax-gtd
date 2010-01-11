@@ -51,6 +51,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AcceptanceTests", "AcceptanceTests", "{114D33EC-082C-49C2-A9AA-70EC9F370400}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.AcceptanceTests", "AcceptanceTests\Relax.AcceptanceTests\Relax.AcceptanceTests.csproj", "{9B68EAA8-F3D4-4A3A-A5B7-8BE9EDCFDE4D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{783A1A3D-CDB4-4121-9655-AA34516331A2} = {783A1A3D-CDB4-4121-9655-AA34516331A2}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.AcceptanceTests.TestEntities", "AcceptanceTests\Relax.AcceptanceTests.TestEntities\Relax.AcceptanceTests.TestEntities.csproj", "{A435B7CD-B99C-4E96-9FF2-7E41B1AEFE1D}"
 EndProject
