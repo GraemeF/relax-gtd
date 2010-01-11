@@ -49,7 +49,8 @@ namespace Relax.Presenters
             builder.RegisterGeneratedFactory<Func<IInputPresenter>>(new TypedService(typeof (IGtdContext)));
             builder.RegisterGeneratedFactory<Func<IAction, IActionPresenter>>(new TypedService(typeof (IActionPresenter)));
             builder.RegisterGeneratedFactory<Func<IAction>>(new TypedService(typeof (IAction)));
-            builder.RegisterGeneratedFactory<Func<IAction, IActionTreeNodePresenter>>(new TypedService(typeof(IActionTreeNodePresenter)));
+            builder.RegisterGeneratedFactory<Func<IAction, IActionTreeNodePresenter>>(
+                new TypedService(typeof (IActionTreeNodePresenter)));
 
             builder.Build(_container);
 
@@ -84,7 +85,6 @@ namespace Relax.Presenters
             var presenter = _container.Resolve<T>();
             this.Open(presenter);
         }
-
 
         public void AddInboxAction()
         {

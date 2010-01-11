@@ -48,6 +48,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caliburn.WPF.ApplicationFra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.TestDataBuilders", "UnitTests\Relax.TestDataBuilders\Relax.TestDataBuilders.csproj", "{DC8E749B-48EE-4FB4-8108-7472288CCB54}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AcceptanceTests", "AcceptanceTests", "{114D33EC-082C-49C2-A9AA-70EC9F370400}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.AcceptanceTests", "AcceptanceTests\Relax.AcceptanceTests\Relax.AcceptanceTests.csproj", "{9B68EAA8-F3D4-4A3A-A5B7-8BE9EDCFDE4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.AcceptanceTests.TestEntities", "AcceptanceTests\Relax.AcceptanceTests.TestEntities\Relax.AcceptanceTests.TestEntities.csproj", "{A435B7CD-B99C-4E96-9FF2-7E41B1AEFE1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -126,6 +132,14 @@ Global
 		{DC8E749B-48EE-4FB4-8108-7472288CCB54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC8E749B-48EE-4FB4-8108-7472288CCB54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC8E749B-48EE-4FB4-8108-7472288CCB54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B68EAA8-F3D4-4A3A-A5B7-8BE9EDCFDE4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B68EAA8-F3D4-4A3A-A5B7-8BE9EDCFDE4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B68EAA8-F3D4-4A3A-A5B7-8BE9EDCFDE4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B68EAA8-F3D4-4A3A-A5B7-8BE9EDCFDE4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A435B7CD-B99C-4E96-9FF2-7E41B1AEFE1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A435B7CD-B99C-4E96-9FF2-7E41B1AEFE1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A435B7CD-B99C-4E96-9FF2-7E41B1AEFE1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A435B7CD-B99C-4E96-9FF2-7E41B1AEFE1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -147,5 +161,7 @@ Global
 		{79504818-6612-414D-BBF4-F8F0BB7ABBDC} = {CFE4724E-D000-4496-8C65-8385878996CC}
 		{0567B942-B5ED-430F-8E45-FE639039B75B} = {CFE4724E-D000-4496-8C65-8385878996CC}
 		{A36AEF66-2411-4225-B68E-F2D29368A31B} = {56B9A83A-61EF-43D2-B666-FB08DDB7A2EC}
+		{9B68EAA8-F3D4-4A3A-A5B7-8BE9EDCFDE4D} = {114D33EC-082C-49C2-A9AA-70EC9F370400}
+		{A435B7CD-B99C-4E96-9FF2-7E41B1AEFE1D} = {114D33EC-082C-49C2-A9AA-70EC9F370400}
 	EndGlobalSection
 EndGlobal
