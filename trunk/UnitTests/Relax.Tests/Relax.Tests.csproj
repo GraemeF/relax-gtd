@@ -100,6 +100,7 @@
     <Compile Include="TestEntities\ITestItemPresenter.cs" />
     <Compile Include="TestEntities\TestItemPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ActionDetailsViewTestFixture.cs" />
     <Compile Include="Views\ActionsViewTestFixture.cs" />
     <Compile Include="Views\ActionViewTestFixture.cs" />
     <Compile Include="Views\CollectViewTestFixture.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Views\DoLaterViewTestFixture.cs" />
     <Compile Include="Views\DoNowViewTestFixture.cs" />
     <Compile Include="Views\InputViewTestFixture.cs" />
+    <Compile Include="Views\MakeProjectViewTestFixture.cs" />
     <Compile Include="Views\ProcessViewTestFixture.cs" />
     <Compile Include="Views\ProjectsViewTestFixture.cs" />
     <Compile Include="Views\ShellViewTestFixture.cs" />
