@@ -1,0 +1,16 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Name="Screen_1_9_Name"
+	mc:Ignorable="d"
+	x:Class="RelaxPrototypeScreens.Screen_1_9">
+	<DockPanel x:Name="LayoutRoot" d:LayoutOverrides="Width, Height">
+		<TextBlock Style="{DynamicResource BasicTextBlock-Sketch}" Text="Actions" DockPanel.Dock="Top"/>
+		<ListBox Style="{DynamicResource ListBox-Sketch}" DockPanel.Dock="Bottom">
+			<ListBoxItem Style="{DynamicResource ListBoxItem-Sketch}" Content="Do Ironing"/>
+			<ListBoxItem Style="{DynamicResource ListBoxItem-Sketch}" Content="Buy Christmans presents"/>
+			<ListBoxItem Style="{DynamicResource ListBoxItem-Sketch}" Content="Sketch out design"/>
+		</ListBox>
+	</DockPanel>
+</UserControl>

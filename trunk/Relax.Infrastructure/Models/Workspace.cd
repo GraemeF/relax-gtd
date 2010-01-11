@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.IAction">
+    <Position X="4.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgEKQAAgAAAAAEAAAAABACAAAAAACAAAGAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\IAction.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Context" />
+      <Property Name="Review" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="BlockingActions" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.IGtdContext">
+    <Position X="5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\IGtdContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.IReview">
+    <Position X="7.5" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAEAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\Interfaces\IReview.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.IReviewChecklistItem">
+    <Position X="7.5" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\IReviewChecklistItem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Relax.Infrastructure.Models.Interfaces.IWorkspace">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <AssociationLine Name="Actions" Type="Relax.Infrastructure.Models.Interfaces.IAction" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.5" Y="6.312" />
+        <Point X="7.125" Y="6.312" />
+        <Point X="7.125" Y="5.125" />
+        <Point X="6" Y="5.125" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Contexts" Type="Relax.Infrastructure.Models.Interfaces.IGtdContext" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.188" Y="6.618" />
+        <Point X="8.188" Y="7.75" />
+        <Point X="6.5" Y="7.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAIAAAAAAAAABAAAA=</HashCode>
+      <FileName>Models\Interfaces\IWorkspace.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Actions" />
+      <Property Name="Contexts" />
+      <Property Name="ReviewChecklistItems" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
