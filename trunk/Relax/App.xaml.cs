@@ -15,6 +15,7 @@ using Microsoft.Practices.ServiceLocation;
 using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Services.Interfaces;
 using Relax.Presenters.Interfaces;
+using IContainer = Autofac.IContainer;
 
 namespace Relax
 {
@@ -22,7 +23,7 @@ namespace Relax
     public partial class App : CaliburnApplication
     {
         private ComposablePartCatalog _catalog;
-        private Autofac.IContainer _container;
+        private IContainer _container;
 
         [ImportMany(AllowRecomposition = true)]
         public ObservableCollection<IRelaxModule> Modules { get; private set; }

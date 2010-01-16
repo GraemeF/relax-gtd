@@ -8,6 +8,7 @@ using Relax.FileBackingStore.Services.Interfaces;
 using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Infrastructure.Services.Interfaces;
+using Action = Relax.Domain.Models.Action;
 
 namespace Relax.FileBackingStore.Services
 {
@@ -20,7 +21,7 @@ namespace Relax.FileBackingStore.Services
         /// <returns>List of types.</returns>
         private static readonly List<Type> KnownTypes = new List<Type>
                                                             {
-                                                                typeof (Domain.Models.Action),
+                                                                typeof (Action),
                                                                 typeof (GtdContext),
                                                                 typeof (Delegation),
                                                                 typeof (Review),
