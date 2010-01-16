@@ -31,7 +31,8 @@ namespace Relax.Domain.Tests.Models
                                                          InvalidValues =
                                                              {
                                                                  {
-                                                                     typeof (ArgumentOutOfRangeException), DateTime.MaxValue,
+                                                                     typeof (ArgumentOutOfRangeException),
+                                                                     DateTime.MaxValue,
                                                                      DateTime.UtcNow + TimeSpan.FromHours(1)
                                                                      }
                                                              }
@@ -59,7 +60,8 @@ namespace Relax.Domain.Tests.Models
         {
             var test = new Review();
 
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.LastReviewed).When(() => test.LastReviewed = DateTime.Today);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.LastReviewed).When(
+                () => test.LastReviewed = DateTime.Today);
         }
 
         [Test]
@@ -67,7 +69,8 @@ namespace Relax.Domain.Tests.Models
         {
             var test = new Review();
 
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.ReviewPeriod).When(() => test.ReviewPeriod = TimeSpan.FromDays(7));
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.ReviewPeriod).When(
+                () => test.ReviewPeriod = TimeSpan.FromDays(7));
         }
 
         [Test]

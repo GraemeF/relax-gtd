@@ -22,7 +22,9 @@ namespace Relax.Domain.Tests.Models
                                                                                   InvalidValues =
                                                                                       {
                                                                                           {
-                                                                                              typeof (ArgumentOutOfRangeException),
+                                                                                              typeof (
+                                                                                              ArgumentOutOfRangeException
+                                                                                              ),
                                                                                               DateTime.MaxValue
                                                                                               }
                                                                                       }
@@ -52,7 +54,8 @@ namespace Relax.Domain.Tests.Models
         {
             var test = new Delegation();
 
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.DelegationDate).When(() => test.DelegationDate = DateTime.Today);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.DelegationDate).When(
+                () => test.DelegationDate = DateTime.Today);
         }
 
         [Test]

@@ -26,7 +26,8 @@ namespace Relax.Domain.Tests.Models
         {
             var test = new Action();
 
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.Review).When(() => test.Review = new Mock<IReview>().Object);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.Review).When(
+                () => test.Review = new Mock<IReview>().Object);
         }
     }
 }

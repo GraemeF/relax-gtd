@@ -45,7 +45,8 @@ namespace Relax.Infrastructure.Helpers
             var notifier = _sourceList as INotifyCollectionChanged;
             if (notifier != null)
             {
-                _collectionObserver = new WeakEventListener<NotifyCollectionChangedEventArgs>(SourceCollection_CollectionChanged);
+                _collectionObserver =
+                    new WeakEventListener<NotifyCollectionChangedEventArgs>(SourceCollection_CollectionChanged);
                 CollectionChangedEventManager.AddListener(notifier, _collectionObserver);
             }
 

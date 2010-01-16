@@ -25,7 +25,8 @@ namespace Relax.Domain.Models
             set
             {
                 if (value > DateTime.UtcNow)
-                    throw new ArgumentOutOfRangeException("value", value, "The date and time of the last review must not be in the future.");
+                    throw new ArgumentOutOfRangeException("value", value,
+                                                          "The date and time of the last review must not be in the future.");
 
                 if (value != _lastReviewed)
                 {

@@ -5,6 +5,7 @@ using MbUnit.Framework.ContractVerifiers;
 using Moq;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
+using Action = Relax.Domain.Models.Action;
 
 namespace Relax.Domain.Tests.Models
 {
@@ -12,7 +13,7 @@ namespace Relax.Domain.Tests.Models
     public class ActionTestFixture
     {
         [VerifyContract]
-        public readonly IContract ActionState__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, State>
+        public readonly IContract ActionState__MeetsPropertyContract = new AccessorContract<Action, State>
                                                                            {
                                                                                PropertyName = "ActionState",
                                                                                AcceptNullValue = false,
@@ -26,7 +27,7 @@ namespace Relax.Domain.Tests.Models
                                                                            };
 
         [VerifyContract]
-        public readonly IContract CompletedDate__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, DateTime?>
+        public readonly IContract CompletedDate__MeetsPropertyContract = new AccessorContract<Action, DateTime?>
                                                                              {
                                                                                  PropertyName = "CompletedDate",
                                                                                  AcceptNullValue = true,
@@ -38,14 +39,16 @@ namespace Relax.Domain.Tests.Models
                                                                                  InvalidValues =
                                                                                      {
                                                                                          {
-                                                                                             typeof (ArgumentOutOfRangeException),
+                                                                                             typeof (
+                                                                                             ArgumentOutOfRangeException
+                                                                                             ),
                                                                                              DateTime.MaxValue
                                                                                              }
                                                                                      }
                                                                              };
 
         [VerifyContract]
-        public readonly IContract Context__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, IGtdContext>
+        public readonly IContract Context__MeetsPropertyContract = new AccessorContract<Action, IGtdContext>
                                                                        {
                                                                            PropertyName = "Context",
                                                                            AcceptNullValue = true,
@@ -56,7 +59,7 @@ namespace Relax.Domain.Tests.Models
                                                                        };
 
         [VerifyContract]
-        public readonly IContract Deadline__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, DateTime?>
+        public readonly IContract Deadline__MeetsPropertyContract = new AccessorContract<Action, DateTime?>
                                                                         {
                                                                             PropertyName = "Deadline",
                                                                             AcceptNullValue = true,
@@ -70,7 +73,7 @@ namespace Relax.Domain.Tests.Models
                                                                         };
 
         [VerifyContract]
-        public readonly IContract DeferUntil__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, DateTime?>
+        public readonly IContract DeferUntil__MeetsPropertyContract = new AccessorContract<Action, DateTime?>
                                                                           {
                                                                               PropertyName = "DeferUntil",
                                                                               AcceptNullValue = true,
@@ -84,7 +87,7 @@ namespace Relax.Domain.Tests.Models
                                                                           };
 
         [VerifyContract]
-        public readonly IContract Delegation__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, IDelegation>
+        public readonly IContract Delegation__MeetsPropertyContract = new AccessorContract<Action, IDelegation>
                                                                           {
                                                                               PropertyName = "Delegation",
                                                                               AcceptNullValue = true,
@@ -95,9 +98,11 @@ namespace Relax.Domain.Tests.Models
                                                                           };
 
         [VerifyContract]
-        public readonly IContract MentalEnergyRequired__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, EnergyLevel>
+        public readonly IContract MentalEnergyRequired__MeetsPropertyContract = new AccessorContract
+            <Action, EnergyLevel>
                                                                                     {
-                                                                                        PropertyName = "MentalEnergyRequired",
+                                                                                        PropertyName =
+                                                                                            "MentalEnergyRequired",
                                                                                         AcceptNullValue = true,
                                                                                         ValidValues =
                                                                                             {
@@ -109,9 +114,11 @@ namespace Relax.Domain.Tests.Models
                                                                                     };
 
         [VerifyContract]
-        public readonly IContract PhysicalEnergyRequired__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, EnergyLevel>
+        public readonly IContract PhysicalEnergyRequired__MeetsPropertyContract = new AccessorContract
+            <Action, EnergyLevel>
                                                                                       {
-                                                                                          PropertyName = "PhysicalEnergyRequired",
+                                                                                          PropertyName =
+                                                                                              "PhysicalEnergyRequired",
                                                                                           AcceptNullValue = true,
                                                                                           ValidValues =
                                                                                               {
@@ -123,7 +130,7 @@ namespace Relax.Domain.Tests.Models
                                                                                       };
 
         [VerifyContract]
-        public readonly IContract Priority__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, Priority>
+        public readonly IContract Priority__MeetsPropertyContract = new AccessorContract<Action, Priority>
                                                                         {
                                                                             PropertyName = "Priority",
                                                                             AcceptNullValue = false,
@@ -138,7 +145,7 @@ namespace Relax.Domain.Tests.Models
                                                                         };
 
         [VerifyContract]
-        public readonly IContract Repetition__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, IRepetition>
+        public readonly IContract Repetition__MeetsPropertyContract = new AccessorContract<Action, IRepetition>
                                                                           {
                                                                               PropertyName = "Repetition",
                                                                               AcceptNullValue = true,
@@ -149,7 +156,7 @@ namespace Relax.Domain.Tests.Models
                                                                           };
 
         [VerifyContract]
-        public readonly IContract Review__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, IReview>
+        public readonly IContract Review__MeetsPropertyContract = new AccessorContract<Action, IReview>
                                                                       {
                                                                           PropertyName = "Review",
                                                                           AcceptNullValue = true,
@@ -160,25 +167,30 @@ namespace Relax.Domain.Tests.Models
                                                                       };
 
         [VerifyContract]
-        public readonly IContract TimeRequired__MeetsPropertyContract = new AccessorContract<Domain.Models.Action, TimeSpan>
+        public readonly IContract TimeRequired__MeetsPropertyContract = new AccessorContract<Action, TimeSpan>
                                                                             {
                                                                                 PropertyName = "TimeRequired",
                                                                                 AcceptNullValue = false,
-                                                                                ValidValues = {TimeSpan.FromHours(1), TimeSpan.MinValue}
+                                                                                ValidValues =
+                                                                                    {
+                                                                                        TimeSpan.FromHours(1),
+                                                                                        TimeSpan.MinValue
+                                                                                    }
                                                                             };
 
         [Test]
         public void TimeRequired_WhenSet_RaisesPropertyChanged()
         {
-            var test = new Domain.Models.Action();
+            var test = new Action();
 
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.TimeRequired).When(() => test.TimeRequired = TimeSpan.FromMinutes(30));
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.TimeRequired).When(
+                () => test.TimeRequired = TimeSpan.FromMinutes(30));
         }
 
         [Test]
         public void MentalEnergyRequired_WhenSet_RaisesPropertyChanged()
         {
-            var test = new Domain.Models.Action();
+            var test = new Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.MentalEnergyRequired).When(
                 () => test.MentalEnergyRequired = EnergyLevel.Medium);
@@ -187,7 +199,7 @@ namespace Relax.Domain.Tests.Models
         [Test]
         public void PhysicalEnergyRequired_WhenSet_RaisesPropertyChanged()
         {
-            var test = new Domain.Models.Action();
+            var test = new Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.PhysicalEnergyRequired).When(
                 () => test.PhysicalEnergyRequired = EnergyLevel.Medium);
@@ -196,15 +208,16 @@ namespace Relax.Domain.Tests.Models
         [Test]
         public void ActionState_WhenSet_RaisesPropertyChanged()
         {
-            var test = new Domain.Models.Action();
+            var test = new Action();
 
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.ActionState).When(() => test.ActionState = State.SomedayMaybe);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.ActionState).When(
+                () => test.ActionState = State.SomedayMaybe);
         }
 
         [Test]
         public void ActionState_Initially_IsInbox()
         {
-            var test = new Domain.Models.Action();
+            var test = new Action();
 
             Assert.AreEqual(State.Inbox, test.ActionState);
         }
@@ -212,19 +225,19 @@ namespace Relax.Domain.Tests.Models
         [Test]
         public void BlockingActions_Initially_IsEmpty()
         {
-            Assert.IsEmpty(new Domain.Models.Action().BlockingActions);
+            Assert.IsEmpty(new Action().BlockingActions);
         }
 
         [Test]
         public void Notes_Initially_IsEmpty()
         {
-            Assert.IsEmpty(new Domain.Models.Action().Notes);
+            Assert.IsEmpty(new Action().Notes);
         }
 
         [Test]
         public void Deadline_WhenSet_RaisesPropertyChanged()
         {
-            var test = new Domain.Models.Action();
+            var test = new Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.Deadline).When(() => test.Deadline = DateTime.UtcNow);
         }
@@ -232,15 +245,16 @@ namespace Relax.Domain.Tests.Models
         [Test]
         public void Delegation_WhenSet_RaisesPropertyChanged()
         {
-            var test = new Domain.Models.Action();
+            var test = new Action();
 
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.Delegation).When(() => test.Delegation = new Mock<IDelegation>().Object);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.Delegation).When(
+                () => test.Delegation = new Mock<IDelegation>().Object);
         }
 
         [Test]
         public void DeferUntil_WhenSet_RaisesPropertyChanged()
         {
-            var test = new Domain.Models.Action();
+            var test = new Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.DeferUntil).When(() => test.DeferUntil = DateTime.UtcNow);
         }
@@ -248,23 +262,25 @@ namespace Relax.Domain.Tests.Models
         [Test]
         public void CompletedDate_WhenSet_RaisesPropertyChanged()
         {
-            var test = new Domain.Models.Action();
+            var test = new Action();
 
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.CompletedDate).When(() => test.CompletedDate = DateTime.UtcNow);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.CompletedDate).When(
+                () => test.CompletedDate = DateTime.UtcNow);
         }
 
         [Test]
         public void Review_WhenSet_RaisesPropertyChanged()
         {
-            var test = new Domain.Models.Action();
+            var test = new Action();
 
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.Review).When(() => test.Review = new Mock<IReview>().Object);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.Review).When(
+                () => test.Review = new Mock<IReview>().Object);
         }
 
         [Test]
         public void Priority_WhenSet_RaisesPropertyChanged()
         {
-            var test = new Domain.Models.Action();
+            var test = new Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.Priority).When(() => test.Priority = Priority.Should);
         }
@@ -272,17 +288,19 @@ namespace Relax.Domain.Tests.Models
         [Test]
         public void Repetition_WhenSet_RaisesPropertyChanged()
         {
-            var test = new Domain.Models.Action();
+            var test = new Action();
 
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.Repetition).When(() => test.Repetition = new Mock<IRepetition>().Object);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.Repetition).When(
+                () => test.Repetition = new Mock<IRepetition>().Object);
         }
 
         [Test]
         public void Context_WhenSet_RaisesPropertyChanged()
         {
-            var test = new Domain.Models.Action();
+            var test = new Action();
 
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.Context).When(() => test.Context = new Mock<IGtdContext>().Object);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.Context).When(
+                () => test.Context = new Mock<IGtdContext>().Object);
         }
     }
 }
