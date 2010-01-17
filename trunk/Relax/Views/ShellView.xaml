@@ -26,7 +26,8 @@
             <Grid Width="40" />
             <Button Content="Collect"
                     cm:Message.Attach="[Event Click] = [Action GoCollect]"
-                    Margin="5,0" />
+                    Margin="5,0"
+                    AutomationProperties.AutomationId="CollectActivityButton" />
             <Button Content="Process"
                     cm:Message.Attach="[Event Click] = [Action GoProcess]"
                     Margin="5,0" />

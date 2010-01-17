@@ -4,11 +4,21 @@ namespace Relax.AcceptanceTests.TestEntities
 {
     public class Shell
     {
-        private readonly AutomationElement _shell;
+        private readonly AutomationElement _element;
 
-        public Shell(AutomationElement shell)
+        public Shell(AutomationElement element)
         {
-            _shell = shell;
+            _element = element;
+        }
+
+        public Button CollectButton
+        {
+            get { return new Button(_element.FindChildById("CollectActivityButton")); }
+        }
+
+        public CollectActivity CollectActivity
+        {
+            get { return new CollectActivity(_element.FindChildById("Collect")); }
         }
     }
 }

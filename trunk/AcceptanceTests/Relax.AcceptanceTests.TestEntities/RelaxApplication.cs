@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -154,6 +155,23 @@ namespace Relax.AcceptanceTests.TestEntities
                 _process.CloseMainWindow();
                 _process.Dispose();
             }
+        }
+
+        public void StartCollectingActions()
+        {
+            Shell.CollectButton.Click();
+        }
+
+        public void AddInboxAction(string newAction)
+        {
+            _shell.FindDescendentByIdPath(new[] {"Collect", "Input", "Title"}).SetValue(newAction);
+            _shell.FindDescendentByIdPath(new[] {"Collect", "Input", "Add"}).GetInvokePattern().Invoke();
+        }
+
+        public void HasInboxActions(IEnumerable<string> actions)
+        {
+            Assert.AreElementsEqualIgnoringOrder(actions,
+                                                 Shell.CollectActivity.ActionList.Actions);
         }
     }
 }

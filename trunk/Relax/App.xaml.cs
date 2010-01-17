@@ -47,11 +47,10 @@ namespace Relax
         {
             yield return Assembly.GetEntryAssembly();
 
-            foreach (string loadedFile in catalog.LoadedFiles)
+            foreach (Assembly assembly in
+                catalog.LoadedFiles.Select(loadedFile => GetAssembly(loadedFile)).Where(assembly => assembly != null))
             {
-                Assembly assembly = GetAssembly(loadedFile);
-                if (assembly != null)
-                    yield return assembly;
+                yield return assembly;
             }
         }
 
