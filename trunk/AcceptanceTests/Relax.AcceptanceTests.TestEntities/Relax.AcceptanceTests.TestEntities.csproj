@@ -60,9 +60,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionList.cs" />
+    <Compile Include="AutomationExtensions.cs" />
+    <Compile Include="Button.cs" />
+    <Compile Include="CollectActivity.cs" />
+    <Compile Include="PatternExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RelaxApplication.cs" />
     <Compile Include="Shell.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Relax\Relax.csproj">
+      <Project>{783A1A3D-CDB4-4121-9655-AA34516331A2}</Project>
+      <Name>Relax</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

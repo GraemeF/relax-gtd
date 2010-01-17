@@ -38,11 +38,9 @@ namespace Relax.Presenters
 
         private void CloseItems(IEnumerable<TModel> oldItems)
         {
-            foreach (TModel oldItem in oldItems)
+            foreach (IPresenter presenter in
+                oldItems.Select(context => Presenters.First(x => ((TModelPresenter) x).Model.Equals(context))))
             {
-                TModel context = oldItem;
-                IPresenter presenter = Presenters.First(x => ((TModelPresenter) x).Model.Equals(context));
-
                 Shutdown(presenter, isSuccess => { });
                 Presenters.Remove(presenter);
             }
