@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Caliburn.Testability, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\Caliburn\Bin\NET-3.5\release\Caliburn.Testability.dll</HintPath>
+    </Reference>
     <Reference Include="Gallio, Version=3.1.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Library\Gallio\bin\Gallio.dll</HintPath>
@@ -78,10 +82,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Library\Caliburn\src\Caliburn.Testability\Caliburn.Testability.csproj">
-      <Project>{88B9DA1A-E26F-423F-A051-77CF03A62077}</Project>
-      <Name>Caliburn.Testability</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Relax.Domain\Relax.Domain.csproj">
       <Project>{B153BEDB-EA89-447E-A4DB-6993ED6143D1}</Project>
       <Name>Relax.Domain</Name>
