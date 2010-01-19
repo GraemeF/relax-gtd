@@ -37,11 +37,31 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Library\Caliburn\Bin\NET-3.5\release\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Caliburn.Autofac, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Caliburn\Bin\NET-3.5\release\Caliburn.Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Core, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Caliburn\Bin\NET-3.5\release\Caliburn.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.PresentationFramework, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Caliburn\Bin\NET-3.5\release\Caliburn.PresentationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.WPF.ApplicationFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Caliburn\Bin\NET-3.5\release\Caliburn.WPF.ApplicationFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Library\Caliburn\Bin\NET-3.5\release\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition, Version=2009.22.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\MEF\bin\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -229,34 +249,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Library\Caliburn\src\Caliburn.Autofac\Caliburn.Autofac.csproj">
-      <Project>{AFBDDB74-139F-4C7D-AC94-99C5173F76C7}</Project>
-      <Name>Caliburn.Autofac</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Library\Caliburn\src\Caliburn.Core\Caliburn.Core.csproj">
-      <Project>{D7357C4C-BFFF-4EE4-8D40-0803FAAFF38A}</Project>
-      <Name>Caliburn.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Library\Caliburn\src\Caliburn.MEF\Caliburn.MEF.csproj">
-      <Project>{F350C4CB-48AE-4A1F-9BAE-C836D6C7C0E4}</Project>
-      <Name>Caliburn.MEF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Library\Caliburn\src\Caliburn.ModelFramework\Caliburn.ModelFramework.csproj">
-      <Project>{79504818-6612-414D-BBF4-F8F0BB7ABBDC}</Project>
-      <Name>Caliburn.ModelFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Library\Caliburn\src\Caliburn.PresentationFramework\Caliburn.PresentationFramework.csproj">
-      <Project>{4B343291-DB03-4ADA-96CD-3CFFA3C838D7}</Project>
-      <Name>Caliburn.PresentationFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Library\Caliburn\src\Caliburn.WPF.ApplicationFramework\Caliburn.WPF.ApplicationFramework.csproj">
-      <Project>{0567B942-B5ED-430F-8E45-FE639039B75B}</Project>
-      <Name>Caliburn.WPF.ApplicationFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Library\MEF\src\ComponentModel\ComponentModel.csproj">
-      <Project>{A36AEF66-2411-4225-B68E-F2D29368A31B}</Project>
-      <Name>ComponentModel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Library\MvvmFoundation.Wpf\MvvmFoundation.Wpf.csproj">
       <Project>{2E922430-EAAC-4589-A8F4-F35FBB9799B8}</Project>
       <Name>MvvmFoundation.Wpf</Name>
