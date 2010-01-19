@@ -35,6 +35,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Library\Caliburn\Bin\NET-3.5\release\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Caliburn.Core, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Caliburn\Bin\NET-3.5\release\Caliburn.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -69,14 +73,6 @@
     <Compile Include="Services\WorkspaceSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Library\Caliburn\src\Caliburn.Core\Caliburn.Core.csproj">
-      <Project>{D7357C4C-BFFF-4EE4-8D40-0803FAAFF38A}</Project>
-      <Name>Caliburn.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Library\MEF\src\ComponentModel\ComponentModel.csproj">
-      <Project>{A36AEF66-2411-4225-B68E-F2D29368A31B}</Project>
-      <Name>ComponentModel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Relax.Domain\Relax.Domain.csproj">
       <Project>{B153BEDB-EA89-447E-A4DB-6993ED6143D1}</Project>
       <Name>Relax.Domain</Name>
