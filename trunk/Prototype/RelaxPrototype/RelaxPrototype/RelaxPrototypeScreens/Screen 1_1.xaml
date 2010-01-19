@@ -1,0 +1,193 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	xmlns:local="clr-namespace:RelaxPrototypeScreens" xmlns:ps="clr-namespace:Microsoft.Expression.Prototyping.SketchControls;assembly=Microsoft.Expression.Prototyping.SketchControls" xmlns:Custom="http://schemas.microsoft.com/wpf/2008/toolkit" x:Name="ProcessActivity"
+	x:Class="RelaxPrototypeScreens.Screen_1_1">
+	<UserControl.Resources>
+    <local:TabSizeConverter x:Key="tabSizeConverter" />
+		<!-- Sketch TabItem -->
+		<Style x:Key="UniformWidthSketchTabItem" d:IsControlPart="true" TargetType="{x:Type TabItem}">
+			<Setter Property="Width">
+				<Setter.Value>
+					<MultiBinding Converter="{StaticResource tabSizeConverter}">
+						<Binding RelativeSource="{RelativeSource AncestorType={x:Type TabControl}, Mode=FindAncestor}" />
+						<Binding RelativeSource="{RelativeSource AncestorType={x:Type TabControl}, Mode=FindAncestor}" Path="ActualWidth" />
+					</MultiBinding>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="FocusVisualStyle" Value="{StaticResource TabItemFocusVisual-Sketch}"/>
+			<Setter Property="Foreground" Value="{DynamicResource BaseForeground-Sketch}"/>
+			<Setter Property="Padding" Value="6,1,6,1"/>
+			<Setter Property="Foreground" Value="{StaticResource BaseBorder-Sketch}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource BaseBorder-Sketch}"/>
+			<Setter Property="Background" Value="{StaticResource BaseBackground-Sketch}"/>
+			<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+			<Setter Property="VerticalContentAlignment" Value="Stretch"/>
+			<Setter Property="FontFamily" Value="{DynamicResource FontFamily-Sketch}"/>
+			<Setter Property="FontSize" Value="{DynamicResource SizeDouble-Sketch}"/>
+			<Setter Property="Foreground" Value="{StaticResource BaseBorder-Sketch}"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type TabItem}">
+						<Grid x:Name="grid" SnapsToDevicePixels="true" RenderTransformOrigin="0.5,0.5">
+							<Grid.RenderTransform>
+								<TransformGroup>
+									<ScaleTransform/>
+									<SkewTransform/>
+									<RotateTransform/>
+									<TranslateTransform/>
+								</TransformGroup>
+							</Grid.RenderTransform>
+							<Rectangle x:Name="bgUnselected" Fill="{TemplateBinding BorderBrush}" Stroke="{x:Null}" Margin="1,1,1,0" Opacity="0.3"/>
+							<ps:SketchRectangleUC x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" StrokeWidth="2" SegmentLength="8" SegmentOffset="0.12" SegmentVariance="0.1" Foreground="{TemplateBinding Foreground}" Background="{x:Null}"/>
+							<Rectangle x:Name="bgSelected" Fill="{TemplateBinding Background}" Stroke="{x:Null}" Margin="2,2,2,-1" Visibility="Collapsed"/>
+							<Grid x:Name="Bd">
+								<ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+									HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" 
+									Margin="10,5,7,1" 
+									x:Name="Content" 
+									VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" 
+									ContentSource="Header" 
+									RecognizesAccessKey="True"/>
+							</Grid>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="true">
+								<Setter Property="Opacity" TargetName="bgUnselected" Value="0.5"/>
+							</Trigger>
+							<Trigger Property="IsSelected" Value="true">
+								<Setter Property="Panel.ZIndex" Value="1"/>
+								<Setter Property="Visibility" TargetName="bgSelected" Value="Visible"/>
+							</Trigger>
+							<Trigger Property="TabStripPlacement" Value="Bottom">
+								<Setter Property="Margin" TargetName="bgUnselected" Value="1,0,1,1"/>
+								<Setter Property="Margin" TargetName="bgSelected" Value="2,-1,2,2"/>
+								<Setter Property="Margin" TargetName="grid" Value="0,-2,0,0"/>
+							</Trigger>
+							<Trigger Property="TabStripPlacement" Value="Left">
+								<Setter Property="Margin" TargetName="bgUnselected" Value="1,1,0,1"/>
+								<Setter Property="Margin" TargetName="bgSelected" Value="2,2,-1,2"/>
+								<Setter Property="Margin" TargetName="grid" Value="0,0,-2,0"/>
+							</Trigger>
+							<Trigger Property="TabStripPlacement" Value="Right">
+								<Setter Property="Margin" TargetName="grid" Value="-2,0,0,0"/>
+								<Setter Property="Margin" TargetName="bgUnselected" Value="0,1,1,1"/>
+								<Setter Property="Margin" TargetName="bgSelected" Value="-1,2,2,2"/>
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="{StaticResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+								<Setter Property="Background" TargetName="border" Value="{DynamicResource DisabledBackground-Sketch}"/>
+								<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource DisabledBorder-Sketch}"/>
+								<Setter Property="Foreground" TargetName="border" Value="{DynamicResource DisabledForeground-Sketch}"/>
+								<Setter Property="Opacity" TargetName="Content" Value="0.5"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="FontWeight" Value="{DynamicResource FontWeight-Sketch}"/>
+			<Style.Triggers>
+				<Trigger Property="Selector.IsSelected" Value="True">
+					<Setter Property="Foreground" Value="{DynamicResource PressedForeground-Sketch}"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+	</UserControl.Resources>
+
+	<DockPanel Width="800" Height="600">
+		<DockPanel DockPanel.Dock="Top">
+			<TextBox Style="{DynamicResource BasicTextBox-Sketch}" Text="Title" TextWrapping="Wrap" Width="596.32"/>
+			<local:Inbox DockPanel.Dock="Right" d:IsPrototypingComposition="True"/>
+		</DockPanel>
+		<Grid DockPanel.Dock="Top" Margin="0,0,9,0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="1*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="1*"/>
+				<RowDefinition Height="1*"/>
+				<RowDefinition Height="1*"/>
+			</Grid.RowDefinitions>			
+			<Grid Background="#FF47664E" Grid.ColumnSpan="4">
+				<TextBlock HorizontalAlignment="Center" Style="{DynamicResource BasicTextBlock-Sketch}" VerticalAlignment="Center" Foreground="White" Text="Actionable" d:LayoutOverrides="Height"/>
+			</Grid>
+			<Grid Background="#FFBA5136" Grid.Column="4" Grid.ColumnSpan="5" Grid.RowSpan="2">
+				<TextBlock HorizontalAlignment="Center" Style="{DynamicResource BasicTextBlock-Sketch}" VerticalAlignment="Center" Foreground="White" Text="Not Actionable" d:LayoutOverrides="Height"/>
+			</Grid>
+			<Grid Background="#FF7A8B46" Grid.ColumnSpan="3" Grid.Row="1">
+				<TextBlock HorizontalAlignment="Center" Style="{DynamicResource BasicTextBlock-Sketch}" VerticalAlignment="Center" Foreground="White" d:LayoutOverrides="Height"><Run Text="Single "/><Run Text="Step"/></TextBlock>
+			</Grid>
+			<Grid Background="#FFAEB545" Grid.Column="3" Grid.Row="1">
+				<TextBlock HorizontalAlignment="Center" Style="{DynamicResource BasicTextBlock-Sketch}" VerticalAlignment="Center" Foreground="White" Text="Multi Step" d:LayoutOverrides="Height"/>
+			</Grid>
+		</Grid>
+		<StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="6">
+			<Button Style="{DynamicResource Button-Sketch}" Content="Skip" Margin="0,0,6,0"/>
+			<Button Style="{DynamicResource Button-Sketch}" Content="Next/Done" IsDefault="True"/>
+		</StackPanel>
+		<TabControl Style="{DynamicResource TabControl-Sketch}" DockPanel.Dock="Bottom">
+			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Now">
+				<Grid/>
+			</TabItem>
+			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Later">
+				<DockPanel>
+					<local:Screen_1_6 d:IsPrototypingComposition="True" HorizontalAlignment="Left"/>
+					<local:Screen_1_5 DockPanel.Dock="Bottom" d:IsPrototypingComposition="True" VerticalAlignment="Bottom"/>
+					<local:Screen_1_8 d:IsPrototypingComposition="True"/>
+				</DockPanel>
+			</TabItem>
+			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Delegate">
+				<DockPanel>
+					<local:Screen_1_6 d:IsPrototypingComposition="True" HorizontalAlignment="Left"/>
+					<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+						<TextBlock HorizontalAlignment="Right" Style="{DynamicResource BasicTextBlock-Sketch}" VerticalAlignment="Center" Text="Delegate to"/>
+						<TextBox Margin="6,0,0,0" MinWidth="240" Style="{DynamicResource ComboBoxEditableTextBox-Sketch}" TextWrapping="Wrap" Grid.Column="1" d:LayoutOverrides="Width, Height"/>
+					</Grid>
+				</DockPanel>
+			</TabItem>
+			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Project">
+				<Grid/>
+			</TabItem>
+			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Delete">
+				<Grid/>
+			</TabItem>
+			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Someday/Maybe">
+				<Grid/>
+			</TabItem>
+			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Defer">
+				<Grid>
+					<Custom:Calendar/>
+				</Grid>
+			</TabItem>
+			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Calendar">
+				<Grid>
+					<TextBlock HorizontalAlignment="Center" Style="{DynamicResource TextBlock-Sketch}" VerticalAlignment="Center" Text="Host plugins to provide access to Outlook/Google/other calendars here"/>
+				</Grid>
+			</TabItem>
+			<TabItem Style="{DynamicResource UniformWidthSketchTabItem}" Header="Reference">
+				<Grid>
+					<TextBlock HorizontalAlignment="Center" Style="{DynamicResource TextBlock-Sketch}" VerticalAlignment="Center"><Run Text="Host p"/><Run Text="lugin"/><Run Text="s here"/><Run Text=" to send to Evernote etc."/></TextBlock>
+				</Grid>
+			</TabItem>
+		</TabControl>
+	</DockPanel>
+</UserControl>
