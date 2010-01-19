@@ -31,9 +31,9 @@ namespace Relax.AcceptanceTests.TestEntities
         /// <returns>The launched instance.</returns>
         public static RelaxApplication Launch(bool newWorkspace, string workspacePath)
         {
-            var args = new StringBuilder(" /nobugtrap");
+            var args = new StringBuilder();
             if (newWorkspace)
-                args.Append(" /new");
+                args.Append(" /n");
             if (workspacePath != null)
                 args.AppendFormat(" /workspace=\"{0}\"", workspacePath);
 

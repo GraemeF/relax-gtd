@@ -7,11 +7,15 @@ using System.ComponentModel.Composition.Primitives;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Windows;
 using Autofac.Builder;
 using Caliburn.Autofac;
 using Caliburn.Core;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Microsoft.Practices.ServiceLocation;
+using NDesk.Options;
+using Relax.FileBackingStore.Services;
+using Relax.FileBackingStore.Services.Interfaces;
 using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Services.Interfaces;
 using Relax.Presenters.Interfaces;
@@ -24,14 +28,40 @@ namespace Relax
     {
         private ComposablePartCatalog _catalog;
         private IContainer _container;
+        private bool _newWorkspace;
+        private string _workspacePath;
 
         [ImportMany(AllowRecomposition = true)]
         public ObservableCollection<IRelaxModule> Modules { get; private set; }
 
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            ParseStartupArguments(e);
+            base.OnStartup(e);
+        }
+
+        private void ParseStartupArguments(StartupEventArgs startupEventArgs)
+        {
+            var p = new OptionSet
+                        {
+                            {"w|workspace=", "the {PATH} of the workspace.", v => _workspacePath = v},
+                            {"n|new", "create a new workspace.", v => _newWorkspace = v != null},
+                        };
+
+            try
+            {
+                p.Parse(startupEventArgs.Args);
+            }
+            catch (OptionException e)
+            {
+                Console.WriteLine(e.Message);
+                Current.Shutdown();
+            }
+        }
+
         protected override IServiceLocator CreateContainer()
         {
-            var builder = new ContainerBuilder();
-            _container = builder.Build();
+            _container = new ContainerBuilder().Build();
             return new AutofacAdapter(_container);
         }
 
@@ -92,9 +122,26 @@ namespace Relax
             builder.Build(_container);
         }
 
+        private void ConfigureStartupFileLocator()
+        {
+            ContainerBuilder builder= new ContainerBuilder();
+
+            if (_workspacePath == null && !_newWorkspace)
+                builder.Register<DefaultWorkspaceFileLocator>().As<IStartupFileLocator>();
+            else
+                builder.Register<IStartupFileLocator>(
+                    new CustomPathStartupFileLocator(_workspacePath ??
+                                                     DefaultWorkspaceFileLocator.DefaultBackingStorePath)
+                        {LoadOnStartup = !_newWorkspace});
+
+            builder.Build(_container);
+        }
+
         protected override object CreateRootModel()
         {
-            var binder = (DefaultBinder) Container.GetInstance<IBinder>();
+            ConfigureStartupFileLocator();
+
+            var binder = (DefaultBinder)Container.GetInstance<IBinder>();
             binder.EnableMessageConventions();
             binder.EnableBindingConventions();
 
