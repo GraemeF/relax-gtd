@@ -67,6 +67,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Relax\Relax.csproj">
+      <Project>{783A1A3D-CDB4-4121-9655-AA34516331A2}</Project>
+      <Name>Relax</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Relax.AcceptanceTests.TestEntities\Relax.AcceptanceTests.TestEntities.csproj">
       <Project>{A435B7CD-B99C-4E96-9FF2-7E41B1AEFE1D}</Project>
       <Name>Relax.AcceptanceTests.TestEntities</Name>
