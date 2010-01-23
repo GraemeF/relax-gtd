@@ -10,13 +10,24 @@
         MinHeight="600"
         MinWidth="800"
         mc:Ignorable="d">
+    <Window.Resources>
+        <Style x:Key="ActivityNavigationButton"
+               TargetType="{x:Type Button}">
+            <Setter Property="MinWidth"
+                    Value="85" />
+            <Setter Property="Margin"
+                    Value="5,0" />
+            <Setter Property="FontSize"
+                    Value="18.667" />
+            <Setter Property="FontFamily"
+                    Value="Segoe UI" />
+        </Style>
+    </Window.Resources>
     <DockPanel>
         <StackPanel Orientation="Horizontal"
                     DockPanel.Dock="Top">
             <Button Content="Save"
                     cm:Message.Attach="[Event Click] = [Action Save]" />
-            <Button Content="Add"
-                    cm:Message.Attach="[Event Click] = [Action AddInboxAction]" />
             <Button Content="Back"
                     x:Name="Back"
                     IsEnabled="{Binding CanGoBack}" />
@@ -26,20 +37,21 @@
             <Grid Width="40" />
             <Button Content="Collect"
                     cm:Message.Attach="[Event Click] = [Action GoCollect]"
-                    Margin="5,0"
-                    AutomationProperties.AutomationId="CollectActivityButton" />
+                    AutomationProperties.AutomationId="CollectActivityButton"
+                    Style="{DynamicResource ActivityNavigationButton}" />
             <Button Content="Process"
                     cm:Message.Attach="[Event Click] = [Action GoProcess]"
-                    Margin="5,0" />
+                    AutomationProperties.AutomationId="ProcessActivityButton"
+                    Style="{DynamicResource ActivityNavigationButton}" />
             <Button Content="Organise"
                     cm:Message.Attach="[Event Click] = [Action GoOrganise]"
-                    Margin="5,0" />
+                    Style="{DynamicResource ActivityNavigationButton}" />
             <Button Content="Do"
                     cm:Message.Attach="[Event Click] = [Action GoDo]"
-                    Margin="5,0" />
+                    Style="{DynamicResource ActivityNavigationButton}" />
             <Button Content="Review"
                     cm:Message.Attach="[Event Click] = [Action GoReview]"
-                    Margin="5,0" />
+                    Style="{DynamicResource ActivityNavigationButton}" />
         </StackPanel>
         <Grid>
             <StackPanel x:Name="LayoutRoot">
