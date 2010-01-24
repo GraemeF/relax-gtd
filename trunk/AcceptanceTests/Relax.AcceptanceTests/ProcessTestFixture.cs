@@ -26,5 +26,31 @@ namespace Relax.AcceptanceTests
                 Assert.IsTrue(relax.Shell.Workspace.ProcessButton.IsEnabled);
             }
         }
+
+        [Test]
+        public void ProcessButtonSaysProcessWhenEmpty()
+        {
+            using (RelaxApplication relax = RelaxApplication.Launch())
+            {
+                relax.StartCollectingActions();
+
+                Assert.AreEqual("Process", relax.Shell.Workspace.ProcessButton.Text);
+            }
+        }
+
+        [Test]
+        public void ProcessButtonShowsNumberOfInboxActionsWhenNotEmpty()
+        {
+            using (RelaxApplication relax = RelaxApplication.Launch())
+            {
+                relax.StartCollectingActions();
+
+                relax.AddInboxAction("This is an action in my inbox.");
+                Assert.AreEqual("Process (1)", relax.Shell.Workspace.ProcessButton.Text);
+
+                relax.AddInboxAction("This is an action in my inbox.");
+                Assert.AreEqual("Process (2)", relax.Shell.Workspace.ProcessButton.Text);
+            }
+        }
     }
 }
