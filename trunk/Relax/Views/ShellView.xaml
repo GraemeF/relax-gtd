@@ -42,7 +42,8 @@
             <Button Content="Process"
                     cm:Message.Attach="[Event Click] = [Action GoProcess]"
                     AutomationProperties.AutomationId="ProcessActivityButton"
-                    Style="{DynamicResource ActivityNavigationButton}" />
+                    Style="{DynamicResource ActivityNavigationButton}"
+                    IsEnabled="{Binding IsProcessingEnabled}" />
             <Button Content="Organise"
                     cm:Message.Attach="[Event Click] = [Action GoOrganise]"
                     Style="{DynamicResource ActivityNavigationButton}" />

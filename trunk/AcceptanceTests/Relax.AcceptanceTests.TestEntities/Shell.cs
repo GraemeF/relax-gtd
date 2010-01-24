@@ -20,5 +20,10 @@ namespace Relax.AcceptanceTests.TestEntities
         {
             get { return new CollectActivity(_element.FindChildById("Collect")); }
         }
+
+        public Button ProcessButton
+        {
+            get { return new Button(_element.FindChildById("ProcessActivityButton")); }
+        }
     }
 }

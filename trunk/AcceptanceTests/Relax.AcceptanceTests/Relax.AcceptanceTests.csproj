@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="CollectTestFixture.cs" />
     <Compile Include="LaunchTestFixture.cs" />
+    <Compile Include="ProcessTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

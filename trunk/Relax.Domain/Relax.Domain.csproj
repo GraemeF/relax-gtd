@@ -36,6 +36,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Library\Caliburn\Bin\NET-3.5\release\Caliburn.Core.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -56,6 +59,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filters\InboxActionsFilter.cs" />
+    <Compile Include="Filters\Interfaces\IInboxActionsFilter.cs" />
     <Compile Include="Models\Action.cs" />
     <Compile Include="Models\GtdContext.cs" />
     <Compile Include="Models\Delegation.cs" />

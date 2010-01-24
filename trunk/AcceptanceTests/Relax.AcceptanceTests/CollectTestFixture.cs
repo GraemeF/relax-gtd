@@ -7,7 +7,7 @@ namespace Relax.AcceptanceTests
     public class CollectTestFixture
     {
         [Test]
-        [Category("InProgress")]
+        [Category("Regression")]
         public void When_an_action_is_added_it_is_shown_in_the_Inbox()
         {
             using (RelaxApplication relax = RelaxApplication.Launch())
