@@ -1,7 +1,4 @@
 using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Windows.Data;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Relax.Infrastructure.Models.Interfaces;
@@ -16,13 +13,8 @@ namespace Relax.Presenters
     {
         public BlockingActionsPresenter(IAction blockedAction,
                                         Func<IAction, IActionPresenter> actionPresenterFactory)
-            : base(GetFilteredView(blockedAction.BlockingActions), actionPresenterFactory)
+            : base(blockedAction.BlockingActions, actionPresenterFactory)
         {
-        }
-
-        private static ICollectionView GetFilteredView(ObservableCollection<IAction> actions)
-        {
-            return CollectionViewSource.GetDefaultView(actions);
         }
     }
 }

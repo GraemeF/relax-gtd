@@ -60,7 +60,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition, Version=2009.22.10.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Library\MEF\bin\System.ComponentModel.Composition.dll</HintPath>
+      <HintPath>..\Library\Caliburn\Bin\NET-3.5\release\System.ComponentModel.Composition.dll</HintPath>
     </Reference>
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -143,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\WorkspaceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -181,12 +185,14 @@
     <Compile Include="Presenters\Interfaces\IProcessPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IProjectsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IActionTreeNodePresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IWorkspacePresenter.cs" />
     <Compile Include="Presenters\MakeProjectPresenter.cs" />
     <Compile Include="Presenters\ProjectsPresenter.cs" />
     <Compile Include="Presenters\ProcessPresenter.cs" />
     <Compile Include="Presenters\ItemPresenter.cs" />
     <Compile Include="Presenters\ListPresenter.cs" />
     <Compile Include="Presenters\ActionTreeNodePresenter.cs" />
+    <Compile Include="Presenters\WorkspacePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -237,6 +243,9 @@
     </Compile>
     <Compile Include="Views\ProjectsView.xaml.cs">
       <DependentUpon>ProjectsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkspaceView.cs">
+      <DependentUpon>WorkspaceView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -4,26 +4,23 @@ using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.TestDataBuilders
 {
-    public class WorkspaceBuilder
+    public class WorkspaceBuilder : BuilderBase<IWorkspace>
     {
         private ObservableCollection<IAction> _actions = new ObservableCollection<IAction>();
 
-        public Mock<IWorkspace> Build()
+        protected override void SetupMock(Mock<IWorkspace> mock)
         {
-            var mock = new Mock<IWorkspace>();
             mock.Setup(x => x.Actions).Returns(new ObservableCollection<IAction>(_actions));
-
-            return mock;
         }
 
         public WorkspaceBuilder With(ActionBuilder actionBuilder)
         {
-            return With(actionBuilder.Build().Object);
+            return With(actionBuilder.Build());
         }
 
         public WorkspaceBuilder With(IAction action)
         {
-            return new WorkspaceBuilder {_actions = new ObservableCollection<IAction>(_actions) {action}};
+            return new WorkspaceBuilder { _actions = new ObservableCollection<IAction>(_actions) { action } };
         }
     }
 }

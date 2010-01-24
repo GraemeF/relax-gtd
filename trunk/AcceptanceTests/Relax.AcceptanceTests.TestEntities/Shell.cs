@@ -1,4 +1,5 @@
-﻿using System.Windows.Automation;
+﻿using System;
+using System.Windows.Automation;
 
 namespace Relax.AcceptanceTests.TestEntities
 {
@@ -8,6 +9,23 @@ namespace Relax.AcceptanceTests.TestEntities
 
         public Shell(AutomationElement element)
         {
+            if (element == null) throw new ArgumentNullException("element");
+            _element = element;
+        }
+
+        public Workspace Workspace
+        {
+            get { return new Workspace(_element.FindChildById("Workspace")); }
+        }
+    }
+
+    public class Workspace
+    {
+        private readonly AutomationElement _element;
+
+        public Workspace(AutomationElement element)
+        {
+            if (element == null) throw new ArgumentNullException("element");
             _element = element;
         }
 
@@ -19,6 +37,11 @@ namespace Relax.AcceptanceTests.TestEntities
         public CollectActivity CollectActivity
         {
             get { return new CollectActivity(_element.FindChildById("Collect")); }
+        }
+
+        public Button ProcessButton
+        {
+            get { return new Button(_element.FindChildById("ProcessActivityButton")); }
         }
     }
 }

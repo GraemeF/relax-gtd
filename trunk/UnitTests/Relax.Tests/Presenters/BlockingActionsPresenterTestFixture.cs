@@ -13,13 +13,13 @@ namespace Relax.Tests.Presenters
         [Test]
         public void Presenters_WhenActionHasABlockingAction_ContainsPresenterForBlockingAction()
         {
-            Mock<IAction> blockingAction = AnAction.Build();
+            IAction blockingAction = AnAction.Build();
             var stubPresenter = new Mock<IActionPresenter>();
 
-            var test = new BlockingActionsPresenter(AnAction.BlockedBy(blockingAction.Object).Build().Object,
+            var test = new BlockingActionsPresenter(AnAction.BlockedBy(blockingAction).Build(),
                                                     delegate(IAction action)
                                                         {
-                                                            Assert.AreSame(blockingAction.Object, action);
+                                                            Assert.AreSame(blockingAction, action);
                                                             return stubPresenter.Object;
                                                         });
 

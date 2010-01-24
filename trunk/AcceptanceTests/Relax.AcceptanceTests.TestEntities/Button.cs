@@ -19,6 +19,11 @@ namespace Relax.AcceptanceTests.TestEntities
             get { return _element.Current.IsEnabled; }
         }
 
+        public string Text
+        {
+            get { return _element.Current.Name; }
+        }
+
         public void Click()
         {
             _element.GetInvokePattern().Invoke();

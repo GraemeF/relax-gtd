@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\TabSizeConverter.cs" />
-    <Compile Include="Helpers\CollectionSync.cs" />
+    <Compile Include="Helpers\ListSync.cs" />
     <Compile Include="Helpers\NoCoverageAttribute.cs" />
     <Compile Include="Helpers\PropertyHelper.cs" />
     <Compile Include="Helpers\StateManager.cs" />
