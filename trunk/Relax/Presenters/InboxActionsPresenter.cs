@@ -12,10 +12,13 @@ namespace Relax.Presenters
     [View(typeof (ActionsView))]
     public class InboxActionsPresenter : ListPresenter<IAction, IActionPresenter>, IInboxActionsPresenter
     {
+        private readonly IInboxActionsFilter _inboxActionsFilter;
+
         public InboxActionsPresenter(IInboxActionsFilter inboxActionsFilter,
                                      Func<IAction, IActionPresenter> actionPresenterFactory)
             : base(inboxActionsFilter.Actions, actionPresenterFactory)
         {
+            _inboxActionsFilter = inboxActionsFilter;
         }
     }
 }

@@ -2,7 +2,7 @@ using Caliburn.PresentationFramework.ApplicationModel;
 
 namespace Relax.Presenters.Interfaces
 {
-    public interface IListPresenter<TModel, TModelPresenter> : IPresenterHost
+    public interface IListPresenter : IPresenterHost
     {
     }
 }

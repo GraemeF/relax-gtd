@@ -8,7 +8,7 @@ using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
-    public class ListPresenter<TModel, TModelPresenter> : MultiPresenter, IListPresenter<TModel, TModelPresenter>
+    public class ListPresenter<TModel, TModelPresenter> : MultiPresenter, IListPresenter
         where TModelPresenter : IModelPresenter<TModel>
     {
         private readonly Func<TModel, TModelPresenter> _itemPresenterFactory;
