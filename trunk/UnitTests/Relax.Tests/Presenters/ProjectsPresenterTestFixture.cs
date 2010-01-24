@@ -15,13 +15,13 @@ namespace Relax.Tests.Presenters
         {
             var stubProjectPresenter = new Mock<IActionTreeNodePresenter>();
 
-            Mock<IAction> unblockedAction = AnAction.Build();
-            Mock<IAction> blockedAction = AnAction.BlockedBy(unblockedAction.Object).Build();
+            IAction unblockedAction = AnAction.Build();
+            IAction blockedAction = AnAction.BlockedBy(unblockedAction).Build();
             var test =
-                new ProjectsPresenter(AWorkspace.With(blockedAction.Object).With(unblockedAction.Object).Build().Object,
+                new ProjectsPresenter(AWorkspace.With(blockedAction).With(unblockedAction).Build(),
                                       delegate(IAction action)
                                           {
-                                              Assert.AreSame(blockedAction.Object, action,
+                                              Assert.AreSame(blockedAction, action,
                                                              "The wrong action was presented.");
                                               return stubProjectPresenter.Object;
                                           });

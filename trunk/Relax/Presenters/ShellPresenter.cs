@@ -3,6 +3,7 @@ using Autofac;
 using Autofac.Builder;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
+using Relax.Domain.Filters.Interfaces;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Infrastructure.Services.Interfaces;
 using Relax.Presenters.Interfaces;
@@ -15,6 +16,7 @@ namespace Relax.Presenters
         private readonly IBackingStore _backingStore;
         private readonly IContainer _container;
         private IPresenter _dialogModel;
+        private IInboxActionsFilter _inboxActionsFilter;
 
         public ShellPresenter(IContainer container, IBackingStore backingStore)
         {
@@ -33,6 +35,11 @@ namespace Relax.Presenters
                 _dialogModel = value;
                 NotifyOfPropertyChange("DialogModel");
             }
+        }
+
+        public bool IsProcessingEnabled
+        {
+            get { return !_inboxActionsFilter.InboxActions.IsEmpty; }
         }
 
         #region IShellPresenter Members
@@ -56,6 +63,7 @@ namespace Relax.Presenters
 
             Contexts = _container.Resolve<IContextsPresenter>();
             Actions = _container.Resolve<IActionsPresenter>();
+            _inboxActionsFilter = _container.Resolve<IInboxActionsFilter>();
         }
 
         #endregion

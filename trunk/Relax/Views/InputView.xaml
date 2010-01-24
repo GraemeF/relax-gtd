@@ -12,11 +12,5 @@
                 cm:Message.Attach="[Event Click] = [Action Add]"
                 IsDefault="True"
                 AutomationProperties.AutomationId="Add" />
-        <Button Content="Cancel"
-                Padding="10"
-                cm:Message.Attach="[Event Click] = [Action Shutdown]"
-                IsCancel="True"
-                Visibility="Visible"
-                AutomationProperties.AutomationId="Cancel" />
     </StackPanel>
 </UserControl>

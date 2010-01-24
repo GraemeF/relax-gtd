@@ -1,16 +1,19 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using Caliburn.PresentationFramework.ApplicationModel;
 using MbUnit.Framework;
 using Moq;
+using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Infrastructure.Services.Interfaces;
 using Relax.Presenters;
 using Relax.Presenters.Interfaces;
+using Relax.TestDataBuilders;
 
 namespace Relax.Tests.Presenters
 {
     [TestFixture]
-    public class ShellPresenterTestFixture
+    public class ShellPresenterTestFixture : TestDataBuilder
     {
         private Mock<IBackingStore> _fakeBackingStore;
         private Mock<IContainer> _stubContainer;
@@ -21,7 +24,7 @@ namespace Relax.Tests.Presenters
             _fakeBackingStore = new Mock<IBackingStore>();
             _stubContainer = new Mock<IContainer>();
 
-            _fakeBackingStore.Setup(x => x.Workspace).Returns(new Mock<IWorkspace>().Object);
+            _fakeBackingStore.Setup(x => x.Workspace).Returns(AWorkspace.Build());
         }
 
         private ShellPresenter BuildDefaultShellPresenter()
@@ -111,6 +114,44 @@ namespace Relax.Tests.Presenters
             test.GoProcess();
 
             mockPresenter.Verify(x => x.Activate());
+        }
+
+        [Test]
+        public void IsProcessingEnabled_WhenThereAreNoInboxActions_IsFalse()
+        {
+            ShellPresenter test = BuildDefaultShellPresenter();
+
+            _fakeBackingStore.Setup(x => x.Workspace).Returns(AWorkspace.Build());
+
+            Assert.IsFalse(test.IsProcessingEnabled);
+        }
+
+        [Test]
+        public void IsProcessingEnabled_WhenThereIsAnInboxAction_IsTrue()
+        {
+            ShellPresenter test = BuildDefaultShellPresenter();
+
+            _fakeBackingStore.Setup(x => x.Workspace).Returns(AWorkspace.With(AnAction.In(State.Inbox)).Build());
+
+            Assert.IsTrue(test.IsProcessingEnabled);
+        }
+
+        [Test]
+        public void IsProcessingEnabled_WhenAnInboxActionIsAdded_RaisesPropertyChanged()
+        {
+            ShellPresenter test = BuildDefaultShellPresenter();
+
+            IWorkspace workspace = AWorkspace.Build();
+            _fakeBackingStore.Setup(x => x.Workspace).Returns(workspace);
+
+            bool eventRaised = false;
+
+            test.PropertyChanged += (sender, args) => eventRaised |= args.PropertyName == "IsProcessingEnabled";
+
+            workspace.Actions.Add(AnAction.In(State.Inbox).Build());
+            GC.KeepAlive(test);
+
+            Assert.IsTrue(eventRaised);
         }
     }
 }

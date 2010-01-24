@@ -1,5 +1,7 @@
-﻿using MbUnit.Framework;
+﻿using System.Windows.Data;
+using MbUnit.Framework;
 using Moq;
+using Relax.Domain.Filters.Interfaces;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters;
@@ -12,47 +14,39 @@ namespace Relax.Tests.Presenters
     public class InboxActionsPresenterTestFixture : TestDataBuilder
     {
         [Test]
-        public void Constructor_GivenMixedActions_ActivatesOnlyInboxActions()
+        public void Constructor_WhenThereIsAnInboxAction_ActivatesInboxActionPresenter()
         {
-            Mock<IAction> inboxAction = AnAction.InState(State.Inbox).Build();
-
-            Mock<IWorkspace> stubWorkspace =
-                AWorkspace
-                    .With(AnAction.InState(State.Committed))
-                    .With(inboxAction.Object)
-                    .With(AnAction.InState(State.Hold))
-                    .With(AnAction.InState(State.SomedayMaybe)).Build();
+            IAction inboxAction = AnAction.In(State.Inbox).Build();
 
             var mockActionPresenter = new Mock<IActionPresenter>();
 
-            new InboxActionsPresenter(stubWorkspace.Object, delegate(IAction action)
-                                                                {
-                                                                    Assert.AreSame(inboxAction.Object,
-                                                                                   action);
+            var stubFilter = new Mock<IInboxActionsFilter>();
+            stubFilter.Setup(x => x.InboxActions).Returns(CollectionViewSource.GetDefaultView(new[] {inboxAction}));
 
-                                                                    return
-                                                                        mockActionPresenter.
-                                                                            Object;
-                                                                });
+            new InboxActionsPresenter(stubFilter.Object, delegate(IAction action)
+                                                             {
+                                                                 Assert.AreSame(inboxAction,
+                                                                                action);
+
+                                                                 return
+                                                                     mockActionPresenter.
+                                                                         Object;
+                                                             });
 
             mockActionPresenter.Verify(x => x.Activate(), Times.Once());
         }
 
         [Test]
-        public void Presenters_GivenMixedActions_ContainsOnlyInboxActions()
+        public void Presenters_WhenThereIsAnInboxAction_ContainsInboxActionPresenter()
         {
-            Mock<IAction> inboxAction = AnAction.InState(State.Inbox).Build();
-
-            Mock<IWorkspace> stubWorkspace =
-                AWorkspace
-                    .With(AnAction.InState(State.Committed))
-                    .With(inboxAction.Object)
-                    .With(AnAction.InState(State.Hold))
-                    .With(AnAction.InState(State.SomedayMaybe)).Build();
+            IAction inboxAction = AnAction.In(State.Inbox).Build();
 
             var stubActionPresenter = new Mock<IActionPresenter>();
 
-            var test = new InboxActionsPresenter(stubWorkspace.Object, action => stubActionPresenter.Object);
+            var stubFilter = new Mock<IInboxActionsFilter>();
+            stubFilter.Setup(x => x.InboxActions).Returns(CollectionViewSource.GetDefaultView(new[] {inboxAction}));
+
+            var test = new InboxActionsPresenter(stubFilter.Object, action => stubActionPresenter.Object);
 
             Assert.AreElementsEqual(new[] {stubActionPresenter.Object}, test.Presenters);
         }

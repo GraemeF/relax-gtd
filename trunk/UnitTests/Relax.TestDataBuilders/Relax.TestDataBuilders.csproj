@@ -35,6 +35,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Library\Moq\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -53,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionBuilder.cs" />
+    <Compile Include="BuilderBase.cs" />
+    <Compile Include="InboxActionsFilterBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDataBuilder.cs" />
     <Compile Include="WorkspaceBuilder.cs" />

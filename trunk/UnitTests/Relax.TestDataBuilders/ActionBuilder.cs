@@ -5,28 +5,25 @@ using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.TestDataBuilders
 {
-    public class ActionBuilder
+    public class ActionBuilder : BuilderBase<IAction>
     {
         private ObservableCollection<IAction> _blockingActions = new ObservableCollection<IAction>();
         private State _state = State.Committed;
 
-        public Mock<IAction> Build()
+        protected override void SetupMock(Mock<IAction> mock)
         {
-            var mock = new Mock<IAction>();
             mock.Setup(x => x.ActionState).Returns(_state);
             mock.Setup(x => x.BlockingActions).Returns(new ObservableCollection<IAction>(_blockingActions));
-
-            return mock;
         }
 
-        public ActionBuilder InState(State state)
+        public ActionBuilder In(State state)
         {
             return new ActionBuilder {_state = state};
         }
 
         public ActionBuilder BlockedBy(ActionBuilder action)
         {
-            return BlockedBy(action.Build().Object);
+            return BlockedBy(action.Build());
         }
 
         public ActionBuilder BlockedBy(IAction action)

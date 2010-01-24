@@ -11,5 +11,10 @@ namespace Relax.TestDataBuilders
         {
             get { return new WorkspaceBuilder(); }
         }
+
+        protected static InboxActionsFilterBuilder AnInboxActionsFilter
+        {
+            get { return new InboxActionsFilterBuilder(); }
+        }
     }
 }

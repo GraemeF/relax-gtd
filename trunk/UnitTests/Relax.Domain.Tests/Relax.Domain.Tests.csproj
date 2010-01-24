@@ -72,6 +72,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filters\InboxActionsFilterTestFixture.cs" />
     <Compile Include="Models\ActionTestFixture.cs" />
     <Compile Include="Models\DelegationTestFixture.cs" />
     <Compile Include="Models\GtdContextTestFixture.cs" />
@@ -89,6 +90,10 @@
     <ProjectReference Include="..\..\Relax.Infrastructure\Relax.Infrastructure.csproj">
       <Project>{893AD8AB-D318-4690-8B24-EE1D6FE254F9}</Project>
       <Name>Relax.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Relax.TestDataBuilders\Relax.TestDataBuilders.csproj">
+      <Project>{DC8E749B-48EE-4FB4-8108-7472288CCB54}</Project>
+      <Name>Relax.TestDataBuilders</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
