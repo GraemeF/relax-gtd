@@ -12,7 +12,7 @@ namespace Relax.Domain.Tests.Filters
     public class InboxActionsFilterTestFixture : TestDataBuilder
     {
         [Test]
-        public void InboxActions_WhenWorkspaceHasMixedActions_ContainsOnlyInboxActions()
+        public void Actions_WhenWorkspaceHasMixedActions_ContainsOnlyInboxActions()
         {
             IAction inboxAction = AnAction.In(State.Inbox).Build();
 
@@ -25,7 +25,7 @@ namespace Relax.Domain.Tests.Filters
 
             var test = new InboxActionsFilter(stubWorkspace.Build());
 
-            Assert.AreElementsSame(new[] {inboxAction}, test.InboxActions.Cast<IAction>());
+            Assert.AreElementsSame(new[] {inboxAction}, test.Actions);
         }
 
         [Test]
@@ -37,7 +37,7 @@ namespace Relax.Domain.Tests.Filters
 
             var test = new InboxActionsFilter(workspace);
 
-            test.InboxActions.CollectionChanged +=
+            test.Actions.CollectionChanged +=
                 (o, args) => newItems = args.NewItems.Cast<IAction>();
 
             workspace.Actions.Add(inboxAction);

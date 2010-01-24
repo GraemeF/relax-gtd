@@ -17,7 +17,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             var ints = new ObservableCollection<int>();
             var strings = new ObservableCollection<string>();
 
-            new CollectionSync<int, string>(ints,
+            new ListSync<int, string>(ints,
                                             strings,
                                             x =>
                                             string.Concat(
@@ -32,7 +32,7 @@ namespace Relax.Infrastructure.Tests.Helpers
         {
             var strings = new ObservableCollection<string>();
 
-            new CollectionSync<int, string>(null,
+            new ListSync<int, string>(null,
                                             strings,
                                             x =>
                                             string.Concat(
@@ -47,7 +47,7 @@ namespace Relax.Infrastructure.Tests.Helpers
         {
             var ints = new ObservableCollection<int>();
 
-            new CollectionSync<int, string>(ints,
+            new ListSync<int, string>(ints,
                                             null,
                                             x =>
                                             string.Concat(
@@ -62,7 +62,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             var ints = new ObservableCollection<int>(new List<int> {65, 43, 21});
             var strings = new ObservableCollection<string>();
 
-            new CollectionSync<int, string>(ints,
+            new ListSync<int, string>(ints,
                                             strings,
                                             x =>
                                             string.Concat(
@@ -86,7 +86,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             var strings = new ObservableCollection<string>();
 
             var sync
-                = new CollectionSync<int, string>(ints,
+                = new ListSync<int, string>(ints,
                                                   strings,
                                                   x =>
                                                   string.Concat(
@@ -113,7 +113,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             bool itemRemoved = false;
 
             var sync
-                = new CollectionSync<int, string>(ints,
+                = new ListSync<int, string>(ints,
                                                   strings,
                                                   insertedItem => string.Concat(StringPrefix, insertedItem.ToString()),
                                                   removedItem => itemRemoved = true);
@@ -131,7 +131,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             var strings = new ObservableCollection<string>();
 
             var sync
-                = new CollectionSync<int, string>(ints,
+                = new ListSync<int, string>(ints,
                                                   strings,
                                                   x =>
                                                   string.Concat(
@@ -159,7 +159,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             var strings = new ObservableCollection<string>();
 
             var sync
-                = new CollectionSync<int, string>(ints,
+                = new ListSync<int, string>(ints,
                                                   strings,
                                                   x =>
                                                   string.Concat(
@@ -187,7 +187,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             var strings = new ObservableCollection<string>();
 
             var sync
-                = new CollectionSync<int, string>(ints,
+                = new ListSync<int, string>(ints,
                                                   strings,
                                                   x =>
                                                   string.Concat(
@@ -214,7 +214,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             var ints = new ObservableCollection<int>(new List<int> {1, 2, 3, 4});
             var strings = new ObservableCollection<string>(new[] {"hello", "world"});
 
-            new CollectionSync<int, string>(ints,
+            new ListSync<int, string>(ints,
                                             strings,
                                             x =>
                                             string.Concat(
@@ -240,7 +240,7 @@ namespace Relax.Infrastructure.Tests.Helpers
 
             bool removed = false;
 
-            new CollectionSync<int, string>(ints,
+            new ListSync<int, string>(ints,
                                             strings,
                                             x =>
                                             string.Concat(
@@ -258,7 +258,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             var strings = new ObservableCollection<string>();
 
             var sync
-                = new CollectionSync<int, string>(ints,
+                = new ListSync<int, string>(ints,
                                                   strings,
                                                   x =>
                                                   string.Concat(
@@ -279,7 +279,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             var strings = new ObservableCollection<string>();
 
             var sync
-                = new CollectionSync<int, string>(ints,
+                = new ListSync<int, string>(ints,
                                                   strings,
                                                   x =>
                                                   string.Concat(

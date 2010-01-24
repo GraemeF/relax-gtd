@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Linq;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Relax.Presenters.Interfaces;
@@ -13,13 +13,13 @@ namespace Relax.Presenters
     {
         private readonly Func<TModel, TModelPresenter> _itemPresenterFactory;
 
-        protected ListPresenter(ICollectionView collection, Func<TModel, TModelPresenter> factory)
+        protected ListPresenter(ObservableCollection<TModel> collection, Func<TModel, TModelPresenter> factory)
         {
             _itemPresenterFactory = factory;
 
             collection.CollectionChanged += CollectionChanged;
 
-            OpenItems(collection.Cast<TModel>());
+            OpenItems(collection);
         }
 
         protected void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

@@ -4,87 +4,17 @@
         xmlns:cm="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:Controls="clr-namespace:Caliburn.WPF.ApplicationFramework.Controls;assembly=Caliburn.WPF.ApplicationFramework"
         x:Class="Relax.Views.ShellView"
         Title="Relax GTD"
         MinHeight="600"
         MinWidth="800"
         mc:Ignorable="d">
-    <Window.Resources>
-        <Style x:Key="ActivityNavigationButton"
-               TargetType="{x:Type Button}">
-            <Setter Property="MinWidth"
-                    Value="85" />
-            <Setter Property="Margin"
-                    Value="5,0" />
-            <Setter Property="FontSize"
-                    Value="18.667" />
-            <Setter Property="FontFamily"
-                    Value="Segoe UI" />
-        </Style>
-    </Window.Resources>
     <DockPanel>
         <StackPanel Orientation="Horizontal"
                     DockPanel.Dock="Top">
             <Button Content="Save"
                     cm:Message.Attach="[Event Click] = [Action Save]" />
-            <Button Content="Back"
-                    x:Name="Back"
-                    IsEnabled="{Binding CanGoBack}" />
-            <Button Content="Forward"
-                    x:Name="Forward"
-                    IsEnabled="{Binding CanGoForward}" />
-            <Grid Width="40" />
-            <Button Content="Collect"
-                    cm:Message.Attach="[Event Click] = [Action GoCollect]"
-                    AutomationProperties.AutomationId="CollectActivityButton"
-                    Style="{DynamicResource ActivityNavigationButton}" />
-            <Button Content="Process"
-                    cm:Message.Attach="[Event Click] = [Action GoProcess]"
-                    AutomationProperties.AutomationId="ProcessActivityButton"
-                    Style="{DynamicResource ActivityNavigationButton}"
-                    IsEnabled="{Binding IsProcessingEnabled}" />
-            <Button Content="Organise"
-                    cm:Message.Attach="[Event Click] = [Action GoOrganise]"
-                    Style="{DynamicResource ActivityNavigationButton}" />
-            <Button Content="Do"
-                    cm:Message.Attach="[Event Click] = [Action GoDo]"
-                    Style="{DynamicResource ActivityNavigationButton}" />
-            <Button Content="Review"
-                    cm:Message.Attach="[Event Click] = [Action GoReview]"
-                    Style="{DynamicResource ActivityNavigationButton}" />
         </StackPanel>
-        <Grid>
-            <StackPanel x:Name="LayoutRoot">
-                <TextBlock Text="{Binding CurrentPresenter.DisplayName}"
-                           HorizontalAlignment="Center"
-                           FontSize="18"
-                           Margin="5" />
-                <Controls:TransitionPresenter x:Name="CurrentPresenter">
-                    <Controls:TransitionPresenter.Transition>
-                        <Controls:CrossFade />
-                    </Controls:TransitionPresenter.Transition>
-                </Controls:TransitionPresenter>
-            </StackPanel>
-            <Grid x:Name="overlay"
-                  Visibility="{Binding DialogModel, Converter={StaticResource collapsedWhenNullConverter}}"
-                  Background="#55FFFFFF"
-                  IsHitTestVisible="True">
-                <Grid Margin="2"
-                      VerticalAlignment="Center"
-                      HorizontalAlignment="Center">
-                    <Border BorderThickness="2"
-                            CornerRadius="4"
-                            Background="White"
-                            Margin="0 0 3 3"
-                            Padding="4">
-                        <Border.Effect>
-                            <DropShadowEffect />
-                        </Border.Effect>
-                        <ContentControl cal:View.Model="{Binding DialogModel}" />
-                    </Border>
-                </Grid>
-            </Grid>
-        </Grid>
+        <ContentControl cal:View.Model="{Binding Workspace}" />
     </DockPanel>
 </Window>

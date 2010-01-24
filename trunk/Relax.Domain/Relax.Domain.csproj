@@ -36,6 +36,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Library\Caliburn\Bin\NET-3.5\release\Caliburn.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Caliburn.PresentationFramework, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Caliburn\Bin\NET-3.5\release\Caliburn.PresentationFramework.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -59,8 +63,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filters\ActionsFilterBase.cs" />
     <Compile Include="Filters\InboxActionsFilter.cs" />
+    <Compile Include="Filters\Interfaces\IActionsFilter.cs" />
     <Compile Include="Filters\Interfaces\IInboxActionsFilter.cs" />
+    <Compile Include="Filters\Interfaces\IProjectsFilter.cs" />
+    <Compile Include="Filters\ProjectsFilter.cs" />
     <Compile Include="Models\Action.cs" />
     <Compile Include="Models\GtdContext.cs" />
     <Compile Include="Models\Delegation.cs" />

@@ -1,7 +1,5 @@
-﻿using System.Windows.Data;
-using MbUnit.Framework;
+﻿using MbUnit.Framework;
 using Moq;
-using Relax.Domain.Filters.Interfaces;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters;
@@ -20,18 +18,12 @@ namespace Relax.Tests.Presenters
 
             var mockActionPresenter = new Mock<IActionPresenter>();
 
-            var stubFilter = new Mock<IInboxActionsFilter>();
-            stubFilter.Setup(x => x.InboxActions).Returns(CollectionViewSource.GetDefaultView(new[] {inboxAction}));
-
-            new InboxActionsPresenter(stubFilter.Object, delegate(IAction action)
-                                                             {
-                                                                 Assert.AreSame(inboxAction,
-                                                                                action);
-
-                                                                 return
-                                                                     mockActionPresenter.
-                                                                         Object;
-                                                             });
+            new InboxActionsPresenter(AnInboxActionsFilter.Providing(inboxAction).Build(),
+                                      delegate(IAction action)
+                                          {
+                                              Assert.AreSame(inboxAction, action);
+                                              return mockActionPresenter.Object;
+                                          });
 
             mockActionPresenter.Verify(x => x.Activate(), Times.Once());
         }
@@ -43,10 +35,8 @@ namespace Relax.Tests.Presenters
 
             var stubActionPresenter = new Mock<IActionPresenter>();
 
-            var stubFilter = new Mock<IInboxActionsFilter>();
-            stubFilter.Setup(x => x.InboxActions).Returns(CollectionViewSource.GetDefaultView(new[] {inboxAction}));
-
-            var test = new InboxActionsPresenter(stubFilter.Object, action => stubActionPresenter.Object);
+            var test = new InboxActionsPresenter(AnInboxActionsFilter.Providing(inboxAction).Build(),
+                                                 action => stubActionPresenter.Object);
 
             Assert.AreElementsEqual(new[] {stubActionPresenter.Object}, test.Presenters);
         }
