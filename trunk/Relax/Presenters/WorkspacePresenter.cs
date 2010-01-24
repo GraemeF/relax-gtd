@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Specialized;
+using System.Linq;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Relax.Domain.Filters.Interfaces;
@@ -20,11 +21,19 @@ namespace Relax.Presenters
             _collectPresenter = collectPresenter;
             _processPresenter = processPresenter;
 
-            _inboxActionsFilter.Actions.CollectionChanged +=
-                (sender, args) => NotifyOfPropertyChange("IsProcessingEnabled");
+            _inboxActionsFilter.Actions.CollectionChanged += OnInboxActionsChanged;
         }
 
         #region IWorkspacePresenter Members
+
+        public string ProcessButtonText
+        {
+            get
+            {
+                int count = _inboxActionsFilter.Actions.Count;
+                return count == 0 ? "Process" : string.Format("Process ({0})", count);
+            }
+        }
 
         public bool IsProcessingEnabled
         {
@@ -32,6 +41,12 @@ namespace Relax.Presenters
         }
 
         #endregion
+
+        private void OnInboxActionsChanged(object o, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
+        {
+            NotifyOfPropertyChange("IsProcessingEnabled");
+            NotifyOfPropertyChange("ProcessButtonText");
+        }
 
         public void GoCollect()
         {

@@ -53,6 +53,22 @@ namespace Relax.Tests.Presenters
             Assert.IsTrue(test.IsProcessingEnabled);
         }
 
+
+        [Test]
+        public void ProcessButtonText_WhenThereAreNoInboxActions_IsProcess()
+        {
+            var test = new WorkspacePresenter(AnInboxActionsFilter.Build(), null, null);
+            Assert.AreEqual("Process", test.ProcessButtonText);
+        }
+
+        [Test]
+        public void ProcessButtonText_WhenThereIsAnInboxAction_ContainsNumber()
+        {
+            var test = new WorkspacePresenter(AnInboxActionsFilter.Providing(AnAction.In(State.Inbox)).Build(), null,
+                                              null);
+            Assert.AreEqual("Process (1)", test.ProcessButtonText);
+        }
+
         [Test]
         public void IsProcessingEnabled_WhenAnInboxActionIsAdded_RaisesPropertyChanged()
         {

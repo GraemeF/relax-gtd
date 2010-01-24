@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Caliburn.PresentationFramework.ApplicationModel;
 using MbUnit.Framework;
 using Moq;
 using Relax.Infrastructure.Services.Interfaces;

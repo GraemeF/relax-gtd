@@ -31,7 +31,7 @@
                     cm:Message.Attach="[Event Click] = [Action GoCollect]"
                     AutomationProperties.AutomationId="CollectActivityButton"
                     Style="{DynamicResource ActivityNavigationButton}" />
-            <Button Content="Process"
+            <Button Content="{Binding ProcessButtonText}"
                     cm:Message.Attach="[Event Click] = [Action GoProcess]"
                     AutomationProperties.AutomationId="ProcessActivityButton"
                     Style="{DynamicResource ActivityNavigationButton}"
