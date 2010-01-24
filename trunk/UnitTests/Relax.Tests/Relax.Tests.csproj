@@ -107,6 +107,7 @@
     <Compile Include="Presenters\MakeProjectPresenterTestFixture.cs" />
     <Compile Include="Presenters\ProcessPresenterTestFixture.cs" />
     <Compile Include="Presenters\ProjectsPresenterTestFixture.cs" />
+    <Compile Include="Presenters\WorkspacePresenterTestFixture.cs" />
     <Compile Include="TestEntities\ITestItem.cs" />
     <Compile Include="Presenters\ShellPresenterTestFixture.cs" />
     <Compile Include="TestEntities\ITestItemPresenter.cs" />
@@ -126,8 +127,13 @@
     <Compile Include="Views\ProjectsViewTestFixture.cs" />
     <Compile Include="Views\ShellViewTestFixture.cs" />
     <Compile Include="Views\ViewTestFixtureBase.cs" />
+    <Compile Include="Views\WorkspaceViewTestFixture.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Relax.Domain\Relax.Domain.csproj">
+      <Project>{B153BEDB-EA89-447E-A4DB-6993ED6143D1}</Project>
+      <Name>Relax.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Relax.Infrastructure\Relax.Infrastructure.csproj">
       <Project>{893AD8AB-D318-4690-8B24-EE1D6FE254F9}</Project>
       <Name>Relax.Infrastructure</Name>

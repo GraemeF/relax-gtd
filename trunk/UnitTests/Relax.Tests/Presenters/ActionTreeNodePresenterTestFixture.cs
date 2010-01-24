@@ -14,7 +14,7 @@ namespace Relax.Tests.Presenters
         {
             var stubBlockingActions = new Mock<IBlockingActionsPresenter>();
 
-            var test = new ActionTreeNodePresenter(AnAction.BlockedBy(AnAction).Build().Object,
+            var test = new ActionTreeNodePresenter(AnAction.BlockedBy(AnAction).Build(),
                                                    stubBlockingActions.Object);
 
             Assert.AreSame(stubBlockingActions.Object, test.BlockingActions);

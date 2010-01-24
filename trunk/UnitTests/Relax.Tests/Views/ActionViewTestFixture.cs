@@ -8,6 +8,12 @@ namespace Relax.Tests.Views
     public class ActionViewTestFixture : ViewTestFixtureBase
     {
         [Test]
+        public void Constructor__BindsWithoutError()
+        {
+            BoundView<ActionView, ActionPresenter>().AssertNoErrors();
+        }
+
+        [Test]
         public void IsReadOnly__IsBound()
         {
             Assert.IsTrue(BoundView<ActionView, ActionPresenter>().WasBoundTo(x => x.IsReadOnly));
