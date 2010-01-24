@@ -11,7 +11,7 @@ namespace Relax.AcceptanceTests
         {
             using (RelaxApplication relax = RelaxApplication.Launch())
             {
-                Assert.IsFalse(relax.Shell.ProcessButton.IsEnabled);
+                Assert.IsFalse(relax.Shell.Workspace.ProcessButton.IsEnabled);
             }
         }
 
@@ -23,7 +23,7 @@ namespace Relax.AcceptanceTests
                 relax.StartCollectingActions();
                 relax.AddInboxAction("This is an action in my inbox.");
 
-                Assert.IsTrue(relax.Shell.ProcessButton.IsEnabled);
+                Assert.IsTrue(relax.Shell.Workspace.ProcessButton.IsEnabled);
             }
         }
     }
