@@ -159,19 +159,19 @@ namespace Relax.AcceptanceTests.TestEntities
 
         public void StartCollectingActions()
         {
-            Shell.CollectButton.Click();
+            Shell.Workspace.CollectButton.Click();
         }
 
         public void AddInboxAction(string newAction)
         {
-            _shell.FindDescendentByIdPath(new[] {"Collect", "Input", "Title"}).SetValue(newAction);
-            _shell.FindDescendentByIdPath(new[] {"Collect", "Input", "Add"}).GetInvokePattern().Invoke();
+            _shell.FindDescendentByIdPath(new[] {"Workspace", "Collect", "Input", "Title"}).SetValue(newAction);
+            _shell.FindDescendentByIdPath(new[] {"Workspace", "Collect", "Input", "Add"}).GetInvokePattern().Invoke();
         }
 
         public void HasInboxActions(IEnumerable<string> actions)
         {
             Assert.AreElementsEqualIgnoringOrder(actions,
-                                                 Shell.CollectActivity.ActionList.Actions);
+                                                 Shell.Workspace.CollectActivity.ActionList.Actions);
         }
     }
 }
