@@ -8,6 +8,12 @@ namespace Relax.Tests.Views
     public class CollectViewTestFixture : ViewTestFixtureBase
     {
         [Test]
+        public void Constructor__BindsWithoutError()
+        {
+            BoundView<CollectView, CollectPresenter>().AssertNoErrors();
+        }
+
+        [Test]
         public void InboxActions__IsBound()
         {
             Assert.IsTrue(BoundView<CollectView, CollectPresenter>().WasBoundTo(x => x.InboxActions));

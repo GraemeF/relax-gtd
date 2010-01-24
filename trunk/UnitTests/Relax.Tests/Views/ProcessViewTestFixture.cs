@@ -8,6 +8,12 @@ namespace Relax.Tests.Views
     public class ProcessViewTestFixture : ViewTestFixtureBase
     {
         [Test]
+        public void Constructor__BindsWithoutError()
+        {
+            BoundView<ProcessView, ProcessPresenter>().AssertNoErrors();
+        }
+
+        [Test]
         public void Inbox__IsBound()
         {
             Assert.IsTrue(BoundView<ProcessView, ProcessPresenter>().WasBoundTo(x => x.Inbox));

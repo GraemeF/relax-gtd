@@ -127,8 +127,7 @@
     <DockPanel Width="800"
                Height="600">
         <DockPanel DockPanel.Dock="Top">
-            <TextBox Text="{Binding Action.Title}"
-                     TextWrapping="Wrap" />
+            <TextBox TextWrapping="Wrap" />
             <ContentControl x:Name="ActionsContent"
                             Margin="10,0,10,0"
                             cal:View.Model="{Binding Inbox}"

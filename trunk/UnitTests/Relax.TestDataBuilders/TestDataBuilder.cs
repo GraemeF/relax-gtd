@@ -1,3 +1,5 @@
+using Relax.Domain.Filters.Interfaces;
+
 namespace Relax.TestDataBuilders
 {
     public class TestDataBuilder
@@ -12,9 +14,14 @@ namespace Relax.TestDataBuilders
             get { return new WorkspaceBuilder(); }
         }
 
-        protected static InboxActionsFilterBuilder AnInboxActionsFilter
+        protected static ActionsFilterBuilder<IInboxActionsFilter> AnInboxActionsFilter
         {
-            get { return new InboxActionsFilterBuilder(); }
+            get { return new ActionsFilterBuilder<IInboxActionsFilter>(); }
+        }
+
+        protected static ActionsFilterBuilder<IProjectsFilter> AProjectsFilter
+        {
+            get { return new ActionsFilterBuilder<IProjectsFilter>(); }
         }
     }
 }

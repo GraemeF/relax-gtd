@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Relax.Views.WorkspaceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cm="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
+             xmlns:Controls="clr-namespace:Caliburn.WPF.ApplicationFramework.Controls;assembly=Caliburn.WPF.ApplicationFramework">
+    <UserControl.Resources>
+        <Style x:Key="ActivityNavigationButton"
+               TargetType="{x:Type Button}">
+            <Setter Property="MinWidth"
+                    Value="85" />
+            <Setter Property="Margin"
+                    Value="5,0" />
+            <Setter Property="FontSize"
+                    Value="18.667" />
+            <Setter Property="FontFamily"
+                    Value="Segoe UI" />
+        </Style>
+    </UserControl.Resources>
+    <DockPanel>
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <Button Content="Back"
+                    x:Name="Back"
+                    IsEnabled="{Binding CanGoBack}" />
+            <Button Content="Forward"
+                    x:Name="Forward"
+                    IsEnabled="{Binding CanGoForward}" />
+            <Grid Width="40" />
+            <Button Content="Collect"
+                    cm:Message.Attach="[Event Click] = [Action GoCollect]"
+                    AutomationProperties.AutomationId="CollectActivityButton"
+                    Style="{DynamicResource ActivityNavigationButton}" />
+            <Button Content="Process"
+                    cm:Message.Attach="[Event Click] = [Action GoProcess]"
+                    AutomationProperties.AutomationId="ProcessActivityButton"
+                    Style="{DynamicResource ActivityNavigationButton}"
+                    IsEnabled="{Binding IsProcessingEnabled}" />
+            <Button Content="Organise"
+                    cm:Message.Attach="[Event Click] = [Action GoOrganise]"
+                    Style="{DynamicResource ActivityNavigationButton}" />
+            <Button Content="Do"
+                    cm:Message.Attach="[Event Click] = [Action GoDo]"
+                    Style="{DynamicResource ActivityNavigationButton}" />
+            <Button Content="Review"
+                    cm:Message.Attach="[Event Click] = [Action GoReview]"
+                    Style="{DynamicResource ActivityNavigationButton}" />
+        </StackPanel>
+        <StackPanel x:Name="LayoutRoot">
+            <TextBlock Text="{Binding CurrentPresenter.DisplayName}"
+                       HorizontalAlignment="Center"
+                       FontSize="18"
+                       Margin="5" />
+            <Controls:TransitionPresenter x:Name="CurrentPresenter">
+                <Controls:TransitionPresenter.Transition>
+                    <Controls:CrossFade />
+                </Controls:TransitionPresenter.Transition>
+            </Controls:TransitionPresenter>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

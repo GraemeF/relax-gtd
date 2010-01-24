@@ -8,6 +8,12 @@ namespace Relax.Tests.Views
     public class MakeProjectViewTestFixture : ViewTestFixtureBase
     {
         [Test]
+        public void Constructor__BindsWithoutError()
+        {
+            BoundView<MakeProjectView, MakeProjectPresenter>().AssertNoErrors();
+        }
+
+        [Test]
         public void Projects__IsBound()
         {
             Assert.IsTrue(BoundView<MakeProjectView, MakeProjectPresenter>().WasBoundTo(x => x.Projects));

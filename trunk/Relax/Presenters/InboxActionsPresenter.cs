@@ -14,7 +14,7 @@ namespace Relax.Presenters
     {
         public InboxActionsPresenter(IInboxActionsFilter inboxActionsFilter,
                                      Func<IAction, IActionPresenter> actionPresenterFactory)
-            : base(inboxActionsFilter.InboxActions, actionPresenterFactory)
+            : base(inboxActionsFilter.Actions, actionPresenterFactory)
         {
         }
     }
