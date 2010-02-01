@@ -3,19 +3,20 @@ using System.Windows.Automation;
 
 namespace Relax.AcceptanceTests.TestEntities
 {
-    public class Shell
+    public class EditBox
     {
         private readonly AutomationElement _element;
 
-        public Shell(AutomationElement element)
+        public EditBox(AutomationElement element)
         {
             if (element == null) throw new ArgumentNullException("element");
             _element = element;
         }
 
-        public Workspace Workspace
+        public string Text
         {
-            get { return new Workspace(_element.FindChildById("Workspace")); }
+            get { return _element.GetValue(); }
+            set { _element.SetValue(value); }
         }
     }
 }

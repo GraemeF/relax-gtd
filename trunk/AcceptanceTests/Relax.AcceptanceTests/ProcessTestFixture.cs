@@ -48,8 +48,23 @@ namespace Relax.AcceptanceTests
                 relax.AddInboxAction("This is an action in my inbox.");
                 Assert.AreEqual("Process (1)", relax.Shell.Workspace.ProcessButton.Text);
 
-                relax.AddInboxAction("This is an action in my inbox.");
+                relax.AddInboxAction("This is another action in my inbox.");
                 Assert.AreEqual("Process (2)", relax.Shell.Workspace.ProcessButton.Text);
+            }
+        }
+
+        [Test]
+        public void ActionTitleIsEditableWhenProcessing()
+        {
+            using (RelaxApplication relax = RelaxApplication.Launch())
+            {
+                relax.StartCollectingActions();
+                const string actionTitle = "This is an action in my inbox.";
+                relax.AddInboxAction(actionTitle);
+
+                relax.StartProcessingInbox();
+
+                Assert.AreEqual(actionTitle, relax.Shell.Workspace.ProcessActivity.CurrentActionTitle.Text);
             }
         }
     }

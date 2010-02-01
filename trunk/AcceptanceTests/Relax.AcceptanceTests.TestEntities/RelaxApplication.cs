@@ -173,5 +173,10 @@ namespace Relax.AcceptanceTests.TestEntities
             Assert.AreElementsEqualIgnoringOrder(actions,
                                                  Shell.Workspace.CollectActivity.ActionList.Actions);
         }
+
+        public void StartProcessingInbox()
+        {
+            Shell.Workspace.ProcessButton.Click();
+        }
     }
 }
