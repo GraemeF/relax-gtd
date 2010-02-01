@@ -52,6 +52,7 @@ namespace Relax.Tests.Presenters
         }
 
         [Test]
+        [Ignore]
         public void CurrentActionTitle_WhenThereIsAnAction_ReturnsActionTitle()
         {
             ProcessPresenter test = BuildDefaultProcessPresenter();
