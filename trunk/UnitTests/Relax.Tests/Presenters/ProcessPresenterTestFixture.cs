@@ -50,5 +50,13 @@ namespace Relax.Tests.Presenters
 
             Assert.AreSame(_stubDoNow.Object, test.DoNow);
         }
+
+        [Test]
+        public void CurrentActionTitle_WhenThereIsAnAction_ReturnsActionTitle()
+        {
+            ProcessPresenter test = BuildDefaultProcessPresenter();
+
+            Assert.AreEqual("", test.CurrentActionTitle);
+        }
     }
 }

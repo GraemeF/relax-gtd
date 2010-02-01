@@ -14,6 +14,8 @@ namespace Relax.Presenters
             DoLater = doLater;
         }
 
+        public string CurrentActionTitle { get; private set; }
+
         #region IProcessPresenter Members
 
         public IInboxActionsPresenter Inbox { get; private set; }
