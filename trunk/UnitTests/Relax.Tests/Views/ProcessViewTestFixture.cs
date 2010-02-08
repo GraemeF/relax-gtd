@@ -1,34 +1,33 @@
-using MbUnit.Framework;
 using Relax.Presenters;
 using Relax.Views;
+using Xunit;
 
 namespace Relax.Tests.Views
 {
-    [TestFixture]
     public class ProcessViewTestFixture : ViewTestFixtureBase
     {
-        [Test]
+        [Fact]
         public void Constructor__BindsWithoutError()
         {
             BoundView<ProcessView, ProcessPresenter>().AssertNoErrors();
         }
 
-        [Test]
+        [Fact]
         public void Inbox__IsBound()
         {
-            Assert.IsTrue(BoundView<ProcessView, ProcessPresenter>().WasBoundTo(x => x.Inbox));
+            Assert.True(BoundView<ProcessView, ProcessPresenter>().WasBoundTo(x => x.Inbox));
         }
 
-        [Test]
+        [Fact]
         public void DoLater__IsBound()
         {
-            Assert.IsTrue(BoundView<ProcessView, ProcessPresenter>().WasBoundTo(x => x.DoLater));
+            Assert.True(BoundView<ProcessView, ProcessPresenter>().WasBoundTo(x => x.DoLater));
         }
 
-        [Test]
+        [Fact]
         public void DoNow__IsBound()
         {
-            Assert.IsTrue(BoundView<ProcessView, ProcessPresenter>().WasBoundTo(x => x.DoNow));
+            Assert.True(BoundView<ProcessView, ProcessPresenter>().WasBoundTo(x => x.DoNow));
         }
     }
 }

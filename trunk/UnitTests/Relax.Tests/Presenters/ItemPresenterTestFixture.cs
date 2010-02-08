@@ -1,16 +1,15 @@
 using Caliburn.Testability.Extensions;
-using MbUnit.Framework;
 using Moq;
 using Relax.Tests.TestEntities;
+using Xunit;
 
 namespace Relax.Tests.Presenters
 {
-    [TestFixture]
     public class ItemPresenterTestFixture
     {
         private const string TestTitle = "Test Title";
 
-        [Test]
+        [Fact]
         public void DisplayNameGet__ReturnsModelTitle()
         {
             var stubTestItem = new Mock<ITestItem>();
@@ -18,10 +17,10 @@ namespace Relax.Tests.Presenters
 
             var test = new TestItemPresenter(stubTestItem.Object);
 
-            Assert.AreEqual(TestTitle, test.DisplayName);
+            Assert.Equal(TestTitle, test.DisplayName);
         }
 
-        [Test]
+        [Fact]
         public void DisplayNameSet__UpdatesModelTitle()
         {
             var stubTestItem = new Mock<ITestItem>();
@@ -31,17 +30,17 @@ namespace Relax.Tests.Presenters
             stubTestItem.VerifySet(x => x.Title = TestTitle);
         }
 
-        [Test]
+        [Fact]
         public void Rename__SetsReadOnlyToFalse()
         {
             var test = new TestItemPresenter(new Mock<ITestItem>().Object);
 
             test.Rename();
 
-            Assert.IsFalse(test.IsReadOnly);
+            Assert.False(test.IsReadOnly);
         }
 
-        [Test]
+        [Fact]
         public void FinishRename__SetsReadOnlyToTrue()
         {
             var test = new TestItemPresenter(new Mock<ITestItem>().Object);
@@ -49,10 +48,10 @@ namespace Relax.Tests.Presenters
             test.Rename();
             test.FinishRename();
 
-            Assert.IsTrue(test.IsReadOnly);
+            Assert.True(test.IsReadOnly);
         }
 
-        [Test]
+        [Fact]
         public void AllProperties_WhenChanged_RaisePropertyChanged()
         {
             var test = new TestItemPresenter(new Mock<ITestItem>().Object);

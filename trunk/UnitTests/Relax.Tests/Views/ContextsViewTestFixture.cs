@@ -1,22 +1,21 @@
-﻿using MbUnit.Framework;
-using Relax.Presenters;
+﻿using Relax.Presenters;
 using Relax.Views;
+using Xunit;
 
 namespace Relax.Tests.Views
 {
-    [TestFixture]
     public class ContextsViewTestFixture : ViewTestFixtureBase
     {
-        [Test]
+        [Fact]
         public void Constructor__BindsWithoutError()
         {
             BoundView<ContextsView, ContextsPresenter>().AssertNoErrors();
         }
 
-        [Test]
+        [Fact]
         public void Presenters__IsBound()
         {
-            Assert.IsTrue(BoundView<ContextsView, ContextsPresenter>().WasBoundTo(x => x.Presenters));
+            Assert.True(BoundView<ContextsView, ContextsPresenter>().WasBoundTo(x => x.Presenters));
         }
     }
 }

@@ -1,15 +1,14 @@
-﻿using MbUnit.Framework;
-using Moq;
+﻿using Moq;
 using Relax.Presenters;
 using Relax.Presenters.Interfaces;
 using Relax.TestDataBuilders;
+using Xunit;
 
 namespace Relax.Tests.Presenters
 {
-    [TestFixture]
     public class ActionTreeNodePresenterTestFixture : TestDataBuilder
     {
-        [Test]
+        [Fact]
         public void BlockingActions__ReturnsBlockingActions()
         {
             var stubBlockingActions = new Mock<IBlockingActionsPresenter>();
@@ -17,7 +16,7 @@ namespace Relax.Tests.Presenters
             var test = new ActionTreeNodePresenter(AnAction.BlockedBy(AnAction).Build(),
                                                    stubBlockingActions.Object);
 
-            Assert.AreSame(stubBlockingActions.Object, test.BlockingActions);
+            Assert.Same(stubBlockingActions.Object, test.BlockingActions);
         }
     }
 }

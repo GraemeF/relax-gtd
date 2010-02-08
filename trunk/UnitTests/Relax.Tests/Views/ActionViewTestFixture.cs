@@ -1,28 +1,27 @@
-using MbUnit.Framework;
 using Relax.Presenters;
 using Relax.Views;
+using Xunit;
 
 namespace Relax.Tests.Views
 {
-    [TestFixture]
     public class ActionViewTestFixture : ViewTestFixtureBase
     {
-        [Test]
+        [Fact]
         public void Constructor__BindsWithoutError()
         {
             BoundView<ActionView, ActionPresenter>().AssertNoErrors();
         }
 
-        [Test]
+        [Fact]
         public void IsReadOnly__IsBound()
         {
-            Assert.IsTrue(BoundView<ActionView, ActionPresenter>().WasBoundTo(x => x.IsReadOnly));
+            Assert.True(BoundView<ActionView, ActionPresenter>().WasBoundTo(x => x.IsReadOnly));
         }
 
-        [Test]
+        [Fact]
         public void DisplayName__IsBound()
         {
-            Assert.IsTrue(BoundView<ActionView, ActionPresenter>().WasBoundTo(x => x.DisplayName));
+            Assert.True(BoundView<ActionView, ActionPresenter>().WasBoundTo(x => x.DisplayName));
         }
     }
 }

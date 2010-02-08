@@ -1,85 +1,78 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using MbUnit.Framework;
 using Relax.Infrastructure.Helpers;
+using Xunit;
 
 namespace Relax.Infrastructure.Tests.Helpers
 {
-    [TestFixture]
     public class CollectionSyncTestFixture
     {
         private const string StringPrefix = "String representation of ";
 
-        [Test]
+        [Fact]
         public void TestConstruct()
         {
             var ints = new ObservableCollection<int>();
             var strings = new ObservableCollection<string>();
 
             new ListSync<int, string>(ints,
-                                            strings,
-                                            x =>
-                                            string.Concat(
-                                                StringPrefix,
-                                                x.ToString()),
-                                            null);
+                                      strings,
+                                      x =>
+                                      string.Concat(
+                                                       StringPrefix,
+                                                       x.ToString()),
+                                      null);
         }
 
-        [Test]
-        [ExpectedArgumentNullException]
+        [Fact]
         public void CollectionSync_GivenNullSourceList_ThrowsArgumentNullException()
         {
             var strings = new ObservableCollection<string>();
 
-            new ListSync<int, string>(null,
-                                            strings,
-                                            x =>
-                                            string.Concat(
-                                                StringPrefix,
-                                                x.ToString()),
-                                            null);
+            Assert.Throws(typeof (ArgumentNullException),
+                          () => new ListSync<int, string>(null,
+                                                          strings,
+                                                          x => string.Concat(StringPrefix,
+                                                                             x.ToString()),
+                                                          null));
         }
 
-        [Test]
-        [ExpectedArgumentNullException]
+        [Fact]
         public void CollectionSync_GivenNullDestList_ThrowsArgumentNullException()
         {
             var ints = new ObservableCollection<int>();
 
-            new ListSync<int, string>(ints,
-                                            null,
-                                            x =>
-                                            string.Concat(
-                                                StringPrefix,
-                                                x.ToString()),
-                                            null);
+            Assert.Throws(typeof (ArgumentNullException),
+                          () => new ListSync<int, string>(ints,
+                                                          null,
+                                                          x =>
+                                                          string.Concat(
+                                                                           StringPrefix,
+                                                                           x.ToString()),
+                                                          null));
         }
 
-        [Test]
+        [Fact]
         public void ListIsPopulatedDuringConstruction()
         {
             var ints = new ObservableCollection<int>(new List<int> {65, 43, 21});
             var strings = new ObservableCollection<string>();
 
             new ListSync<int, string>(ints,
-                                            strings,
-                                            x =>
-                                            string.Concat(
-                                                StringPrefix,
-                                                x.ToString()),
-                                            null);
+                                      strings,
+                                      x =>
+                                      string.Concat(
+                                                       StringPrefix,
+                                                       x.ToString()),
+                                      null);
 
-            Assert.AreElementsEqual(new List<string>
-                                        {
-                                            StringPrefix + "65",
-                                            StringPrefix + "43",
-                                            StringPrefix + "21"
-                                        },
-                                    strings);
+            Assert.Equal(StringPrefix + "65", strings[0]);
+            Assert.Equal(StringPrefix + "43", strings[1]);
+            Assert.Equal(StringPrefix + "21", strings[2]);
         }
 
-        [Test]
+        [Fact]
         public void ItemsAreRemoved()
         {
             var ints = new ObservableCollection<int>(new List<int> {65, 43, 21});
@@ -87,25 +80,21 @@ namespace Relax.Infrastructure.Tests.Helpers
 
             var sync
                 = new ListSync<int, string>(ints,
-                                                  strings,
-                                                  x =>
-                                                  string.Concat(
-                                                      StringPrefix,
-                                                      x.ToString()),
-                                                  null);
+                                            strings,
+                                            x =>
+                                            string.Concat(
+                                                             StringPrefix,
+                                                             x.ToString()),
+                                            null);
 
             ints.Remove(43);
             GC.KeepAlive(sync);
 
-            Assert.AreElementsEqual(new List<string>
-                                        {
-                                            StringPrefix + "65",
-                                            StringPrefix + "21"
-                                        },
-                                    strings);
+            Assert.Equal(StringPrefix + "65", strings[0]);
+            Assert.Equal(StringPrefix + "21", strings[1]);
         }
 
-        [Test]
+        [Fact]
         public void RemoveItem_WithItemRemover_CallsItemRemover()
         {
             var ints = new ObservableCollection<int>(new List<int> {65, 43, 21});
@@ -114,17 +103,17 @@ namespace Relax.Infrastructure.Tests.Helpers
 
             var sync
                 = new ListSync<int, string>(ints,
-                                                  strings,
-                                                  insertedItem => string.Concat(StringPrefix, insertedItem.ToString()),
-                                                  removedItem => itemRemoved = true);
+                                            strings,
+                                            insertedItem => string.Concat(StringPrefix, insertedItem.ToString()),
+                                            removedItem => itemRemoved = true);
 
             ints.Remove(43);
             GC.KeepAlive(sync);
 
-            Assert.IsTrue(itemRemoved);
+            Assert.True(itemRemoved);
         }
 
-        [Test]
+        [Fact]
         public void ItemsAreInserted()
         {
             var ints = new ObservableCollection<int>(new List<int> {65, 43, 21});
@@ -132,27 +121,23 @@ namespace Relax.Infrastructure.Tests.Helpers
 
             var sync
                 = new ListSync<int, string>(ints,
-                                                  strings,
-                                                  x =>
-                                                  string.Concat(
-                                                      StringPrefix,
-                                                      x.ToString()),
-                                                  null);
+                                            strings,
+                                            x =>
+                                            string.Concat(
+                                                             StringPrefix,
+                                                             x.ToString()),
+                                            null);
 
             ints.Insert(2, 666);
             GC.KeepAlive(sync);
 
-            Assert.AreElementsEqual(new List<string>
-                                        {
-                                            StringPrefix + "65",
-                                            StringPrefix + "43",
-                                            StringPrefix + "666",
-                                            StringPrefix + "21"
-                                        },
-                                    strings);
+            Assert.Equal(StringPrefix + "65", strings[0]);
+            Assert.Equal(StringPrefix + "43", strings[1]);
+            Assert.Equal(StringPrefix + "666", strings[2]);
+            Assert.Equal(StringPrefix + "21", strings[3]);
         }
 
-        [Test]
+        [Fact]
         public void Move_OnSource_UpdatesDestination()
         {
             var ints = new ObservableCollection<int>(new List<int> {1, 2, 3, 4});
@@ -160,27 +145,23 @@ namespace Relax.Infrastructure.Tests.Helpers
 
             var sync
                 = new ListSync<int, string>(ints,
-                                                  strings,
-                                                  x =>
-                                                  string.Concat(
-                                                      StringPrefix,
-                                                      x.ToString()),
-                                                  null);
+                                            strings,
+                                            x =>
+                                            string.Concat(
+                                                             StringPrefix,
+                                                             x.ToString()),
+                                            null);
 
             ints.Move(2, 1);
             GC.KeepAlive(sync);
 
-            Assert.AreElementsEqual(new List<string>
-                                        {
-                                            StringPrefix + "1",
-                                            StringPrefix + "3",
-                                            StringPrefix + "2",
-                                            StringPrefix + "4"
-                                        },
-                                    strings);
+            Assert.Equal(StringPrefix + "1", strings[0]);
+            Assert.Equal(StringPrefix + "3", strings[1]);
+            Assert.Equal(StringPrefix + "2", strings[2]);
+            Assert.Equal(StringPrefix + "4", strings[3]);
         }
 
-        [Test]
+        [Fact]
         public void Replace_OnSource_UpdatesDestination()
         {
             var ints = new ObservableCollection<int>(new List<int> {1, 2, 3, 4});
@@ -188,51 +169,43 @@ namespace Relax.Infrastructure.Tests.Helpers
 
             var sync
                 = new ListSync<int, string>(ints,
-                                                  strings,
-                                                  x =>
-                                                  string.Concat(
-                                                      StringPrefix,
-                                                      x.ToString()),
-                                                  null);
+                                            strings,
+                                            x =>
+                                            string.Concat(
+                                                             StringPrefix,
+                                                             x.ToString()),
+                                            null);
 
             ints[2] = 5;
             GC.KeepAlive(sync);
 
-            Assert.AreElementsEqual(new List<string>
-                                        {
-                                            StringPrefix + "1",
-                                            StringPrefix + "2",
-                                            StringPrefix + "5",
-                                            StringPrefix + "4"
-                                        },
-                                    strings);
+            Assert.Equal(StringPrefix + "1", strings[0]);
+            Assert.Equal(StringPrefix + "2", strings[1]);
+            Assert.Equal(StringPrefix + "5", strings[2]);
+            Assert.Equal(StringPrefix + "4", strings[3]);
         }
 
-        [Test]
+        [Fact]
         public void CollectionSync_GivenItemsInDestination_EmptiesDestination()
         {
             var ints = new ObservableCollection<int>(new List<int> {1, 2, 3, 4});
             var strings = new ObservableCollection<string>(new[] {"hello", "world"});
 
             new ListSync<int, string>(ints,
-                                            strings,
-                                            x =>
-                                            string.Concat(
-                                                StringPrefix,
-                                                x.ToString()),
-                                            null);
+                                      strings,
+                                      x =>
+                                      string.Concat(
+                                                       StringPrefix,
+                                                       x.ToString()),
+                                      null);
 
-            Assert.AreElementsEqual(new List<string>
-                                        {
-                                            StringPrefix + "1",
-                                            StringPrefix + "2",
-                                            StringPrefix + "3",
-                                            StringPrefix + "4"
-                                        },
-                                    strings);
+            Assert.Equal(StringPrefix + "1", strings[0]);
+            Assert.Equal(StringPrefix + "2", strings[1]);
+            Assert.Equal(StringPrefix + "3", strings[2]);
+            Assert.Equal(StringPrefix + "4", strings[3]);
         }
 
-        [Test]
+        [Fact]
         public void CollectionSync_GivenItemsInDestination_CallsRemoveOnOldItems()
         {
             var ints = new ObservableCollection<int>(new List<int> {1, 2, 3, 4});
@@ -241,17 +214,17 @@ namespace Relax.Infrastructure.Tests.Helpers
             bool removed = false;
 
             new ListSync<int, string>(ints,
-                                            strings,
-                                            x =>
-                                            string.Concat(
-                                                StringPrefix,
-                                                x.ToString()),
-                                            x => removed = true);
+                                      strings,
+                                      x =>
+                                      string.Concat(
+                                                       StringPrefix,
+                                                       x.ToString()),
+                                      x => removed = true);
 
-            Assert.IsTrue(removed);
+            Assert.True(removed);
         }
 
-        [Test]
+        [Fact]
         public void Reset_ResetsDestination()
         {
             var ints = new ObservableCollection<int>(new List<int> {1, 2, 3, 4});
@@ -259,20 +232,20 @@ namespace Relax.Infrastructure.Tests.Helpers
 
             var sync
                 = new ListSync<int, string>(ints,
-                                                  strings,
-                                                  x =>
-                                                  string.Concat(
-                                                      StringPrefix,
-                                                      x.ToString()),
-                                                  null);
+                                            strings,
+                                            x =>
+                                            string.Concat(
+                                                             StringPrefix,
+                                                             x.ToString()),
+                                            null);
 
             ints.Clear();
             GC.KeepAlive(sync);
 
-            Assert.IsEmpty(strings);
+            Assert.Empty(strings);
         }
 
-        [Test]
+        [Fact]
         public void Dispose_Succeeds()
         {
             var ints = new ObservableCollection<int>(new List<int> {1, 2, 3, 4});
@@ -280,12 +253,12 @@ namespace Relax.Infrastructure.Tests.Helpers
 
             var sync
                 = new ListSync<int, string>(ints,
-                                                  strings,
-                                                  x =>
-                                                  string.Concat(
-                                                      StringPrefix,
-                                                      x.ToString()),
-                                                  null);
+                                            strings,
+                                            x =>
+                                            string.Concat(
+                                                             StringPrefix,
+                                                             x.ToString()),
+                                            null);
 
             sync.Dispose();
         }
