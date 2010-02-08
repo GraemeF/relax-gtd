@@ -1,23 +1,22 @@
-﻿using MbUnit.Framework;
-using Relax.FileBackingStore.Services;
+﻿using Relax.FileBackingStore.Services;
+using Xunit;
 
 namespace Relax.FileBackingStore.Tests.Services
 {
-    [TestFixture]
     public class DefaultWorkspaceFileLocatorTestFixture
     {
-        [Test]
+        [Fact]
         public void Path__ReturnsCorrectPathToWorkspace()
         {
             var test = new DefaultWorkspaceFileLocator();
 
-            Assert.AreEqual(DefaultWorkspaceFileLocator.DefaultBackingStorePath, test.Path);
+            Assert.Equal(DefaultWorkspaceFileLocator.DefaultBackingStorePath, test.Path);
         }
 
-        [Test]
+        [Fact]
         public void LoadOnStartup__ReturnsTrue()
         {
-            Assert.IsTrue(new DefaultWorkspaceFileLocator().LoadOnStartup);
+            Assert.True(new DefaultWorkspaceFileLocator().LoadOnStartup);
         }
     }
 }

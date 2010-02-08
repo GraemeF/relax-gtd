@@ -1,14 +1,13 @@
-﻿using MbUnit.Framework;
-using Moq;
+﻿using Moq;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters;
+using Xunit;
 
 namespace Relax.Tests.Presenters
 {
-    [TestFixture]
     public class ContextPresenterTestFixture
     {
-        [Test]
+        [Fact]
         public void Constructor__DoesNotThrow()
         {
             new ContextPresenter(new Mock<IGtdContext>().Object);

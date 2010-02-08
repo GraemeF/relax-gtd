@@ -1,42 +1,31 @@
-﻿using System.Collections.ObjectModel;
-using MbUnit.Framework;
-using Moq;
+﻿using Moq;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters;
 using Relax.Presenters.Interfaces;
+using Relax.TestDataBuilders;
+using Xunit;
 
 namespace Relax.Tests.Presenters
 {
-    [TestFixture]
-    public class ContextsPresenterTestFixture
+    public class ContextsPresenterTestFixture : TestDataBuilder
     {
-        private Mock<IGtdContextPresenter> _stubContextPresenter;
-        private Mock<IGtdContext> _stubNewContext;
-        private Mock<IWorkspace> _stubWorkspace;
-
-        [SetUp]
-        public void SetUp()
-        {
-            _stubWorkspace = new Mock<IWorkspace>();
-            _stubContextPresenter = new Mock<IGtdContextPresenter>();
-            _stubNewContext = new Mock<IGtdContext>();
-
-            _stubWorkspace.Setup(x => x.Contexts).Returns(new ObservableCollection<IGtdContext>());
-        }
+        private readonly Mock<IGtdContextPresenter> _stubContextPresenter = new Mock<IGtdContextPresenter>();
+        private readonly Mock<IGtdContext> _stubNewContext = new Mock<IGtdContext>();
+        private readonly IWorkspace _stubWorkspace = AWorkspace.Build();
 
         private ContextsPresenter BuildDefaultContextsPresenter()
         {
-            return new ContextsPresenter(_stubWorkspace.Object,
+            return new ContextsPresenter(_stubWorkspace,
                                          x => _stubContextPresenter.Object,
                                          () => _stubNewContext.Object);
         }
 
-        [Test]
+        [Fact]
         public void AddContext__AddsAContextToTheWorkspace()
         {
             BuildDefaultContextsPresenter().AddContext();
 
-            Assert.Contains(_stubWorkspace.Object.Contexts, _stubNewContext.Object);
+            Assert.Contains(_stubNewContext.Object, _stubWorkspace.Contexts);
         }
     }
 }

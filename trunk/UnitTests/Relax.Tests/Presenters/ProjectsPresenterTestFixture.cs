@@ -1,15 +1,14 @@
-﻿using MbUnit.Framework;
-using Moq;
+﻿using Moq;
 using Relax.Presenters;
 using Relax.Presenters.Interfaces;
 using Relax.TestDataBuilders;
+using Xunit;
 
 namespace Relax.Tests.Presenters
 {
-    [TestFixture]
     public class ProjectsPresenterTestFixture : TestDataBuilder
     {
-        [Test]
+        [Fact]
         public void TopLevelProjects_WhenWorkspaceContainsAnActionThatIsBlockedButNotBlocking_ReturnsAction()
         {
             var stubProjectPresenter = new Mock<IActionTreeNodePresenter>();
@@ -18,7 +17,7 @@ namespace Relax.Tests.Presenters
                 new ProjectsPresenter(AProjectsFilter.Providing(AnAction.Build()).Build(),
                                       action => stubProjectPresenter.Object);
 
-            Assert.AreElementsSame(new[] {stubProjectPresenter.Object}, test.Presenters);
+            Assert.Contains(stubProjectPresenter.Object, test.Presenters);
         }
     }
 }

@@ -1,43 +1,33 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using MbUnit.Framework;
 using Moq;
 using Relax.Domain.Models;
 using Relax.FileBackingStore.Services;
 using Relax.FileBackingStore.Services.Interfaces;
+using Xunit;
+using Xunit.Extensions;
 
 namespace Relax.FileBackingStore.Tests.Services
 {
-    [TestFixture]
     public class FileBackingStoreServiceTestFixture
     {
         private const string ExamplePath = @"C:\Some\Path\To\File.xml";
-        private Mock<IStartupFileLocator> _mockLocator;
-        private Mock<ISerializer<Workspace>> _mockSerializer;
-        private Mock<IFileStreamService> _mockStreamService;
-        private Workspace _workspace;
+        private readonly Mock<IStartupFileLocator> _mockLocator = new Mock<IStartupFileLocator>();
+        private readonly Mock<ISerializer<Workspace>> _mockSerializer = new Mock<ISerializer<Workspace>>();
+        private readonly Mock<IFileStreamService> _mockStreamService = new Mock<IFileStreamService>();
+        private readonly Workspace _workspace = new Workspace();
 
-        [SetUp]
-        public void SetUp()
-        {
-            _mockStreamService = new Mock<IFileStreamService>();
-            _mockLocator = new Mock<IStartupFileLocator>();
-            _mockSerializer = new Mock<ISerializer<Workspace>>();
-            _workspace = new Workspace();
-        }
-
-        [Test]
-        [ExpectedException(typeof (InvalidOperationException))]
+        [Fact]
         public void Load_WhenPathIsNull_Throws()
         {
             IFileBackingStore test = BuildDefaultFileBackingStoreService();
-
+            
             test.Path = null;
-            test.Load();
+            Assert.Throws(typeof (InvalidOperationException), () => test.Load());
         }
 
-        [Test]
+        [Fact]
         public void Save_WithoutSettingPath_UsesPathFromLocator()
         {
             using (var memoryStream = new MemoryStream())
@@ -52,7 +42,7 @@ namespace Relax.FileBackingStore.Tests.Services
             }
         }
 
-        [Test]
+        [Fact]
         public void Initialize_WhenLoadOnStartup_Loads()
         {
             _mockLocator.Setup(x => x.LoadOnStartup).Returns(true);
@@ -65,9 +55,9 @@ namespace Relax.FileBackingStore.Tests.Services
             _mockSerializer.Verify(x => x.Load(It.IsAny<Stream>(), It.IsAny<IEnumerable<Type>>()));
         }
 
-        [Test]
-        [Row(typeof (FileNotFoundException))]
-        [Row(typeof (DirectoryNotFoundException))]
+        [Theory]
+        [InlineData(typeof (FileNotFoundException))]
+        [InlineData(typeof (DirectoryNotFoundException))]
         public void Initialize_WorkspaceFileIsMissing_KeepsDefaultWorkspace(Type exceptionType)
         {
             _mockLocator.Setup(x => x.LoadOnStartup).Returns(true);
@@ -79,7 +69,7 @@ namespace Relax.FileBackingStore.Tests.Services
 
             test.Initialize();
 
-            Assert.AreSame(_workspace, test.Workspace);
+            Assert.Same(_workspace, test.Workspace);
         }
 
         private FileBackingStoreService BuildDefaultFileBackingStoreService()
@@ -90,7 +80,7 @@ namespace Relax.FileBackingStore.Tests.Services
                                                _mockSerializer.Object);
         }
 
-        [Test]
+        [Fact]
         public void PropertyChanged_RemoveHandler_()
         {
             // AssertThatChangeNotificationIsRaisedBy doesn't seem to remove
