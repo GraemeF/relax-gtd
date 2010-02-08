@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Relax.Infrastructure.Tests.Helpers
 {
-    public class CollectionSyncTestFixture
+    public class ListSyncTestFixture
     {
         private const string StringPrefix = "String representation of ";
 
