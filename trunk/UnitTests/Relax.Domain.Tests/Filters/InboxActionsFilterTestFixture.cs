@@ -1,17 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MbUnit.Framework;
 using Relax.Domain.Filters;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.TestDataBuilders;
+using Xunit;
 
 namespace Relax.Domain.Tests.Filters
 {
-    [TestFixture]
     public class InboxActionsFilterTestFixture : TestDataBuilder
     {
-        [Test]
+        [Fact]
         public void Actions_WhenWorkspaceHasMixedActions_ContainsOnlyInboxActions()
         {
             IAction inboxAction = AnAction.In(State.Inbox).Build();
@@ -25,10 +24,11 @@ namespace Relax.Domain.Tests.Filters
 
             var test = new InboxActionsFilter(stubWorkspace.Build());
 
-            Assert.AreElementsSame(new[] {inboxAction}, test.Actions);
+            Assert.Contains(inboxAction, test.Actions);
+            Assert.Equal(1, test.Actions.Count);
         }
 
-        [Test]
+        [Fact]
         public void InboxActions_WhenFirstInboxActionIsAddedToWorkspace_RaisesCollectionChanged()
         {
             IWorkspace workspace = AWorkspace.Build();
@@ -42,7 +42,8 @@ namespace Relax.Domain.Tests.Filters
 
             workspace.Actions.Add(inboxAction);
 
-            Assert.AreElementsSame(new[] {inboxAction}, newItems);
+            Assert.Contains(inboxAction, test.Actions);
+            Assert.Equal(1, test.Actions.Count);
         }
     }
 }
