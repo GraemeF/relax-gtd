@@ -18,10 +18,7 @@ namespace Relax.Infrastructure.Tests.Helpers
 
             new ListSync<int, string>(ints,
                                       strings,
-                                      x =>
-                                      string.Concat(
-                                                       StringPrefix,
-                                                       x.ToString()),
+                                      x => string.Concat(StringPrefix, x.ToString()),
                                       null);
         }
 
@@ -33,8 +30,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             Assert.Throws(typeof (ArgumentNullException),
                           () => new ListSync<int, string>(null,
                                                           strings,
-                                                          x => string.Concat(StringPrefix,
-                                                                             x.ToString()),
+                                                          x => string.Concat(StringPrefix, x.ToString()),
                                                           null));
         }
 
@@ -46,10 +42,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             Assert.Throws(typeof (ArgumentNullException),
                           () => new ListSync<int, string>(ints,
                                                           null,
-                                                          x =>
-                                                          string.Concat(
-                                                                           StringPrefix,
-                                                                           x.ToString()),
+                                                          x => string.Concat(StringPrefix, x.ToString()),
                                                           null));
         }
 
@@ -61,10 +54,7 @@ namespace Relax.Infrastructure.Tests.Helpers
 
             new ListSync<int, string>(ints,
                                       strings,
-                                      x =>
-                                      string.Concat(
-                                                       StringPrefix,
-                                                       x.ToString()),
+                                      x => string.Concat(StringPrefix, x.ToString()),
                                       null);
 
             Assert.Equal(StringPrefix + "65", strings[0]);
@@ -81,10 +71,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             var sync
                 = new ListSync<int, string>(ints,
                                             strings,
-                                            x =>
-                                            string.Concat(
-                                                             StringPrefix,
-                                                             x.ToString()),
+                                            x => string.Concat(StringPrefix, x.ToString()),
                                             null);
 
             ints.Remove(43);
@@ -122,10 +109,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             var sync
                 = new ListSync<int, string>(ints,
                                             strings,
-                                            x =>
-                                            string.Concat(
-                                                             StringPrefix,
-                                                             x.ToString()),
+                                            x => string.Concat(StringPrefix, x.ToString()),
                                             null);
 
             ints.Insert(2, 666);
@@ -146,10 +130,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             var sync
                 = new ListSync<int, string>(ints,
                                             strings,
-                                            x =>
-                                            string.Concat(
-                                                             StringPrefix,
-                                                             x.ToString()),
+                                            x => string.Concat(StringPrefix, x.ToString()),
                                             null);
 
             ints.Move(2, 1);
@@ -170,10 +151,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             var sync
                 = new ListSync<int, string>(ints,
                                             strings,
-                                            x =>
-                                            string.Concat(
-                                                             StringPrefix,
-                                                             x.ToString()),
+                                            x => string.Concat(StringPrefix, x.ToString()),
                                             null);
 
             ints[2] = 5;
@@ -193,10 +171,7 @@ namespace Relax.Infrastructure.Tests.Helpers
 
             new ListSync<int, string>(ints,
                                       strings,
-                                      x =>
-                                      string.Concat(
-                                                       StringPrefix,
-                                                       x.ToString()),
+                                      x => string.Concat(StringPrefix, x.ToString()),
                                       null);
 
             Assert.Equal(StringPrefix + "1", strings[0]);
@@ -215,10 +190,7 @@ namespace Relax.Infrastructure.Tests.Helpers
 
             new ListSync<int, string>(ints,
                                       strings,
-                                      x =>
-                                      string.Concat(
-                                                       StringPrefix,
-                                                       x.ToString()),
+                                      x => string.Concat(StringPrefix, x.ToString()),
                                       x => removed = true);
 
             Assert.True(removed);
@@ -233,10 +205,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             var sync
                 = new ListSync<int, string>(ints,
                                             strings,
-                                            x =>
-                                            string.Concat(
-                                                             StringPrefix,
-                                                             x.ToString()),
+                                            x => string.Concat(StringPrefix, x.ToString()),
                                             null);
 
             ints.Clear();
@@ -254,10 +223,7 @@ namespace Relax.Infrastructure.Tests.Helpers
             var sync
                 = new ListSync<int, string>(ints,
                                             strings,
-                                            x =>
-                                            string.Concat(
-                                                             StringPrefix,
-                                                             x.ToString()),
+                                            x => string.Concat(StringPrefix, x.ToString()),
                                             null);
 
             sync.Dispose();

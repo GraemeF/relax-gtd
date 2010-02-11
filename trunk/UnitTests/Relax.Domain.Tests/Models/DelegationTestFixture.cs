@@ -1,47 +1,13 @@
 ﻿using System;
 using Caliburn.Testability.Extensions;
-using MbUnit.Framework;
-using MbUnit.Framework.ContractVerifiers;
 using Relax.Domain.Models;
+using Xunit;
 
 namespace Relax.Domain.Tests.Models
 {
-    [TestFixture]
     public class DelegationTestFixture
     {
-        [VerifyContract]
-        public readonly IContract DelegationDate__MeetsPropertyContract = new AccessorContract<Delegation, DateTime?>
-                                                                              {
-                                                                                  PropertyName = "DelegationDate",
-                                                                                  AcceptNullValue = true,
-                                                                                  ValidValues =
-                                                                                      {
-                                                                                          DateTime.UtcNow,
-                                                                                          DateTime.Today
-                                                                                      },
-                                                                                  InvalidValues =
-                                                                                      {
-                                                                                          {
-                                                                                              typeof (
-                                                                                              ArgumentOutOfRangeException
-                                                                                              ),
-                                                                                              DateTime.MaxValue
-                                                                                              }
-                                                                                      }
-                                                                              };
-
-        [VerifyContract]
-        public readonly IContract Owner__MeetsPropertyContract = new AccessorContract<Delegation, string>
-                                                                     {
-                                                                         PropertyName = "Owner",
-                                                                         AcceptNullValue = true,
-                                                                         ValidValues =
-                                                                             {
-                                                                                 "test"
-                                                                             },
-                                                                     };
-
-        [Test]
+        [Fact]
         public void Owner_WhenSet_RaisesPropertyChanged()
         {
             var test = new Delegation();
@@ -49,7 +15,7 @@ namespace Relax.Domain.Tests.Models
             test.AssertThatChangeNotificationIsRaisedBy(x => x.Owner).When(() => test.Owner = "test");
         }
 
-        [Test]
+        [Fact]
         public void DelegationDate_WhenSet_RaisesPropertyChanged()
         {
             var test = new Delegation();
@@ -58,7 +24,7 @@ namespace Relax.Domain.Tests.Models
                 () => test.DelegationDate = DateTime.Today);
         }
 
-        [Test]
+        [Fact]
         public void PropertyChanged_RemoveHandler_()
         {
             // AssertThatChangeNotificationIsRaisedBy doesn't seem to remove
