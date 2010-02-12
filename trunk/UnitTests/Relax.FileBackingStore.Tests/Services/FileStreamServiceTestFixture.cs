@@ -1,23 +1,23 @@
-using MbUnit.Framework;
+using System;
 using Relax.FileBackingStore.Services;
+using Xunit;
 
 namespace Relax.FileBackingStore.Tests.Services
 {
-    [TestFixture]
     public class FileStreamServiceTestFixture
     {
-        [Test, ExpectedArgumentNullException]
+        [Fact]
         public void GetWriteStream_NullPath_Throws()
         {
             var test = new FileStreamService();
-            test.GetWriteStream(null);
+            Assert.Throws(typeof (ArgumentNullException), () => test.GetWriteStream(null));
         }
 
-        [Test, ExpectedArgumentNullException]
+        [Fact]
         public void GetReadStream_NullPath_Throws()
         {
             var test = new FileStreamService();
-            test.GetReadStream(null);
+            Assert.Throws(typeof (ArgumentNullException), () => test.GetReadStream(null));
         }
     }
 }

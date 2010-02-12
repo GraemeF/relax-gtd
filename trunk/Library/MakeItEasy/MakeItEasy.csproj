@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A435B7CD-B99C-4E96-9FF2-7E41B1AEFE1D}</ProjectGuid>
+    <ProjectGuid>{AEA81B63-ED6E-4D33-9F7E-4DED55B1C1EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Relax.AcceptanceTests.TestEntities</RootNamespace>
-    <AssemblyName>Relax.AcceptanceTests.TestEntities</AssemblyName>
+    <RootNamespace>MakeItEasy</RootNamespace>
+    <AssemblyName>MakeItEasy</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,17 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gallio, Version=3.1.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Library\Gallio\bin\Gallio.dll</HintPath>
-    </Reference>
-    <Reference Include="MbUnit, Version=3.1.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Library\Gallio\bin\MbUnit.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -51,31 +41,17 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="UIAutomationClient">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="UIAutomationTypes">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionList.cs" />
-    <Compile Include="AutomationExtensions.cs" />
-    <Compile Include="Button.cs" />
-    <Compile Include="CollectActivity.cs" />
-    <Compile Include="EditBox.cs" />
-    <Compile Include="PatternExtensions.cs" />
-    <Compile Include="ProcessActivity.cs" />
+    <Compile Include="IInstantiator.cs" />
+    <Compile Include="IPropertyLookup.cs" />
+    <Compile Include="MakeItEasyBuilders.cs" />
+    <Compile Include="Maker.cs" />
+    <Compile Include="Property.cs" />
+    <Compile Include="PropertyValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RelaxApplication.cs" />
-    <Compile Include="Shell.cs" />
-    <Compile Include="Workspace.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Relax\Relax.csproj">
-      <Project>{783A1A3D-CDB4-4121-9655-AA34516331A2}</Project>
-      <Name>Relax</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

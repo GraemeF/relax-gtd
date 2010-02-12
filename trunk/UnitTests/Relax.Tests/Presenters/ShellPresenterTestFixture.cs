@@ -1,20 +1,18 @@
 ﻿using Autofac;
-using MbUnit.Framework;
 using Moq;
 using Relax.Infrastructure.Services.Interfaces;
 using Relax.Presenters;
 using Relax.TestDataBuilders;
+using Xunit;
 
 namespace Relax.Tests.Presenters
 {
-    [TestFixture]
     public class ShellPresenterTestFixture : TestDataBuilder
     {
-        private Mock<IBackingStore> _fakeBackingStore;
-        private Mock<IContainer> _stubContainer;
+        private readonly Mock<IBackingStore> _fakeBackingStore;
+        private readonly Mock<IContainer> _stubContainer;
 
-        [SetUp]
-        public void Setup()
+        public ShellPresenterTestFixture()
         {
             _fakeBackingStore = new Mock<IBackingStore>();
             _stubContainer = new Mock<IContainer>();
@@ -27,7 +25,7 @@ namespace Relax.Tests.Presenters
             return new ShellPresenter(_stubContainer.Object, _fakeBackingStore.Object);
         }
 
-        [Test]
+        [Fact]
         public void Initialize__InitializesBackingStore()
         {
             ShellPresenter test = BuildDefaultShellPresenter();
@@ -37,7 +35,7 @@ namespace Relax.Tests.Presenters
             _fakeBackingStore.Verify(x => x.Initialize());
         }
 
-        [Test]
+        [Fact]
         public void Save__SavesToBackingStore()
         {
             ShellPresenter test = BuildDefaultShellPresenter();

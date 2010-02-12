@@ -1,17 +1,16 @@
-﻿using MbUnit.Framework;
-using Moq;
+﻿using Moq;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters;
 using Relax.Presenters.Interfaces;
 using Relax.TestDataBuilders;
+using Xunit;
 
 namespace Relax.Tests.Presenters
 {
-    [TestFixture]
     public class InboxActionsPresenterTestFixture : TestDataBuilder
     {
-        [Test]
+        [Fact]
         public void Constructor_WhenThereIsAnInboxAction_ActivatesInboxActionPresenter()
         {
             IAction inboxAction = AnAction.In(State.Inbox).Build();
@@ -21,14 +20,14 @@ namespace Relax.Tests.Presenters
             new InboxActionsPresenter(AnInboxActionsFilter.Providing(inboxAction).Build(),
                                       delegate(IAction action)
                                           {
-                                              Assert.AreSame(inboxAction, action);
+                                              Assert.Same(inboxAction, action);
                                               return mockActionPresenter.Object;
                                           });
 
             mockActionPresenter.Verify(x => x.Activate(), Times.Once());
         }
 
-        [Test]
+        [Fact]
         public void Presenters_WhenThereIsAnInboxAction_ContainsInboxActionPresenter()
         {
             IAction inboxAction = AnAction.In(State.Inbox).Build();
@@ -38,7 +37,7 @@ namespace Relax.Tests.Presenters
             var test = new InboxActionsPresenter(AnInboxActionsFilter.Providing(inboxAction).Build(),
                                                  action => stubActionPresenter.Object);
 
-            Assert.AreElementsEqual(new[] {stubActionPresenter.Object}, test.Presenters);
+            Assert.Contains(stubActionPresenter.Object, test.Presenters);
         }
     }
 }
