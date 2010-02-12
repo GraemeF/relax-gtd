@@ -1,6 +1,12 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{E0C009B9-6755-4214-BD50-50D9D249A0A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{8D8C1FF8-4397-48EA-97BF-973ED739DD1F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AcceptanceTests", "AcceptanceTests", "{114D33EC-082C-49C2-A9AA-70EC9F370400}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax", "Relax\Relax.csproj", "{783A1A3D-CDB4-4121-9655-AA34516331A2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B153BEDB-EA89-447E-A4DB-6993ED6143D1} = {B153BEDB-EA89-447E-A4DB-6993ED6143D1}
@@ -10,15 +16,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Infrastructure", "Rel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.FileBackingStore", "Relax.FileBackingStore\Relax.FileBackingStore.csproj", "{3E1C299C-EA0F-478A-AA71-D5ABD44939C0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{E0C009B9-6755-4214-BD50-50D9D249A0A3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.FileBackingStore.Tests", "UnitTests\Relax.FileBackingStore.Tests\Relax.FileBackingStore.Tests.csproj", "{C50CA0F6-65CA-42BB-8117-153F97238730}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Tests", "UnitTests\Relax.Tests\Relax.Tests.csproj", "{CD7E2A10-C842-49C8-A798-ABA0063029C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Infrastructure.Tests", "UnitTests\Relax.Infrastructure.Tests\Relax.Infrastructure.Tests.csproj", "{57326A37-8861-455D-A73F-238BC660D9F8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{8D8C1FF8-4397-48EA-97BF-973ED739DD1F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Domain", "Relax.Domain\Relax.Domain.csproj", "{B153BEDB-EA89-447E-A4DB-6993ED6143D1}"
 EndProject
@@ -27,8 +29,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmFoundation.Wpf", "Library\MvvmFoundation.Wpf\MvvmFoundation.Wpf.csproj", "{2E922430-EAAC-4589-A8F4-F35FBB9799B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.TestDataBuilders", "UnitTests\Relax.TestDataBuilders\Relax.TestDataBuilders.csproj", "{DC8E749B-48EE-4FB4-8108-7472288CCB54}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AcceptanceTests", "AcceptanceTests", "{114D33EC-082C-49C2-A9AA-70EC9F370400}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.AcceptanceTests", "AcceptanceTests\Relax.AcceptanceTests\Relax.AcceptanceTests.csproj", "{9B68EAA8-F3D4-4A3A-A5B7-8BE9EDCFDE4D}"
 	ProjectSection(ProjectDependencies) = postProject
