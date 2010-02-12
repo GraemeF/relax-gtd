@@ -1,22 +1,21 @@
-﻿using MbUnit.Framework;
-using Moq;
+﻿using Moq;
 using Relax.Domain.Models;
 using Relax.Infrastructure.Models.Interfaces;
+using Xunit;
 
 namespace Relax.Domain.Tests.Models
 {
-    [TestFixture]
     public class WorkspaceTestFixture
     {
-        [Test]
+        [Fact]
         public void Contexts_Initially_IsEmpty()
         {
             var test = new Workspace();
 
-            Assert.IsEmpty(test.Contexts);
+            Assert.Empty(test.Contexts);
         }
 
-        [Test]
+        [Fact]
         public void Add_GivenAction_AddsActionToActions()
         {
             var test = new Workspace();
@@ -24,7 +23,7 @@ namespace Relax.Domain.Tests.Models
             var stubAction = new Mock<IAction>();
             test.Add(stubAction.Object);
 
-            Assert.Contains(test.Actions, stubAction.Object);
+            Assert.Contains(stubAction.Object, test.Actions);
         }
     }
 }

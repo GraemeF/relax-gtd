@@ -1,19 +1,18 @@
-﻿using MbUnit.Framework;
-using Moq;
+﻿using Moq;
 using Relax.Presenters.Interfaces;
+using Xunit;
 
 namespace Relax.Tests.Presenters
 {
-    [TestFixture]
     public class MakeProjectPresenterTestFixture
     {
-        [Test]
+        [Fact]
         public void Projects__ReturnsProjectsPresenter()
         {
             var stubProjects = new Mock<IProjectsPresenter>();
             var test = new MakeProjectPresenter(stubProjects.Object);
 
-            Assert.AreSame(stubProjects.Object, test.Projects);
+            Assert.Same(stubProjects.Object, test.Projects);
         }
     }
 }

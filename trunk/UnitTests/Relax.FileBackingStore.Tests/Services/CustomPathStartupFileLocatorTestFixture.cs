@@ -1,44 +1,43 @@
-﻿using MbUnit.Framework;
+﻿using Xunit;
 using Relax.FileBackingStore.Services;
 
 namespace Relax.FileBackingStore.Tests.Services
 {
-    [TestFixture]
     public class CustomPathStartupFileLocatorTestFixture
     {
         private const string _TestPath = @"C:\Hello";
 
-        [Test]
+        [Fact]
         public void Construct_GivenPath_Succeeds()
         {
             new CustomPathStartupFileLocator(_TestPath);
         }
 
-        [Test]
+        [Fact]
         public void Construct_GivenNull_Throws()
         {
             new CustomPathStartupFileLocator(null);
         }
 
-        [Test]
+        [Fact]
         public void Path_GivenPath_ReturnsPath()
         {
             var test = new CustomPathStartupFileLocator(_TestPath);
-            Assert.AreEqual(_TestPath, test.Path);
+            Assert.Equal(_TestPath, test.Path);
         }
 
-        [Test]
+        [Fact]
         public void LoadOnStartup_WithoutBeingSet_ReturnsTrue()
         {
             var test = new CustomPathStartupFileLocator(_TestPath);
-            Assert.IsTrue(test.LoadOnStartup);
+            Assert.True(test.LoadOnStartup);
         }
 
-        [Test]
+        [Fact]
         public void LoadOnStartup_AfterSetToFalse_ReturnsFalse()
         {
             var test = new CustomPathStartupFileLocator(_TestPath) {LoadOnStartup = false};
-            Assert.IsFalse(test.LoadOnStartup);
+            Assert.False(test.LoadOnStartup);
         }
     }
 }

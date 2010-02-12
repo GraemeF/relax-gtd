@@ -1,38 +1,31 @@
-﻿using MbUnit.Framework;
-using Moq;
+﻿using Moq;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters;
+using Relax.TestDataBuilders;
+using Xunit;
 
 namespace Relax.Tests.Presenters
 {
-    [TestFixture]
-    public class InputPresenterTestFixture
+    public class InputPresenterTestFixture : TestDataBuilder
     {
-        private Mock<IAction> _fakeAction;
-        private Mock<IWorkspace> _fakeWorkspace;
-
-        [SetUp]
-        public void SetUp()
-        {
-            _fakeWorkspace = new Mock<IWorkspace>();
-            _fakeAction = new Mock<IAction>();
-        }
+        private readonly Mock<IWorkspace> _fakeWorkspace = AWorkspace.Mock();
+        private Mock<IAction> _fakeAction = AnAction.Mock();
 
         private InputPresenter BuildDefaultInputViewPresenter()
         {
             return new InputPresenter(_fakeWorkspace.Object, () => _fakeAction.Object);
         }
 
-        [Test]
+        [Fact]
         public void Action__ReturnsAction()
         {
             InputPresenter test = BuildDefaultInputViewPresenter();
 
-            Assert.AreSame(_fakeAction.Object, test.Action);
+            Assert.Same(_fakeAction.Object, test.Action);
         }
 
-        [Test]
+        [Fact]
         public void Add_WhenTitleIsNotEmpty_AddsItemToInbox()
         {
             InputPresenter test = BuildDefaultInputViewPresenter();
@@ -42,27 +35,27 @@ namespace Relax.Tests.Presenters
             _fakeWorkspace.Verify(x => x.Add(_fakeAction.Object));
         }
 
-        [Test]
+        [Fact]
         public void CanAdd_WhenTitleIsEmpty_IsFalse()
         {
-            _fakeAction.Setup(x => x.Title).Returns(string.Empty);
+            _fakeAction = AnAction.Called(string.Empty).Mock();
 
             InputPresenter test = BuildDefaultInputViewPresenter();
 
-            Assert.IsFalse(test.CanAdd());
+            Assert.False(test.CanAdd());
         }
 
-        [Test]
+        [Fact]
         public void CanAdd_WhenTitleIsNotEmpty_IsTrue()
         {
-            _fakeAction.Setup(x => x.Title).Returns("This action has a title");
+            _fakeAction = AnAction.Called("This action has a title").Mock();
 
             InputPresenter test = BuildDefaultInputViewPresenter();
 
-            Assert.IsTrue(test.CanAdd());
+            Assert.True(test.CanAdd());
         }
 
-        [Test]
+        [Fact]
         public void Constructor__SetsActionStateToInbox()
         {
             InputPresenter test = BuildDefaultInputViewPresenter();

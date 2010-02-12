@@ -9,16 +9,28 @@ namespace Relax.TestDataBuilders
     {
         private ObservableCollection<IAction> _blockingActions = new ObservableCollection<IAction>();
         private State _state = State.Committed;
+        public string _title = "Unspecified";
+
+        public ActionBuilder()
+        {
+        }
+
+        private ActionBuilder(ActionBuilder other)
+        {
+            _blockingActions = new ObservableCollection<IAction>(other._blockingActions);
+            _state = other._state;
+        }
 
         protected override void SetupMock(Mock<IAction> mock)
         {
+            mock.Setup(x => x.Title).Returns(_title);
             mock.Setup(x => x.ActionState).Returns(_state);
             mock.Setup(x => x.BlockingActions).Returns(new ObservableCollection<IAction>(_blockingActions));
         }
 
         public ActionBuilder In(State state)
         {
-            return new ActionBuilder {_state = state};
+            return new ActionBuilder(this) {_state = state};
         }
 
         public ActionBuilder BlockedBy(ActionBuilder action)
@@ -28,11 +40,13 @@ namespace Relax.TestDataBuilders
 
         public ActionBuilder BlockedBy(IAction action)
         {
-            return new ActionBuilder
-                       {
-                           _state = _state,
-                           _blockingActions = new ObservableCollection<IAction>(_blockingActions) {action}
-                       };
+            return new ActionBuilder(this)
+                       {_blockingActions = new ObservableCollection<IAction>(_blockingActions) {action}};
+        }
+
+        public ActionBuilder Called(string title)
+        {
+            return new ActionBuilder(this) {_title = title};
         }
     }
 }

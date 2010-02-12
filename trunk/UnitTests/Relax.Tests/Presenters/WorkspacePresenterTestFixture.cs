@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using MbUnit.Framework;
 using Moq;
 using Relax.Domain.Filters.Interfaces;
 using Relax.Infrastructure.Models;
@@ -8,13 +7,13 @@ using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters;
 using Relax.Presenters.Interfaces;
 using Relax.TestDataBuilders;
+using Xunit;
 
 namespace Relax.Tests.Presenters
 {
-    [TestFixture]
     public class WorkspacePresenterTestFixture : TestDataBuilder
     {
-        [Test]
+        [Fact]
         public void GoCollect__ActivatesCollectPresenter()
         {
             var mockPresenter = new Mock<ICollectPresenter>();
@@ -26,7 +25,7 @@ namespace Relax.Tests.Presenters
             mockPresenter.Verify(x => x.Activate());
         }
 
-        [Test]
+        [Fact]
         public void GoProcess__ActivatesProcessPresenter()
         {
             var mockPresenter = new Mock<IProcessPresenter>();
@@ -38,38 +37,38 @@ namespace Relax.Tests.Presenters
             mockPresenter.Verify(x => x.Activate());
         }
 
-        [Test]
+        [Fact]
         public void IsProcessingEnabled_WhenThereAreNoInboxActions_IsFalse()
         {
             var test = new WorkspacePresenter(AnInboxActionsFilter.Build(), null, null);
-            Assert.IsFalse(test.IsProcessingEnabled);
+            Assert.False(test.IsProcessingEnabled);
         }
 
-        [Test]
+        [Fact]
         public void IsProcessingEnabled_WhenThereIsAnInboxAction_IsTrue()
         {
             var test = new WorkspacePresenter(AnInboxActionsFilter.Providing(AnAction.In(State.Inbox)).Build(), null,
                                               null);
-            Assert.IsTrue(test.IsProcessingEnabled);
+            Assert.True(test.IsProcessingEnabled);
         }
 
 
-        [Test]
+        [Fact]
         public void ProcessButtonText_WhenThereAreNoInboxActions_IsProcess()
         {
             var test = new WorkspacePresenter(AnInboxActionsFilter.Build(), null, null);
-            Assert.AreEqual("Process", test.ProcessButtonText);
+            Assert.Equal("Process", test.ProcessButtonText);
         }
 
-        [Test]
+        [Fact]
         public void ProcessButtonText_WhenThereIsAnInboxAction_ContainsNumber()
         {
             var test = new WorkspacePresenter(AnInboxActionsFilter.Providing(AnAction.In(State.Inbox)).Build(), null,
                                               null);
-            Assert.AreEqual("Process (1)", test.ProcessButtonText);
+            Assert.Equal("Process (1)", test.ProcessButtonText);
         }
 
-        [Test]
+        [Fact]
         public void IsProcessingEnabled_WhenAnInboxActionIsAdded_RaisesPropertyChanged()
         {
             var actions = new ObservableCollection<IAction>();
@@ -84,7 +83,7 @@ namespace Relax.Tests.Presenters
             actions.Add(AnAction.In(State.Inbox).Build());
             GC.KeepAlive(test);
 
-            Assert.IsTrue(eventRaised);
+            Assert.True(eventRaised);
         }
     }
 }

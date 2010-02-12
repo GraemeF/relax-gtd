@@ -2,18 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
-using MbUnit.Framework;
 using Relax.FileBackingStore.Services;
 using Relax.FileBackingStore.Services.Interfaces;
+using Xunit;
 
 namespace Relax.FileBackingStore.Tests.Services
 {
-    [TestFixture]
     public class SerializerTestFixture
     {
         private static readonly IEnumerable<Type> KnownTypes = new[] {typeof (TestModel), typeof (int), typeof (string)};
 
-        [Test]
+        [Fact]
         public void Save_GivenStream_WritesSomething()
         {
             ISerializer<TestModel> fileStore = new Serializer<TestModel>();
@@ -21,11 +20,11 @@ namespace Relax.FileBackingStore.Tests.Services
             {
                 fileStore.Save(stream, new TestModel(), KnownTypes);
 
-                Assert.GreaterThan(stream.Position, 0L, "The file written to should not be empty.");
+                Assert.True(stream.Position> 0L, "The file written to should not be empty.");
             }
         }
 
-        [Test]
+        [Fact]
         public void Load_GivenSerializedSolutionModel_MatchesSaved()
         {
             var savedModel = new TestModel {TestInt = 5, TestString = "hello"};
@@ -40,9 +39,9 @@ namespace Relax.FileBackingStore.Tests.Services
                 loadedModel = test.Load(stream, KnownTypes);
             }
 
-            Assert.AreNotSame(savedModel, loadedModel);
-            Assert.AreEqual(5, loadedModel.TestInt);
-            Assert.AreEqual("hello", loadedModel.TestString);
+            Assert.NotSame(savedModel, loadedModel);
+            Assert.Equal(5, loadedModel.TestInt);
+            Assert.Equal("hello", loadedModel.TestString);
         }
 
         #region Nested type: TestModel

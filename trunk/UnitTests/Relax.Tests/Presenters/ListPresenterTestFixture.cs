@@ -1,31 +1,23 @@
 using System;
 using System.Collections.ObjectModel;
-using MbUnit.Framework;
 using Moq;
 using Relax.Presenters;
 using Relax.Tests.TestEntities;
+using Xunit;
 
 namespace Relax.Tests.Presenters
 {
-    [TestFixture]
     public class ListPresenterTestFixture
     {
-        private Mock<ITestItemPresenter> _stubItemPresenter;
-        private ObservableCollection<ITestItem> _stubModels;
-
-        [SetUp]
-        public void SetUp()
-        {
-            _stubModels = new ObservableCollection<ITestItem>();
-            _stubItemPresenter = new Mock<ITestItemPresenter>();
-        }
+        private readonly Mock<ITestItemPresenter> _stubItemPresenter = new Mock<ITestItemPresenter>();
+        private readonly ObservableCollection<ITestItem> _stubModels = new ObservableCollection<ITestItem>();
 
         private ListPresenter<ITestItem, ITestItemPresenter> BuildDefaultListPresenter()
         {
             return new TestListPresenter(_stubModels, x => _stubItemPresenter.Object);
         }
 
-        [Test]
+        [Fact]
         public void Constructor_WhenThereIsAItem_OpensItemPresenter()
         {
             _stubModels.Add(new Mock<ITestItem>().Object);
@@ -35,7 +27,7 @@ namespace Relax.Tests.Presenters
             _stubItemPresenter.Verify(x => x.Initialize());
         }
 
-        [Test]
+        [Fact]
         public void Presenters_WhenAItemIsRemovedFromTheWorkspace_ShutsDownItemPresenter()
         {
             var stubItem = new Mock<ITestItem>();
@@ -46,17 +38,17 @@ namespace Relax.Tests.Presenters
 
             _stubModels.RemoveAt(0);
 
-            Assert.IsEmpty(test.Presenters);
+            Assert.Empty(test.Presenters);
         }
 
-        [Test]
+        [Fact]
         public void Presenters_WhenAItemIsAddedToTheModels_OpensItemPresenter()
         {
             ListPresenter<ITestItem, ITestItemPresenter> test = BuildDefaultListPresenter();
 
             _stubModels.Add(new Mock<ITestItem>().Object);
 
-            Assert.AreEqual(1, test.Presenters.Count);
+            Assert.Equal(1, test.Presenters.Count);
         }
 
         #region Nested type: TestListPresenter
