@@ -93,7 +93,7 @@
 	</Target>
 
 	<Target Name="GenerateUnitTestReports"
-			Condition="'$(BuildingInsideVisualStudio)'!='true' and '$(RunUnitTests)'=='true'"
+			Condition="'$(BuildingInsideVisualStudio)'!='true' and '$(RunUnitTests)'=='true' and false"
 			DependsOnTargets="TestGallioCodeCoverage; CoreBuild; CopyFilesToOutputDirectory" />
 
 </Project>
