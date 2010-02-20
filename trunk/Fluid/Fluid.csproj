@@ -5,12 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9B68EAA8-F3D4-4A3A-A5B7-8BE9EDCFDE4D}</ProjectGuid>
-    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{206369ED-5FA1-4450-B6B4-3FD735CDFA0B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Relax.AcceptanceTests</RootNamespace>
-    <AssemblyName>Relax.AcceptanceTests</AssemblyName>
+    <RootNamespace>Fluid</RootNamespace>
+    <AssemblyName>Fluid</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,25 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gallio, Version=3.1.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
+    <Reference Include="Gallio, Version=3.2.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Library\Gallio\bin\Gallio.dll</HintPath>
+      <HintPath>..\Library\Gallio\bin\Gallio.dll</HintPath>
     </Reference>
-    <Reference Include="Gallio35, Version=3.1.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
+    <Reference Include="MbUnit, Version=3.2.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Library\Gallio\bin\Gallio35.dll</HintPath>
-    </Reference>
-    <Reference Include="MbUnit, Version=3.1.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Library\Gallio\bin\MbUnit.dll</HintPath>
-    </Reference>
-    <Reference Include="MbUnit35, Version=3.1.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Library\Gallio\bin\MbUnit35.dll</HintPath>
+      <HintPath>..\Library\Gallio\bin\MbUnit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -60,26 +49,38 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationTypes">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CollectTestFixture.cs" />
-    <Compile Include="LaunchTestFixture.cs" />
-    <Compile Include="ProcessTestFixture.cs" />
+    <Compile Include="AutomationExtensions.cs" />
+    <Compile Include="Button.cs" />
+    <Compile Include="ButtonBuilder.cs" />
+    <Compile Include="Container.cs" />
+    <Compile Include="ContainerBuilder.cs" />
+    <Compile Include="Control.cs" />
+    <Compile Include="ControlBuilder.cs" />
+    <Compile Include="Desktop.cs" />
+    <Compile Include="EditBox.cs" />
+    <Compile Include="EditBoxBuilder.cs" />
+    <Compile Include="IContainer.cs" />
+    <Compile Include="ListBox.cs" />
+    <Compile Include="ListBoxBuilder.cs" />
+    <Compile Include="ListBoxItem.cs" />
+    <Compile Include="ListBoxItemBuilder.cs" />
+    <Compile Include="PatternExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Fluid\Fluid.csproj">
-      <Project>{206369ED-5FA1-4450-B6B4-3FD735CDFA0B}</Project>
-      <Name>Fluid</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Relax\Relax.csproj">
-      <Project>{783A1A3D-CDB4-4121-9655-AA34516331A2}</Project>
-      <Name>Relax</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Relax.AcceptanceTests.TestEntities\Relax.AcceptanceTests.TestEntities.csproj">
-      <Project>{A435B7CD-B99C-4E96-9FF2-7E41B1AEFE1D}</Project>
-      <Name>Relax.AcceptanceTests.TestEntities</Name>
-    </ProjectReference>
+    <Compile Include="TextBox.cs" />
+    <Compile Include="TextBoxBuilder.cs" />
+    <Compile Include="UIElementNotFoundException.cs" />
+    <Compile Include="Window.cs" />
+    <Compile Include="WindowBuilder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

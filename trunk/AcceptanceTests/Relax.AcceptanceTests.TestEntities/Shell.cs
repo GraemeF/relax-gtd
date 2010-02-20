@@ -1,21 +1,20 @@
-﻿using System;
-using System.Windows.Automation;
+﻿using System.Linq;
+using Fluid;
 
 namespace Relax.AcceptanceTests.TestEntities
 {
     public class Shell
     {
-        private readonly AutomationElement _element;
+        private readonly Window _window;
 
-        public Shell(AutomationElement element)
+        public Shell(Window window)
         {
-            if (element == null) throw new ArgumentNullException("element");
-            _element = element;
+            _window = window;
         }
 
         public Workspace Workspace
         {
-            get { return new Workspace(_element.FindChildById("Workspace")); }
+            get { return new Workspace(Container.In(_window).Called("Workspace").First()); }
         }
     }
 }
