@@ -7,7 +7,7 @@ using System.Windows.Automation;
 namespace Fluid
 {
     public class ControlBuilder<TControl> : IEnumerable<TControl>
-        where TControl : Control<TControl>, new()
+        where TControl : IControl, new()
     {
         private readonly List<Func<AutomationElement, bool>> _conditions = new List<Func<AutomationElement, bool>>();
         public AutomationElement Parent { get; set; }

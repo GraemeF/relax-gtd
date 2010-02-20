@@ -67,6 +67,7 @@
     <Compile Include="Desktop.cs" />
     <Compile Include="EditBox.cs" />
     <Compile Include="IContainer.cs" />
+    <Compile Include="IControl.cs" />
     <Compile Include="ListBox.cs" />
     <Compile Include="ListBoxItem.cs" />
     <Compile Include="PatternExtensions.cs" />
