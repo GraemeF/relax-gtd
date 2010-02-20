@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
@@ -9,7 +10,7 @@ namespace Fluid
         where TBuilder : ControlBuilder<TBuilder, TControl>, new()
         where TControl : Control<TBuilder, TControl>, new()
     {
-        private string _id;
+        private readonly List<Func<AutomationElement, bool>> _conditions = new List<Func<AutomationElement, bool>>();
         public AutomationElement Parent { get; set; }
 
         #region IEnumerable<TControl> Members
@@ -20,7 +21,7 @@ namespace Fluid
                 throw new UIElementNotFoundException("There is no parent element to look in.");
 
             return Parent.
-                FindChildren(MeetingCriteria).
+                FindChildren(MeetingConditions).
                 Select(element => new TControl {AutomationElement = element}).
                 GetEnumerator();
         }
@@ -32,19 +33,26 @@ namespace Fluid
 
         #endregion
 
-        private bool MeetingCriteria(AutomationElement automationElement)
+        public ControlBuilder<TBuilder, TControl> Matching(Func<AutomationElement, bool> condition)
         {
-            return _id == null || automationElement.Current.AutomationId == _id;
+            _conditions.Add(condition);
+            return this;
         }
 
-        public TBuilder Called(string id)
+        private bool MeetingConditions(AutomationElement automationElement)
         {
-            return new TBuilder {Parent = Parent, _id = id};
+            return _conditions.All(condition => condition(automationElement));
         }
 
-        public TBuilder In(Container container)
+        public ControlBuilder<TBuilder, TControl> Called(string id)
         {
-            return new TBuilder {Parent = container.AutomationElement, _id = _id};
+            return Matching(x => x.Current.AutomationId == id);
+        }
+
+        public ControlBuilder<TBuilder, TControl> In(Container container)
+        {
+            Parent = container.AutomationElement;
+            return this;
         }
     }
 }

@@ -1,21 +1,20 @@
-﻿using MbUnit.Framework;
-using Relax.AcceptanceTests.TestEntities;
+﻿using Relax.AcceptanceTests.TestEntities;
+using Xunit;
 
 namespace Relax.AcceptanceTests
 {
-    [TestFixture]
     public class ProcessTestFixture
     {
-        [Test]
+        [Fact]
         public void ProcessButtonIsDisabledWhenInboxIsEmpty()
         {
             using (RelaxApplication relax = RelaxApplication.Launch())
             {
-                Assert.IsFalse(relax.Shell.Workspace.ProcessButton.IsEnabled);
+                Assert.False(relax.Shell.Workspace.ProcessButton.IsEnabled);
             }
         }
 
-        [Test]
+        [Fact]
         public void ProcessButtonIsEnabledWhenInboxContainsAnAction()
         {
             using (RelaxApplication relax = RelaxApplication.Launch())
@@ -23,22 +22,22 @@ namespace Relax.AcceptanceTests
                 relax.StartCollectingActions();
                 relax.AddInboxAction("This is an action in my inbox.");
 
-                Assert.IsTrue(relax.Shell.Workspace.ProcessButton.IsEnabled);
+                Assert.True(relax.Shell.Workspace.ProcessButton.IsEnabled);
             }
         }
 
-        [Test]
+        [Fact]
         public void ProcessButtonSaysProcessWhenEmpty()
         {
             using (RelaxApplication relax = RelaxApplication.Launch())
             {
                 relax.StartCollectingActions();
 
-                Assert.AreEqual("Process", relax.Shell.Workspace.ProcessButton.Text);
+                Assert.Equal("Process", relax.Shell.Workspace.ProcessButton.Text);
             }
         }
 
-        [Test]
+        [Fact]
         public void ProcessButtonShowsNumberOfInboxActionsWhenNotEmpty()
         {
             using (RelaxApplication relax = RelaxApplication.Launch())
@@ -46,14 +45,14 @@ namespace Relax.AcceptanceTests
                 relax.StartCollectingActions();
 
                 relax.AddInboxAction("This is an action in my inbox.");
-                Assert.AreEqual("Process (1)", relax.Shell.Workspace.ProcessButton.Text);
+                Assert.Equal("Process (1)", relax.Shell.Workspace.ProcessButton.Text);
 
                 relax.AddInboxAction("This is another action in my inbox.");
-                Assert.AreEqual("Process (2)", relax.Shell.Workspace.ProcessButton.Text);
+                Assert.Equal("Process (2)", relax.Shell.Workspace.ProcessButton.Text);
             }
         }
 
-        [Test]
+        [Fact]
         public void ActionTitleIsEditableWhenProcessing()
         {
             using (RelaxApplication relax = RelaxApplication.Launch())
@@ -64,7 +63,7 @@ namespace Relax.AcceptanceTests
 
                 relax.StartProcessingInbox();
 
-                Assert.AreEqual(actionTitle, relax.Shell.Workspace.ProcessActivity.CurrentActionTitle.Text);
+                Assert.Equal(actionTitle, relax.Shell.Workspace.ProcessActivity.CurrentActionTitle.Text);
             }
         }
     }
