@@ -2,7 +2,7 @@
 
 namespace Fluid
 {
-    public class ListBox : Control<ListBoxBuilder, ListBox>, IContainer
+    public class ListBox : Control<ListBox>, IContainer
     {
         public IEnumerable<ListBoxItem> Items
         {

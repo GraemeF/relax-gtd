@@ -1,6 +1,6 @@
 ﻿namespace Fluid
 {
-    public class Button : Control<ButtonBuilder, Button>
+    public class Button : Control<Button>
     {
         public bool IsEnabled
         {

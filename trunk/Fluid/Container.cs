@@ -1,6 +1,6 @@
 ﻿namespace Fluid
 {
-    public class Container : Control<ContainerBuilder, Container>, IContainer
+    public class Container : Control<Container>, IContainer
     {
     }
 }

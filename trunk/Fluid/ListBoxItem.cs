@@ -1,6 +1,6 @@
 ﻿namespace Fluid
 {
-    public class ListBoxItem : Control<ListBoxItemBuilder, ListBoxItem>, IContainer
+    public class ListBoxItem : Control<ListBoxItem>, IContainer
     {
     }
 }
