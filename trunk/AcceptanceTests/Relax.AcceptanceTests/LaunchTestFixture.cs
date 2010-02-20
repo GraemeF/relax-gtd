@@ -1,12 +1,11 @@
-﻿using MbUnit.Framework;
-using Relax.AcceptanceTests.TestEntities;
+﻿using Relax.AcceptanceTests.TestEntities;
+using Xunit;
 
 namespace Relax.AcceptanceTests
 {
-    [TestFixture]
     public class LaunchTestFixture
     {
-        [Test]
+        [Fact]
         public void Application_launches()
         {
             using (RelaxApplication.Launch())

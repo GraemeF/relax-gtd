@@ -1,12 +1,12 @@
-﻿using MbUnit.Framework;
+﻿using System.ComponentModel;
 using Relax.AcceptanceTests.TestEntities;
+using Xunit;
 
 namespace Relax.AcceptanceTests
 {
-    [TestFixture]
     public class CollectTestFixture
     {
-        [Test]
+        [Fact]
         [Category("Regression")]
         public void When_an_action_is_added_it_is_shown_in_the_Inbox()
         {
