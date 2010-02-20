@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.AcceptanceTests", "Ac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.AcceptanceTests.TestEntities", "AcceptanceTests\Relax.AcceptanceTests.TestEntities\Relax.AcceptanceTests.TestEntities.csproj", "{A435B7CD-B99C-4E96-9FF2-7E41B1AEFE1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluid", "Fluid\Fluid.csproj", "{206369ED-5FA1-4450-B6B4-3FD735CDFA0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{A435B7CD-B99C-4E96-9FF2-7E41B1AEFE1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A435B7CD-B99C-4E96-9FF2-7E41B1AEFE1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A435B7CD-B99C-4E96-9FF2-7E41B1AEFE1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{206369ED-5FA1-4450-B6B4-3FD735CDFA0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206369ED-5FA1-4450-B6B4-3FD735CDFA0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206369ED-5FA1-4450-B6B4-3FD735CDFA0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206369ED-5FA1-4450-B6B4-3FD735CDFA0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

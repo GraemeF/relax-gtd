@@ -4,7 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              x:Class="Relax.Views.ActionsView"
-             AutomationProperties.AutomationId="Actions"
+             AutomationProperties.AutomationId="ActionsView"
              mc:Ignorable="d">
     <UserControl.Resources>
         <ItemsPanelTemplate x:Key="ItemsWrapPanel">
@@ -17,7 +17,7 @@
                  ItemsPanel="{DynamicResource ItemsWrapPanel}"
                  Background="{x:Null}"
                  BorderBrush="{x:Null}"
-                 AutomationProperties.AutomationId="List"
+                 AutomationProperties.AutomationId="Actions"
                  d:LayoutOverrides="Width, Height">
             <ListBox.ItemTemplate>
                 <DataTemplate>

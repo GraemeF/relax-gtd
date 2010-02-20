@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
-using System.Windows.Automation;
+using Fluid;
 using MbUnit.Framework;
 
 namespace Relax.AcceptanceTests.TestEntities
@@ -11,8 +12,7 @@ namespace Relax.AcceptanceTests.TestEntities
     public class RelaxApplication : IDisposable
     {
         private readonly Process _process;
-        private readonly AutomationElement _shell;
-        private static readonly TimeSpan StartUpTimeout = new TimeSpan(0, 0, 10);
+        private readonly Window _shell;
 
         #region Path to the Relax app.
 
@@ -40,26 +40,7 @@ namespace Relax.AcceptanceTests.TestEntities
             var startInfo = new ProcessStartInfo(ApplicationPath, args.ToString()) {UseShellExecute = false};
             Process process = Process.Start(startInfo);
 
-            AutomationElement desktop = AutomationElement.RootElement;
-            AutomationElement shell = null;
-
-            Retry.WithFailureMessage("Relax Monitor did not connect.")
-                .WithTimeout(StartUpTimeout)
-                .Until(delegate
-                           {
-                               shell = desktop.FindFirst(TreeScope.Children,
-                                                         new PropertyCondition(
-                                                             AutomationElement.NameProperty,
-                                                             "Relax GTD"));
-
-                               return process.HasExited || shell != null;
-                           });
-
-            if (shell == null)
-            {
-                process.Dispose();
-                throw new Exception("Failed to find Relax.");
-            }
+            Window shell = Desktop.Window.OwnedBy(process).Titled("Relax GTD");
 
             return new RelaxApplication(process, shell);
         }
@@ -91,7 +72,7 @@ namespace Relax.AcceptanceTests.TestEntities
             return Launch(newWorkspace, null);
         }
 
-        private RelaxApplication(Process process, AutomationElement shell)
+        private RelaxApplication(Process process, Window shell)
         {
             _process = process;
             _shell = shell;
@@ -164,8 +145,9 @@ namespace Relax.AcceptanceTests.TestEntities
 
         public void AddInboxAction(string newAction)
         {
-            _shell.FindDescendentByIdPath(new[] {"Workspace", "Collect", "Input", "Title"}).SetValue(newAction);
-            _shell.FindDescendentByIdPath(new[] {"Workspace", "Collect", "Input", "Add"}).GetInvokePattern().Invoke();
+            Container inputContainer = Container.In(_shell, "Workspace", "Collect").Called("Input").First();
+            TextBox.In(inputContainer).Called("Title").First().Content = newAction;
+            Button.In(inputContainer).Called("Add").First().Click();
         }
 
         public void HasInboxActions(IEnumerable<string> actions)

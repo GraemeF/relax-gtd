@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Automation;
+using Fluid;
 
 namespace Relax.AcceptanceTests.TestEntities
 {
     public class ActionList
     {
-        private readonly AutomationElement _element;
+        private readonly ListBox _listBox;
 
-        public ActionList(AutomationElement element)
+        public ActionList(ListBox listBox)
         {
-            if (element == null) throw new ArgumentNullException("element");
-            _element = element;
+            _listBox = listBox;
         }
 
         public IEnumerable<string> Actions
         {
             get
             {
-                return _element.FindChildByControlType(ControlType.List).FindChildren(
-                    x => x.Current.ControlType == ControlType.ListItem).Select(
-                    x => x.FindChildById("Action").FindChildById("Title").GetValue());
+                return
+                    _listBox.Items.Select(
+                        x => new Action(Container.In(x).Called("Action").First()).Title);
             }
         }
     }

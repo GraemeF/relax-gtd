@@ -1,21 +1,24 @@
-﻿using System;
-using System.Windows.Automation;
+﻿using System.Linq;
+using Fluid;
 
 namespace Relax.AcceptanceTests.TestEntities
 {
     public class CollectActivity
     {
-        private readonly AutomationElement _element;
+        private readonly Container _container;
 
-        public CollectActivity(AutomationElement element)
+        public CollectActivity(Container container)
         {
-            if (element == null) throw new ArgumentNullException("element");
-            _element = element;
+            _container = container;
         }
 
         public ActionList ActionList
         {
-            get { return new ActionList(_element.FindChildById("Actions")); }
+            get
+            {
+                return
+                    new ActionList(ListBox.In(_container, "ActionsView").Called("Actions").First());
+            }
         }
     }
 }

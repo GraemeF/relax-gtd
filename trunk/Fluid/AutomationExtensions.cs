@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
 
-namespace Relax.AcceptanceTests.TestEntities
+namespace Fluid
 {
     public static class AutomationExtensions
     {

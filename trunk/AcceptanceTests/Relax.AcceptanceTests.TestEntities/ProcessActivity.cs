@@ -1,26 +1,29 @@
-﻿using System;
-using System.Windows.Automation;
+﻿using System.Linq;
+using Fluid;
 
 namespace Relax.AcceptanceTests.TestEntities
 {
     public class ProcessActivity
     {
-        private readonly AutomationElement _element;
+        private readonly Container _container;
 
-        public ProcessActivity(AutomationElement element)
+        public ProcessActivity(Container container)
         {
-            if (element == null) throw new ArgumentNullException("element");
-            _element = element;
+            _container = container;
         }
 
         public ActionList UnprocessedActionList
         {
-            get { return new ActionList(_element.FindChildById("UnprocessedActions")); }
+            get
+            {
+                return
+                    new ActionList(ListBox.In(_container).Called("UnprocessedActions").First());
+            }
         }
 
         public EditBox CurrentActionTitle
         {
-            get { return new EditBox(_element.FindChildById("CurrentActionTitle")); }
+            get { return EditBox.In(_container).Called("CurrentActionTitle").First(); }
         }
     }
 }
