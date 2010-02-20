@@ -61,23 +61,17 @@
   <ItemGroup>
     <Compile Include="AutomationExtensions.cs" />
     <Compile Include="Button.cs" />
-    <Compile Include="ButtonBuilder.cs" />
     <Compile Include="Container.cs" />
-    <Compile Include="ContainerBuilder.cs" />
     <Compile Include="Control.cs" />
     <Compile Include="ControlBuilder.cs" />
     <Compile Include="Desktop.cs" />
     <Compile Include="EditBox.cs" />
-    <Compile Include="EditBoxBuilder.cs" />
     <Compile Include="IContainer.cs" />
     <Compile Include="ListBox.cs" />
-    <Compile Include="ListBoxBuilder.cs" />
     <Compile Include="ListBoxItem.cs" />
-    <Compile Include="ListBoxItemBuilder.cs" />
     <Compile Include="PatternExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextBox.cs" />
-    <Compile Include="TextBoxBuilder.cs" />
     <Compile Include="UIElementNotFoundException.cs" />
     <Compile Include="Window.cs" />
     <Compile Include="WindowBuilder.cs" />

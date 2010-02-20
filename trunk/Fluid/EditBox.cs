@@ -1,6 +1,6 @@
 ﻿namespace Fluid
 {
-    public class EditBox : Control<EditBoxBuilder, EditBox>
+    public class EditBox : Control<EditBox>
     {
         public string Text
         {

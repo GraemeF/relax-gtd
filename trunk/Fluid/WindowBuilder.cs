@@ -6,7 +6,7 @@ using MbUnit.Framework;
 
 namespace Fluid
 {
-    public class WindowBuilder : ControlBuilder<WindowBuilder, Window>
+    public class WindowBuilder : ControlBuilder<Window>
     {
         private static readonly TimeSpan StartUpTimeout = new TimeSpan(0, 0, 10);
         private Process _process;

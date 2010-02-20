@@ -2,13 +2,12 @@
 
 namespace Fluid
 {
-    public abstract class Control<TBuilder, TControl>
-        where TBuilder : ControlBuilder<TBuilder, TControl>, new()
-        where TControl : Control<TBuilder, TControl>, new()
+    public abstract class Control<TControl>
+        where TControl : Control<TControl>, new()
     {
         public AutomationElement AutomationElement { get; set; }
 
-        public static TBuilder In(IContainer container, params string[] path)
+        public static ControlBuilder<TControl> In(IContainer container, params string[] path)
         {
             AutomationElement element = container.AutomationElement;
             foreach (string automationId in path)
@@ -16,7 +15,7 @@ namespace Fluid
                     element.FindChildByCondition(new PropertyCondition(AutomationElement.AutomationIdProperty,
                                                                        automationId));
 
-            return new TBuilder {Parent = element};
+            return new ControlBuilder<TControl> {Parent = element};
         }
     }
 }

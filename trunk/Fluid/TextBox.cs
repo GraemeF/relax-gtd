@@ -1,6 +1,6 @@
 ﻿namespace Fluid
 {
-    public class TextBox : Control<TextBoxBuilder, TextBox>
+    public class TextBox : Control<TextBox>
     {
         public string Content
         {
