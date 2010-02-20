@@ -2,10 +2,14 @@
 
 namespace Fluid
 {
-    public abstract class Control<TControl>
-        where TControl : Control<TControl>, new()
+    public abstract class Control<TControl> : IControl
+        where TControl : IControl, new()
     {
+        #region IControl Members
+
         public AutomationElement AutomationElement { get; set; }
+
+        #endregion
 
         public static ControlBuilder<TControl> In(IContainer container, params string[] path)
         {
