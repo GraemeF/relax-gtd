@@ -6,7 +6,7 @@ using System.Windows.Automation;
 
 namespace Fluid
 {
-    public class ControlBuilder<TControl> : IEnumerable<TControl>
+    public class ControlFinder<TControl> : IEnumerable<TControl>
         where TControl : IControl, new()
     {
         private readonly List<Func<AutomationElement, bool>> _conditions = new List<Func<AutomationElement, bool>>();
@@ -32,7 +32,7 @@ namespace Fluid
 
         #endregion
 
-        public ControlBuilder<TControl> Matching(Func<AutomationElement, bool> condition)
+        public ControlFinder<TControl> Matching(Func<AutomationElement, bool> condition)
         {
             _conditions.Add(condition);
             return this;
@@ -43,12 +43,12 @@ namespace Fluid
             return _conditions.All(condition => condition(automationElement));
         }
 
-        public ControlBuilder<TControl> Called(string id)
+        public ControlFinder<TControl> Called(string id)
         {
             return Matching(x => x.Current.AutomationId == id);
         }
 
-        public ControlBuilder<TControl> In(Container container)
+        public ControlFinder<TControl> In(Container container)
         {
             Parent = container.AutomationElement;
             return this;

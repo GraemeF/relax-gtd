@@ -63,7 +63,7 @@
     <Compile Include="Button.cs" />
     <Compile Include="Container.cs" />
     <Compile Include="Control.cs" />
-    <Compile Include="ControlBuilder.cs" />
+    <Compile Include="ControlFinder.cs" />
     <Compile Include="Desktop.cs" />
     <Compile Include="EditBox.cs" />
     <Compile Include="IContainer.cs" />
@@ -75,7 +75,7 @@
     <Compile Include="TextBox.cs" />
     <Compile Include="UIElementNotFoundException.cs" />
     <Compile Include="Window.cs" />
-    <Compile Include="WindowBuilder.cs" />
+    <Compile Include="WindowFinder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

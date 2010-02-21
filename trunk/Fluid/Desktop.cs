@@ -4,9 +4,9 @@ namespace Fluid
 {
     public class Desktop
     {
-        public static WindowBuilder Window
+        public static WindowFinder Window
         {
-            get { return new WindowBuilder {Parent = AutomationElement.RootElement}; }
+            get { return new WindowFinder {Parent = AutomationElement.RootElement}; }
         }
     }
 }
