@@ -5,6 +5,7 @@
 	<PropertyGroup>
 		<ApplicationBuild>$(CCNetLabel)</ApplicationBuild>
 		<PublishDir Condition="'$(PublishDir)'==''">Publish</PublishDir>
+		<NCoverExplorerPath Condition="'$(NCoverExplorerPath)'==''">Library\NCoverExplorer\NCoverExplorer.console.exe</NCoverExplorerPath>
 		<SimulatePublish Condition="'$(SimulatePublish)'==''">false</SimulatePublish>
 		<InnerTarget Condition="'$(InnerTarget)'==''">Build</InnerTarget>
 		<LibraryPath>Library\</LibraryPath>
@@ -27,10 +28,15 @@
 				 Properties="ApplicationVersion=$(ApplicationVersion)"
 				 StopOnFirstFailure="true"
 				 BuildInParallel="true" />
+	</Target>	
+	<Target Name="MergeCodeCoverageReports"
+			DependsOnTargets="MSBuildSelfExtractingExe">
+		<Exec Command='"$(NCoverExplorerPath)" Reports\*.coverage.xml /s:Reports\ncover-fullreport.xml' />
 	</Target>
 	<PropertyGroup>
 		<FullPublishDependsOn>
-			MSBuildSelfExtractingExe;
+			MergeCodeCoverageReports;
+			MSBuildSelfExtractingExe
 		</FullPublishDependsOn>
 	</PropertyGroup>
 	<Target Name="FullPublish"
