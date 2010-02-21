@@ -11,7 +11,7 @@ namespace Fluid
 
         #endregion
 
-        public static ControlBuilder<TControl> In(IContainer container, params string[] path)
+        public static ControlFinder<TControl> In(IContainer container, params string[] path)
         {
             AutomationElement element = container.AutomationElement;
             foreach (string automationId in path)
@@ -19,7 +19,7 @@ namespace Fluid
                     element.FindChildByCondition(new PropertyCondition(AutomationElement.AutomationIdProperty,
                                                                        automationId));
 
-            return new ControlBuilder<TControl> {Parent = element};
+            return new ControlFinder<TControl> {Parent = element};
         }
     }
 }
