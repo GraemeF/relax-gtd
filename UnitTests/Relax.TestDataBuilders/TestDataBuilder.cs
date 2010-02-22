@@ -14,6 +14,16 @@ namespace Relax.TestDataBuilders
             get { return new WorkspaceBuilder(); }
         }
 
+        protected static RepetitionBuilder ARepetition
+        {
+            get { return new RepetitionBuilder(); }
+        }
+
+        protected static GtdContextBuilder AContext
+        {
+            get { return new GtdContextBuilder(); }
+        }
+
         protected static ActionsFilterBuilder<IInboxActionsFilter> AnInboxActionsFilter
         {
             get { return new ActionsFilterBuilder<IInboxActionsFilter>(); }
