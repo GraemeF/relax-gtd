@@ -62,7 +62,9 @@
     <Compile Include="ActionBuilder.cs" />
     <Compile Include="BuilderBase.cs" />
     <Compile Include="ActionsFilterBuilder.cs" />
+    <Compile Include="GtdContextBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepetitionBuilder.cs" />
     <Compile Include="TestDataBuilder.cs" />
     <Compile Include="WorkspaceBuilder.cs" />
   </ItemGroup>

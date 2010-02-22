@@ -3,12 +3,13 @@ using Caliburn.Testability.Extensions;
 using Moq;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
+using Relax.TestDataBuilders;
 using Xunit;
 using Action = Relax.Domain.Models.Action;
 
 namespace Relax.Domain.Tests.Models
 {
-    public class ActionTestFixture
+    public class ActionTestFixture : TestDataBuilder
     {
         [Fact]
         public void TimeRequired_WhenSet_RaisesPropertyChanged()
@@ -98,8 +99,20 @@ namespace Relax.Domain.Tests.Models
         {
             var test = new Action();
 
+            DateTime completedDate = DateTime.UtcNow;
             test.AssertThatChangeNotificationIsRaisedBy(x => x.CompletedDate).
-                When(() => test.CompletedDate = DateTime.UtcNow);
+                When(() => test.CompletedDate = completedDate);
+            Assert.Equal(completedDate, test.CompletedDate);
+        }
+
+        [Fact]
+        public void CompletedDate_WhenSetToFuture_Throws()
+        {
+            var test = new Action();
+
+            DateTime completedDate = DateTime.UtcNow + TimeSpan.FromDays(1);
+
+            Assert.Throws(typeof (ArgumentOutOfRangeException), () => test.CompletedDate = completedDate);
         }
 
         [Fact]
@@ -125,17 +138,21 @@ namespace Relax.Domain.Tests.Models
         {
             var test = new Action();
 
+            IRepetition newRepetition = ARepetition.Build();
             test.AssertThatChangeNotificationIsRaisedBy(x => x.Repetition).
-                When(() => test.Repetition = new Mock<IRepetition>().Object);
+                When(() => test.Repetition = newRepetition);
+            Assert.Same(newRepetition, test.Repetition);
         }
 
         [Fact]
         public void Context_WhenSet_RaisesPropertyChanged()
         {
+            IGtdContext newContext = AContext.Build();
             var test = new Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.Context).
-                When(() => test.Context = new Mock<IGtdContext>().Object);
+                When(() => test.Context = newContext);
+            Assert.Same(newContext, test.Context);
         }
     }
 }
