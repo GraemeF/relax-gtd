@@ -7,13 +7,15 @@ namespace Relax.Tests.Presenters
 {
     public class ProcessPresenterTestFixture
     {
+        private readonly Mock<IActionQueuePresenter> _stubActionQueue = new Mock<IActionQueuePresenter>();
         private readonly Mock<IDoLaterPresenter> _stubDoLater = new Mock<IDoLaterPresenter>();
         private readonly Mock<IDoNowPresenter> _stubDoNow = new Mock<IDoNowPresenter>();
         private readonly Mock<IInboxActionsPresenter> _stubInbox = new Mock<IInboxActionsPresenter>();
 
         private ProcessPresenter BuildDefaultProcessPresenter()
         {
-            return new ProcessPresenter(_stubDoLater.Object,
+            return new ProcessPresenter(_stubActionQueue.Object,
+                                        _stubDoLater.Object,
                                         _stubInbox.Object,
                                         _stubDoNow.Object);
         }
@@ -40,14 +42,6 @@ namespace Relax.Tests.Presenters
             ProcessPresenter test = BuildDefaultProcessPresenter();
 
             Assert.Same(_stubDoNow.Object, test.DoNow);
-        }
-
-        [Fact(Skip = "In progress")]
-        public void CurrentActionTitle_WhenThereIsAnAction_ReturnsActionTitle()
-        {
-            ProcessPresenter test = BuildDefaultProcessPresenter();
-
-            Assert.Equal("", test.CurrentActionTitle);
         }
     }
 }
