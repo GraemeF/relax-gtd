@@ -16,6 +16,14 @@ namespace Relax.Domain.Tests.Models
         }
 
         [Fact]
+        public void Title_WhenSetToNull_Throws()
+        {
+            var test = new TestItem();
+
+            Assert.Throws(typeof (ArgumentNullException), () => test.Title = null);
+        }
+
+        [Fact]
         public void CreatedGet__ReturnsDateTimeOfWhenItemWasCreated()
         {
             DateTime createTime = DateTime.UtcNow;

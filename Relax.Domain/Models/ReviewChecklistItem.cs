@@ -16,7 +16,7 @@ namespace Relax.Domain.Models
         public IReview Review
         {
             get { return _review; }
-            private set
+            set
             {
                 if (_review != value)
                 {

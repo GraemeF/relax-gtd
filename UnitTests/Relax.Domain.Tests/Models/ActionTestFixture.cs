@@ -14,28 +14,37 @@ namespace Relax.Domain.Tests.Models
         [Fact]
         public void TimeRequired_WhenSet_RaisesPropertyChanged()
         {
+            TimeSpan newTimeRequired = TimeSpan.FromMinutes(30);
+
             var test = new Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.TimeRequired).
-                When(() => test.TimeRequired = TimeSpan.FromMinutes(30));
+                When(() => test.TimeRequired = newTimeRequired);
+            Assert.Equal(newTimeRequired, test.TimeRequired);
         }
 
         [Fact]
         public void MentalEnergyRequired_WhenSet_RaisesPropertyChanged()
         {
+            const EnergyLevel mentalEnergyRequired = EnergyLevel.Medium;
+
             var test = new Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.MentalEnergyRequired).
-                When(() => test.MentalEnergyRequired = EnergyLevel.Medium);
+                When(() => test.MentalEnergyRequired = mentalEnergyRequired);
+            Assert.Equal(mentalEnergyRequired, test.MentalEnergyRequired);
         }
 
         [Fact]
         public void PhysicalEnergyRequired_WhenSet_RaisesPropertyChanged()
         {
+            const EnergyLevel energyLevel = EnergyLevel.Medium;
+
             var test = new Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.PhysicalEnergyRequired).
-                When(() => test.PhysicalEnergyRequired = EnergyLevel.Medium);
+                When(() => test.PhysicalEnergyRequired = energyLevel);
+            Assert.Equal(energyLevel, test.PhysicalEnergyRequired);
         }
 
         [Fact]
@@ -70,28 +79,35 @@ namespace Relax.Domain.Tests.Models
         [Fact]
         public void Deadline_WhenSet_RaisesPropertyChanged()
         {
+            DateTime newDeadline = DateTime.UtcNow;
             var test = new Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.Deadline).
-                When(() => test.Deadline = DateTime.UtcNow);
+                When(() => test.Deadline = newDeadline);
+            Assert.Equal(newDeadline, test.Deadline);
         }
 
         [Fact]
         public void Delegation_WhenSet_RaisesPropertyChanged()
         {
+            IDelegation newDelegation = new Mock<IDelegation>().Object;
+
             var test = new Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.Delegation).
-                When(() => test.Delegation = new Mock<IDelegation>().Object);
+                When(() => test.Delegation = newDelegation);
+            Assert.Equal(newDelegation, test.Delegation);
         }
 
         [Fact]
         public void DeferUntil_WhenSet_RaisesPropertyChanged()
         {
+            DateTime newDeferUntil = DateTime.UtcNow;
             var test = new Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.DeferUntil).
-                When(() => test.DeferUntil = DateTime.UtcNow);
+                When(() => test.DeferUntil = newDeferUntil);
+            Assert.Equal(newDeferUntil, test.DeferUntil);
         }
 
         [Fact]
@@ -118,27 +134,33 @@ namespace Relax.Domain.Tests.Models
         [Fact]
         public void Review_WhenSet_RaisesPropertyChanged()
         {
+            IReview newReview = new Mock<IReview>().Object;
+
             var test = new Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.Review).
-                When(() => test.Review = new Mock<IReview>().Object);
+                When(() => test.Review = newReview);
+            Assert.Equal(newReview, test.Review);
         }
 
         [Fact]
         public void Priority_WhenSet_RaisesPropertyChanged()
         {
+            const Priority newPriority = Priority.Should;
+
             var test = new Action();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.Priority).
-                When(() => test.Priority = Priority.Should);
+                When(() => test.Priority = newPriority);
+            Assert.Equal(newPriority, test.Priority);
         }
 
         [Fact]
         public void Repetition_WhenSet_RaisesPropertyChanged()
         {
+            IRepetition newRepetition = ARepetition.Build();
             var test = new Action();
 
-            IRepetition newRepetition = ARepetition.Build();
             test.AssertThatChangeNotificationIsRaisedBy(x => x.Repetition).
                 When(() => test.Repetition = newRepetition);
             Assert.Same(newRepetition, test.Repetition);

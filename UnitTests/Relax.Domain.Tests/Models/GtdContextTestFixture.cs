@@ -1,4 +1,5 @@
-﻿using Relax.Domain.Models;
+﻿using Caliburn.Testability.Extensions;
+using Relax.Domain.Models;
 using Xunit;
 
 namespace Relax.Domain.Tests.Models
@@ -11,6 +12,18 @@ namespace Relax.Domain.Tests.Models
             var test = new GtdContext {Title = "Hello"};
 
             Assert.Equal("@Hello", test.ToString());
+        }
+
+        [Fact]
+        public void Description_WhenSet_RaisesPropertyChanged()
+        {
+            const string newDescription = "New description";
+
+            var test = new GtdContext();
+
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.Description).
+                When(() => test.Description = newDescription);
+            Assert.Equal(newDescription, test.Description);
         }
     }
 }

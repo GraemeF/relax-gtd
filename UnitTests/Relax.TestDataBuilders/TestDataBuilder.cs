@@ -9,6 +9,11 @@ namespace Relax.TestDataBuilders
             get { return new ActionBuilder(); }
         }
 
+        protected static ReviewBuilder AReview
+        {
+            get { return new ReviewBuilder(); }
+        }
+
         protected static WorkspaceBuilder AWorkspace
         {
             get { return new WorkspaceBuilder(); }
