@@ -1,20 +1,23 @@
 ﻿using Caliburn.Testability.Extensions;
-using Moq;
 using Relax.Domain.Models;
 using Relax.Infrastructure.Models.Interfaces;
+using Relax.TestDataBuilders;
 using Xunit;
 
 namespace Relax.Domain.Tests.Models
 {
-    public class ReviewChecklistItemTestFixture
+    public class ReviewChecklistItemTestFixture : TestDataBuilder
     {
         [Fact]
         public void Review_WhenSet_RaisesPropertyChanged()
         {
-            var test = new Action();
+            IReview newReview = AReview.Build();
+
+            var test = new ReviewChecklistItem();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.Review).
-                When(() => test.Review = new Mock<IReview>().Object);
+                When(() => test.Review = newReview);
+            Assert.Same(newReview, test.Review);
         }
     }
 }
