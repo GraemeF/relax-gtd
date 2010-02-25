@@ -54,6 +54,9 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="xunit, Version=1.5.0.1479, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Library\Gallio\bin\Xunit\xunit.dll</HintPath>
@@ -87,6 +90,10 @@
     <ProjectReference Include="..\..\Relax\Relax.csproj">
       <Project>{783A1A3D-CDB4-4121-9655-AA34516331A2}</Project>
       <Name>Relax</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Relax.TestDataBuilders\Relax.TestDataBuilders.csproj">
+      <Project>{DC8E749B-48EE-4FB4-8108-7472288CCB54}</Project>
+      <Name>Relax.TestDataBuilders</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
