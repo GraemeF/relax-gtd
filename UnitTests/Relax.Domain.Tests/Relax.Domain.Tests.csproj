@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Filters\InboxActionsFilterTestFixture.cs" />
     <Compile Include="Filters\ProjectsFilterTestFixture.cs" />
+    <Compile Include="Models\ActionQueueTestFixture.cs" />
     <Compile Include="Models\ActionTestFixture.cs" />
     <Compile Include="Models\DelegationTestFixture.cs" />
     <Compile Include="Models\GtdContextTestFixture.cs" />
