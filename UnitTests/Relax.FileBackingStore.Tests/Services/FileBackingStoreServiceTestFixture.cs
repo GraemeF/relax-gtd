@@ -5,24 +5,25 @@ using Moq;
 using Relax.Domain.Models;
 using Relax.FileBackingStore.Services;
 using Relax.FileBackingStore.Services.Interfaces;
+using Relax.TestDataBuilders;
 using Xunit;
 using Xunit.Extensions;
 
 namespace Relax.FileBackingStore.Tests.Services
 {
-    public class FileBackingStoreServiceTestFixture
+    public class FileBackingStoreServiceTestFixture : TestDataBuilder
     {
         private const string ExamplePath = @"C:\Some\Path\To\File.xml";
         private readonly Mock<IStartupFileLocator> _mockLocator = new Mock<IStartupFileLocator>();
         private readonly Mock<ISerializer<Workspace>> _mockSerializer = new Mock<ISerializer<Workspace>>();
         private readonly Mock<IFileStreamService> _mockStreamService = new Mock<IFileStreamService>();
-        private readonly Workspace _workspace = new Workspace();
+        private readonly Workspace _workspace = new Workspace(new ActionQueue());
 
         [Fact]
         public void Load_WhenPathIsNull_Throws()
         {
             IFileBackingStore test = BuildDefaultFileBackingStoreService();
-            
+
             test.Path = null;
             Assert.Throws(typeof (InvalidOperationException), () => test.Load());
         }

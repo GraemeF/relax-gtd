@@ -71,6 +71,7 @@
     <Compile Include="Models\EnergyLevel.cs" />
     <Compile Include="Models\HorizonOfFocus.cs" />
     <Compile Include="Models\Interfaces\IAction.cs" />
+    <Compile Include="Models\Interfaces\IActionQueue.cs" />
     <Compile Include="Services\Interfaces\IBackingStore.cs" />
     <Compile Include="Models\Interfaces\ICompletion.cs" />
     <Compile Include="Models\Interfaces\IGtdContext.cs" />

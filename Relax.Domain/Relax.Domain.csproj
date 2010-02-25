@@ -70,6 +70,7 @@
     <Compile Include="Filters\Interfaces\IProjectsFilter.cs" />
     <Compile Include="Filters\ProjectsFilter.cs" />
     <Compile Include="Models\Action.cs" />
+    <Compile Include="Models\ActionQueue.cs" />
     <Compile Include="Models\GtdContext.cs" />
     <Compile Include="Models\Delegation.cs" />
     <Compile Include="Models\Item.cs" />
