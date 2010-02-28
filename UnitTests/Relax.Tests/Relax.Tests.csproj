@@ -80,7 +80,6 @@
   <ItemGroup>
     <Compile Include="Presenters\ActionDetailsPresenterTestFixture.cs" />
     <Compile Include="Presenters\ActionPresenterTestFixture.cs" />
-    <Compile Include="Presenters\ActionQueuePresenterTestFixture.cs" />
     <Compile Include="Presenters\ActionsPresenterTestFixture.cs" />
     <Compile Include="Presenters\ActionTreeNodePresenterTestFixture.cs" />
     <Compile Include="Presenters\BlockingActionsPresenterTestFixture.cs" />

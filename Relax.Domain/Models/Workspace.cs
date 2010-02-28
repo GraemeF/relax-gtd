@@ -9,15 +9,12 @@ namespace Relax.Domain.Models
     [PerRequest(typeof (IWorkspace))]
     public class Workspace : IWorkspace
     {
-        public Workspace(IActionQueue processingQueue)
+        public Workspace()
         {
             Actions = new ObservableCollection<IAction>();
             Contexts = new ObservableCollection<IGtdContext>();
             ReviewChecklistItems = new ObservableCollection<IReviewChecklistItem>();
-            ProcessingQueue = processingQueue;
         }
-
-        public IActionQueue ProcessingQueue { get; private set; }
 
         #region IWorkspace Members
 

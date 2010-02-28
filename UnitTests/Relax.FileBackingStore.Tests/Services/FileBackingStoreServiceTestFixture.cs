@@ -17,7 +17,7 @@ namespace Relax.FileBackingStore.Tests.Services
         private readonly Mock<IStartupFileLocator> _mockLocator = new Mock<IStartupFileLocator>();
         private readonly Mock<ISerializer<Workspace>> _mockSerializer = new Mock<ISerializer<Workspace>>();
         private readonly Mock<IFileStreamService> _mockStreamService = new Mock<IFileStreamService>();
-        private readonly Workspace _workspace = new Workspace(new ActionQueue());
+        private readonly Workspace _workspace = new Workspace();
 
         [Fact]
         public void Load_WhenPathIsNull_Throws()
