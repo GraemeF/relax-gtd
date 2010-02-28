@@ -379,6 +379,41 @@
       <param name="command">The command to use.</param>
       <param name="taskManager">The task manager to use.</param>
     </member>
+    <member name="M:Gallio.UI.Controls.CommandToolStripMenuItem.#ctor(Gallio.UI.Menus.MenuCommand,Gallio.UI.ProgressMonitoring.ITaskManager,Gallio.UI.Controls.IKeysParser)">
+      <summary>
+             Constructor providing a command, task manager and keys parser.
+            </summary>
+      <param name="command">The command to use.</param>
+      <param name="taskManager">The task manager to use.</param>
+      <param name="keysParser">The keys parser to use.</param>
+    </member>
+    <member name="T:Gallio.UI.Controls.IKeysParser">
+      <summary>
+             Parses a string representation of a <see cref="T:System.Windows.Forms.Keys" /> enum.
+            </summary>
+    </member>
+    <member name="M:Gallio.UI.Controls.IKeysParser.Parse(System.String)">
+      <summary>
+             Parses a string representation of a <see cref="T:System.Windows.Forms.Keys" /> enum.
+            </summary>
+      <param name="shortcut">The shortcut string to parse.</param>
+      <returns>A <see cref="T:System.Windows.Forms.Keys" /> enum.</returns>
+    </member>
+    <member name="T:Gallio.UI.Controls.KeysParser">
+      <summary>
+                    Supports all classes in the .NET Framework class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all classes in the .NET Framework; it is the root of the type hierarchy.
+                </summary>
+    </member>
+    <member name="M:Gallio.UI.Controls.KeysParser.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Gallio.UI.Controls.KeysParser" /> class</summary>
+    </member>
+    <member name="M:Gallio.UI.Controls.KeysParser.Parse(System.String)">
+      <summary>
+             Parses a string representation of a <see cref="T:System.Windows.Forms.Keys" /> enum.
+            </summary>
+      <param name="shortcut">The shortcut string to parse.</param>
+      <returns>A <see cref="T:System.Windows.Forms.Keys" /> enum.</returns>
+    </member>
     <member name="T:Gallio.UI.Controls.ShieldButton">
       <summary>
             An extension of the Button class that displays the "Shield" icon when
@@ -573,6 +608,11 @@
     <member name="P:Gallio.UI.Menus.MenuCommand.Command">
       <summary>
             The command that will be executed.
+            </summary>
+    </member>
+    <member name="P:Gallio.UI.Menus.MenuCommand.Shortcut">
+      <summary>
+             The shortcut to use for the command.
             </summary>
     </member>
     <member name="P:Gallio.UI.Menus.MenuCommand.Text">
