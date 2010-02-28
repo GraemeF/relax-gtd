@@ -14,22 +14,22 @@ namespace Relax.AcceptanceTests.TestEntities
 
         public Button CollectButton
         {
-            get { return Button.In(_container).Called("CollectActivityButton").First(); }
+            get { return Button.In(_container).Called("CollectActivityButton").Single(); }
         }
 
         public CollectActivity CollectActivity
         {
-            get { return new CollectActivity(Container.In(_container).Called("Collect").First()); }
+            get { return new CollectActivity(Container.In(_container).Called("Collect").Single()); }
         }
 
         public ProcessActivity ProcessActivity
         {
-            get { return new ProcessActivity(Container.In(_container).Called("Process").First()); }
+            get { return new ProcessActivity(Container.In(_container).Called("Process").Single()); }
         }
 
         public Button ProcessButton
         {
-            get { return Button.In(_container).Called("ProcessActivityButton").First(); }
+            get { return Button.In(_container).Called("ProcessActivityButton").Single(); }
         }
     }
 }
