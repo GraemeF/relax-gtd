@@ -5,31 +5,31 @@ namespace Relax.AcceptanceTests.TestEntities
 {
     public class Workspace
     {
-        private readonly Container _container;
+        private readonly Container _workspaceContainer;
 
-        public Workspace(Container container)
+        public Workspace(Container workspaceContainer)
         {
-            _container = container;
+            _workspaceContainer = workspaceContainer;
         }
 
         public Button CollectButton
         {
-            get { return Button.In(_container).Called("CollectActivityButton").Single(); }
+            get { return Button.In(_workspaceContainer).Called("CollectActivityButton").Single(); }
         }
 
         public CollectActivity CollectActivity
         {
-            get { return new CollectActivity(Container.In(_container).Called("Collect").Single()); }
+            get { return new CollectActivity(Container.In(_workspaceContainer).Called("Collect").Single()); }
         }
 
         public ProcessActivity ProcessActivity
         {
-            get { return new ProcessActivity(Container.In(_container).Called("Process").Single()); }
+            get { return new ProcessActivity(Container.In(_workspaceContainer).Called("Process").Single()); }
         }
 
         public Button ProcessButton
         {
-            get { return Button.In(_container).Called("ProcessActivityButton").Single(); }
+            get { return Button.In(_workspaceContainer).Called("ProcessActivityButton").Single(); }
         }
     }
 }
