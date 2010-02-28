@@ -5,11 +5,11 @@ namespace Relax.AcceptanceTests.TestEntities
 {
     public class ProcessActivity
     {
-        private readonly Container _container;
+        private readonly Container _processActivityContainer;
 
-        public ProcessActivity(Container container)
+        public ProcessActivity(Container processActivityContainer)
         {
-            _container = container;
+            _processActivityContainer = processActivityContainer;
         }
 
         public ActionList UnprocessedActionList
@@ -17,13 +17,13 @@ namespace Relax.AcceptanceTests.TestEntities
             get
             {
                 return
-                    new ActionList(ListBox.In(_container).Called("UnprocessedActions").First());
+                    new ActionList(ListBox.In(_processActivityContainer).Called("UnprocessedActions").Single());
             }
         }
 
         public EditBox CurrentActionTitle
         {
-            get { return EditBox.In(_container).Called("CurrentActionTitle").First(); }
+            get { return EditBox.In(_processActivityContainer).Called("CurrentActionTitle").Single(); }
         }
     }
 }
