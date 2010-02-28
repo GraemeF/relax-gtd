@@ -7,10 +7,10 @@ namespace Relax.Presenters
     [Singleton(typeof (IProcessPresenter))]
     public class ProcessPresenter : MultiPresenter, IProcessPresenter
     {
-        public ProcessPresenter(IActionQueuePresenter actionQueue, IDoLaterPresenter doLater,
-                                IInboxActionsPresenter inbox, IDoNowPresenter doNow)
+        public ProcessPresenter(IDoLaterPresenter doLater,
+                                IInboxActionsPresenter inbox,
+                                IDoNowPresenter doNow)
         {
-            ActionQueue = actionQueue;
             Inbox = inbox;
             DoNow = doNow;
             DoLater = doLater;

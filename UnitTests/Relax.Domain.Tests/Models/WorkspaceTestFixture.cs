@@ -10,7 +10,7 @@ namespace Relax.Domain.Tests.Models
         [Fact]
         public void Contexts_Initially_IsEmpty()
         {
-            var test = new Workspace(new ActionQueue());
+            var test = new Workspace();
 
             Assert.Empty(test.Contexts);
         }
@@ -18,20 +18,12 @@ namespace Relax.Domain.Tests.Models
         [Fact]
         public void Add_GivenAction_AddsActionToActions()
         {
-            var test = new Workspace(new ActionQueue());
+            var test = new Workspace();
 
             var stubAction = new Mock<IAction>();
             test.Add(stubAction.Object);
 
             Assert.Contains(stubAction.Object, test.Actions);
-        }
-
-        [Fact]
-        public void ProcessingQueue_Initially_IsEmpty()
-        {
-            var test = new Workspace(new ActionQueue());
-
-            Assert.Empty(test.ProcessingQueue);
         }
     }
 }
