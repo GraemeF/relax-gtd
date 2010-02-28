@@ -43,6 +43,11 @@ namespace Fluid
             return _conditions.All(condition => condition(automationElement));
         }
 
+        /// <summary>
+        /// Specifies the AutomationId of the control.
+        /// </summary>
+        /// <param name="id">AutomationId</param>
+        /// <returns></returns>
         public ControlFinder<TControl> Called(string id)
         {
             return Matching(x => x.Current.AutomationId == id);
