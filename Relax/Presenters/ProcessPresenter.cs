@@ -18,7 +18,6 @@ namespace Relax.Presenters
 
         #region IProcessPresenter Members
 
-        public IActionQueuePresenter ActionQueue { get; private set; }
         public IInboxActionsPresenter Inbox { get; private set; }
         public IDoNowPresenter DoNow { get; private set; }
         public IDoLaterPresenter DoLater { get; private set; }
