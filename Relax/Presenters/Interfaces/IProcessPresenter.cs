@@ -7,6 +7,5 @@ namespace Relax.Presenters.Interfaces
         IInboxActionsPresenter Inbox { get; }
         IDoNowPresenter DoNow { get; }
         IDoLaterPresenter DoLater { get; }
-        IActionQueuePresenter ActionQueue { get; }
     }
 }
