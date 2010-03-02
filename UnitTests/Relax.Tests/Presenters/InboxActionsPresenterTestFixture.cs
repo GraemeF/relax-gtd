@@ -17,12 +17,13 @@ namespace Relax.Tests.Presenters
 
             var mockActionPresenter = new Mock<IActionPresenter>();
 
-            new InboxActionsPresenter(AnInboxActionsFilter.Providing(inboxAction).Build(),
-                                      delegate(IAction action)
-                                          {
-                                              Assert.Same(inboxAction, action);
-                                              return mockActionPresenter.Object;
-                                          });
+            var test = new InboxActionsPresenter(AnInboxActionsFilter.Providing(inboxAction).Build(),
+                                                 delegate(IAction action)
+                                                     {
+                                                         Assert.Same(inboxAction, action);
+                                                         return mockActionPresenter.Object;
+                                                     });
+            test.Initialize();
 
             mockActionPresenter.Verify(x => x.Activate(), Times.Once());
         }
@@ -36,6 +37,7 @@ namespace Relax.Tests.Presenters
 
             var test = new InboxActionsPresenter(AnInboxActionsFilter.Providing(inboxAction).Build(),
                                                  action => stubActionPresenter.Object);
+            test.Initialize();
 
             Assert.Contains(stubActionPresenter.Object, test.Presenters);
         }

@@ -18,11 +18,12 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
-        public void Constructor_WhenThereIsAItem_OpensItemPresenter()
+        public void Initialize_WhenThereIsAItem_OpensItemPresenter()
         {
             _stubModels.Add(new Mock<ITestItem>().Object);
 
-            BuildDefaultListPresenter();
+            ListPresenter<ITestItem, ITestItemPresenter> test = BuildDefaultListPresenter();
+            test.Initialize();
 
             _stubItemPresenter.Verify(x => x.Initialize());
         }
@@ -35,6 +36,7 @@ namespace Relax.Tests.Presenters
             _stubModels.Add(stubItem.Object);
 
             ListPresenter<ITestItem, ITestItemPresenter> test = BuildDefaultListPresenter();
+            test.Initialize();
 
             _stubModels.RemoveAt(0);
 
@@ -45,10 +47,25 @@ namespace Relax.Tests.Presenters
         public void Presenters_WhenAItemIsAddedToTheModels_OpensItemPresenter()
         {
             ListPresenter<ITestItem, ITestItemPresenter> test = BuildDefaultListPresenter();
+            test.Initialize();
 
             _stubModels.Add(new Mock<ITestItem>().Object);
 
             Assert.Equal(1, test.Presenters.Count);
+        }
+
+        [Fact]
+        public void Shutdown__ShutsDownItemPresenters()
+        {
+            ListPresenter<ITestItem, ITestItemPresenter> test = BuildDefaultListPresenter();
+            test.Initialize();
+
+            ITestItem testItem = new Mock<ITestItem>().Object;
+            _stubItemPresenter.Setup(x => x.Model).Returns(testItem);
+            _stubModels.Add(testItem);
+            test.Shutdown();
+
+            _stubItemPresenter.Verify(x => x.Shutdown());
         }
 
         #region Nested type: TestListPresenter

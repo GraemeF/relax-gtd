@@ -16,6 +16,7 @@ namespace Relax.Tests.Presenters
             var test =
                 new ProjectsPresenter(AProjectsFilter.Providing(AnAction.Build()).Build(),
                                       action => stubProjectPresenter.Object);
+            test.Initialize();
 
             Assert.Contains(stubProjectPresenter.Object, test.Presenters);
         }

@@ -21,6 +21,7 @@ namespace Relax.Tests.Presenters
                                                             Assert.Same(blockingAction, action);
                                                             return stubPresenter.Object;
                                                         });
+            test.Initialize();
 
             Assert.Contains(stubPresenter.Object, test.Presenters);
         }
