@@ -8,21 +8,35 @@ using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
-    public class ListPresenter<TModel, TModelPresenter> : MultiPresenterManager, IListPresenter
+    public class ListPresenter<TModel, TModelPresenter> : MultiPresenter, IListPresenter
         where TModelPresenter : IModelPresenter<TModel>
     {
+        private readonly ObservableCollection<TModel> _collection;
         private readonly Func<TModel, TModelPresenter> _itemPresenterFactory;
 
         protected ListPresenter(ObservableCollection<TModel> collection, Func<TModel, TModelPresenter> factory)
         {
+            _collection = collection;
             _itemPresenterFactory = factory;
-
-            collection.CollectionChanged += CollectionChanged;
-
-            OpenItems(collection);
         }
 
-        protected void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        protected override void OnInitialize()
+        {
+            base.OnInitialize();
+
+            _collection.CollectionChanged += CollectionChanged;
+            OpenItems(_collection);
+        }
+
+        protected override void OnShutdown()
+        {
+            CloseItems(_collection);
+            _collection.CollectionChanged -= CollectionChanged;
+
+            base.OnShutdown();
+        }
+
+        private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.OldItems != null)
                 CloseItems(e.OldItems.Cast<TModel>());
@@ -30,18 +44,19 @@ namespace Relax.Presenters
                 OpenItems(e.NewItems.Cast<TModel>());
         }
 
-        protected void OpenItems(IEnumerable<TModel> newItems)
+        private void OpenItems(IEnumerable<TModel> newItems)
         {
             foreach (TModel newItem in newItems)
-                Open(_itemPresenterFactory(newItem), isSuccess => { });
+                this.Open(_itemPresenterFactory(newItem));
         }
 
         private void CloseItems(IEnumerable<TModel> oldItems)
         {
             foreach (IPresenter presenter in
-                oldItems.Select(context => Presenters.First(x => ((TModelPresenter) x).Model.Equals(context))))
+                oldItems.Select(closedModel => Presenters.First(x => closedModel.Equals(((TModelPresenter) x).Model))).
+                    ToList())
             {
-                Shutdown(presenter, isSuccess => { });
+                this.Shutdown(presenter);
                 Presenters.Remove(presenter);
             }
         }
