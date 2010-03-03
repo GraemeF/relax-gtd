@@ -13,6 +13,14 @@ namespace Relax.Presenters
             InboxActions = inboxPresenter;
         }
 
+        protected override void OnInitialize()
+        {
+            base.OnInitialize();
+
+            this.Open(Input);
+            this.Open(InboxActions);
+        }
+
         public IInboxActionsPresenter InboxActions { get; private set; }
         public IInputPresenter Input { get; private set; }
     }

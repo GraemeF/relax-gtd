@@ -12,12 +12,12 @@ namespace Relax.AcceptanceTests
         {
             using (RelaxApplication relax = RelaxApplication.Launch())
             {
-                const string newAction = "This is an action in my inbox.";
+                const string newActionTitle = "This is an action in my inbox.";
 
                 relax.StartCollectingActions();
-                relax.AddInboxAction(newAction);
+                relax.AddInboxAction(newActionTitle);
 
-                relax.HasInboxActions(new[] {newAction});
+                relax.HasInboxActions(new[] {newActionTitle});
             }
         }
     }
