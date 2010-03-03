@@ -17,17 +17,5 @@ namespace Relax.Tests.Views
         {
             Assert.True(BoundView<ProcessView, ProcessPresenter>().WasBoundTo(x => x.Inbox));
         }
-
-        [Fact]
-        public void DoLater__IsBound()
-        {
-            Assert.True(BoundView<ProcessView, ProcessPresenter>().WasBoundTo(x => x.DoLater));
-        }
-
-        [Fact]
-        public void DoNow__IsBound()
-        {
-            Assert.True(BoundView<ProcessView, ProcessPresenter>().WasBoundTo(x => x.DoNow));
-        }
     }
 }

@@ -1,5 +1,7 @@
+using System;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
+using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
@@ -7,20 +9,19 @@ namespace Relax.Presenters
     [Singleton(typeof (IProcessPresenter))]
     public class ProcessPresenter : MultiPresenter, IProcessPresenter
     {
-        public ProcessPresenter(IDoLaterPresenter doLater,
-                                IInboxActionsPresenter inbox,
-                                IDoNowPresenter doNow)
+        private readonly Func<IAction, IProcessActionPresenter> _processActionPresenterFactory;
+
+        public ProcessPresenter(IInboxActionsPresenter inbox,
+                                Func<IAction, IProcessActionPresenter> processActionPresenterFactory)
         {
+            _processActionPresenterFactory = processActionPresenterFactory;
             Inbox = inbox;
-            DoNow = doNow;
-            DoLater = doLater;
         }
 
         #region IProcessPresenter Members
 
         public IInboxActionsPresenter Inbox { get; private set; }
-        public IDoNowPresenter DoNow { get; private set; }
-        public IDoLaterPresenter DoLater { get; private set; }
+        public IProcessActionPresenter ProcessAction { get; private set; }
 
         #endregion
     }

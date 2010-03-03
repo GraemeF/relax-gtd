@@ -112,6 +112,7 @@
     <Compile Include="Views\DoNowViewTestFixture.cs" />
     <Compile Include="Views\InputViewTestFixture.cs" />
     <Compile Include="Views\MakeProjectViewTestFixture.cs" />
+    <Compile Include="Views\ProcessActionViewTestFixture.cs" />
     <Compile Include="Views\ProcessViewTestFixture.cs" />
     <Compile Include="Views\ProjectsViewTestFixture.cs" />
     <Compile Include="Views\ShellViewTestFixture.cs" />
