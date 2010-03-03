@@ -4,24 +4,24 @@ using Xunit;
 
 namespace Relax.Tests.Views
 {
-    public class ProcessActionViewTestFixture : ViewTestFixtureBase
+    public class ProcessActionViewTestFixture : ViewTestFixtureBase<ProcessActionView, ProcessActionPresenter>
     {
         [Fact]
         public void Constructor__BindsWithoutError()
         {
-            BoundView<ProcessActionView, ProcessActionPresenter>().AssertNoErrors();
+            BoundView().AssertNoErrors();
         }
 
         [Fact]
         public void DoNow__IsBound()
         {
-            Assert.True(BoundView<ProcessActionView, ProcessActionPresenter>().WasBoundTo(x => x.DoNow));
+            Assert.True(BoundView().WasBoundTo(x => x.DoNow));
         }
 
         [Fact]
         public void DoLater__IsBound()
         {
-            Assert.True(BoundView<ProcessActionView, ProcessActionPresenter>().WasBoundTo(x => x.DoLater));
+            Assert.True(BoundView().WasBoundTo(x => x.DoLater));
         }
     }
 }

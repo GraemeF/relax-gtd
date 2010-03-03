@@ -4,18 +4,18 @@ using Xunit;
 
 namespace Relax.Tests.Views
 {
-    public class ActionsViewTestFixture : ViewTestFixtureBase
+    public class ActionsViewTestFixture : ViewTestFixtureBase<ActionsView, ActionsPresenter>
     {
         [Fact]
         public void Constructor__BindsWithoutError()
         {
-            BoundView<ActionsView, ActionsPresenter>().AssertNoErrors();
+            BoundView().AssertNoErrors();
         }
 
         [Fact]
         public void Presenters__IsBound()
         {
-            Assert.True(BoundView<ActionsView, ActionsPresenter>().WasBoundTo(x => x.Presenters));
+            Assert.True(BoundView().WasBoundTo(x => x.Presenters));
         }
     }
 }

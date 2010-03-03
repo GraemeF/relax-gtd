@@ -4,12 +4,12 @@ using Xunit;
 
 namespace Relax.Tests.Views
 {
-    public class ActionDetailsViewTestFixture : ViewTestFixtureBase
+    public class ActionDetailsViewTestFixture : ViewTestFixtureBase<ActionDetailsView, ActionDetailsPresenter>
     {
         [Fact]
         public void BindsWithoutError()
         {
-            BoundView<ActionDetailsView, ActionDetailsPresenter>().AssertNoErrors();
+            BoundView().AssertNoErrors();
         }
     }
 }

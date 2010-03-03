@@ -3,16 +3,19 @@ using Caliburn.Testability;
 
 namespace Relax.Tests.Views
 {
-    public class ViewTestFixtureBase
+    public class AppInitializer
     {
-        static ViewTestFixtureBase()
+        static AppInitializer()
         {
             var app = new App();
             app.InitializeComponent();
         }
+    }
 
-        protected static ValidationResult<TPresenter> BoundView<TView, TPresenter>()
-            where TView : FrameworkElement
+    public class ViewTestFixtureBase<TView, TPresenter> : AppInitializer
+        where TView : FrameworkElement
+    {
+        protected static ValidationResult<TPresenter> BoundView()
         {
             BindingValidator<TPresenter> validator = Validator.For<TView, TPresenter>();
             return validator.Validate();
