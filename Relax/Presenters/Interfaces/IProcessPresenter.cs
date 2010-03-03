@@ -5,7 +5,5 @@ namespace Relax.Presenters.Interfaces
     public interface IProcessPresenter : IPresenter
     {
         IInboxActionsPresenter Inbox { get; }
-        IDoNowPresenter DoNow { get; }
-        IDoLaterPresenter DoLater { get; }
     }
 }

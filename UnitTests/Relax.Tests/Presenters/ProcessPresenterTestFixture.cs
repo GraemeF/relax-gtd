@@ -25,21 +25,5 @@ namespace Relax.Tests.Presenters
 
             Assert.Same(_stubInbox.Object, test.Inbox);
         }
-
-        [Fact]
-        public void DoLater__ReturnsDoLaterPresenter()
-        {
-            ProcessPresenter test = BuildDefaultProcessPresenter();
-
-            Assert.Same(_stubDoLater.Object, test.DoLater);
-        }
-
-        [Fact]
-        public void DoNow__ReturnsDoNowPresenter()
-        {
-            ProcessPresenter test = BuildDefaultProcessPresenter();
-
-            Assert.Same(_stubDoNow.Object, test.DoNow);
-        }
     }
 }
