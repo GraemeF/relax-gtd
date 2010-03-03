@@ -4,24 +4,24 @@ using Xunit;
 
 namespace Relax.Tests.Views
 {
-    public class ActionViewTestFixture : ViewTestFixtureBase
+    public class ActionViewTestFixture : ViewTestFixtureBase<ActionView, ActionPresenter>
     {
         [Fact]
         public void Constructor__BindsWithoutError()
         {
-            BoundView<ActionView, ActionPresenter>().AssertNoErrors();
+            BoundView().AssertNoErrors();
         }
 
         [Fact]
         public void IsReadOnly__IsBound()
         {
-            Assert.True(BoundView<ActionView, ActionPresenter>().WasBoundTo(x => x.IsReadOnly));
+            Assert.True(BoundView().WasBoundTo(x => x.IsReadOnly));
         }
 
         [Fact]
         public void DisplayName__IsBound()
         {
-            Assert.True(BoundView<ActionView, ActionPresenter>().WasBoundTo(x => x.DisplayName));
+            Assert.True(BoundView().WasBoundTo(x => x.DisplayName));
         }
     }
 }

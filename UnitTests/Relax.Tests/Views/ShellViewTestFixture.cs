@@ -4,12 +4,12 @@ using Xunit;
 
 namespace Relax.Tests.Views
 {
-    public class ShellViewTestFixture : ViewTestFixtureBase
+    public class ShellViewTestFixture : ViewTestFixtureBase<ShellView, ShellPresenter>
     {
         [Fact]
         public void Constructor__BindsWithoutError()
         {
-            BoundView<ShellView, ShellPresenter>().AssertNoErrors();
+            BoundView().AssertNoErrors();
         }
     }
 }
