@@ -182,11 +182,13 @@
     <Compile Include="Presenters\Interfaces\IContextsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IInputPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IModelPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IProcessActionPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IProcessPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IProjectsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IActionTreeNodePresenter.cs" />
     <Compile Include="Presenters\Interfaces\IWorkspacePresenter.cs" />
     <Compile Include="Presenters\MakeProjectPresenter.cs" />
+    <Compile Include="Presenters\ProcessActionPresenter.cs" />
     <Compile Include="Presenters\ProjectsPresenter.cs" />
     <Compile Include="Presenters\ProcessPresenter.cs" />
     <Compile Include="Presenters\ItemPresenter.cs" />

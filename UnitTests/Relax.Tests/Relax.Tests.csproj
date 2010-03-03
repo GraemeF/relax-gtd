@@ -93,6 +93,7 @@
     <Compile Include="Presenters\ItemPresenterTestFixture.cs" />
     <Compile Include="Presenters\ListPresenterTestFixture.cs" />
     <Compile Include="Presenters\MakeProjectPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ProcessActionPresenterTestFixture.cs" />
     <Compile Include="Presenters\ProcessPresenterTestFixture.cs" />
     <Compile Include="Presenters\ProjectsPresenterTestFixture.cs" />
     <Compile Include="Presenters\WorkspacePresenterTestFixture.cs" />
