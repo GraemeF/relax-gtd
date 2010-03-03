@@ -1,0 +1,32 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	xmlns:Custom="http://schemas.microsoft.com/wpf/2008/toolkit" x:Name="ActionDetails"
+	x:Class="RelaxPrototypeScreens.Screen_1_8"
+	>
+
+	<Grid x:Name="LayoutRoot" Background="White">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<TextBlock Style="{DynamicResource BasicTextBlock-Sketch}" Text="Time" d:LayoutOverrides="Width" Padding="0,0,8,0"/>
+		<Slider Style="{DynamicResource Slider-Sketch}" Grid.Column="1" d:LayoutOverrides="Height" MinWidth="200"/>
+		<TextBlock Style="{DynamicResource BasicTextBlock-Sketch}" Text="Mental Energy" d:LayoutOverrides="Width" Grid.Row="1" Padding="0,0,8,0"/>
+		<Slider Style="{DynamicResource Slider-Sketch}" Grid.Column="1" d:LayoutOverrides="Height" Grid.Row="1" MinWidth="200"/>
+		<TextBlock Style="{DynamicResource BasicTextBlock-Sketch}" Grid.Row="2" Text="Physical Energy" d:LayoutOverrides="Width" Padding="0,0,8,0"/>
+		<Slider Style="{DynamicResource Slider-Sketch}" Grid.Column="1" Grid.Row="2" d:LayoutOverrides="Height" MinWidth="200"/>
+		<CheckBox Style="{DynamicResource CheckBox-Sketch}" Grid.Row="3" Content="Deadline" d:LayoutOverrides="Width" Padding="0,0,8,0"/>
+		<Custom:CalendarButton Content="CalendarButton" Grid.Column="1" Grid.Row="3"/>
+	</Grid>
+</UserControl>
