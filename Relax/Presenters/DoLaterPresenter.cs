@@ -7,7 +7,8 @@ namespace Relax.Presenters
     [PerRequest(typeof (IDoLaterPresenter))]
     public class DoLaterPresenter : Presenter, IDoLaterPresenter
     {
-        public DoLaterPresenter(IContextsPresenter contextsPresenter, IActionDetailsPresenter actionDetailsPresenter,
+        public DoLaterPresenter(IContextsPresenter contextsPresenter,
+                                IActionDetailsPresenter actionDetailsPresenter,
                                 IProjectsPresenter projectsPresenter)
         {
             Contexts = contextsPresenter;
