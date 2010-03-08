@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using Autofac;
 using Autofac.Builder;
 using Caliburn.Autofac;
 using Caliburn.Core;
@@ -17,6 +18,7 @@ using NDesk.Options;
 using Relax.FileBackingStore.Services;
 using Relax.FileBackingStore.Services.Interfaces;
 using Relax.Infrastructure.Helpers;
+using Relax.Infrastructure.Models.Interfaces;
 using Relax.Infrastructure.Services.Interfaces;
 using Relax.Presenters.Interfaces;
 using IContainer = Autofac.IContainer;
@@ -141,6 +143,8 @@ namespace Relax
         {
             ConfigureStartupFileLocator();
 
+            ConfigureContainer();
+
             var binder = (DefaultBinder)Container.GetInstance<IBinder>();
             binder.EnableMessageConventions();
             binder.EnableBindingConventions();
@@ -148,6 +152,27 @@ namespace Relax
             var shell = Container.GetInstance<IShellPresenter>();
 
             return shell;
+        }
+
+        private void ConfigureContainer()
+        {
+            var builder = new ContainerBuilder();
+
+            var backingStore = _container.Resolve<IBackingStore>();
+            backingStore.Initialize();
+
+            builder.Register(backingStore.Workspace);
+            builder.RegisterGeneratedFactory<Func<IGtdContext, IGtdContextPresenter>>(
+                new TypedService(typeof(IGtdContextPresenter)));
+            builder.RegisterGeneratedFactory<Func<IGtdContext>>(new TypedService(typeof(IGtdContext)));
+            builder.RegisterGeneratedFactory<Func<IInputPresenter>>(new TypedService(typeof(IGtdContext)));
+            builder.RegisterGeneratedFactory<Func<IAction, IActionPresenter>>(new TypedService(typeof(IActionPresenter)));
+            builder.RegisterGeneratedFactory<Func<IAction, IProcessActionPresenter>>(new TypedService(typeof(IProcessActionPresenter)));
+            builder.RegisterGeneratedFactory<Func<IAction>>(new TypedService(typeof(IAction)));
+            builder.RegisterGeneratedFactory<Func<IAction, IActionTreeNodePresenter>>(
+                new TypedService(typeof(IActionTreeNodePresenter)));
+
+            builder.Build(_container);
         }
     }
 }
