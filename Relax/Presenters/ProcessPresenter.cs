@@ -7,7 +7,7 @@ using Relax.Presenters.Interfaces;
 namespace Relax.Presenters
 {
     [Singleton(typeof (IProcessPresenter))]
-    public class ProcessPresenter : MultiPresenter, IProcessPresenter
+    public class ProcessPresenter : MultiPresenterManager, IProcessPresenter
     {
         private readonly Func<IAction, IProcessActionPresenter> _processActionPresenterFactory;
 
@@ -21,7 +21,6 @@ namespace Relax.Presenters
         #region IProcessPresenter Members
 
         public IInboxActionsPresenter Inbox { get; private set; }
-        public IProcessActionPresenter ProcessAction { get; private set; }
 
         #endregion
     }

@@ -2,8 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:cal="clr-namespace:Caliburn.PresentationFramework.ApplicationModel;assembly=Caliburn.PresentationFramework"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             x:Class="Relax.Views.ProcessView"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Controls="clr-namespace:Caliburn.WPF.ApplicationFramework.Controls;assembly=Caliburn.WPF.ApplicationFramework" x:Class="Relax.Views.ProcessView"
              AutomationProperties.AutomationId="Process"
              mc:Ignorable="d"
              d:DesignWidth="635.139"
@@ -13,7 +12,11 @@
                         Margin="10,0,10,0"
                         cal:View.Model="{Binding Inbox}"
                         DockPanel.Dock="Top" />
-        <ContentControl cal:View.Model="{Binding ProcessAction}"
-                        DockPanel.Dock="Top" />
+        <Controls:TransitionPresenter x:Name="CurrentPresenter"
+                                      DockPanel.Dock="Top">
+            <Controls:TransitionPresenter.Transition>
+                <Controls:CrossFade />
+            </Controls:TransitionPresenter.Transition>
+        </Controls:TransitionPresenter>
     </DockPanel>
 </UserControl>
