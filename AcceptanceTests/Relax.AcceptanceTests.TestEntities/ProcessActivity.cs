@@ -16,14 +16,20 @@ namespace Relax.AcceptanceTests.TestEntities
         {
             get
             {
-                return
-                    new ActionList(ListBox.In(_processActivityContainer).Called("UnprocessedActions").Single());
+                return new ActionList(ListBox.
+                                          In(_processActivityContainer).
+                                          Called("UnprocessedActions").Single());
             }
         }
 
         public EditBox CurrentActionTitle
         {
-            get { return EditBox.In(_processActivityContainer).Called("CurrentActionTitle").Single(); }
+            get
+            {
+                return EditBox.
+                    In(_processActivityContainer, "ProcessAction").
+                    Called("CurrentActionTitle").Single();
+            }
         }
     }
 }

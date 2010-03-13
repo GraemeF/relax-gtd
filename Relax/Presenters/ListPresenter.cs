@@ -8,8 +8,9 @@ using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
-    public class ListPresenter<TModel, TModelPresenter> : MultiPresenter, IListPresenter
+    public class ListPresenter<TModel, TModelPresenter> : MultiPresenterManager, IListPresenter<TModel>
         where TModelPresenter : IModelPresenter<TModel>
+        where TModel : class
     {
         private readonly ObservableCollection<TModel> _collection;
         private readonly Func<TModel, TModelPresenter> _itemPresenterFactory;
@@ -20,12 +21,28 @@ namespace Relax.Presenters
             _itemPresenterFactory = factory;
         }
 
+        #region IListPresenter<TModel> Members
+
+        public TModel CurrentItem
+        {
+            get
+            {
+                return CurrentPresenter != null
+                           ? ((TModelPresenter) CurrentPresenter).Model
+                           : null;
+            }
+        }
+
+        #endregion
+
         protected override void OnInitialize()
         {
             base.OnInitialize();
 
             _collection.CollectionChanged += CollectionChanged;
             OpenItems(_collection);
+
+            CurrentPresenter = Presenters.FirstOrDefault();
         }
 
         protected override void OnShutdown()
