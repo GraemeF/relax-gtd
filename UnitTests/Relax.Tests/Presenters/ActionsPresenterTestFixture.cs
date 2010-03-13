@@ -26,7 +26,7 @@ namespace Relax.Tests.Presenters
         [Fact]
         public void Constructor__DoesNotThrow()
         {
-            new ActionsPresenter(_stubWorkspace.Object, x => _stubActionPresenter.Object);
+            BuildDefaultActionsPresenter();
         }
     }
 }
