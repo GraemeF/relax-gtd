@@ -24,5 +24,27 @@ namespace Relax.Tests.Presenters
 
             Assert.Same(stubInboxActions.Object, test.InboxActions);
         }
+
+        [Fact]
+        public void Initialize__InitializesInput()
+        {
+            var mockInput = new Mock<IInputPresenter>();
+            var test = new CollectPresenter(mockInput.Object, new Mock<IInboxActionsPresenter>().Object);
+
+            test.Initialize();
+
+            mockInput.Verify(x => x.Initialize());
+        }
+
+        [Fact]
+        public void Initialize__InitializesInboxActions()
+        {
+            var mockInboxActions = new Mock<IInboxActionsPresenter>();
+            var test = new CollectPresenter(new Mock<IInputPresenter>().Object, mockInboxActions.Object);
+
+            test.Initialize();
+
+            mockInboxActions.Verify(x => x.Initialize());
+        }
     }
 }
