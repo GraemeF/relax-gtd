@@ -31,5 +31,22 @@ namespace Relax.Tests.Presenters
 
             _fakeInbox.Verify(x => x.Initialize());
         }
+
+        [Fact]
+        public void CurrentPresenter_WhenInboxHasACurrentPresenter_IsAPresenter()
+        {
+            _stubInbox.Setup(x => x.CurrentPresenter).Returns(new Mock<IActionPresenter>().Object);
+            ProcessPresenter test = BuildDefaultProcessPresenter();
+
+            Assert.NotNull(test.CurrentPresenter);
+        }
+
+        [Fact]
+        public void CurrentPresenter_WhenInboxHasNoCurrentPresenter_IsNull()
+        {
+            ProcessPresenter test = BuildDefaultProcessPresenter();
+
+            Assert.Null(test.CurrentPresenter);
+        }
     }
 }
