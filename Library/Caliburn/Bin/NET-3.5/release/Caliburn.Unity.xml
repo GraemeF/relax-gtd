@@ -42,5 +42,11 @@
             </summary>
             <param name="components">The components.</param>
         </member>
+        <member name="P:Caliburn.Unity.UnityAdapter.Container">
+            <summary>
+            Gets the <see cref="T:Microsoft.Practices.Unity.IUnityContainer"/>.
+            </summary>
+            <value>The container.</value>
+        </member>
     </members>
 </doc>

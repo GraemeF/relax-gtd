@@ -80,11 +80,21 @@
             </summary>
             <param name="action">The action.</param>
         </member>
+        <member name="M:Caliburn.Core.Invocation.IEventHandler.UnWire">
+            <summary>
+            Unwires the event.
+            </summary>
+        </member>
         <member name="M:Caliburn.Core.Invocation.EventHandlerFactory.GenericEventHandler`2.SetActualHandler(System.Action{System.Object[]})">
             <summary>
             Sets the actual handler for the event.
             </summary>
             <param name="action">The action.</param>
+        </member>
+        <member name="M:Caliburn.Core.Invocation.EventHandlerFactory.GenericEventHandler`2.UnWire">
+            <summary>
+            Unwires the event.
+            </summary>
         </member>
         <member name="M:Caliburn.Core.Invocation.EventHandlerFactory.GenericEventHandler`2.Invoke(`0,`1)">
             <summary>
@@ -422,6 +432,13 @@
             Notifies subscribers of the property change.
             </summary>
             <param name="propertyName">Name of the property.</param>
+        </member>
+        <member name="M:Caliburn.Core.PropertyChangedBase.NotifyOfPropertyChange``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Notifies subscribers of the property change.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="propertyExpression">The property expression.</param>
         </member>
         <member name="M:Caliburn.Core.PropertyChangedBase.RaisePropertyChangedEventImmediately(System.String)">
             <summary>
@@ -1387,18 +1404,20 @@
             A service that implements a thread pool.
             </summary>
         </member>
-        <member name="M:Caliburn.Core.Threading.IThreadPool.QueueUserWorkItem(System.Threading.WaitCallback)">
+        <member name="M:Caliburn.Core.Threading.IThreadPool.QueueUserWorkItem(System.Threading.WaitCallback,System.Object)">
             <summary>
             Queues the user work item.
             </summary>
             <param name="callback">The work callback.</param>
+            <param name="userState">The user state.</param>
             <returns></returns>
         </member>
-        <member name="M:Caliburn.Core.Threading.DefaultThreadPool.QueueUserWorkItem(System.Threading.WaitCallback)">
+        <member name="M:Caliburn.Core.Threading.DefaultThreadPool.QueueUserWorkItem(System.Threading.WaitCallback,System.Object)">
             <summary>
             Queues the user work item.
             </summary>
             <param name="callback">The work callback.</param>
+            <param name="userState">The user state.</param>
             <returns></returns>
         </member>
         <member name="T:Caliburn.Core.CaliburnException">
@@ -1747,6 +1766,13 @@
             </summary>
             <param name="value">The value to convert.</param>
             <returns>The converted string or null, if the value was null.</returns>
+        </member>
+        <member name="M:Caliburn.Core.ExtensionMethods.GetMemberInfo(System.Linq.Expressions.Expression)">
+            <summary>
+            Gets the member info represented by an expression.
+            </summary>
+            <param name="expression">The member expression.</param>
+            <returns>The member info represeted by the expression.</returns>
         </member>
         <member name="T:Caliburn.Core.IConfigurator">
             <summary>

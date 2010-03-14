@@ -4,6 +4,19 @@
         <name>Caliburn.Spring</name>
     </assembly>
     <members>
+        <member name="T:Caliburn.Spring.ExtensionMethods">
+            <summary>
+            Hosts extension methods for a Spring <see cref="T:Spring.Context.IApplicationContext"/>.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Spring.ExtensionMethods.GetObjectsOfTypeRecursive(Spring.Context.IApplicationContext,System.Type)">
+            <summary>
+            Gets the objects of a type recursively.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="serviceType">Type of the service.</param>
+            <returns></returns>
+        </member>
         <member name="T:Caliburn.Spring.SpringAdapter">
             <summary>
             An adapter allowing an <see cref="T:Spring.Context.Support.GenericApplicationContext"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IConfigurator"/>.

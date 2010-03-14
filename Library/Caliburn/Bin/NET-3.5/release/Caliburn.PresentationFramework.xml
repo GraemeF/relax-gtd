@@ -202,6 +202,12 @@
             </summary>
             <value>The filters.</value>
         </member>
+        <member name="P:Caliburn.PresentationFramework.Actions.ActionBase.Method">
+            <summary>
+            Gets the method.
+            </summary>
+            <value>The method.</value>
+        </member>
         <member name="T:Caliburn.PresentationFramework.Actions.ActionFactory">
             <summary>
             An implementation of <see cref="T:Caliburn.PresentationFramework.Actions.IActionFactory"/>.
@@ -1014,6 +1020,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.CaliburnApplication.BeforeFrameworkInitialize">
+            <summary>
+            Called before Caliburn initialization phase. 
+            </summary>
+        </member>
         <member name="M:Caliburn.PresentationFramework.ApplicationModel.CaliburnApplication.ConfigurePresentationFramework(Caliburn.PresentationFramework.PresentationFrameworkModule)">
             <summary>
             Configures the presentation framework.
@@ -1496,22 +1507,27 @@
         </member>
         <member name="E:Caliburn.PresentationFramework.ApplicationModel.ILifecycleNotifier.Initialized">
             <summary>
-            Occurs when [initialized].
+            Occurs when initialized.
+            </summary>
+        </member>
+        <member name="E:Caliburn.PresentationFramework.ApplicationModel.ILifecycleNotifier.AttemptingShutdown">
+            <summary>
+            Occurs before attempting to shutdown.
             </summary>
         </member>
         <member name="E:Caliburn.PresentationFramework.ApplicationModel.ILifecycleNotifier.WasShutdown">
             <summary>
-            Occurs when [was shutdown].
+            Occurs after the this instance was shutdown.
             </summary>
         </member>
         <member name="E:Caliburn.PresentationFramework.ApplicationModel.ILifecycleNotifier.Activated">
             <summary>
-            Occurs when [activated].
+            Occurs when activated.
             </summary>
         </member>
         <member name="E:Caliburn.PresentationFramework.ApplicationModel.ILifecycleNotifier.Deactivated">
             <summary>
-            Occurs when [deactivated].
+            Occurs when deactivated.
             </summary>
         </member>
         <member name="T:Caliburn.PresentationFramework.IViewAware">
@@ -1857,6 +1873,14 @@
             Called when [initialize].
             </summary>
         </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.PresenterBase.CanShutdownCore">
+            <summary>
+            Determines whether this instance can shutdown.
+            </summary>
+            <returns>
+            	<c>true</c> if this instance can shutdown; otherwise, <c>false</c>.
+            </returns>
+        </member>
         <member name="M:Caliburn.PresentationFramework.ApplicationModel.PresenterBase.OnShutdown">
             <summary>
             Called when [shutdown].
@@ -1933,22 +1957,27 @@
         </member>
         <member name="E:Caliburn.PresentationFramework.ApplicationModel.PresenterBase.Initialized">
             <summary>
-            Occurs when [initialized].
+            Occurs when initialized.
+            </summary>
+        </member>
+        <member name="E:Caliburn.PresentationFramework.ApplicationModel.PresenterBase.AttemptingShutdown">
+            <summary>
+            Occurs before attempting to shutdown.
             </summary>
         </member>
         <member name="E:Caliburn.PresentationFramework.ApplicationModel.PresenterBase.WasShutdown">
             <summary>
-            Occurs when [was shutdown].
+            Occurs after the this instance was shutdown.
             </summary>
         </member>
         <member name="E:Caliburn.PresentationFramework.ApplicationModel.PresenterBase.Activated">
             <summary>
-            Occurs when [activated].
+            Occurs when activated.
             </summary>
         </member>
         <member name="E:Caliburn.PresentationFramework.ApplicationModel.PresenterBase.Deactivated">
             <summary>
-            Occurs when [deactivated].
+            Occurs when deactivated.
             </summary>
         </member>
         <member name="M:Caliburn.PresentationFramework.ApplicationModel.MultiPresenter.CanShutdown">
@@ -2081,6 +2110,12 @@
             <param name="presenter">The presenter.</param>
             <param name="completed">Called when the shutdown action is finished.</param>
         </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.MultiPresenterManager.ChangeCurrentPresenterCore(Caliburn.PresentationFramework.ApplicationModel.IPresenter)">
+            <summary>
+            Changes the current presenter.
+            </summary>
+            <param name="newCurrent">The new current presenter.</param>
+        </member>
         <member name="M:Caliburn.PresentationFramework.ApplicationModel.MultiPresenterManager.Caliburn#PresentationFramework#ApplicationModel#ISupportCustomShutdown#CreateShutdownModel">
             <summary>
             Creates the shutdown model.
@@ -2172,6 +2207,12 @@
             Shuts down the current presenter.
             </summary>
             <param name="completed">Called when the shutdown action is finished.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.PresenterManager.ChangeCurrentPresenterCore(Caliburn.PresentationFramework.ApplicationModel.IPresenter)">
+            <summary>
+            Changes the current presenter.
+            </summary>
+            <param name="newCurrent">The new current presenter.</param>
         </member>
         <member name="M:Caliburn.PresentationFramework.ApplicationModel.PresenterManager.Caliburn#PresentationFramework#ApplicationModel#ISupportCustomShutdown#CreateShutdownModel">
             <summary>
@@ -2420,25 +2461,6 @@
             <param name="viewStrategy">The view strategy.</param>
             <param name="binder">The default binder.</param>
         </member>
-        <member name="F:Caliburn.PresentationFramework.ApplicationModel.View.ModelProperty">
-            <summary>
-            A dependency property for attaching a model to the UI.
-            </summary>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ApplicationModel.View.GetModel(System.Windows.DependencyObject)">
-            <summary>
-            Gets the model.
-            </summary>
-            <param name="d">The d.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ApplicationModel.View.SetModel(System.Windows.DependencyObject,System.Object)">
-            <summary>
-            Sets the model.
-            </summary>
-            <param name="d">The d.</param>
-            <param name="value">The value.</param>
-        </member>
         <member name="F:Caliburn.PresentationFramework.ApplicationModel.View.ContextProperty">
             <summary>
             A dependency property for assigning a context to a particular portion of the UI.
@@ -2454,6 +2476,25 @@
         <member name="M:Caliburn.PresentationFramework.ApplicationModel.View.SetContext(System.Windows.DependencyObject,System.Object)">
             <summary>
             Sets the context.
+            </summary>
+            <param name="d">The d.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="F:Caliburn.PresentationFramework.ApplicationModel.View.ModelProperty">
+            <summary>
+            A dependency property for attaching a model to the UI.
+            </summary>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.View.GetModel(System.Windows.DependencyObject)">
+            <summary>
+            Gets the model.
+            </summary>
+            <param name="d">The d.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.View.SetModel(System.Windows.DependencyObject,System.Object)">
+            <summary>
+            Sets the model.
             </summary>
             <param name="d">The d.</param>
             <param name="value">The value.</param>
@@ -3030,11 +3071,12 @@
             Metadata which can be used to trigger availability changes in triggers based on <see cref="T:System.ComponentModel.INotifyPropertyChanged"/>.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Filters.DependencyObserver.#ctor(Caliburn.PresentationFramework.IRoutedMessageHandler,System.ComponentModel.INotifyPropertyChanged)">
+        <member name="M:Caliburn.PresentationFramework.Filters.DependencyObserver.#ctor(Caliburn.PresentationFramework.IRoutedMessageHandler,Caliburn.Core.Invocation.IMethodFactory,System.ComponentModel.INotifyPropertyChanged)">
             <summary>
             Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Filters.DependencyObserver"/> class.
             </summary>
             <param name="messageHandler">The message handler.</param>
+            <param name="methodFactory">The method factory.</param>
             <param name="notifier">The notifier.</param>
         </member>
         <member name="M:Caliburn.PresentationFramework.Filters.DependencyObserver.MakeAwareOf(Caliburn.PresentationFramework.IMessageTrigger,System.Collections.Generic.IEnumerable{System.String})">
@@ -3266,6 +3308,14 @@
             </summary>
             <param name="method">The method.</param>
         </member>
+        <member name="M:Caliburn.PresentationFramework.Filters.PreviewAttribute.Initialize(System.Type,Caliburn.Core.Metadata.IMetadataContainer,Microsoft.Practices.ServiceLocation.IServiceLocator)">
+            <summary>
+            Initializes the filter.
+            </summary>
+            <param name="targetType">Type of the target.</param>
+            <param name="metadataContainer">The metadata container.</param>
+            <param name="serviceLocator">The serviceLocator.</param>
+        </member>
         <member name="M:Caliburn.PresentationFramework.Filters.PreviewAttribute.Execute(Caliburn.PresentationFramework.IRoutedMessage,Caliburn.PresentationFramework.IInteractionNode,System.Object[])">
             <summary>
             Executes the filter.
@@ -3294,6 +3344,25 @@
             </summary>
             <value><c>true</c> if affects triggers; otherwise, <c>false</c>.</value>
             <remarks>True by default.</remarks>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.Filters.PropertyPathMonitor">
+            <summary>
+            A class used to monitor changes in a property path.
+            </summary>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Filters.PropertyPathMonitor.#ctor(Caliburn.Core.Invocation.IMethodFactory,System.ComponentModel.INotifyPropertyChanged,System.String,System.Action)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Filters.PropertyPathMonitor"/> class.
+            </summary>
+            <param name="methodFactory">The method factory.</param>
+            <param name="notifier">The notifier.</param>
+            <param name="propertyPath">The property path.</param>
+            <param name="onPathChanged">The on path changed.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Filters.PropertyPathMonitor.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
         </member>
         <member name="T:Caliburn.PresentationFramework.Filters.RescueAttribute">
             <summary>
@@ -3628,6 +3697,28 @@
             Gets or sets the message delimiter.
             </summary>
             <value>The message delimiter.</value>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.Triggers.Support.UnrestrictedKeyGesture">
+            <summary>
+            This is an import of System.Windows.Input.KeyGesture, with the validation behaviour disabled.
+            </summary>
+            <remarks>
+            The default KeyGesture supplied with WPF is hard-coded to validate the key combination, and does
+            so based on an arbitary rule to disallow any alpha-numeric keys without modifiers. This decision
+            makes it very difficult to create a mouseless application with WPF and Caliburn.
+            </remarks>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.Triggers.Support.UnrestrictedKeyGestureConverter">
+            <summary>
+            This is an import of System.Windows.Input.KeyGestureConverter, unmodified except for references
+            to KeyGesture replaced with UnrestrictedKeyGesture.
+            </summary>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.Triggers.Support.UnrestrictedKeyGestureValueSerializer">
+            <summary>
+            This is an import of System.Windows.Input.KeyGestureValueSerializer, unmodified except for references
+            to KeyGesture replaced with UnrestrictedKeyGesture.
+            </summary>
         </member>
         <member name="T:Caliburn.PresentationFramework.Triggers.AttachedEventMessageTrigger">
             <summary>
@@ -4111,16 +4202,7 @@
             Extension methods related to the PresentationFramework classes.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.GetResource``1(System.Windows.FrameworkElement,System.Object)">
-            <summary>
-            Gets the resource by searching the hierarchy of of elements.
-            </summary>
-            <typeparam name="T">The type of resource.</typeparam>
-            <param name="element">The element.</param>
-            <param name="key">The key.</param>
-            <returns>The resource.</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.GetResource``1(System.Windows.FrameworkContentElement,System.Object)">
+        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.GetResource``1(System.Windows.DependencyObject,System.Object)">
             <summary>
             Gets the resource by searching the hierarchy of of elements.
             </summary>
@@ -4144,7 +4226,15 @@
             <param name="element">The element.</param>
             <returns></returns>
         </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.FindName``1(System.Windows.FrameworkElement,System.String,System.Boolean)">
+        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.FindName(System.Windows.DependencyObject,System.String)">
+            <summary>
+            Finds a child element by name.
+            </summary>
+            <param name="parent">The parent.</param>
+            <param name="name">The name.</param>
+            <returns>The found element.</returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.FindNameExhaustive``1(System.Windows.DependencyObject,System.String,System.Boolean)">
             <summary>
             Finds an element by name or fails.
             </summary>
@@ -4152,16 +4242,24 @@
             <param name="element">The element.</param>
             <param name="name">The name.</param>
             <param name="shouldFail">Indicates whether an exception should be throw if the named item is not found.</param>
-            <returns></returns>
+            <returns>The found element.</returns>
         </member>
-        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.FindNameOrFail``1(System.Windows.FrameworkContentElement,System.String)">
+        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.OnLoad(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)">
             <summary>
-            Finds an element by name or fails.
+            Wires the delegate to the Loaded event of the element.
             </summary>
-            <typeparam name="T"></typeparam>
+            <param name="dependencyObject">The dependency object.</param>
+            <param name="callback">The callback.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.Bind(Caliburn.PresentationFramework.Parameter,System.Windows.DependencyObject,System.String,System.String)">
+            <summary>
+            Binds the specified parameter to an element's property without using databinding.
+            Rather, event name conventions are used to wire to property changes and push updates to the parameter value.
+            </summary>
+            <param name="parameter">The parameter.</param>
             <param name="element">The element.</param>
-            <param name="name">The name.</param>
-            <returns></returns>
+            <param name="elementName">Name of the element.</param>
+            <param name="path">The path.</param>
         </member>
         <member name="T:Caliburn.PresentationFramework.GenericInteractionDefaults`1">
             <summary>

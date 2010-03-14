@@ -271,11 +271,21 @@
             Validates bindings on a data bound item.
             </summary>
         </member>
-        <member name="M:Caliburn.Testability.BindingValidator.#ctor(Caliburn.Testability.IElement)">
+        <member name="M:Caliburn.Testability.BindingValidator.#ctor(Caliburn.Testability.IBoundElement)">
             <summary>
             Initializes a new instance of the <see cref="T:Caliburn.Testability.BindingValidator"/> class.
             </summary>
             <param name="element">The data bound item.</param>
+        </member>
+        <member name="M:Caliburn.Testability.BindingValidator.WithHint(System.String,System.Type)">
+            <summary>
+            Add a type hint for a property path, specifying the actual type returned 
+            by the last property of the property path chain
+            </summary>
+            <typeparam name="K"></typeparam>
+            <param name="propertyPath">The property path.</param>
+            <param name="hint">The Type actually returned.</param>
+            <returns></returns>
         </member>
         <member name="M:Caliburn.Testability.BindingValidator.Validate">
             <summary>
@@ -408,6 +418,15 @@
             <param name="type">The type.</param>
             <param name="basePath">The base path.</param>
         </member>
+        <member name="M:Caliburn.Testability.BoundType.#ctor(System.Type,System.String,System.Collections.Generic.IDictionary{System.String,System.Type})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Testability.BoundType"/> class.
+            Used internally to create an associated BoundType from a parent one.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="basePath">The base path.</param>
+            /// <param name="hints">Hints propagated from parent.</param>
+        </member>
         <member name="M:Caliburn.Testability.BoundType.ValidateAgainst(Caliburn.Testability.IElement,System.Windows.DependencyProperty,System.Windows.Data.Binding)">
             <summary>
             Validates the information against this type.
@@ -424,9 +443,9 @@
             <param name="propertyPath">The property path.</param>
             <returns></returns>
         </member>
-        <member name="M:Caliburn.Testability.BoundType.GetProperty(System.String)">
+        <member name="M:Caliburn.Testability.BoundType.GetPropertyType(System.String)">
             <summary>
-            Gets the property.
+            Gets the type of property.
             </summary>
             <param name="propertyPath">The property path.</param>
             <returns></returns>
@@ -485,6 +504,12 @@
             </summary>
             <value>The name.</value>
             
+        </member>
+        <member name="P:Caliburn.Testability.IBoundElement.Type">
+            <summary>
+            Gets the type the element is bound to.
+            </summary>
+            <value>The type.</value>
         </member>
         <member name="M:Caliburn.Testability.DependencyObjectElement.#ctor(System.Windows.DependencyObject,Caliburn.Testability.BoundType,System.String)">
             <summary>
@@ -916,7 +941,7 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="M:Caliburn.Testability.BindingValidator`1.#ctor(Caliburn.Testability.IElement)">
+        <member name="M:Caliburn.Testability.BindingValidator`1.#ctor(Caliburn.Testability.IBoundElement)">
             <summary>
             Initializes a new instance of the <see cref="T:Caliburn.Testability.BindingValidator`1"/> class.
             </summary>
@@ -926,6 +951,16 @@
             <summary>
             Validates the bound item.
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Testability.BindingValidator`1.WithHint``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Type)">
+            <summary>
+            Add a type hint for a property path, specifying the actual type returned 
+            by the last property of the property path chain
+            </summary>
+            <typeparam name="K"></typeparam>
+            <param name="propertyPath">The property path.</param>
+            <param name="hint">The Type actually returned.</param>
             <returns></returns>
         </member>
         <member name="T:Caliburn.Testability.ValidationResult`1">
