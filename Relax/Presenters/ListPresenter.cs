@@ -61,21 +61,34 @@ namespace Relax.Presenters
                 OpenItems(e.NewItems.Cast<TModel>());
         }
 
-        private void OpenItems(IEnumerable<TModel> newItems)
+        private void OpenItems(IEnumerable<TModel> items)
         {
-            foreach (TModel newItem in newItems)
-                this.Open(_itemPresenterFactory(newItem));
+            foreach (TModel item in items)
+                this.Open(_itemPresenterFactory(item));
         }
 
-        private void CloseItems(IEnumerable<TModel> oldItems)
+        private void CloseItems(IEnumerable<TModel> items)
         {
-            foreach (IPresenter presenter in
-                oldItems.Select(closedModel => Presenters.First(x => closedModel.Equals(((TModelPresenter) x).Model))).
+            foreach (TModelPresenter presenter in
+                items.Select(closedModel => Presenters.First(x => closedModel.Equals(((TModelPresenter) x).Model))).
                     ToList())
-            {
-                this.Shutdown(presenter);
-                Presenters.Remove(presenter);
-            }
+                ClosePresenter(presenter);
+
+            if (items.Contains(CurrentItem))
+                OpenFirstPresenter();
+        }
+
+        private void OpenFirstPresenter()
+        {
+            IPresenter firstOrDefault = Presenters.FirstOrDefault();
+            if (firstOrDefault != null)
+                this.Open(firstOrDefault);
+        }
+
+        private void ClosePresenter(TModelPresenter presenter)
+        {
+            this.Shutdown(presenter);
+            Presenters.Remove(presenter);
         }
     }
 }
