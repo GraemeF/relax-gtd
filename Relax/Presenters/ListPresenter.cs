@@ -35,6 +35,12 @@ namespace Relax.Presenters
 
         #endregion
 
+        protected override void ChangeCurrentPresenterCore(IPresenter newCurrent)
+        {
+            base.ChangeCurrentPresenterCore(newCurrent);
+            NotifyOfPropertyChange<TModel>(() => CurrentItem);
+        }
+
         protected override void OnInitialize()
         {
             base.OnInitialize();
