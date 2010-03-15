@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using Caliburn.Testability.Extensions;
 using Moq;
 using Relax.Presenters;
 using Relax.Tests.TestEntities;
@@ -124,7 +125,8 @@ namespace Relax.Tests.Presenters
             ITestItem item = new Mock<ITestItem>().Object;
             test.Initialize();
 
-            _stubModels.Add(item);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.CurrentItem)
+                .When(() => _stubModels.Add(item));
 
             Assert.Same(item, test.CurrentItem);
         }
