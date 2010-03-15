@@ -21,7 +21,7 @@ namespace Relax.Presenters
 
             _currentActionObserver = new PropertyObserver<IInboxActionsPresenter>(Inbox).
                 RegisterHandler(x => x.CurrentItem,
-                                y => this.Open(_processActionPresenterFactory(y.CurrentItem)));
+                                y => OpenProcessActionPresenter());
         }
 
         #region IProcessPresenter Members
@@ -30,10 +30,20 @@ namespace Relax.Presenters
 
         #endregion
 
+        private void OpenProcessActionPresenter()
+        {
+            IAction action = Inbox.CurrentItem;
+
+            if (action != null)
+                this.Open(_processActionPresenterFactory(action));
+        }
+
         protected override void OnInitialize()
         {
             base.OnInitialize();
             Inbox.Initialize();
+
+            OpenProcessActionPresenter();
         }
     }
 }
