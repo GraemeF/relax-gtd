@@ -1,11 +1,12 @@
 ﻿using Moq;
 using Relax.Presenters;
 using Relax.Presenters.Interfaces;
+using Relax.TestDataBuilders;
 using Xunit;
 
 namespace Relax.Tests.Presenters
 {
-    public class ProcessPresenterTestFixture
+    public class ProcessPresenterTestFixture : TestDataBuilder
     {
         private readonly Mock<IInboxActionsPresenter> _fakeInbox = new Mock<IInboxActionsPresenter>();
 
@@ -33,9 +34,9 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
-        public void CurrentPresenter_WhenInboxHasACurrentPresenter_IsAPresenter()
+        public void CurrentPresenter_WhenInboxHasACurrentItem_IsAPresenter()
         {
-            _fakeInbox.Setup(x => x.CurrentPresenter).Returns(new Mock<IActionPresenter>().Object);
+            _fakeInbox.Setup(x => x.CurrentItem).Returns(AnAction.Build());
             ProcessPresenter test = BuildDefaultProcessPresenter();
 
             test.Initialize();
