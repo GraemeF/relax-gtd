@@ -28,7 +28,7 @@ namespace Relax.AcceptanceTests.TestEntities
             {
                 return EditBox.
                     In(_processActivityContainer, "ProcessAction").
-                    Called("CurrentActionTitle").Single();
+                    Called("Title").Single();
             }
         }
     }

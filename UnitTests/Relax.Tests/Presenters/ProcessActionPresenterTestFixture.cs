@@ -1,18 +1,19 @@
 ﻿using Moq;
 using Relax.Presenters;
 using Relax.Presenters.Interfaces;
+using Relax.TestDataBuilders;
 using Xunit;
 
 namespace Relax.Tests.Presenters
 {
-    public class ProcessActionPresenterTestFixture
+    public class ProcessActionPresenterTestFixture : TestDataBuilder
     {
         private readonly Mock<IDoLaterPresenter> _stubDoLater = new Mock<IDoLaterPresenter>();
         private readonly Mock<IDoNowPresenter> _stubDoNow = new Mock<IDoNowPresenter>();
 
         private ProcessActionPresenter BuildDefaultProcessActionPresenter()
         {
-            return new ProcessActionPresenter(_stubDoNow.Object, _stubDoLater.Object);
+            return new ProcessActionPresenter(AnAction.Build(), _stubDoNow.Object, _stubDoLater.Object);
         }
 
         [Fact]

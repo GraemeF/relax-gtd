@@ -126,7 +126,7 @@ namespace Relax
 
         private void ConfigureStartupFileLocator()
         {
-            ContainerBuilder builder= new ContainerBuilder();
+            var builder = new ContainerBuilder();
 
             if (_workspacePath == null && !_newWorkspace)
                 builder.Register<DefaultWorkspaceFileLocator>().As<IStartupFileLocator>();
@@ -145,7 +145,7 @@ namespace Relax
 
             ConfigureContainer();
 
-            var binder = (DefaultBinder)Container.GetInstance<IBinder>();
+            var binder = (DefaultBinder) Container.GetInstance<IBinder>();
             binder.EnableMessageConventions();
             binder.EnableBindingConventions();
 
@@ -163,16 +163,26 @@ namespace Relax
 
             builder.Register(backingStore.Workspace);
             builder.RegisterGeneratedFactory<Func<IGtdContext, IGtdContextPresenter>>(
-                new TypedService(typeof(IGtdContextPresenter)));
-            builder.RegisterGeneratedFactory<Func<IGtdContext>>(new TypedService(typeof(IGtdContext)));
-            builder.RegisterGeneratedFactory<Func<IInputPresenter>>(new TypedService(typeof(IGtdContext)));
-            builder.RegisterGeneratedFactory<Func<IAction, IActionPresenter>>(new TypedService(typeof(IActionPresenter)));
-            builder.RegisterGeneratedFactory<Func<IAction, IProcessActionPresenter>>(new TypedService(typeof(IProcessActionPresenter)));
-            builder.RegisterGeneratedFactory<Func<IAction>>(new TypedService(typeof(IAction)));
+                new TypedService(typeof (IGtdContextPresenter)));
+            builder.RegisterGeneratedFactory<Func<IGtdContext>>(new TypedService(typeof (IGtdContext)));
+            builder.RegisterGeneratedFactory<Func<IInputPresenter>>(new TypedService(typeof (IGtdContext)));
+            builder.RegisterGeneratedFactory<Func<IAction, IActionPresenter>>(new TypedService(typeof (IActionPresenter)));
+            builder.Register<Func<IAction, IProcessActionPresenter>>(ProcessActionPresenterFactory);
+            builder.RegisterGeneratedFactory<Func<IAction>>(new TypedService(typeof (IAction)));
             builder.RegisterGeneratedFactory<Func<IAction, IActionTreeNodePresenter>>(
-                new TypedService(typeof(IActionTreeNodePresenter)));
+                new TypedService(typeof (IActionTreeNodePresenter)));
 
             builder.Build(_container);
+        }
+
+        private IProcessActionPresenter ProcessActionPresenterFactory(IAction action)
+        {
+            IContainer childContainer = _container.CreateInnerContainer();
+            var builder = new ContainerBuilder();
+            builder.Register(action);
+            builder.Build(childContainer);
+
+            return childContainer.Resolve<IProcessActionPresenter>();
         }
     }
 }
