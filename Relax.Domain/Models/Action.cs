@@ -4,11 +4,13 @@ using System.Runtime.Serialization;
 using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
+using System.Diagnostics;
 
 namespace Relax.Domain.Models
 {
     [DataContract(IsReference = true)]
     [PerRequest(typeof (IAction))]
+    [DebuggerDisplay("Title = {Title}")]
     public class Action : Item, IAction
     {
         public Action()

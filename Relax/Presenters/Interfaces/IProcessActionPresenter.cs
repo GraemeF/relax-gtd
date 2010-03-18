@@ -1,8 +1,8 @@
-﻿using Caliburn.PresentationFramework.ApplicationModel;
+﻿using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.Presenters.Interfaces
 {
-    public interface IProcessActionPresenter : IPresenter
+    public interface IProcessActionPresenter : IModelPresenter<IAction>
     {
         IDoNowPresenter DoNow { get; }
         IDoLaterPresenter DoLater { get; }

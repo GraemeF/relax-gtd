@@ -1,4 +1,5 @@
 ﻿<UserControl x:Class="Relax.Views.ProcessActionView"
+             AutomationProperties.AutomationId="ProcessAction"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:cal="clr-namespace:Caliburn.PresentationFramework.ApplicationModel;assembly=Caliburn.PresentationFramework"
@@ -125,6 +126,10 @@
         </Style>
     </UserControl.Resources>
     <DockPanel>
+        <TextBox AutomationProperties.AutomationId="Model.Title"
+                 Text="{Binding Title}"
+                 FontSize="30"
+                 DockPanel.Dock="Top" />
         <Grid DockPanel.Dock="Top"
               Margin="0,0,9,0">
             <Grid.ColumnDefinitions>
