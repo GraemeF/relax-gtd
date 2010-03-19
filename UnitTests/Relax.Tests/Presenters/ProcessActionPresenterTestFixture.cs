@@ -1,4 +1,7 @@
-﻿using Moq;
+﻿using System.ComponentModel;
+using Caliburn.Testability.Extensions;
+using Moq;
+using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters;
 using Relax.Presenters.Interfaces;
 using Relax.TestDataBuilders;
@@ -30,6 +33,46 @@ namespace Relax.Tests.Presenters
             ProcessActionPresenter test = BuildDefaultProcessActionPresenter();
 
             Assert.Same(_stubDoNow.Object, test.DoNow);
+        }
+
+        [Fact]
+        public void DisplayName__ReturnsActionTitle()
+        {
+            const string titleOfTheAction = "Title of the action";
+            var test = new ProcessActionPresenter(AnAction.Called(titleOfTheAction).Build(),
+                                                  _stubDoNow.Object,
+                                                  _stubDoLater.Object);
+
+            Assert.Equal(titleOfTheAction, test.DisplayName);
+        }
+
+        [Fact]
+        public void DisplayName_WhenSet_SetsActionTitle()
+        {
+            Mock<IAction> mockAction = AnAction.Mock();
+            var test = new ProcessActionPresenter(mockAction.Object,
+                                                  _stubDoNow.Object,
+                                                  _stubDoLater.Object);
+
+            const string newTitle = "New title";
+            test.DisplayName = newTitle;
+
+            mockAction.VerifySet(x => x.Title = newTitle);
+        }
+
+        [Fact]
+        public void DisplayName_WhenActionTitleChanges_RaisesPropertyChanged()
+        {
+            const string titleOfTheAction = "Title of the action";
+            Mock<IAction> stubAction = AnAction.Called(titleOfTheAction).Mock();
+
+            var test = new ProcessActionPresenter(stubAction.Object,
+                                                  _stubDoNow.Object,
+                                                  _stubDoLater.Object);
+
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.DisplayName).
+                When(() => stubAction.Raise(x => x.PropertyChanged += null,
+                                            new PropertyChangedEventArgs("Title")));
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Fluid
+﻿using System;
+
+namespace Fluid
 {
     public class EditBox : Control<EditBox>
     {
@@ -6,6 +8,11 @@
         {
             get { return AutomationElement.GetValue(); }
             set { AutomationElement.SetValue(value); }
+        }
+
+        public void Commit()
+        {
+            throw new NotImplementedException();
         }
     }
 }

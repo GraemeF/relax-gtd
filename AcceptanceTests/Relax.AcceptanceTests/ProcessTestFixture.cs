@@ -1,4 +1,5 @@
-﻿using Relax.AcceptanceTests.TestEntities;
+﻿using System.Linq;
+using Relax.AcceptanceTests.TestEntities;
 using Xunit;
 
 namespace Relax.AcceptanceTests
@@ -53,7 +54,7 @@ namespace Relax.AcceptanceTests
         }
 
         [Fact]
-        public void ActionTitleIsEditableWhenProcessing()
+        public void ActionTitleIsDisplayedWhenProcessing()
         {
             using (RelaxApplication relax = RelaxApplication.Launch())
             {
@@ -64,6 +65,24 @@ namespace Relax.AcceptanceTests
                 relax.StartProcessingInbox();
 
                 Assert.Equal(actionTitle, relax.Shell.Workspace.ProcessActivity.CurrentActionTitle.Text);
+            }
+        }
+
+        [Fact]
+        public void ChangingActionTitleWhenProcessingUpdatesActionTitle()
+        {
+            using (RelaxApplication relax = RelaxApplication.Launch())
+            {
+                relax.StartCollectingActions();
+                relax.AddInboxAction("This is an action in my inbox.");
+
+                relax.StartProcessingInbox();
+
+                const string newTitle = "New title";
+                relax.Shell.Workspace.ProcessActivity.CurrentActionTitle.Text = newTitle;
+
+                Assert.Equal(newTitle,
+                             relax.Shell.Workspace.ProcessActivity.UnprocessedActionList.Actions.Single());
             }
         }
     }
