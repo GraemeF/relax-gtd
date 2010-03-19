@@ -171,6 +171,7 @@
     <Compile Include="Presenters\DoLaterPresenter.cs" />
     <Compile Include="Presenters\DoNowPresenter.cs" />
     <Compile Include="Presenters\ActionDetailsPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IActionProcessorPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IBlockingActionsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IListPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IActionDetailsPresenter.cs" />
