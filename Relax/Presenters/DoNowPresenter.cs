@@ -17,7 +17,7 @@ namespace Relax.Presenters
             _action = action;
         }
 
-        public void Done()
+        public void Apply()
         {
             _action.ActionState = State.Committed;
             _action.CompletedDate = DateTime.UtcNow;

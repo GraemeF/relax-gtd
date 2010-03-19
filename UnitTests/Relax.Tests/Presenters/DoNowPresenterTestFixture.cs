@@ -11,24 +11,24 @@ namespace Relax.Tests.Presenters
     public class DoNowPresenterTestFixture : TestDataBuilder
     {
         [Fact]
-        public void Done__MarksActionAsCompleted()
+        public void Apply__MarksActionAsCompleted()
         {
             DateTime timeAtStart = DateTime.UtcNow;
             Mock<IAction> mockAction = AnAction.Mock();
             var test = new DoNowPresenter(mockAction.Object) {Parent = new Mock<IPresenterHost>().Object};
 
-            test.Done();
+            test.Apply();
 
             mockAction.VerifySet(x => x.CompletedDate = It.IsInRange(timeAtStart, DateTime.UtcNow, Range.Inclusive));
         }
 
         [Fact]
-        public void Done__ShutsDownPresenter()
+        public void Apply__ShutsDownPresenter()
         {
             var mockParent = new Mock<IPresenterHost>();
             var test = new DoNowPresenter(AnAction.Build()) {Parent = mockParent.Object};
 
-            test.Done();
+            test.Apply();
 
             mockParent.Verify(x => x.Shutdown(test, It.IsAny<Action<bool>>()));
         }
