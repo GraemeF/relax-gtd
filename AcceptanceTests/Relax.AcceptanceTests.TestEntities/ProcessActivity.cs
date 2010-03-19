@@ -17,8 +17,8 @@ namespace Relax.AcceptanceTests.TestEntities
             get
             {
                 return new ActionList(ListBox.
-                                          In(_processActivityContainer).
-                                          Called("UnprocessedActions").Single());
+                                          In(_processActivityContainer, "ActionsView").
+                                          Called("Actions").Single());
             }
         }
 
