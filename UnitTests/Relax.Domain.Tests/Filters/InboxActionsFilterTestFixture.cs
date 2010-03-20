@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Relax.Domain.Filters;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
@@ -29,7 +28,7 @@ namespace Relax.Domain.Tests.Filters
         }
 
         [Fact]
-        public void InboxActions_WhenFirstInboxActionIsAddedToWorkspace_RaisesCollectionChanged()
+        public void Actions_WhenFirstInboxActionIsAddedToWorkspace_RaisesCollectionChanged()
         {
             IWorkspace workspace = AWorkspace.Build();
             IAction inboxAction = AnAction.In(State.Inbox).Build();
