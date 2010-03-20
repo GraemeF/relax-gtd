@@ -1,9 +1,10 @@
-﻿using Caliburn.PresentationFramework.ApplicationModel;
+﻿using System.Windows.Input;
+using Caliburn.PresentationFramework.ApplicationModel;
 
 namespace Relax.Presenters.Interfaces
 {
     public interface IActionProcessorPresenter : IPresenter
     {
-        void Apply();
+        ICommand ApplyCommand { get; }
     }
 }

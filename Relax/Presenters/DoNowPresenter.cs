@@ -1,28 +1,25 @@
-using System;
+using System.ComponentModel.Composition;
+using System.Windows.Input;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
-using Relax.Infrastructure.Models;
-using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
     [PerRequest(typeof (IDoNowPresenter))]
+    [Export(typeof (IActionProcessorPresenter))]
     public class DoNowPresenter : Presenter, IDoNowPresenter
     {
-        private readonly IAction _action;
-
-        public DoNowPresenter(IAction action)
+        [ImportingConstructor]
+        public DoNowPresenter(DoNowCommand applyCommand)
         {
-            _action = action;
+            ApplyCommand = applyCommand;
         }
 
-        public void Apply()
-        {
-            _action.ActionState = State.Committed;
-            _action.CompletedDate = DateTime.UtcNow;
+        #region IDoNowPresenter Members
 
-            Parent.Shutdown(this);
-        }
+        public ICommand ApplyCommand { get; private set; }
+
+        #endregion
     }
 }
