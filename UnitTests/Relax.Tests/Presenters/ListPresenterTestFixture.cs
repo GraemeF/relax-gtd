@@ -60,6 +60,19 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
+        public void Presenters_WhenTheModelsListIsReset_ContainsCorrectItems()
+        {
+            var models = new ObservableCollection<ITestItem> {new Mock<ITestItem>().Object};
+
+            ListPresenter<ITestItem, ITestItemPresenter> test = new TestListPresenter(models, BuildItemPresenter);
+            test.Initialize();
+
+            models.Clear();
+
+            Assert.Equal(0, test.Presenters.Count);
+        }
+
+        [Fact]
         public void Shutdown__ShutsDownItemPresenters()
         {
             ListPresenter<ITestItem, ITestItemPresenter> test = new TestListPresenter(_stubModels,
