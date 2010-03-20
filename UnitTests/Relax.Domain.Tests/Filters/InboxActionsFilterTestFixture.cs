@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.ComponentModel;
+using System.Linq;
+using Moq;
 using Relax.Domain.Filters;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
@@ -53,18 +55,20 @@ namespace Relax.Domain.Tests.Filters
         [Fact]
         public void Actions_WhenAnActionIsMovedOutOfTheInbox_RaisesCollectionChanged()
         {
-            IWorkspace workspace = AWorkspace.Build();
-            IAction inboxAction = AnAction.In(State.Inbox).Build();
+            Mock<IAction> stubAction = AnAction.In(State.Inbox).Mock();
+            IWorkspace workspace = AWorkspace.With(stubAction.Object).Build();
 
             var test = new InboxActionsFilter(workspace);
 
-            test.Actions.CollectionChanged +=
-                (o, args) => args.NewItems.Cast<IAction>();
+            bool eventRaised = false;
+            test.Actions.CollectionChanged += (o, args) => eventRaised = true;
 
-            workspace.Actions.Add(inboxAction);
+            stubAction.Setup(x => x.ActionState).Returns(State.Committed);
+            stubAction.Raise(x => x.PropertyChanged += null, new PropertyChangedEventArgs("ActionState"));
 
-            Assert.Contains(inboxAction, test.Actions);
-            Assert.Equal(1, test.Actions.Count);
+            Assert.DoesNotContain(stubAction.Object, test.Actions);
+            Assert.Empty(test.Actions);
+            Assert.True(eventRaised);
         }
     }
 }
