@@ -33,12 +33,11 @@ namespace Relax.Domain.Tests.Filters
         {
             IWorkspace workspace = AWorkspace.Build();
             IAction inboxAction = AnAction.In(State.Inbox).Build();
-            IEnumerable<IAction> newItems = null;
 
             var test = new InboxActionsFilter(workspace);
 
             test.Actions.CollectionChanged +=
-                (o, args) => newItems = args.NewItems.Cast<IAction>();
+                (o, args) => args.NewItems.Cast<IAction>();
 
             workspace.Actions.Add(inboxAction);
 
