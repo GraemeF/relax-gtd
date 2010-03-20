@@ -177,7 +177,6 @@
     <Compile Include="Presenters\Interfaces\IListPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IActionDetailsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IDoLaterPresenter.cs" />
-    <Compile Include="Presenters\Interfaces\IDoNowPresenter.cs" />
     <Compile Include="Presenters\InboxActionsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IInboxActionsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\ICollectPresenter.cs" />

@@ -1,14 +1,15 @@
 using System.ComponentModel.Composition;
 using System.Windows.Input;
-using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
-    [PerRequest(typeof (IDoNowPresenter))]
+    /// <summary>
+    /// Presents the UI allowing the action being processed to be marked as done.
+    /// </summary>
     [Export(typeof (IActionProcessorPresenter))]
-    public class DoNowPresenter : Presenter, IDoNowPresenter
+    public class DoNowPresenter : Presenter, IActionProcessorPresenter
     {
         [ImportingConstructor]
         public DoNowPresenter(DoNowCommand applyCommand)
@@ -16,7 +17,7 @@ namespace Relax.Presenters
             ApplyCommand = applyCommand;
         }
 
-        #region IDoNowPresenter Members
+        #region IActionProcessorPresenter Members
 
         public ICommand ApplyCommand { get; private set; }
 

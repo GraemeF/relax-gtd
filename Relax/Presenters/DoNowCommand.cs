@@ -6,7 +6,7 @@ using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.Presenters
 {
-    [Export(typeof(DoNowCommand))]
+    [Export(typeof (DoNowCommand))]
     public class DoNowCommand : ICommand
     {
         #region ICommand Members
@@ -23,7 +23,9 @@ namespace Relax.Presenters
             return parameter is IAction;
         }
 
+#pragma warning disable 67
         public event EventHandler CanExecuteChanged;
+#pragma warning restore 67
 
         #endregion
     }
