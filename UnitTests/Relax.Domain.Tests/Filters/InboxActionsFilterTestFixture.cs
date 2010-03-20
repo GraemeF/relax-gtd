@@ -35,6 +35,29 @@ namespace Relax.Domain.Tests.Filters
 
             var test = new InboxActionsFilter(workspace);
 
+            bool eventRaised = false;
+            test.Actions.CollectionChanged +=
+                (o, args) =>
+                    {
+                        Assert.Same(inboxAction, args.NewItems.Cast<IAction>().Single());
+                        eventRaised = true;
+                    };
+
+            workspace.Actions.Add(inboxAction);
+
+            Assert.Contains(inboxAction, test.Actions);
+            Assert.Equal(1, test.Actions.Count);
+            Assert.True(eventRaised);
+        }
+
+        [Fact]
+        public void Actions_WhenAnActionIsMovedOutOfTheInbox_RaisesCollectionChanged()
+        {
+            IWorkspace workspace = AWorkspace.Build();
+            IAction inboxAction = AnAction.In(State.Inbox).Build();
+
+            var test = new InboxActionsFilter(workspace);
+
             test.Actions.CollectionChanged +=
                 (o, args) => args.NewItems.Cast<IAction>();
 
