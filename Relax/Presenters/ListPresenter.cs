@@ -38,7 +38,7 @@ namespace Relax.Presenters
         protected override void ChangeCurrentPresenterCore(IPresenter newCurrent)
         {
             base.ChangeCurrentPresenterCore(newCurrent);
-            NotifyOfPropertyChange<TModel>(() => CurrentItem);
+            NotifyOfPropertyChange(() => CurrentItem);
         }
 
         protected override void OnInitialize()
@@ -59,12 +59,32 @@ namespace Relax.Presenters
             base.OnShutdown();
         }
 
-        private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
         {
-            if (e.OldItems != null)
-                CloseItems(e.OldItems.Cast<TModel>());
-            if (e.NewItems != null)
-                OpenItems(e.NewItems.Cast<TModel>());
+            switch (args.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    OpenItems(args.NewItems.Cast<TModel>());
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    CloseItems(args.OldItems.Cast<TModel>());
+                    break;
+                default:
+                    PopulateWithAllItems();
+                    break;
+            }
+        }
+
+        private void PopulateWithAllItems()
+        {
+            ClosePresenters(Presenters.ToList());
+            OpenItems(_collection);
+        }
+
+        private void ClosePresenters(IEnumerable<IPresenter> presenters)
+        {
+            foreach (TModelPresenter presenter in presenters)
+                ClosePresenter(presenter);
         }
 
         private void OpenItems(IEnumerable<TModel> items)
@@ -75,10 +95,9 @@ namespace Relax.Presenters
 
         private void CloseItems(IEnumerable<TModel> items)
         {
-            foreach (TModelPresenter presenter in
+            ClosePresenters(
                 items.Select(closedModel => Presenters.First(x => closedModel.Equals(((TModelPresenter) x).Model))).
-                    ToList())
-                ClosePresenter(presenter);
+                    ToList());
 
             if (items.Contains(CurrentItem))
                 OpenFirstPresenter();

@@ -11,7 +11,10 @@ namespace Relax.Presenters
     {
         public ActionsPresenter(IWorkspace workspace,
                                 Func<IAction, IActionPresenter> actionPresenterFactory)
-            : base(new ActionsFilterBase(workspace, x => true, new string[]{}).Actions, actionPresenterFactory)
+            : base(new ActionsFilterBase(workspace,
+                                         x => true,
+                                         new string[] {}).Actions,
+                   actionPresenterFactory)
         {
         }
     }
