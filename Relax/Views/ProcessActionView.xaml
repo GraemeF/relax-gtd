@@ -192,26 +192,6 @@
                     IsDefault="True"
                     cm:Message.Attach="Apply" />
         </StackPanel>
-        <TabControl x:Name="Presenters"
-                    DockPanel.Dock="Bottom"
-                    ItemsSource="{Binding Presenters}"
-                    SelectedItem="{Binding CurrentPresenter}">
-            <TabControl.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding DisplayName}" />
-                    </Grid>
-                </DataTemplate>
-            </TabControl.ItemTemplate>
-            <TabControl.ContentTemplate>
-                <DataTemplate>
-                    <ContentControl cal:View.Model="{Binding}" />
-                </DataTemplate>
-            </TabControl.ContentTemplate>
-        </TabControl>
         <TabControl DockPanel.Dock="Bottom">
             <TabItem Header="Now">
             </TabItem>
@@ -268,6 +248,26 @@
                                Text="Host plugins here to send to Evernote etc." />
                 </Grid>
             </TabItem>
+        </TabControl>
+        <TabControl x:Name="Presenters"
+                    DockPanel.Dock="Bottom"
+                    ItemsSource="{Binding Presenters}"
+                    SelectedItem="{Binding CurrentPresenter}">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding DisplayName}" />
+                    </Grid>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <ContentControl cal:View.Model="{Binding}" />
+                </DataTemplate>
+            </TabControl.ContentTemplate>
         </TabControl>
     </DockPanel>
 </UserControl>
