@@ -9,7 +9,9 @@ namespace Relax.Domain.Filters
     public class InboxActionsFilter : ActionsFilterBase, IInboxActionsFilter
     {
         public InboxActionsFilter(IWorkspace workspace)
-            : base(workspace, x => ((IAction) x).ActionState == State.Inbox)
+            : base(workspace,
+                   x => ((IAction) x).ActionState == State.Inbox,
+                   new[] {"ActionState"})
         {
         }
     }

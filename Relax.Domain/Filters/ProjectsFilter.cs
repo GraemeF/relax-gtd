@@ -13,7 +13,7 @@ namespace Relax.Domain.Filters
                 workspace,
                 action =>
                 ((IAction) action).BlockingActions.Any() &&
-                !workspace.Actions.Any(x => x.BlockingActions.Contains((IAction) action)))
+                !workspace.Actions.Any(x => x.BlockingActions.Contains((IAction) action)), new string[]{})
         {
         }
     }
