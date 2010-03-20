@@ -1,4 +1,8 @@
-﻿using Caliburn.Core.Metadata;
+﻿using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.Reflection;
+using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using MvvmFoundation.Wpf;
 using Relax.Infrastructure.Models.Interfaces;
@@ -7,21 +11,22 @@ using Relax.Presenters.Interfaces;
 namespace Relax.Presenters
 {
     [PerRequest(typeof (IProcessActionPresenter))]
-    public class ProcessActionPresenter : MultiPresenter, IProcessActionPresenter
+    public class ProcessActionPresenter : MultiPresenterManager, IProcessActionPresenter
     {
         private readonly IAction _action;
         private PropertyObserver<IAction> _propertyObserver;
 
-        public ProcessActionPresenter(IAction action, IDoNowPresenter doNow, IDoLaterPresenter doLater)
+        public ProcessActionPresenter(IAction action)
         {
             _action = action;
-            DoNow = doNow;
-            DoLater = doLater;
 
             _propertyObserver = new PropertyObserver<IAction>(Model).
                 RegisterHandler(x => x.Title,
                                 y => NotifyOfPropertyChange(() => DisplayName));
         }
+
+        [ImportMany]
+        public IEnumerable<IActionProcessorPresenter> ActionProcessors { get; set; }
 
         #region IProcessActionPresenter Members
 
@@ -31,14 +36,39 @@ namespace Relax.Presenters
             set { Model.Title = value; }
         }
 
-        public IDoNowPresenter DoNow { get; private set; }
-        public IDoLaterPresenter DoLater { get; private set; }
-
+        [Export]
         public IAction Model
         {
             get { return _action; }
         }
 
         #endregion
+
+        protected override void OnInitialize()
+        {
+            base.OnInitialize();
+
+            Compose();
+            OpenProcessors();
+        }
+
+        private void Compose()
+        {
+            var catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
+            var container = new CompositionContainer(catalog);
+            container.ComposeParts(this);
+        }
+
+        private void OpenProcessors()
+        {
+            foreach (IActionProcessorPresenter processor in ActionProcessors)
+                this.Open(processor);
+        }
+
+        public void Apply()
+        {
+            var actionProcessorPresenter = (IActionProcessorPresenter) CurrentPresenter;
+            actionProcessorPresenter.ApplyCommand.Execute(_action);
+        }
     }
 }

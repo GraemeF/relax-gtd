@@ -169,6 +169,7 @@
     <Compile Include="Presenters\ContextsPresenter.cs" />
     <Compile Include="Presenters\ContextPresenter.cs" />
     <Compile Include="Presenters\DoLaterPresenter.cs" />
+    <Compile Include="Presenters\DoNowCommand.cs" />
     <Compile Include="Presenters\DoNowPresenter.cs" />
     <Compile Include="Presenters\ActionDetailsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IActionProcessorPresenter.cs" />

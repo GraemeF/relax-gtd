@@ -4,7 +4,5 @@ namespace Relax.Presenters.Interfaces
 {
     public interface IProcessActionPresenter : IModelPresenter<IAction>
     {
-        IDoNowPresenter DoNow { get; }
-        IDoLaterPresenter DoLater { get; }
     }
 }

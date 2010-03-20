@@ -13,15 +13,9 @@ namespace Relax.Tests.Views
         }
 
         [Fact]
-        public void DoNow__IsBound()
+        public void Presenters__IsBound()
         {
-            Assert.True(BoundView().WasBoundTo(x => x.DoNow));
-        }
-
-        [Fact]
-        public void DoLater__IsBound()
-        {
-            Assert.True(BoundView().WasBoundTo(x => x.DoLater));
+            Assert.True(BoundView().WasBoundTo(x => x.Presenters));
         }
     }
 }
