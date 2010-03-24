@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
-using System.ComponentModel.Composition.Primitives;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
-using Autofac;
-using Autofac.Builder;
-using Caliburn.Autofac;
-using Caliburn.Core;
 using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.Unity;
 using Microsoft.Practices.ServiceLocation;
+using Microsoft.Practices.Unity;
 using NDesk.Options;
 using Relax.FileBackingStore.Services;
 using Relax.FileBackingStore.Services.Interfaces;
@@ -21,20 +16,15 @@ using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Infrastructure.Services.Interfaces;
 using Relax.Presenters.Interfaces;
-using IContainer = Autofac.IContainer;
 
 namespace Relax
 {
     [NoCoverage]
     public partial class App : CaliburnApplication
     {
-        private ComposablePartCatalog _catalog;
-        private IContainer _container;
+        private UnityContainer _container;
         private bool _newWorkspace;
         private string _workspacePath;
-
-        [ImportMany(AllowRecomposition = true)]
-        public ObservableCollection<IRelaxModule> Modules { get; private set; }
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -63,19 +53,18 @@ namespace Relax
 
         protected override IServiceLocator CreateContainer()
         {
-            _container = new ContainerBuilder().Build();
-            return new AutofacAdapter(_container);
+            _container = new UnityContainer();
+            return new UnityAdapter(_container);
         }
 
         protected override Assembly[] SelectAssemblies()
         {
             var directoryCatalog = new DirectoryCatalog(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
-            _catalog = new AggregateCatalog(new AssemblyCatalog(Assembly.GetExecutingAssembly()), directoryCatalog);
 
             return FindAssemblies(directoryCatalog).ToArray();
         }
 
-        private IEnumerable<Assembly> FindAssemblies(DirectoryCatalog catalog)
+        private static IEnumerable<Assembly> FindAssemblies(DirectoryCatalog catalog)
         {
             yield return Assembly.GetEntryAssembly();
 
@@ -86,7 +75,7 @@ namespace Relax
             }
         }
 
-        private Assembly GetAssembly(string file)
+        private static Assembly GetAssembly(string file)
         {
             try
             {
@@ -110,33 +99,15 @@ namespace Relax
             }
         }
 
-        protected override void BeforeStart(CoreConfiguration core)
-        {
-            var builder = new ContainerBuilder();
-
-            Modules = new ObservableCollection<IRelaxModule>();
-            using (var compositionContainer = new CompositionContainer(_catalog))
-                compositionContainer.ComposeParts(this);
-
-            foreach (IRelaxModule module in Modules)
-                builder.RegisterModule(module);
-
-            builder.Build(_container);
-        }
-
         private void ConfigureStartupFileLocator()
         {
-            var builder = new ContainerBuilder();
-
             if (_workspacePath == null && !_newWorkspace)
-                builder.Register<DefaultWorkspaceFileLocator>().As<IStartupFileLocator>();
+                RegisterType<IStartupFileLocator, DefaultWorkspaceFileLocator>();
             else
-                builder.Register<IStartupFileLocator>(
+                RegisterInstance<IStartupFileLocator>(
                     new CustomPathStartupFileLocator(_workspacePath ??
                                                      DefaultWorkspaceFileLocator.DefaultBackingStorePath)
                         {LoadOnStartup = !_newWorkspace});
-
-            builder.Build(_container);
         }
 
         protected override object CreateRootModel()
@@ -154,35 +125,64 @@ namespace Relax
             return shell;
         }
 
+        private void RegisterType<TInterface, TAs>() where TAs : TInterface
+        {
+            _container.RegisterType<TInterface, TAs>();
+        }
+
+        private void RegisterInstance<TInterface>(TInterface instance)
+        {
+            _container.RegisterInstance(instance);
+        }
+
         private void ConfigureContainer()
         {
-            var builder = new ContainerBuilder();
-
             var backingStore = _container.Resolve<IBackingStore>();
             backingStore.Initialize();
 
-            builder.Register(backingStore.Workspace);
-            builder.RegisterGeneratedFactory<Func<IGtdContext, IGtdContextPresenter>>(
-                new TypedService(typeof (IGtdContextPresenter)));
-            builder.RegisterGeneratedFactory<Func<IGtdContext>>(new TypedService(typeof (IGtdContext)));
-            builder.RegisterGeneratedFactory<Func<IInputPresenter>>(new TypedService(typeof (IGtdContext)));
-            builder.RegisterGeneratedFactory<Func<IAction, IActionPresenter>>(new TypedService(typeof (IActionPresenter)));
-            builder.Register<Func<IAction, IProcessActionPresenter>>(ProcessActionPresenterFactory);
-            builder.RegisterGeneratedFactory<Func<IAction>>(new TypedService(typeof (IAction)));
-            builder.RegisterGeneratedFactory<Func<IAction, IActionTreeNodePresenter>>(
-                new TypedService(typeof (IActionTreeNodePresenter)));
+            RegisterInstance(backingStore.Workspace);
+            RegisterInstance<Func<IGtdContext, IGtdContextPresenter>>(GtdContextPresenterFactory);
+            RegisterInstance<Func<IGtdContext>>(()=>_container.Resolve<IGtdContext>());
+            RegisterInstance<Func<IAction, IActionPresenter>>(ActionPresenterFactory);
+            RegisterInstance<Func<IAction, IProcessActionPresenter>>(ProcessActionPresenterFactory);
+            RegisterInstance<Func<IAction>>(()=>_container.Resolve<IAction>());
+            RegisterInstance<Func<IAction, IActionTreeNodePresenter>>(ActionTreeNodePresenterFactory);
+            RegisterInstance<Func<IAction, IEnumerable<IActionProcessorPresenter>>>(ActionProcessorPresentersFactory);
+        }
 
-            builder.Build(_container);
+        private IActionTreeNodePresenter ActionTreeNodePresenterFactory(IAction arg)
+        {
+            var childContainer = _container.CreateChildContainer();
+            childContainer.RegisterInstance(arg);
+            return childContainer.Resolve<IActionTreeNodePresenter>();
+        }
+
+        private IActionPresenter ActionPresenterFactory(IAction arg)
+        {
+            var childContainer = _container.CreateChildContainer();
+            childContainer.RegisterInstance(arg);
+            return childContainer.Resolve<IActionPresenter>();
+        }
+
+        private IGtdContextPresenter GtdContextPresenterFactory(IGtdContext arg)
+        {
+            var childContainer = _container.CreateChildContainer();
+            childContainer.RegisterInstance(arg);
+            return childContainer.Resolve<IGtdContextPresenter>();
         }
 
         private IProcessActionPresenter ProcessActionPresenterFactory(IAction action)
         {
-            IContainer childContainer = _container.CreateInnerContainer();
-            var builder = new ContainerBuilder();
-            builder.Register(action);
-            builder.Build(childContainer);
-
+            var childContainer = _container.CreateChildContainer();
+            childContainer.RegisterInstance(action);
             return childContainer.Resolve<IProcessActionPresenter>();
+        }
+
+        private IEnumerable<IActionProcessorPresenter> ActionProcessorPresentersFactory(IAction action)
+        {
+            var childContainer = _container.CreateChildContainer();
+            childContainer.RegisterInstance(action);
+            return childContainer.ResolveAll<IActionProcessorPresenter>();
         }
     }
 }

@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.ComponentModel.Composition.Hosting;
-using System.Reflection;
+﻿using System;
+using System.Collections.Generic;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using MvvmFoundation.Wpf;
@@ -16,17 +14,18 @@ namespace Relax.Presenters
         private readonly IAction _action;
         private PropertyObserver<IAction> _propertyObserver;
 
-        public ProcessActionPresenter(IAction action)
+        public ProcessActionPresenter(IAction action,
+                                      Func<IAction, IEnumerable<IActionProcessorPresenter>> actionProcessors)
         {
             _action = action;
+            ActionProcessors = actionProcessors(_action);
 
             _propertyObserver = new PropertyObserver<IAction>(Model).
                 RegisterHandler(x => x.Title,
                                 y => NotifyOfPropertyChange(() => DisplayName));
         }
 
-        [ImportMany]
-        public IEnumerable<IActionProcessorPresenter> ActionProcessors { get; set; }
+        public IEnumerable<IActionProcessorPresenter> ActionProcessors { get; private set; }
 
         #region IProcessActionPresenter Members
 
@@ -36,7 +35,6 @@ namespace Relax.Presenters
             set { Model.Title = value; }
         }
 
-        [Export]
         public IAction Model
         {
             get { return _action; }
@@ -48,15 +46,7 @@ namespace Relax.Presenters
         {
             base.OnInitialize();
 
-            Compose();
             OpenProcessors();
-        }
-
-        private void Compose()
-        {
-            var catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
-            var container = new CompositionContainer(catalog);
-            container.ComposeParts(this);
         }
 
         private void OpenProcessors()

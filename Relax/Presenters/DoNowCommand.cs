@@ -1,12 +1,12 @@
 ﻿using System;
-using System.ComponentModel.Composition;
 using System.Windows.Input;
+using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.Presenters
 {
-    [Export(typeof (DoNowCommand))]
+    [PerRequest(typeof (DoNowCommand))]
     public class DoNowCommand : ICommand
     {
         #region ICommand Members

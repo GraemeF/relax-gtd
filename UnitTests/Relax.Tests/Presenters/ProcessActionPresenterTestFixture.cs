@@ -1,7 +1,5 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows.Input;
-using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.Testability.Extensions;
 using Moq;
 using Relax.Infrastructure.Models.Interfaces;
@@ -14,11 +12,14 @@ namespace Relax.Tests.Presenters
 {
     public class ProcessActionPresenterTestFixture : TestDataBuilder
     {
+        private readonly Mock<IActionProcessorPresenter> _fakeProcessor = new Mock<IActionProcessorPresenter>();
+
         [Fact]
         public void DisplayName__ReturnsActionTitle()
         {
             const string titleOfTheAction = "Title of the action";
-            var test = new ProcessActionPresenter(AnAction.Called(titleOfTheAction).Build());
+            var test = new ProcessActionPresenter(AnAction.Called(titleOfTheAction).Build(),
+                                                  x => new[] {_fakeProcessor.Object});
 
             Assert.Equal(titleOfTheAction, test.DisplayName);
         }
@@ -27,7 +28,7 @@ namespace Relax.Tests.Presenters
         public void DisplayName_WhenSet_SetsActionTitle()
         {
             Mock<IAction> mockAction = AnAction.Mock();
-            var test = new ProcessActionPresenter(mockAction.Object);
+            var test = new ProcessActionPresenter(mockAction.Object, x => new[] {_fakeProcessor.Object});
 
             const string newTitle = "New title";
             test.DisplayName = newTitle;
@@ -41,7 +42,7 @@ namespace Relax.Tests.Presenters
             const string titleOfTheAction = "Title of the action";
             Mock<IAction> stubAction = AnAction.Called(titleOfTheAction).Mock();
 
-            var test = new ProcessActionPresenter(stubAction.Object);
+            var test = new ProcessActionPresenter(stubAction.Object, x => new[] {_fakeProcessor.Object});
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.DisplayName).
                 When(() => stubAction.Raise(x => x.PropertyChanged += null,
@@ -51,7 +52,7 @@ namespace Relax.Tests.Presenters
         [Fact]
         public void Initialize__PopulatesPresenters()
         {
-            var test = new ProcessActionPresenter(AnAction.Build());
+            var test = new ProcessActionPresenter(AnAction.Build(), x => new[] {_fakeProcessor.Object});
 
             test.Initialize();
 
@@ -62,13 +63,13 @@ namespace Relax.Tests.Presenters
         public void Apply__AppliesCurrentPresenter()
         {
             IAction action = AnAction.Build();
-            var test = new ProcessActionPresenter(action);
 
-            var mockProcessor = new Mock<IActionProcessorPresenter>();
             var mockCommand = new Mock<ICommand>();
-            mockProcessor.Setup(x => x.ApplyCommand).Returns(mockCommand.Object);
+            _fakeProcessor.Setup(x => x.ApplyCommand).Returns(mockCommand.Object);
 
-            test.CurrentPresenter = mockProcessor.Object;
+            var test = new ProcessActionPresenter(action, x => new[] {_fakeProcessor.Object});
+            test.Initialize();
+
             test.Apply();
 
             mockCommand.Verify(x => x.Execute(action));
