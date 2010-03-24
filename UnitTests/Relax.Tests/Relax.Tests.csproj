@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CD7E2A10-C842-49C8-A798-ABA0063029C0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Relax.Tests</RootNamespace>
+    <AssemblyName>Relax.Tests</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=1.4.4.561, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\Caliburn\Bin\NET-3.5\release\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Core, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\Caliburn\Bin\NET-3.5\release\Caliburn.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.PresentationFramework, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\Caliburn\Bin\NET-3.5\release\Caliburn.PresentationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Testability, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\Caliburn\Bin\NET-3.5\release\Caliburn.Testability.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=3.1.416.3, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\Moq\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="xunit, Version=1.5.0.1479, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\Gallio\bin\Xunit\xunit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Presenters\ActionDetailsPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ActionPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ActionsPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ActionTreeNodePresenterTestFixture.cs" />
+    <Compile Include="Presenters\BlockingActionsPresenterTestFixture.cs" />
+    <Compile Include="Presenters\CollectPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ContextPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ContextsPresenterTestFixture.cs" />
+    <Compile Include="Presenters\DoLaterPresenterTestFixture.cs" />
+    <Compile Include="Presenters\DoNowPresenterTestFixture.cs" />
+    <Compile Include="Presenters\DoNowCommandTestFixture.cs" />
+    <Compile Include="Presenters\InboxActionsPresenterTestFixture.cs" />
+    <Compile Include="Presenters\InputPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ItemPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ListPresenterTestFixture.cs" />
+    <Compile Include="Presenters\MakeProjectPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ProcessActionPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ProcessPresenterTestFixture.cs" />
+    <Compile Include="Presenters\ProjectsPresenterTestFixture.cs" />
+    <Compile Include="Presenters\WorkspacePresenterTestFixture.cs" />
+    <Compile Include="TestEntities\ITestItem.cs" />
+    <Compile Include="Presenters\ShellPresenterTestFixture.cs" />
+    <Compile Include="TestEntities\ITestItemPresenter.cs" />
+    <Compile Include="TestEntities\TestItemPresenter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ActionDetailsViewTestFixture.cs" />
+    <Compile Include="Views\ActionsViewTestFixture.cs" />
+    <Compile Include="Views\ActionViewTestFixture.cs" />
+    <Compile Include="Views\CollectViewTestFixture.cs" />
+    <Compile Include="Views\ContextsViewTestFixture.cs" />
+    <Compile Include="Views\ContextViewTestFixture.cs" />
+    <Compile Include="Views\DoLaterViewTestFixture.cs" />
+    <Compile Include="Views\DoNowViewTestFixture.cs" />
+    <Compile Include="Views\InputViewTestFixture.cs" />
+    <Compile Include="Views\MakeProjectViewTestFixture.cs" />
+    <Compile Include="Views\ProcessActionViewTestFixture.cs" />
+    <Compile Include="Views\ProcessViewTestFixture.cs" />
+    <Compile Include="Views\ProjectsViewTestFixture.cs" />
+    <Compile Include="Views\ShellViewTestFixture.cs" />
+    <Compile Include="Views\ViewTestFixtureBase.cs" />
+    <Compile Include="Views\WorkspaceViewTestFixture.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Relax.Domain\Relax.Domain.csproj">
+      <Project>{B153BEDB-EA89-447E-A4DB-6993ED6143D1}</Project>
+      <Name>Relax.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Relax.Infrastructure\Relax.Infrastructure.csproj">
+      <Project>{893AD8AB-D318-4690-8B24-EE1D6FE254F9}</Project>
+      <Name>Relax.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Relax\Relax.csproj">
+      <Project>{783A1A3D-CDB4-4121-9655-AA34516331A2}</Project>
+      <Name>Relax</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Relax.TestDataBuilders\Relax.TestDataBuilders.csproj">
+      <Project>{DC8E749B-48EE-4FB4-8108-7472288CCB54}</Project>
+      <Name>Relax.TestDataBuilders</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <!-- Give the correct path to the library stuff -->
+    <LibraryPath Condition=" '$(LibraryPath)' == '' ">..\..\Library\</LibraryPath>
+    <ReportsPath Condition=" '$(ReportsPath)' == '' ">..\..\Reports\</ReportsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(LibraryPath)\Extensions.targets" />
+  <ItemGroup>
+    <GallioTestedAssembly Include="$(OutDir)Relax.exe" />
+  </ItemGroup>
+</Project>

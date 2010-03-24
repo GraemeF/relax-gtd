@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Relax.Views.ActionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cal="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework"
+             AutomationProperties.AutomationId="Action">
+    <Border BorderBrush="Salmon"
+            BorderThickness="3"
+            CornerRadius="2">
+        <TextBox Text="{Binding Path=DisplayName, FallbackValue=Action}"
+                 ToolTip="The title of the action."
+                 IsReadOnly="{Binding IsReadOnly}"
+                 cal:Message.Attach="[Gesture Key: F2] = [Action Rename]; [Gesture Key: Return] = [Action FinishRename]"
+                 AutomationProperties.AutomationId="Title" />
+    </Border>
+</UserControl>
