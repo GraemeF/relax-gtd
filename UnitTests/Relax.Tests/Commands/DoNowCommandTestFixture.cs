@@ -1,11 +1,11 @@
 ﻿using System;
 using Moq;
+using Relax.Commands;
 using Relax.Infrastructure.Models.Interfaces;
-using Relax.Presenters;
 using Relax.TestDataBuilders;
 using Xunit;
 
-namespace Relax.Tests.Presenters
+namespace Relax.Tests.Commands
 {
     public class DoNowCommandTestFixture : TestDataBuilder
     {
