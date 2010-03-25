@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\DoLaterCommandTestFixture.cs" />
     <Compile Include="Presenters\ActionDetailsPresenterTestFixture.cs" />
     <Compile Include="Presenters\ActionPresenterTestFixture.cs" />
     <Compile Include="Presenters\ActionsPresenterTestFixture.cs" />
@@ -88,7 +89,7 @@
     <Compile Include="Presenters\ContextsPresenterTestFixture.cs" />
     <Compile Include="Presenters\DoLaterPresenterTestFixture.cs" />
     <Compile Include="Presenters\DoNowPresenterTestFixture.cs" />
-    <Compile Include="Presenters\DoNowCommandTestFixture.cs" />
+    <Compile Include="Commands\DoNowCommandTestFixture.cs" />
     <Compile Include="Presenters\InboxActionsPresenterTestFixture.cs" />
     <Compile Include="Presenters\InputPresenterTestFixture.cs" />
     <Compile Include="Presenters\ItemPresenterTestFixture.cs" />

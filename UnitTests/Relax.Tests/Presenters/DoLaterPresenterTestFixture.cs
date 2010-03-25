@@ -1,4 +1,5 @@
 using Moq;
+using Relax.Commands;
 using Relax.Presenters;
 using Relax.Presenters.Interfaces;
 using Xunit;
@@ -7,17 +8,29 @@ namespace Relax.Tests.Presenters
 {
     public class DoLaterPresenterTestFixture
     {
+        private readonly DoLaterCommand _applyCommand = new DoLaterCommand();
         private readonly Mock<IContextsPresenter> _stubContexts = new Mock<IContextsPresenter>();
         private readonly Mock<IActionDetailsPresenter> _stubDetails = new Mock<IActionDetailsPresenter>();
         private readonly Mock<IProjectsPresenter> _stubProjects = new Mock<IProjectsPresenter>();
 
         private DoLaterPresenter BuildDefaultDoLaterPresenter()
         {
-            return new DoLaterPresenter(_stubContexts.Object, _stubDetails.Object, _stubProjects.Object);
+            return new DoLaterPresenter(_applyCommand,
+                                        _stubContexts.Object,
+                                        _stubDetails.Object,
+                                        _stubProjects.Object);
+        }
+        
+        [Fact]
+        public void GettingApplyCommand__ReturnsDoLaterCommand()
+        {
+            var test = BuildDefaultDoLaterPresenter();
+
+            Assert.Same(_applyCommand, test.ApplyCommand);
         }
 
         [Fact]
-        public void Contexts__ReturnsContextsPresenter()
+        public void GettingContexts__ReturnsContextsPresenter()
         {
             DoLaterPresenter test = BuildDefaultDoLaterPresenter();
 
@@ -25,14 +38,14 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
-        public void Details__ReturnsActionDetailsPresenter()
+        public void GettingDetails__ReturnsActionDetailsPresenter()
         {
             DoLaterPresenter test = BuildDefaultDoLaterPresenter();
             Assert.Same(_stubDetails.Object, test.Details);
         }
 
         [Fact]
-        public void Projects__ReturnsProjectsPresenter()
+        public void GettingProjects__ReturnsProjectsPresenter()
         {
             DoLaterPresenter test = BuildDefaultDoLaterPresenter();
             Assert.Same(_stubProjects.Object, test.Projects);

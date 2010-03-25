@@ -1,6 +1,7 @@
 using System.Windows.Input;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
+using Relax.Commands;
 using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
