@@ -14,12 +14,4 @@ namespace Relax.Commands
             action.CompletedDate = DateTime.UtcNow;
         }
     }
-
-    [PerRequest(typeof (DoLaterCommand))]
-    public class DoLaterCommand : ActionCommand
-    {
-        protected override void Execute(IAction action)
-        {
-        }
-    }
 }

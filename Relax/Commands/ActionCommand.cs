@@ -6,18 +6,28 @@ namespace Relax.Commands
 {
     public abstract class ActionCommand : ICommand
     {
+        #region ICommand Members
+
         public void Execute(object parameter)
         {
-            Execute((IAction)parameter);
+            Execute((IAction) parameter);
         }
-
-        protected abstract void Execute(IAction action);
 
         public bool CanExecute(object parameter)
         {
-            return parameter is IAction;
+            var action = parameter as IAction;
+            return action != null && CanExecute(action);
         }
 
         public event EventHandler CanExecuteChanged;
+
+        #endregion
+
+        protected abstract void Execute(IAction action);
+
+        protected virtual bool CanExecute(IAction action)
+        {
+            return true;
+        }
     }
 }
