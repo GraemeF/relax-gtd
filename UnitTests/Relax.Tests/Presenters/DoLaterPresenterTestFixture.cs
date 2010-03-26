@@ -1,12 +1,16 @@
+using System;
+using System.ComponentModel;
 using Moq;
 using Relax.Commands;
+using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters;
 using Relax.Presenters.Interfaces;
+using Relax.TestDataBuilders;
 using Xunit;
 
 namespace Relax.Tests.Presenters
 {
-    public class DoLaterPresenterTestFixture
+    public class DoLaterPresenterTestFixture : TestDataBuilder
     {
         private readonly DoLaterCommand _applyCommand = new DoLaterCommand();
         private readonly Mock<IContextsPresenter> _stubContexts = new Mock<IContextsPresenter>();
@@ -20,11 +24,11 @@ namespace Relax.Tests.Presenters
                                         _stubDetails.Object,
                                         _stubProjects.Object);
         }
-        
+
         [Fact]
         public void GettingApplyCommand__ReturnsDoLaterCommand()
         {
-            var test = BuildDefaultDoLaterPresenter();
+            DoLaterPresenter test = BuildDefaultDoLaterPresenter();
 
             Assert.Same(_applyCommand, test.ApplyCommand);
         }
@@ -49,6 +53,24 @@ namespace Relax.Tests.Presenters
         {
             DoLaterPresenter test = BuildDefaultDoLaterPresenter();
             Assert.Same(_stubProjects.Object, test.Projects);
+        }
+
+        [Fact(Skip="in progress")]
+        public void GettingApplyCommandContext_WhenContextHasBeenSelected_IsTheContext()
+        {
+            DoLaterPresenter test = BuildDefaultDoLaterPresenter();
+
+            IGtdContext context = AContext.Build();
+            ContextIsSelected(context);
+
+            GC.KeepAlive(test);
+            Assert.Same(context, _applyCommand.Context);
+        }
+
+        private void ContextIsSelected(IGtdContext gtdContext)
+        {
+            _stubContexts.Setup(x => x.CurrentItem).Returns(gtdContext);
+            _stubContexts.Raise(x => x.PropertyChanged += null, new PropertyChangedEventArgs("CurrentItem"));
         }
     }
 }
