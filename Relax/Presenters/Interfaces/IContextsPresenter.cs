@@ -1,8 +1,8 @@
-using Caliburn.PresentationFramework.ApplicationModel;
+using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.Presenters.Interfaces
 {
-    public interface IContextsPresenter : IPresenterHost
+    public interface IContextsPresenter : IListPresenter<IGtdContext>
     {
     }
 }
