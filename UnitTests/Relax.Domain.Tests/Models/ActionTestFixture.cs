@@ -176,5 +176,16 @@ namespace Relax.Domain.Tests.Models
                 When(() => test.Context = newContext);
             Assert.Same(newContext, test.Context);
         }
+
+        [Fact]
+        public void AddBlockingAction_GivenAction_AddsActionToBlockingActions()
+        {
+            var test = new Action();
+
+            IAction blockingAction = AnAction.Build();
+            test.AddBlockingAction(blockingAction);
+
+            Assert.Contains(blockingAction, test.BlockingActions);
+        }
     }
 }

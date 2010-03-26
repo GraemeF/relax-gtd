@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Runtime.Serialization;
 using Caliburn.Core.Metadata;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
-using System.Diagnostics;
 
 namespace Relax.Domain.Models
 {
@@ -211,6 +211,15 @@ namespace Relax.Domain.Models
                     NotifyPropertyChanged(x => Context);
                 }
             }
+        }
+
+        #endregion
+
+        #region IAction Members
+
+        public void AddBlockingAction(IAction blockingAction)
+        {
+            BlockingActions.Add(blockingAction);
         }
 
         #endregion
