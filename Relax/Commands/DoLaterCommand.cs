@@ -9,6 +9,8 @@ namespace Relax.Commands
     {
         public IGtdContext Context { get; set; }
 
+        public IAction Project { get; set; }
+
         protected override bool CanExecute(IAction action)
         {
             return Context != null;
@@ -18,6 +20,9 @@ namespace Relax.Commands
         {
             action.ActionState = State.Committed;
             action.Context = Context;
+
+            if (Project != null)
+                Project.AddBlockingAction(action);
         }
     }
 }

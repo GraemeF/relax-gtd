@@ -18,5 +18,6 @@ namespace Relax.Infrastructure.Models.Interfaces
         IRepetition Repetition { get; set; }
         State ActionState { get; set; }
         IGtdContext Context { get; set; }
+        void AddBlockingAction(IAction blockingAction);
     }
 }
