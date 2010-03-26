@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\ActionCommand.cs" />
+    <Compile Include="Commands\DoLaterCommand.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Presenters\ActionPresenter.cs" />
     <Compile Include="Presenters\ActionsPresenter.cs" />
