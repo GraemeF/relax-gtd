@@ -55,10 +55,23 @@ namespace Relax.Tests.Presenters
             Assert.Same(_stubProjects.Object, test.Projects);
         }
 
-        [Fact(Skip="in progress")]
-        public void GettingApplyCommandContext_WhenContextHasBeenSelected_IsTheContext()
+        [Fact]
+        public void GettingContextsCurrentItem_Initially_ReturnsContextFromCommand()
+        {
+            IGtdContext context = AContext.Build();
+            _applyCommand.Context = context;
+
+            DoLaterPresenter test = BuildDefaultDoLaterPresenter();
+            test.Initialize();
+
+            _stubContexts.VerifySet(x => x.CurrentItem = context);
+        }
+
+        [Fact]
+        public void GettingApplyCommandContext_WhenContextHasBeenSelected_ReturnsTheContext()
         {
             DoLaterPresenter test = BuildDefaultDoLaterPresenter();
+            test.Initialize();
 
             IGtdContext context = AContext.Build();
             ContextIsSelected(context);
@@ -67,10 +80,29 @@ namespace Relax.Tests.Presenters
             Assert.Same(context, _applyCommand.Context);
         }
 
+        [Fact]
+        public void GettingApplyCommandProject_WhenProjectHasBeenSelected_ReturnsTheProject()
+        {
+            DoLaterPresenter test = BuildDefaultDoLaterPresenter();
+            test.Initialize();
+
+            IAction project = AnAction.Build();
+            ProjectIsSelected(project);
+
+            GC.KeepAlive(test);
+            Assert.Same(project, _applyCommand.Project);
+        }
+
         private void ContextIsSelected(IGtdContext gtdContext)
         {
             _stubContexts.Setup(x => x.CurrentItem).Returns(gtdContext);
             _stubContexts.Raise(x => x.PropertyChanged += null, new PropertyChangedEventArgs("CurrentItem"));
+        }
+
+        private void ProjectIsSelected(IAction project)
+        {
+            _stubProjects.Setup(x => x.CurrentItem).Returns(project);
+            _stubProjects.Raise(x => x.PropertyChanged += null, new PropertyChangedEventArgs("CurrentItem"));
         }
     }
 }
