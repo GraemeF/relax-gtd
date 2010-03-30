@@ -193,6 +193,7 @@
     <Compile Include="Presenters\Interfaces\IProcessPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IProjectsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IActionTreeNodePresenter.cs" />
+    <Compile Include="Presenters\Interfaces\ISingleSelector.cs" />
     <Compile Include="Presenters\Interfaces\IWorkspacePresenter.cs" />
     <Compile Include="Presenters\MakeProjectPresenter.cs" />
     <Compile Include="Presenters\ProcessActionPresenter.cs" />

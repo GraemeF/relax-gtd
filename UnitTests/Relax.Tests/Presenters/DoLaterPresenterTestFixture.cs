@@ -13,14 +13,14 @@ namespace Relax.Tests.Presenters
     public class DoLaterPresenterTestFixture : TestDataBuilder
     {
         private readonly DoLaterCommand _applyCommand = new DoLaterCommand();
-        private readonly Mock<IContextsPresenter> _stubContexts = new Mock<IContextsPresenter>();
+        private readonly Mock<ISingleSelector<IGtdContext>> _stubContextChooser = new Mock<ISingleSelector<IGtdContext>>();
         private readonly Mock<IActionDetailsPresenter> _stubDetails = new Mock<IActionDetailsPresenter>();
         private readonly Mock<IProjectsPresenter> _stubProjects = new Mock<IProjectsPresenter>();
 
         private DoLaterPresenter BuildDefaultDoLaterPresenter()
         {
             return new DoLaterPresenter(_applyCommand,
-                                        _stubContexts.Object,
+                                        _stubContextChooser.Object,
                                         _stubDetails.Object,
                                         _stubProjects.Object);
         }
@@ -38,7 +38,7 @@ namespace Relax.Tests.Presenters
         {
             DoLaterPresenter test = BuildDefaultDoLaterPresenter();
 
-            Assert.Same(_stubContexts.Object, test.Contexts);
+            Assert.Same(_stubContextChooser.Object, test.Contexts);
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace Relax.Tests.Presenters
             DoLaterPresenter test = BuildDefaultDoLaterPresenter();
             test.Initialize();
 
-            _stubContexts.VerifySet(x => x.CurrentItem = context);
+            _stubContextChooser.VerifySet(x => x.SelectedItem = context);
         }
 
         [Fact]
@@ -95,8 +95,8 @@ namespace Relax.Tests.Presenters
 
         private void ContextIsSelected(IGtdContext gtdContext)
         {
-            _stubContexts.Setup(x => x.CurrentItem).Returns(gtdContext);
-            _stubContexts.Raise(x => x.PropertyChanged += null, new PropertyChangedEventArgs("CurrentItem"));
+            _stubContextChooser.Setup(x => x.SelectedItem).Returns(gtdContext);
+            _stubContextChooser.Raise(x => x.PropertyChanged += null, new PropertyChangedEventArgs("SelectedItem"));
         }
 
         private void ProjectIsSelected(IAction project)
