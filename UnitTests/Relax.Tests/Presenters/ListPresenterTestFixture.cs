@@ -99,7 +99,7 @@ namespace Relax.Tests.Presenters
                 (ListPresenter<ITestItem, ITestItemPresenter>) new TestListPresenter(_stubModels, BuildItemPresenter);
             test.Initialize();
 
-            Assert.Same(firstItem, test.CurrentItem);
+            Assert.Same(firstItem, test.SelectedItem);
         }
 
         [Fact]
@@ -109,7 +109,7 @@ namespace Relax.Tests.Presenters
                 (ListPresenter<ITestItem, ITestItemPresenter>) new TestListPresenter(_stubModels, BuildItemPresenter);
             test.Initialize();
 
-            Assert.Null(test.CurrentItem);
+            Assert.Null(test.SelectedItem);
         }
 
         [Fact]
@@ -126,7 +126,7 @@ namespace Relax.Tests.Presenters
 
             _stubModels.Remove(firstItem);
 
-            Assert.Same(secondItem, test.CurrentItem);
+            Assert.Same(secondItem, test.SelectedItem);
         }
 
         [Fact]
@@ -138,10 +138,10 @@ namespace Relax.Tests.Presenters
             ITestItem item = new Mock<ITestItem>().Object;
             test.Initialize();
 
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.CurrentItem)
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.SelectedItem)
                 .When(() => _stubModels.Add(item));
 
-            Assert.Same(item, test.CurrentItem);
+            Assert.Same(item, test.SelectedItem);
         }
 
         [Fact]
@@ -152,10 +152,10 @@ namespace Relax.Tests.Presenters
             ITestItem item = new Mock<ITestItem>().Object;
             test.Initialize();
 
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.CurrentItem)
-                .When(() => test.CurrentItem = item);
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.SelectedItem)
+                .When(() => test.SelectedItem = item);
 
-            Assert.Same(item, test.CurrentItem);
+            Assert.Same(item, test.SelectedItem);
         }
 
         #region Nested type: TestListPresenter

@@ -5,7 +5,6 @@ using MvvmFoundation.Wpf;
 using Relax.Commands;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters.Interfaces;
-using Relax.Tests.Presenters;
 
 namespace Relax.Presenters
 {
@@ -14,12 +13,12 @@ namespace Relax.Presenters
     {
         private readonly DoLaterCommand _applyCommand;
         private PropertyObserver<ISingleSelector<IGtdContext>> _contextsObserver;
-        private PropertyObserver<IProjectsPresenter> _projectsObserver;
+        private PropertyObserver<IOptionalProjectSelector> _projectsObserver;
 
         public DoLaterPresenter(DoLaterCommand applyCommand,
                                 ISingleSelector<IGtdContext> contextsPresenter,
                                 IActionDetailsPresenter actionDetailsPresenter,
-                                IProjectsPresenter projectsPresenter)
+                                IOptionalProjectSelector projectsPresenter)
         {
             Contexts = contextsPresenter;
             Details = actionDetailsPresenter;
@@ -31,7 +30,7 @@ namespace Relax.Presenters
 
         public ISingleSelector<IGtdContext> Contexts { get; private set; }
         public IActionDetailsPresenter Details { get; private set; }
-        public IProjectsPresenter Projects { get; private set; }
+        public IOptionalProjectSelector Projects { get; private set; }
 
         public ICommand ApplyCommand
         {
@@ -57,9 +56,9 @@ namespace Relax.Presenters
 
         private void BindProject()
         {
-            Projects.CurrentItem = _applyCommand.Project;
-            _projectsObserver = new PropertyObserver<IProjectsPresenter>(Projects).
-                RegisterHandler(x => x.CurrentItem, y => _applyCommand.Project = y.CurrentItem);
+            Projects.SelectedItem = _applyCommand.Project;
+            _projectsObserver = new PropertyObserver<IOptionalProjectSelector>(Projects).
+                RegisterHandler(x => x.SelectedItem, y => _applyCommand.Project = y.SelectedItem);
         }
     }
 }

@@ -10,6 +10,6 @@ namespace Relax.Presenters.Interfaces
     {
         ISingleSelector<IGtdContext> Contexts { get; }
         IActionDetailsPresenter Details { get; }
-        IProjectsPresenter Projects { get; }
+        IOptionalProjectSelector Projects { get; }
     }
 }

@@ -23,7 +23,7 @@ namespace Relax.Presenters
 
         #region IListPresenter<TModel> Members
 
-        public TModel CurrentItem
+        public TModel SelectedItem
         {
             get
             {
@@ -39,7 +39,7 @@ namespace Relax.Presenters
         protected override void ChangeCurrentPresenterCore(IPresenter newCurrent)
         {
             base.ChangeCurrentPresenterCore(newCurrent);
-            NotifyOfPropertyChange(() => CurrentItem);
+            NotifyOfPropertyChange(() => SelectedItem);
         }
 
         protected override void OnInitialize()
@@ -100,7 +100,7 @@ namespace Relax.Presenters
                 items.Select(closedModel => Presenters.First(x => closedModel.Equals(((TModelPresenter) x).Model))).
                     ToList());
 
-            if (items.Contains(CurrentItem))
+            if (items.Contains(SelectedItem))
                 OpenFirstPresenter();
         }
 
