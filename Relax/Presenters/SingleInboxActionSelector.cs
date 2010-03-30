@@ -10,7 +10,7 @@ namespace Relax.Presenters
 {
     [PerRequest(typeof (ISingleInboxActionSelector))]
     [View(typeof (ActionsView))]
-    public class SingleInboxActionSelector : ListPresenter<IAction, IActionPresenter>, ISingleInboxActionSelector
+    public class SingleInboxActionSelector : SingleItemSelector<IAction, IActionPresenter>, ISingleInboxActionSelector
     {
         private readonly IInboxActionsFilter _inboxActionsFilter;
 

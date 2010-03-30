@@ -21,27 +21,6 @@ namespace Relax.Presenters
             _itemPresenterFactory = factory;
         }
 
-        #region IListPresenter<TModel> Members
-
-        public TModel SelectedItem
-        {
-            get
-            {
-                return CurrentPresenter != null
-                           ? ((TModelPresenter) CurrentPresenter).Model
-                           : null;
-            }
-            set { throw new NotImplementedException(); }
-        }
-
-        #endregion
-
-        protected override void ChangeCurrentPresenterCore(IPresenter newCurrent)
-        {
-            base.ChangeCurrentPresenterCore(newCurrent);
-            NotifyOfPropertyChange(() => SelectedItem);
-        }
-
         protected override void OnInitialize()
         {
             base.OnInitialize();
@@ -94,21 +73,11 @@ namespace Relax.Presenters
                 this.Open(_itemPresenterFactory(item));
         }
 
-        private void CloseItems(IEnumerable<TModel> items)
+        protected virtual void CloseItems(IEnumerable<TModel> items)
         {
             ClosePresenters(
                 items.Select(closedModel => Presenters.First(x => closedModel.Equals(((TModelPresenter) x).Model))).
                     ToList());
-
-            if (items.Contains(SelectedItem))
-                OpenFirstPresenter();
-        }
-
-        private void OpenFirstPresenter()
-        {
-            IPresenter firstOrDefault = Presenters.FirstOrDefault();
-            if (firstOrDefault != null)
-                this.Open(firstOrDefault);
         }
 
         private void ClosePresenter(TModelPresenter presenter)
