@@ -3,7 +3,9 @@ using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using MvvmFoundation.Wpf;
 using Relax.Commands;
+using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters.Interfaces;
+using Relax.Tests.Presenters;
 
 namespace Relax.Presenters
 {
@@ -11,11 +13,11 @@ namespace Relax.Presenters
     public class DoLaterPresenter : Presenter, IDoLaterPresenter
     {
         private readonly DoLaterCommand _applyCommand;
-        private PropertyObserver<IContextsPresenter> _contextsObserver;
+        private PropertyObserver<ISingleSelector<IGtdContext>> _contextsObserver;
         private PropertyObserver<IProjectsPresenter> _projectsObserver;
 
         public DoLaterPresenter(DoLaterCommand applyCommand,
-                                IContextsPresenter contextsPresenter,
+                                ISingleSelector<IGtdContext> contextsPresenter,
                                 IActionDetailsPresenter actionDetailsPresenter,
                                 IProjectsPresenter projectsPresenter)
         {
@@ -27,7 +29,7 @@ namespace Relax.Presenters
 
         #region IDoLaterPresenter Members
 
-        public IContextsPresenter Contexts { get; private set; }
+        public ISingleSelector<IGtdContext> Contexts { get; private set; }
         public IActionDetailsPresenter Details { get; private set; }
         public IProjectsPresenter Projects { get; private set; }
 
@@ -48,9 +50,9 @@ namespace Relax.Presenters
 
         private void BindContext()
         {
-            Contexts.CurrentItem = _applyCommand.Context;
-            _contextsObserver = new PropertyObserver<IContextsPresenter>(Contexts).
-                RegisterHandler(x => x.CurrentItem, y => _applyCommand.Context = y.CurrentItem);
+            Contexts.SelectedItem = _applyCommand.Context;
+            _contextsObserver = new PropertyObserver<ISingleSelector<IGtdContext>>(Contexts).
+                RegisterHandler(x => x.SelectedItem, y => _applyCommand.Context = y.SelectedItem);
         }
 
         private void BindProject()

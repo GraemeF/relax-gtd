@@ -1,3 +1,6 @@
+using Relax.Infrastructure.Models.Interfaces;
+using Relax.Tests.Presenters;
+
 namespace Relax.Presenters.Interfaces
 {
     /// <summary>
@@ -5,7 +8,7 @@ namespace Relax.Presenters.Interfaces
     /// </summary>
     public interface IDoLaterPresenter : IActionProcessorPresenter
     {
-        IContextsPresenter Contexts { get; }
+        ISingleSelector<IGtdContext> Contexts { get; }
         IActionDetailsPresenter Details { get; }
         IProjectsPresenter Projects { get; }
     }
