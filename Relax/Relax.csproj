@@ -205,6 +205,7 @@
     <Compile Include="Presenters\ItemPresenter.cs" />
     <Compile Include="Presenters\ListPresenter.cs" />
     <Compile Include="Presenters\ActionTreeNodePresenter.cs" />
+    <Compile Include="Presenters\SingleItemSelector.cs" />
     <Compile Include="Presenters\WorkspacePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

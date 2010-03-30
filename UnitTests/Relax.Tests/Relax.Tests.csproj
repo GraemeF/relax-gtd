@@ -98,6 +98,7 @@
     <Compile Include="Presenters\ProcessActionPresenterTestFixture.cs" />
     <Compile Include="Presenters\ProcessPresenterTestFixture.cs" />
     <Compile Include="Presenters\ProjectsPresenterTestFixture.cs" />
+    <Compile Include="Presenters\SingleItemSelectorTestFixture.cs" />
     <Compile Include="Presenters\WorkspacePresenterTestFixture.cs" />
     <Compile Include="TestEntities\ITestItem.cs" />
     <Compile Include="Presenters\ShellPresenterTestFixture.cs" />

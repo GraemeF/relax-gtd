@@ -1,6 +1,5 @@
 using System;
 using System.Collections.ObjectModel;
-using Caliburn.Testability.Extensions;
 using Moq;
 using Relax.Presenters;
 using Relax.Tests.TestEntities;
@@ -87,79 +86,6 @@ namespace Relax.Tests.Presenters
             _stubItemPresenter.Verify(x => x.Shutdown());
         }
 
-        [Fact]
-        public void GettingCurrentItem_Initially_ReturnsFirstItemInList()
-        {
-            ITestItem firstItem = new Mock<ITestItem>().Object;
-            _stubModels.Add(firstItem);
-            _stubModels.Add(new Mock<ITestItem>().Object);
-            _stubModels.Add(new Mock<ITestItem>().Object);
-
-            var test =
-                (ListPresenter<ITestItem, ITestItemPresenter>) new TestListPresenter(_stubModels, BuildItemPresenter);
-            test.Initialize();
-
-            Assert.Same(firstItem, test.SelectedItem);
-        }
-
-        [Fact]
-        public void GettingCurrentItem_WhenThereAreNoItems_IsNull()
-        {
-            var test =
-                (ListPresenter<ITestItem, ITestItemPresenter>) new TestListPresenter(_stubModels, BuildItemPresenter);
-            test.Initialize();
-
-            Assert.Null(test.SelectedItem);
-        }
-
-        [Fact]
-        public void GettingCurrentItem_WhenTheCurrentItemIsRemovedFromTheList_ChangesToTheNextItemInTheList()
-        {
-            ITestItem firstItem = new Mock<ITestItem>().Object;
-            ITestItem secondItem = new Mock<ITestItem>().Object;
-
-            _stubModels.Add(firstItem);
-            _stubModels.Add(secondItem);
-
-            var test = new TestListPresenter(_stubModels, BuildItemPresenter);
-            test.Initialize();
-
-            _stubModels.Remove(firstItem);
-
-            Assert.Same(secondItem, test.SelectedItem);
-        }
-
-        [Fact]
-        public void GettingCurrentItem_WhenAnItemIsAddedToAnEmptyList_ChangesToTheNewItem()
-        {
-            var test =
-                (ListPresenter<ITestItem, ITestItemPresenter>) new TestListPresenter(_stubModels, BuildItemPresenter);
-
-            ITestItem item = new Mock<ITestItem>().Object;
-            test.Initialize();
-
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.SelectedItem)
-                .When(() => _stubModels.Add(item));
-
-            Assert.Same(item, test.SelectedItem);
-        }
-
-        [Fact]
-        public void SettingCurrentItem_ToAModelInTheList_UpdatesCurrentItem()
-        {
-            var test = new TestListPresenter(_stubModels, BuildItemPresenter);
-
-            ITestItem item = new Mock<ITestItem>().Object;
-            test.Initialize();
-
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.SelectedItem)
-                .When(() => test.SelectedItem = item);
-
-            Assert.Same(item, test.SelectedItem);
-        }
-
-        #region Nested type: TestListPresenter
-
         private class TestListPresenter : ListPresenter<ITestItem, ITestItemPresenter>
         {
             public TestListPresenter(ObservableCollection<ITestItem> models, Func<ITestItem, ITestItemPresenter> func)
@@ -167,7 +93,5 @@ namespace Relax.Tests.Presenters
             {
             }
         }
-
-        #endregion
     }
 }
