@@ -34,7 +34,7 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
-        public void Presenters_WhenAItemIsRemovedFromTheWorkspace_ShutsDownItemPresenter()
+        public void GettingPresenters_WhenTheLastModelIsRemoved_IsEmpty()
         {
             var stubItem = new Mock<ITestItem>();
             _stubItemPresenter.Setup(x => x.Model).Returns(stubItem.Object);
@@ -49,7 +49,7 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
-        public void Presenters_WhenAItemIsAddedToTheModels_OpensItemPresenter()
+        public void GettingPresenters_WhenAModelIsAdded_ContainsOnePresenter()
         {
             ListPresenter<ITestItem, ITestItemPresenter> test = new TestListPresenter(_stubModels, BuildItemPresenter);
             test.Initialize();
@@ -60,7 +60,7 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
-        public void Presenters_WhenTheModelsListIsReset_ContainsCorrectItems()
+        public void GettingPresenters_WhenTheModelsListIsCleared_IsEmpty()
         {
             var models = new ObservableCollection<ITestItem> {new Mock<ITestItem>().Object};
 
@@ -88,7 +88,7 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
-        public void CurrentItem_Initially_ReturnsFirstItemInList()
+        public void GettingCurrentItem_Initially_ReturnsFirstItemInList()
         {
             ITestItem firstItem = new Mock<ITestItem>().Object;
             _stubModels.Add(firstItem);
@@ -103,7 +103,7 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
-        public void CurrentItem_WhenThereAreNoItems_IsNull()
+        public void GettingCurrentItem_WhenThereAreNoItems_IsNull()
         {
             var test =
                 (ListPresenter<ITestItem, ITestItemPresenter>) new TestListPresenter(_stubModels, BuildItemPresenter);
@@ -113,7 +113,7 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
-        public void CurrentItem_WhenTheCurrentItemIsRemovedFromTheList_ChangesToTheNextItemInTheList()
+        public void GettingCurrentItem_WhenTheCurrentItemIsRemovedFromTheList_ChangesToTheNextItemInTheList()
         {
             ITestItem firstItem = new Mock<ITestItem>().Object;
             ITestItem secondItem = new Mock<ITestItem>().Object;
@@ -130,7 +130,7 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
-        public void CurrentItem_WhenAnItemIsAddedToAnEmptyList_ChangesToTheNewItem()
+        public void GettingCurrentItem_WhenAnItemIsAddedToAnEmptyList_ChangesToTheNewItem()
         {
             var test =
                 (ListPresenter<ITestItem, ITestItemPresenter>) new TestListPresenter(_stubModels, BuildItemPresenter);
@@ -140,6 +140,20 @@ namespace Relax.Tests.Presenters
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.CurrentItem)
                 .When(() => _stubModels.Add(item));
+
+            Assert.Same(item, test.CurrentItem);
+        }
+
+        [Fact]
+        public void SettingCurrentItem_ToAModelInTheList_UpdatesCurrentItem()
+        {
+            var test = new TestListPresenter(_stubModels, BuildItemPresenter);
+
+            ITestItem item = new Mock<ITestItem>().Object;
+            test.Initialize();
+
+            test.AssertThatChangeNotificationIsRaisedBy(x => x.CurrentItem)
+                .When(() => test.CurrentItem = item);
 
             Assert.Same(item, test.CurrentItem);
         }

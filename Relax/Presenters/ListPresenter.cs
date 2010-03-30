@@ -31,6 +31,7 @@ namespace Relax.Presenters
                            ? ((TModelPresenter) CurrentPresenter).Model
                            : null;
             }
+            set { throw new NotImplementedException(); }
         }
 
         #endregion
