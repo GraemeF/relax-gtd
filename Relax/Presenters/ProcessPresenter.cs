@@ -11,28 +11,28 @@ namespace Relax.Presenters
     public class ProcessPresenter : MultiPresenterManager, IProcessPresenter
     {
         private readonly Func<IAction, IProcessActionPresenter> _processActionPresenterFactory;
-        private PropertyObserver<IInboxActionsPresenter> _currentActionObserver;
+        private PropertyObserver<ISingleInboxActionSelector> _currentActionObserver;
 
-        public ProcessPresenter(IInboxActionsPresenter inbox,
+        public ProcessPresenter(ISingleInboxActionSelector inbox,
                                 Func<IAction, IProcessActionPresenter> processActionPresenterFactory)
         {
             _processActionPresenterFactory = processActionPresenterFactory;
             Inbox = inbox;
 
-            _currentActionObserver = new PropertyObserver<IInboxActionsPresenter>(Inbox).
-                RegisterHandler(x => x.CurrentItem,
+            _currentActionObserver = new PropertyObserver<ISingleInboxActionSelector>(Inbox).
+                RegisterHandler(x => x.SelectedItem,
                                 y => OpenProcessActionPresenter());
         }
 
         #region IProcessPresenter Members
 
-        public IInboxActionsPresenter Inbox { get; private set; }
+        public ISingleInboxActionSelector Inbox { get; private set; }
 
         #endregion
 
         private void OpenProcessActionPresenter()
         {
-            IAction action = Inbox.CurrentItem;
+            IAction action = Inbox.SelectedItem;
 
             if (action != null)
                 this.Open(_processActionPresenterFactory(action));

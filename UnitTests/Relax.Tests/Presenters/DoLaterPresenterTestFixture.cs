@@ -15,7 +15,7 @@ namespace Relax.Tests.Presenters
         private readonly DoLaterCommand _applyCommand = new DoLaterCommand();
         private readonly Mock<ISingleSelector<IGtdContext>> _stubContextChooser = new Mock<ISingleSelector<IGtdContext>>();
         private readonly Mock<IActionDetailsPresenter> _stubDetails = new Mock<IActionDetailsPresenter>();
-        private readonly Mock<IProjectsPresenter> _stubProjects = new Mock<IProjectsPresenter>();
+        private readonly Mock<IOptionalProjectSelector> _stubProjects = new Mock<IOptionalProjectSelector>();
 
         private DoLaterPresenter BuildDefaultDoLaterPresenter()
         {
@@ -101,8 +101,8 @@ namespace Relax.Tests.Presenters
 
         private void ProjectIsSelected(IAction project)
         {
-            _stubProjects.Setup(x => x.CurrentItem).Returns(project);
-            _stubProjects.Raise(x => x.PropertyChanged += null, new PropertyChangedEventArgs("CurrentItem"));
+            _stubProjects.Setup(x => x.SelectedItem).Returns(project);
+            _stubProjects.Raise(x => x.PropertyChanged += null, new PropertyChangedEventArgs("SelectedItem"));
         }
     }
 }

@@ -8,13 +8,13 @@ using Relax.Views;
 
 namespace Relax.Presenters
 {
-    [PerRequest(typeof (IInboxActionsPresenter))]
+    [PerRequest(typeof (ISingleInboxActionSelector))]
     [View(typeof (ActionsView))]
-    public class InboxActionsPresenter : ListPresenter<IAction, IActionPresenter>, IInboxActionsPresenter
+    public class SingleInboxActionSelector : ListPresenter<IAction, IActionPresenter>, ISingleInboxActionSelector
     {
         private readonly IInboxActionsFilter _inboxActionsFilter;
 
-        public InboxActionsPresenter(IInboxActionsFilter inboxActionsFilter,
+        public SingleInboxActionSelector(IInboxActionsFilter inboxActionsFilter,
                                      Func<IAction, IActionPresenter> actionPresenterFactory)
             : base(inboxActionsFilter.Actions, actionPresenterFactory)
         {

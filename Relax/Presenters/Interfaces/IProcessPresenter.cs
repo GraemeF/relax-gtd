@@ -4,6 +4,6 @@ namespace Relax.Presenters.Interfaces
 {
     public interface IProcessPresenter : IPresenter
     {
-        IInboxActionsPresenter Inbox { get; }
+        ISingleInboxActionSelector Inbox { get; }
     }
 }

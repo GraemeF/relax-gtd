@@ -17,7 +17,7 @@ namespace Relax.Tests.Presenters
 
             var stubActionPresenter = new Mock<IActionPresenter>();
 
-            var test = new InboxActionsPresenter(AnInboxActionsFilter.Providing(inboxAction).Build(),
+            var test = new SingleInboxActionSelector(AnInboxActionsFilter.Providing(inboxAction).Build(),
                                                  action => stubActionPresenter.Object);
             test.Initialize();
 

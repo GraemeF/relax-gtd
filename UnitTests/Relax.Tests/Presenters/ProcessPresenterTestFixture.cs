@@ -8,7 +8,7 @@ namespace Relax.Tests.Presenters
 {
     public class ProcessPresenterTestFixture : TestDataBuilder
     {
-        private readonly Mock<IInboxActionsPresenter> _fakeInbox = new Mock<IInboxActionsPresenter>();
+        private readonly Mock<ISingleInboxActionSelector> _fakeInbox = new Mock<ISingleInboxActionSelector>();
 
         private ProcessPresenter BuildDefaultProcessPresenter()
         {
@@ -36,7 +36,7 @@ namespace Relax.Tests.Presenters
         [Fact]
         public void CurrentPresenter_WhenInboxHasACurrentItem_IsAPresenter()
         {
-            _fakeInbox.Setup(x => x.CurrentItem).Returns(AnAction.Build());
+            _fakeInbox.Setup(x => x.SelectedItem).Returns(AnAction.Build());
             ProcessPresenter test = BuildDefaultProcessPresenter();
 
             test.Initialize();

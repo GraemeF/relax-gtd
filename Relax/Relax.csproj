@@ -179,8 +179,8 @@
     <Compile Include="Presenters\Interfaces\IListPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IActionDetailsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IDoLaterPresenter.cs" />
-    <Compile Include="Presenters\InboxActionsPresenter.cs" />
-    <Compile Include="Presenters\Interfaces\IInboxActionsPresenter.cs" />
+    <Compile Include="Presenters\SingleInboxActionSelector.cs" />
+    <Compile Include="Presenters\Interfaces\ISingleInboxActionSelector.cs" />
     <Compile Include="Presenters\Interfaces\ICollectPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IActionsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IActionPresenter.cs" />
@@ -189,6 +189,9 @@
     <Compile Include="Presenters\Interfaces\IContextsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IInputPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IModelPresenter.cs" />
+    <Compile Include="Presenters\Interfaces\IMultipleSelector.cs" />
+    <Compile Include="Presenters\Interfaces\IOptionalProjectSelector.cs" />
+    <Compile Include="Presenters\Interfaces\IOptionalSelector.cs" />
     <Compile Include="Presenters\Interfaces\IProcessActionPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IProcessPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IProjectsPresenter.cs" />
