@@ -14,7 +14,7 @@ namespace Relax.Tests.Presenters
             var stubProjectPresenter = new Mock<IActionTreeNodePresenter>();
 
             var test =
-                new ProjectsPresenter(AProjectsFilter.Providing(AnAction.Build()).Build(),
+                new ProjectSelector(AProjectsFilter.Providing(AnAction.Build()).Build(),
                                       action => stubProjectPresenter.Object);
             test.Initialize();
 
