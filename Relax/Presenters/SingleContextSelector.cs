@@ -12,9 +12,10 @@ namespace Relax.Presenters
         private readonly IWorkspace _workspace;
 
         public SingleContextSelector(IWorkspace workspace,
-                                 Func<IGtdContext, IGtdContextPresenter> contextPresenterFactory,
-                                 Func<IGtdContext> contextFactory)
-            : base(workspace.Contexts, contextPresenterFactory)
+                                     Func<IGtdContext, IGtdContextPresenter> contextPresenterFactory,
+                                     Func<IGtdContext> contextFactory,
+                                     AlwaysSelectedPolicy selectionPolicy)
+            : base(workspace.Contexts, contextPresenterFactory, selectionPolicy)
         {
             _workspace = workspace;
             _contextFactory = contextFactory;

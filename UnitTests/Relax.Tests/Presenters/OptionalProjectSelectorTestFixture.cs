@@ -1,6 +1,5 @@
 ﻿using Moq;
 using Relax.Domain.Filters.Interfaces;
-using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters;
 using Relax.Presenters.Interfaces;
 using Relax.TestDataBuilders;
@@ -15,7 +14,8 @@ namespace Relax.Tests.Presenters
         private OptionalProjectSelector BuildTestSubject()
         {
             return new OptionalProjectSelector(new Mock<IProjectsFilter>().Object,
-                                               x => _stubProjectPresenter.Object);
+                                               x => _stubProjectPresenter.Object,
+                                               new AllowNullSelectionPolicy());
         }
 
         [Fact]
@@ -26,7 +26,7 @@ namespace Relax.Tests.Presenters
             Assert.Null(test.SelectedItem);
         }
 
-        [Fact] 
+        [Fact]
         public void SettingSelectedItem_ToNullWhenThereIsASelectedItem_UpdatesSelectedItem()
         {
             OptionalProjectSelector test = BuildTestSubject();

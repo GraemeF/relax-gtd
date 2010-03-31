@@ -15,8 +15,9 @@ namespace Relax.Presenters
         private readonly IInboxActionsFilter _inboxActionsFilter;
 
         public SingleInboxActionSelector(IInboxActionsFilter inboxActionsFilter,
-                                     Func<IAction, IActionPresenter> actionPresenterFactory)
-            : base(inboxActionsFilter.Actions, actionPresenterFactory)
+                                         Func<IAction, IActionPresenter> actionPresenterFactory,
+                                         AlwaysSelectedPolicy selectionPolicy)
+            : base(inboxActionsFilter.Actions, actionPresenterFactory, selectionPolicy)
         {
             _inboxActionsFilter = inboxActionsFilter;
         }

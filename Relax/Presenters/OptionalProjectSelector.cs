@@ -6,12 +6,14 @@ using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
-    [PerRequest(typeof(IOptionalProjectSelector))]
-    public class OptionalProjectSelector : OptionalItemSelector<IAction,IActionTreeNodePresenter>, IOptionalProjectSelector
+    [PerRequest(typeof (IOptionalProjectSelector))]
+    public class OptionalProjectSelector : SingleItemSelector<IAction, IActionTreeNodePresenter>,
+                                           IOptionalProjectSelector
     {
         public OptionalProjectSelector(IProjectsFilter filter,
-                                       Func<IAction, IActionTreeNodePresenter> presenterFactory)
-            : base(filter.Actions, presenterFactory)
+                                       Func<IAction, IActionTreeNodePresenter> presenterFactory,
+                                       AllowNullSelectionPolicy selectionPolicy)
+            : base(filter.Actions, presenterFactory, selectionPolicy)
         {
         }
     }
