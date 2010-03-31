@@ -168,6 +168,8 @@
     <Compile Include="Presenters\ActionsPresenter.cs" />
     <Compile Include="Presenters\BlockingActionsPresenter.cs" />
     <Compile Include="Presenters\CollectPresenter.cs" />
+    <Compile Include="Presenters\OptionalItemSelector.cs" />
+    <Compile Include="Presenters\OptionalProjectSelector.cs" />
     <Compile Include="Presenters\SingleContextSelector.cs" />
     <Compile Include="Presenters\ContextPresenter.cs" />
     <Compile Include="Presenters\DoLaterPresenter.cs" />
@@ -190,7 +192,7 @@
     <Compile Include="Presenters\Interfaces\IModelPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IMultipleSelector.cs" />
     <Compile Include="Presenters\Interfaces\IOptionalProjectSelector.cs" />
-    <Compile Include="Presenters\Interfaces\IOptionalSelector.cs" />
+    <Compile Include="Presenters\Interfaces\IOptionalItemSelector.cs" />
     <Compile Include="Presenters\Interfaces\IProcessActionPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IProcessPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IProjectsPresenter.cs" />
@@ -199,7 +201,7 @@
     <Compile Include="Presenters\Interfaces\IWorkspacePresenter.cs" />
     <Compile Include="Presenters\MakeProjectPresenter.cs" />
     <Compile Include="Presenters\ProcessActionPresenter.cs" />
-    <Compile Include="Presenters\ProjectsPresenter.cs" />
+    <Compile Include="Presenters\ProjectSelector.cs" />
     <Compile Include="Presenters\ProcessPresenter.cs" />
     <Compile Include="Presenters\ItemPresenter.cs" />
     <Compile Include="Presenters\ListPresenter.cs" />

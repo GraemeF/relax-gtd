@@ -1,6 +1,6 @@
 using Relax.Presenters.Interfaces;
 
-namespace Relax.Tests.Presenters
+namespace Relax.Presenters
 {
     public class MakeProjectPresenter
     {

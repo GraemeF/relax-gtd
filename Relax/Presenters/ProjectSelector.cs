@@ -7,9 +7,9 @@ using Relax.Presenters.Interfaces;
 namespace Relax.Presenters
 {
     [PerRequest(typeof (IProjectsPresenter))]
-    public class ProjectsPresenter : ListPresenter<IAction, IActionTreeNodePresenter>, IProjectsPresenter
+    public class ProjectSelector : OptionalItemSelector<IAction, IActionTreeNodePresenter>, IProjectsPresenter
     {
-        public ProjectsPresenter(IProjectsFilter projectsFilter,
+        public ProjectSelector(IProjectsFilter projectsFilter,
                                  Func<IAction, IActionTreeNodePresenter> actionPresenterFactory)
             : base(projectsFilter.Actions, actionPresenterFactory)
         {
