@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Relax.Tests.Presenters
 {
-    public class ContextsPresenterTestFixture : TestDataBuilder
+    public class SingleContextSelectorTestFixture : TestDataBuilder
     {
         private readonly Mock<IGtdContextPresenter> _stubContextPresenter = new Mock<IGtdContextPresenter>();
         private readonly Mock<IGtdContext> _stubNewContext = new Mock<IGtdContext>();
@@ -16,8 +16,8 @@ namespace Relax.Tests.Presenters
         private SingleContextSelector BuildDefaultContextsPresenter()
         {
             return new SingleContextSelector(_stubWorkspace,
-                                         x => _stubContextPresenter.Object,
-                                         () => _stubNewContext.Object);
+                                             x => _stubContextPresenter.Object,
+                                             () => _stubNewContext.Object);
         }
 
         [Fact]
