@@ -18,7 +18,8 @@ namespace Relax.Tests.Presenters
             var stubActionPresenter = new Mock<IActionPresenter>();
 
             var test = new SingleInboxActionSelector(AnInboxActionsFilter.Providing(inboxAction).Build(),
-                                                 action => stubActionPresenter.Object);
+                                                     action => stubActionPresenter.Object,
+                                                     new AlwaysSelectedPolicy());
             test.Initialize();
 
             Assert.Contains(stubActionPresenter.Object, test.Presenters);

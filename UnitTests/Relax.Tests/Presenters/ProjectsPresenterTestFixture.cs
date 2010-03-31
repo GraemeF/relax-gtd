@@ -15,7 +15,8 @@ namespace Relax.Tests.Presenters
 
             var test =
                 new ProjectSelector(AProjectsFilter.Providing(AnAction.Build()).Build(),
-                                      action => stubProjectPresenter.Object);
+                                    action => stubProjectPresenter.Object,
+                                    new AllowNullSelectionPolicy());
             test.Initialize();
 
             Assert.Contains(stubProjectPresenter.Object, test.Presenters);

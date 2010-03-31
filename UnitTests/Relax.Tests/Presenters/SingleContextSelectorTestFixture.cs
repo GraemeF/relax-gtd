@@ -17,7 +17,8 @@ namespace Relax.Tests.Presenters
         {
             return new SingleContextSelector(_stubWorkspace,
                                              x => _stubContextPresenter.Object,
-                                             () => _stubNewContext.Object);
+                                             () => _stubNewContext.Object,
+                                             new AlwaysSelectedPolicy());
         }
 
         [Fact]

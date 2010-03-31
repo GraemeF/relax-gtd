@@ -12,10 +12,14 @@ namespace Relax.Presenters
         where TModelPresenter : IModelPresenter<TModel>
         where TModel : class
     {
+        private readonly ISelectionPolicy _selectionPolicy;
+
         protected SingleItemSelector(ObservableCollection<TModel> collection,
-                                     Func<TModel, TModelPresenter> factory)
+                                     Func<TModel, TModelPresenter> factory,
+                                     ISelectionPolicy selectionPolicy)
             : base(collection, factory)
         {
+            _selectionPolicy = selectionPolicy;
         }
 
         #region ISingleSelector<TModel> Members
@@ -30,20 +34,14 @@ namespace Relax.Presenters
             }
             set
             {
+                TModel newSelection = _selectionPolicy.ModifySelectedItem(this, value);
                 this.Open(Presenters.
                               Cast<TModelPresenter>().
-                              First(x => x.Model == value));
+                              First(x => x.Model == newSelection));
             }
         }
 
         #endregion
-
-        private void OpenFirstPresenter()
-        {
-            IPresenter firstOrDefault = Presenters.FirstOrDefault();
-            if (firstOrDefault != null)
-                this.Open(firstOrDefault);
-        }
 
         protected override void ChangeCurrentPresenterCore(IPresenter newCurrent)
         {
@@ -56,7 +54,7 @@ namespace Relax.Presenters
             base.CloseItems(items);
 
             if (items.Contains(SelectedItem))
-                OpenFirstPresenter();
+                SelectedItem = _selectionPolicy.ModifySelectedItem(this, null);
         }
     }
 }

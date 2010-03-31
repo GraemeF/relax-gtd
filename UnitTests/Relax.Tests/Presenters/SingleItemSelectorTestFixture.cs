@@ -10,6 +10,7 @@ namespace Relax.Tests.Presenters
 {
     public class SingleItemSelectorTestFixture
     {
+        private readonly ISelectionPolicy _selectionPolicy = new Mock<ISelectionPolicy>().Object;
         private readonly ObservableCollection<ITestItem> _stubModels = new ObservableCollection<ITestItem>();
 
         private static ITestItemPresenter BuildItemPresenter(ITestItem model)
@@ -28,16 +29,21 @@ namespace Relax.Tests.Presenters
             _stubModels.Add(new Mock<ITestItem>().Object);
             _stubModels.Add(new Mock<ITestItem>().Object);
 
-            var test = new TestSingleItemSelector(_stubModels, BuildItemPresenter);
+            TestSingleItemSelector test = BuildTestSubject();
             test.Initialize();
 
             Assert.Same(firstItem, test.SelectedItem);
         }
 
+        private TestSingleItemSelector BuildTestSubject()
+        {
+            return new TestSingleItemSelector(_stubModels, BuildItemPresenter, _selectionPolicy);
+        }
+
         [Fact]
         public void GettingSelectedItem_WhenThereAreNoItems_IsNull()
         {
-            var test = new TestSingleItemSelector(_stubModels, BuildItemPresenter);
+            TestSingleItemSelector test = BuildTestSubject();
             test.Initialize();
 
             Assert.Null(test.SelectedItem);
@@ -52,7 +58,7 @@ namespace Relax.Tests.Presenters
             _stubModels.Add(firstItem);
             _stubModels.Add(secondItem);
 
-            var test = new TestSingleItemSelector(_stubModels, BuildItemPresenter);
+            TestSingleItemSelector test = BuildTestSubject();
             test.Initialize();
 
             _stubModels.Remove(firstItem);
@@ -63,7 +69,7 @@ namespace Relax.Tests.Presenters
         [Fact]
         public void GettingSelectedItem_WhenAnItemIsAddedToAnEmptyList_ChangesToTheNewItem()
         {
-            var test = new TestSingleItemSelector(_stubModels, BuildItemPresenter);
+            TestSingleItemSelector test = BuildTestSubject();
 
             ITestItem item = new Mock<ITestItem>().Object;
             test.Initialize();
@@ -82,7 +88,7 @@ namespace Relax.Tests.Presenters
             ITestItem item = new Mock<ITestItem>().Object;
             _stubModels.Add(item);
 
-            var test = new TestSingleItemSelector(_stubModels, BuildItemPresenter);
+            TestSingleItemSelector test = BuildTestSubject();
             test.Initialize();
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.SelectedItem)
@@ -96,8 +102,9 @@ namespace Relax.Tests.Presenters
         private class TestSingleItemSelector : SingleItemSelector<ITestItem, ITestItemPresenter>
         {
             public TestSingleItemSelector(ObservableCollection<ITestItem> models,
-                                          Func<ITestItem, ITestItemPresenter> func)
-                : base(models, func)
+                                          Func<ITestItem, ITestItemPresenter> func,
+                                          ISelectionPolicy selectionPolicy)
+                : base(models, func, selectionPolicy)
             {
             }
         }
