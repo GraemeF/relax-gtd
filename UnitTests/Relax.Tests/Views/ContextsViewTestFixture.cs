@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Relax.Tests.Views
 {
-    public class ContextsViewTestFixture : ViewTestFixtureBase<ContextsView, ContextsPresenter>
+    public class ContextsViewTestFixture : ViewTestFixtureBase<ContextsView, SingleContextSelector>
     {
         [Fact]
         public void Constructor__BindsWithoutError()

@@ -13,9 +13,9 @@ namespace Relax.Tests.Presenters
         private readonly Mock<IGtdContext> _stubNewContext = new Mock<IGtdContext>();
         private readonly IWorkspace _stubWorkspace = AWorkspace.Build();
 
-        private ContextsPresenter BuildDefaultContextsPresenter()
+        private SingleContextSelector BuildDefaultContextsPresenter()
         {
-            return new ContextsPresenter(_stubWorkspace,
+            return new SingleContextSelector(_stubWorkspace,
                                          x => _stubContextPresenter.Object,
                                          () => _stubNewContext.Object);
         }

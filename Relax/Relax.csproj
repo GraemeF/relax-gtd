@@ -168,7 +168,7 @@
     <Compile Include="Presenters\ActionsPresenter.cs" />
     <Compile Include="Presenters\BlockingActionsPresenter.cs" />
     <Compile Include="Presenters\CollectPresenter.cs" />
-    <Compile Include="Presenters\ContextsPresenter.cs" />
+    <Compile Include="Presenters\SingleContextSelector.cs" />
     <Compile Include="Presenters\ContextPresenter.cs" />
     <Compile Include="Presenters\DoLaterPresenter.cs" />
     <Compile Include="Commands\DoNowCommand.cs" />
@@ -186,7 +186,6 @@
     <Compile Include="Presenters\Interfaces\IActionPresenter.cs" />
     <Compile Include="Presenters\InputPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IGtdContextPresenter.cs" />
-    <Compile Include="Presenters\Interfaces\IContextsPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IInputPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IModelPresenter.cs" />
     <Compile Include="Presenters\Interfaces\IMultipleSelector.cs" />
