@@ -86,7 +86,7 @@
     <Compile Include="Presenters\BlockingActionsPresenterTestFixture.cs" />
     <Compile Include="Presenters\CollectPresenterTestFixture.cs" />
     <Compile Include="Presenters\ContextPresenterTestFixture.cs" />
-    <Compile Include="Presenters\ContextsPresenterTestFixture.cs" />
+    <Compile Include="Presenters\SingleContextSelectorTestFixture.cs" />
     <Compile Include="Presenters\DoLaterPresenterTestFixture.cs" />
     <Compile Include="Presenters\DoNowPresenterTestFixture.cs" />
     <Compile Include="Commands\DoNowCommandTestFixture.cs" />
