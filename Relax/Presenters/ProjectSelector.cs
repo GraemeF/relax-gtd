@@ -2,6 +2,7 @@ using System;
 using Caliburn.Core.Metadata;
 using Relax.Domain.Filters.Interfaces;
 using Relax.Infrastructure.Models.Interfaces;
+using Relax.Policies;
 using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
@@ -11,7 +12,7 @@ namespace Relax.Presenters
     {
         public ProjectSelector(IProjectsFilter projectsFilter,
                                Func<IAction, IActionTreeNodePresenter> actionPresenterFactory,
-                               AllowNullSelectionPolicy selectionPolicy)
+                               AlwaysSelectedPolicy selectionPolicy)
             : base(projectsFilter.Actions, actionPresenterFactory, selectionPolicy)
         {
         }

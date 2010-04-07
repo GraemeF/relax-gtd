@@ -4,11 +4,11 @@ namespace Relax.Presenters
 {
     public class MakeProjectPresenter
     {
-        public MakeProjectPresenter(IProjectsPresenter projectsPresenter)
+        public MakeProjectPresenter(IOptionalProjectSelector projectSelector)
         {
-            Projects = projectsPresenter;
+            Projects = projectSelector;
         }
 
-        public IProjectsPresenter Projects { get; private set; }
+        public IOptionalProjectSelector Projects { get; private set; }
     }
 }

@@ -35,9 +35,15 @@ namespace Relax.Presenters
             set
             {
                 TModel newSelection = _selectionPolicy.ModifySelectedItem(this, value);
-                this.Open(Presenters.
-                              Cast<TModelPresenter>().
-                              First(x => x.Model == newSelection));
+                if (newSelection != null)
+                    this.Open(Presenters.
+                                  Cast<TModelPresenter>().
+                                  First(x => x.Model == newSelection));
+                else
+                {
+                    this.ShutdownCurrent();
+                    CurrentPresenter = null;
+                }
             }
         }
 
@@ -54,7 +60,7 @@ namespace Relax.Presenters
             base.CloseItems(items);
 
             if (items.Contains(SelectedItem))
-                SelectedItem = _selectionPolicy.ModifySelectedItem(this, null);
+                SelectedItem = null;
         }
     }
 }

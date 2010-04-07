@@ -1,5 +1,6 @@
 ﻿using Moq;
 using Relax.Domain.Filters.Interfaces;
+using Relax.Policies;
 using Relax.Presenters;
 using Relax.Presenters.Interfaces;
 using Relax.TestDataBuilders;
@@ -16,6 +17,20 @@ namespace Relax.Tests.Presenters
             return new OptionalProjectSelector(new Mock<IProjectsFilter>().Object,
                                                x => _stubProjectPresenter.Object,
                                                new AllowNullSelectionPolicy());
+        }
+
+        [Fact]
+        public void TopLevelProjects_WhenWorkspaceContainsAnActionThatIsBlockedButNotBlocking_ReturnsAction()
+        {
+            var stubProjectPresenter = new Mock<IActionTreeNodePresenter>();
+
+            var test =
+                new OptionalProjectSelector(AProjectsFilter.Providing(AnAction.Build()).Build(),
+                                            action => stubProjectPresenter.Object,
+                                            new AllowNullSelectionPolicy());
+            test.Initialize();
+
+            Assert.Contains(stubProjectPresenter.Object, test.Presenters);
         }
 
         [Fact]

@@ -4,6 +4,6 @@ namespace Relax.Presenters
 {
     public interface ISelectionPolicy
     {
-        TItem ModifySelectedItem<TItem>(ISingleSelector<TItem> selector, TItem item);
+        TItem ModifySelectedItem<TItem>(ISingleSelector<TItem> selector, TItem item) where TItem : class;
     }
 }

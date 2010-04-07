@@ -3,6 +3,7 @@ using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Relax.Domain.Filters.Interfaces;
 using Relax.Infrastructure.Models.Interfaces;
+using Relax.Policies;
 using Relax.Presenters.Interfaces;
 using Relax.Views;
 
