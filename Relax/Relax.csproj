@@ -166,8 +166,8 @@
     <Compile Include="Options.cs" />
     <Compile Include="Presenters\ActionPresenter.cs" />
     <Compile Include="Presenters\ActionsPresenter.cs" />
-    <Compile Include="Presenters\AllowNullSelectionPolicy.cs" />
-    <Compile Include="Presenters\AlwaysSelectedPolicy.cs" />
+    <Compile Include="Policies\AllowNullSelectionPolicy.cs" />
+    <Compile Include="Policies\AlwaysSelectedPolicy.cs" />
     <Compile Include="Presenters\BlockingActionsPresenter.cs" />
     <Compile Include="Presenters\CollectPresenter.cs" />
     <Compile Include="Presenters\ISelectionPolicy.cs" />

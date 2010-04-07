@@ -10,7 +10,7 @@ namespace Relax.Tests.Presenters
         [Fact]
         public void Projects__ReturnsProjectsPresenter()
         {
-            var stubProjects = new Mock<IProjectsPresenter>();
+            var stubProjects = new Mock<IOptionalProjectSelector>();
             var test = new MakeProjectPresenter(stubProjects.Object);
 
             Assert.Same(stubProjects.Object, test.Projects);

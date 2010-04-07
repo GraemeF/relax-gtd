@@ -10,7 +10,7 @@ namespace Relax.Tests.Presenters
 {
     public class SingleItemSelectorTestFixture
     {
-        private readonly ISelectionPolicy _selectionPolicy = new Mock<ISelectionPolicy>().Object;
+        private readonly Mock<ISelectionPolicy> _fakeSelectionPolicy = new Mock<ISelectionPolicy>();
         private readonly ObservableCollection<ITestItem> _stubModels = new ObservableCollection<ITestItem>();
 
         private static ITestItemPresenter BuildItemPresenter(ITestItem model)
@@ -37,7 +37,7 @@ namespace Relax.Tests.Presenters
 
         private TestSingleItemSelector BuildTestSubject()
         {
-            return new TestSingleItemSelector(_stubModels, BuildItemPresenter, _selectionPolicy);
+            return new TestSingleItemSelector(_stubModels, BuildItemPresenter, _fakeSelectionPolicy.Object);
         }
 
         [Fact]
@@ -50,20 +50,46 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
-        public void GettingSelectedItem_WhenTheSelectedItemIsRemovedFromTheList_ChangesToTheNextItemInTheList()
+        public void GettingSelectedItem_AfterSelectionHasChanged_ReturnsTheItemSuppliedByTheSelectionPolicy()
         {
             ITestItem firstItem = new Mock<ITestItem>().Object;
-            ITestItem secondItem = new Mock<ITestItem>().Object;
 
             _stubModels.Add(firstItem);
-            _stubModels.Add(secondItem);
 
             TestSingleItemSelector test = BuildTestSubject();
             test.Initialize();
 
+            _fakeSelectionPolicy.
+                Setup(x => x.ModifySelectedItem(test, null)).
+                Returns(firstItem);
+
+            test.SelectedItem = null;
+
+            Assert.Same(firstItem, test.SelectedItem);
+        }
+
+        [Fact(Skip = "Shouldn't be using the active presenter for this.")]
+        public void GettingSelectedItem_AfterSelectedItemIsRemovedFromTheList_ReturnsTheItemSuppliedByTheSelectionPolicy
+            ()
+        {
+            ITestItem firstItem = new Mock<ITestItem>().Object;
+
+            _stubModels.Add(firstItem);
+
+            TestSingleItemSelector test = BuildTestSubject();
+            test.Initialize();
+
+            test.SelectedItem = firstItem;
+
+            _fakeSelectionPolicy.
+                Setup(x => x.ModifySelectedItem(test, null)).
+                Returns((ITestItem) null).
+                Verifiable();
+
             _stubModels.Remove(firstItem);
 
-            Assert.Same(secondItem, test.SelectedItem);
+            Assert.Same(null, test.SelectedItem);
+            _fakeSelectionPolicy.VerifyAll();
         }
 
         [Fact]
@@ -76,23 +102,6 @@ namespace Relax.Tests.Presenters
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.SelectedItem)
                 .When(() => _stubModels.Add(item));
-
-            Assert.Same(item, test.SelectedItem);
-        }
-
-        [Fact]
-        public void SettingSelectedItem_ToAModelInTheList_UpdatesSelectedItem()
-        {
-            _stubModels.Add(new Mock<ITestItem>().Object);
-
-            ITestItem item = new Mock<ITestItem>().Object;
-            _stubModels.Add(item);
-
-            TestSingleItemSelector test = BuildTestSubject();
-            test.Initialize();
-
-            test.AssertThatChangeNotificationIsRaisedBy(x => x.SelectedItem)
-                .When(() => test.SelectedItem = item);
 
             Assert.Same(item, test.SelectedItem);
         }

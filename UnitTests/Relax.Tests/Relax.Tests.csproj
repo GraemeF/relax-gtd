@@ -79,6 +79,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\DoLaterCommandTestFixture.cs" />
+    <Compile Include="Policies\AllowNullSelectionPolicyTestFixture.cs" />
+    <Compile Include="Policies\AlwaysSelectedPolicyTestFixture.cs" />
     <Compile Include="Presenters\ActionDetailsPresenterTestFixture.cs" />
     <Compile Include="Presenters\ActionPresenterTestFixture.cs" />
     <Compile Include="Presenters\ActionsPresenterTestFixture.cs" />
@@ -98,7 +100,6 @@
     <Compile Include="Presenters\MakeProjectPresenterTestFixture.cs" />
     <Compile Include="Presenters\ProcessActionPresenterTestFixture.cs" />
     <Compile Include="Presenters\ProcessPresenterTestFixture.cs" />
-    <Compile Include="Presenters\ProjectsPresenterTestFixture.cs" />
     <Compile Include="Presenters\SingleItemSelectorTestFixture.cs" />
     <Compile Include="Presenters\WorkspacePresenterTestFixture.cs" />
     <Compile Include="TestEntities\ITestItem.cs" />

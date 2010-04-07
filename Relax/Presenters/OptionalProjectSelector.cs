@@ -2,6 +2,7 @@
 using Caliburn.Core.Metadata;
 using Relax.Domain.Filters.Interfaces;
 using Relax.Infrastructure.Models.Interfaces;
+using Relax.Policies;
 using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
