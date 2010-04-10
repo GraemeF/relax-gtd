@@ -14,6 +14,8 @@ namespace Relax.Presenters
     {
         private readonly ISelectionPolicy _selectionPolicy;
 
+        private TModel _selectedItem;
+
         protected SingleItemSelector(ObservableCollection<TModel> collection,
                                      Func<TModel, TModelPresenter> factory,
                                      ISelectionPolicy selectionPolicy)
@@ -26,34 +28,19 @@ namespace Relax.Presenters
 
         public TModel SelectedItem
         {
-            get
-            {
-                return CurrentPresenter != null
-                           ? ((TModelPresenter) CurrentPresenter).Model
-                           : null;
-            }
+            get { return _selectedItem; }
             set
             {
-                TModel newSelection = _selectionPolicy.ModifySelectedItem(this, value);
-                if (newSelection != null)
+                _selectedItem = _selectionPolicy.ModifySelectedItem(this, value);
+                if (_selectedItem != null)
                     this.Open(Presenters.
                                   Cast<TModelPresenter>().
-                                  First(x => x.Model == newSelection));
-                else
-                {
-                    this.ShutdownCurrent();
-                    CurrentPresenter = null;
-                }
+                                  First(x => x.Model == _selectedItem));
+                NotifyOfPropertyChange(() => SelectedItem);
             }
         }
 
         #endregion
-
-        protected override void ChangeCurrentPresenterCore(IPresenter newCurrent)
-        {
-            base.ChangeCurrentPresenterCore(newCurrent);
-            NotifyOfPropertyChange(() => SelectedItem);
-        }
 
         protected override void CloseItems(IEnumerable<TModel> items)
         {
@@ -61,6 +48,18 @@ namespace Relax.Presenters
 
             if (items.Contains(SelectedItem))
                 SelectedItem = null;
+        }
+
+        protected override void OpenItems(IEnumerable<TModel> items)
+        {
+            base.OpenItems(items);
+
+            ApplySelectionPolicy();
+        }
+
+        private void ApplySelectionPolicy()
+        {
+            SelectedItem = SelectedItem;
         }
     }
 }

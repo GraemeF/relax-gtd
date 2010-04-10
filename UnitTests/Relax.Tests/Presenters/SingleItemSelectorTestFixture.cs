@@ -22,17 +22,23 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
-        public void GettingSelectedItem_Initially_ReturnsFirstItemInList()
+        public void GettingSelectedItem_Initially_ReturnsItemFromSelectionPolicy()
         {
             ITestItem firstItem = new Mock<ITestItem>().Object;
             _stubModels.Add(firstItem);
             _stubModels.Add(new Mock<ITestItem>().Object);
             _stubModels.Add(new Mock<ITestItem>().Object);
 
+            _fakeSelectionPolicy.
+                Setup(x => x.ModifySelectedItem(It.IsAny<TestSingleItemSelector>(), null)).
+                Returns(firstItem).
+                Verifiable();
+
             TestSingleItemSelector test = BuildTestSubject();
             test.Initialize();
 
             Assert.Same(firstItem, test.SelectedItem);
+            _fakeSelectionPolicy.VerifyAll();
         }
 
         private TestSingleItemSelector BuildTestSubject()
@@ -68,37 +74,47 @@ namespace Relax.Tests.Presenters
             Assert.Same(firstItem, test.SelectedItem);
         }
 
-        [Fact(Skip = "Shouldn't be using the active presenter for this.")]
+        [Fact]
         public void GettingSelectedItem_AfterSelectedItemIsRemovedFromTheList_ReturnsTheItemSuppliedByTheSelectionPolicy
             ()
         {
             ITestItem firstItem = new Mock<ITestItem>().Object;
+            ITestItem secondItem = new Mock<ITestItem>().Object;
 
             _stubModels.Add(firstItem);
+            _stubModels.Add(secondItem);
 
             TestSingleItemSelector test = BuildTestSubject();
-            test.Initialize();
 
-            test.SelectedItem = firstItem;
+            _fakeSelectionPolicy.
+                Setup(x => x.ModifySelectedItem(test, firstItem)).
+                Returns(firstItem);
+            _fakeSelectionPolicy.
+                Setup(x => x.ModifySelectedItem(test, null)).
+                Returns(firstItem);
+
+            test.Initialize();
 
             _fakeSelectionPolicy.
                 Setup(x => x.ModifySelectedItem(test, null)).
-                Returns((ITestItem) null).
-                Verifiable();
+                Returns(secondItem);
 
             _stubModels.Remove(firstItem);
 
-            Assert.Same(null, test.SelectedItem);
-            _fakeSelectionPolicy.VerifyAll();
+            Assert.Same(secondItem, test.SelectedItem);
         }
 
         [Fact]
-        public void GettingSelectedItem_WhenAnItemIsAddedToAnEmptyList_ChangesToTheNewItem()
+        public void GettingSelectedItem_WhenAnItemIsAddedToAnEmptyList_ChangesToTheItemGivenByPolicy()
         {
             TestSingleItemSelector test = BuildTestSubject();
 
             ITestItem item = new Mock<ITestItem>().Object;
             test.Initialize();
+
+            _fakeSelectionPolicy.
+                Setup(x => x.ModifySelectedItem(test, (ITestItem) null)).
+                Returns(item);
 
             test.AssertThatChangeNotificationIsRaisedBy(x => x.SelectedItem)
                 .When(() => _stubModels.Add(item));

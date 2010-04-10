@@ -1,11 +1,14 @@
 using System;
 using Caliburn.Core.Metadata;
+using Caliburn.PresentationFramework.ApplicationModel;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Policies;
 using Relax.Presenters.Interfaces;
+using Relax.Views;
 
 namespace Relax.Presenters
 {
+    [View(typeof (ContextsView))]
     [PerRequest(typeof (ISingleSelector<IGtdContext>))]
     public class SingleContextSelector : SingleItemSelector<IGtdContext, IGtdContextPresenter>
     {
