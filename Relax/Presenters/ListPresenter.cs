@@ -8,7 +8,7 @@ using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
-    public class ListPresenter<TModel, TModelPresenter> : MultiPresenterManager, IListPresenter<TModel>
+    public class ListPresenter<TModel, TModelPresenter> : MultiPresenter, IListPresenter<TModel>
         where TModelPresenter : IModelPresenter<TModel>
         where TModel : class
     {
@@ -27,8 +27,6 @@ namespace Relax.Presenters
 
             _collection.CollectionChanged += CollectionChanged;
             OpenItems(_collection);
-
-            CurrentPresenter = Presenters.FirstOrDefault();
         }
 
         protected override void OnShutdown()
@@ -67,7 +65,7 @@ namespace Relax.Presenters
                 ClosePresenter(presenter);
         }
 
-        private void OpenItems(IEnumerable<TModel> items)
+        protected virtual void OpenItems(IEnumerable<TModel> items)
         {
             foreach (TModel item in items)
                 this.Open(_itemPresenterFactory(item));

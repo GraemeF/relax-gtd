@@ -2,7 +2,7 @@
 
 namespace Relax.Presenters.Interfaces
 {
-    public interface ISingleSelector<TItem> : IPresenterManager
+    public interface ISingleSelector<TItem> : IPresenterHost
     {
         TItem SelectedItem { get; set; }
     }
