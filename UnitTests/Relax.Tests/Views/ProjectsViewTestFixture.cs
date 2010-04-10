@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Relax.Tests.Views
 {
-    public class ProjectsViewTestFixture : ViewTestFixtureBase<ProjectsView, ProjectSelector>
+    public class ProjectsViewTestFixture : ViewTestFixtureBase<ProjectsView, OptionalProjectSelector>
     {
         [Fact]
         public void Constructor__BindsWithoutError()
