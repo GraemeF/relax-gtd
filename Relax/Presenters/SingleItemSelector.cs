@@ -42,11 +42,11 @@ namespace Relax.Presenters
 
         #endregion
 
-        protected override void CloseItems(IEnumerable<TModel> items)
+        protected override void ClosePresenter(TModelPresenter presenter)
         {
-            base.CloseItems(items);
+            base.ClosePresenter(presenter);
 
-            if (items.Contains(SelectedItem))
+            if (presenter.Model == SelectedItem)
                 SelectedItem = null;
         }
 

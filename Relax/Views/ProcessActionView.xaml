@@ -187,9 +187,11 @@
                     HorizontalAlignment="Right"
                     Margin="6">
             <Button Content="Skip"
-                    Margin="0,0,6,0" />
+                    Margin="0,0,6,0"
+                    AutomationProperties.AutomationId="Skip" />
             <Button Content="Next/Done"
                     IsDefault="True"
+                    AutomationProperties.AutomationId="Apply"
                     cm:Message.Attach="Apply" />
         </StackPanel>
         <TabControl DockPanel.Dock="Bottom">
