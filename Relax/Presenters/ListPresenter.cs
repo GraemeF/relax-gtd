@@ -78,7 +78,7 @@ namespace Relax.Presenters
                     ToList());
         }
 
-        private void ClosePresenter(TModelPresenter presenter)
+        protected virtual void ClosePresenter(TModelPresenter presenter)
         {
             this.Shutdown(presenter);
             Presenters.Remove(presenter);

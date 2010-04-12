@@ -31,5 +31,15 @@ namespace Relax.AcceptanceTests.TestEntities
                     Called("Title").Single();
             }
         }
+
+        public Button ApplyButton
+        {
+            get
+            {
+                return Button.
+                    In(_processActivityContainer, "ProcessAction").
+                    Called("Apply").Single();
+            }
+        }
     }
 }

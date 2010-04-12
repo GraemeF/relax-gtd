@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading;
 using Relax.AcceptanceTests.TestEntities;
 using Xunit;
 
@@ -83,6 +84,20 @@ namespace Relax.AcceptanceTests
 
                 Assert.Equal(newTitle,
                              relax.Shell.Workspace.ProcessActivity.UnprocessedActionList.Actions.Single());
+            }
+        }
+
+        [Fact]
+        public void MarkingAnInboxActionAsDoneRemovesItFromTheInbox()
+        {
+            using (RelaxApplication relax = RelaxApplication.Launch())
+            {
+                relax.StartCollectingActions();
+                relax.AddInboxAction("This is an action in my inbox.");
+                relax.StartProcessingInbox();
+                relax.Shell.Workspace.ProcessActivity.ApplyButton.Click();
+
+                Assert.False(relax.Shell.Workspace.ProcessActivity.UnprocessedActionList.Actions.Any());
             }
         }
     }
