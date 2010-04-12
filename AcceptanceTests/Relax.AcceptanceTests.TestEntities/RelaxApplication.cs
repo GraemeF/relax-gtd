@@ -40,9 +40,15 @@ namespace Relax.AcceptanceTests.TestEntities
             var startInfo = new ProcessStartInfo(ApplicationPath, args.ToString()) {UseShellExecute = false};
             Process process = Process.Start(startInfo);
 
-            Window shell = Desktop.Window.OwnedBy(process).Titled("Relax GTD");
-
-            return new RelaxApplication(process, shell);
+            try
+            {
+                return new RelaxApplication(process, Desktop.Window.OwnedBy(process).Titled("Relax GTD"));
+            }
+            catch (Exception)
+            {
+                process.Kill();
+                throw;
+            }
         }
 
         /// <summary>
