@@ -23,6 +23,11 @@ namespace Fluid
             return element.GetPattern<ScrollItemPattern>(ScrollItemPattern.Pattern);
         }
 
+        public static ValuePattern GetValuePattern(this AutomationElement element)
+        {
+            return element.GetPattern<ValuePattern>(ValuePattern.Pattern);
+        }
+
         public static SelectionItemPattern GetSelectionItemPattern(this AutomationElement element)
         {
             return element.GetPattern<SelectionItemPattern>(SelectionItemPattern.Pattern);

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Fluid
+﻿namespace Fluid
 {
     public class EditBox : Control<EditBox>
     {
@@ -10,9 +8,9 @@ namespace Fluid
             set { AutomationElement.SetValue(value); }
         }
 
-        public void Commit()
+        public bool IsReadOnly
         {
-            throw new NotImplementedException();
+            get { return AutomationElement.GetValuePattern().Current.IsReadOnly; }
         }
     }
 }

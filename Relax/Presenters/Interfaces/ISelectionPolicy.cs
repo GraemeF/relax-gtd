@@ -1,6 +1,4 @@
-﻿using Relax.Presenters.Interfaces;
-
-namespace Relax.Presenters
+﻿namespace Relax.Presenters.Interfaces
 {
     public interface ISelectionPolicy
     {
