@@ -15,6 +15,7 @@ using Relax.FileBackingStore.Services.Interfaces;
 using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Infrastructure.Services.Interfaces;
+using Relax.Presenters;
 using Relax.Presenters.Interfaces;
 
 namespace Relax
@@ -142,45 +143,48 @@ namespace Relax
 
             RegisterInstance(backingStore.Workspace);
             RegisterInstance<Func<IGtdContext, IGtdContextPresenter>>(GtdContextPresenterFactory);
-            RegisterInstance<Func<IGtdContext>>(()=>_container.Resolve<IGtdContext>());
+            RegisterInstance<Func<IGtdContext>>(() => _container.Resolve<IGtdContext>());
             RegisterInstance<Func<IAction, IActionPresenter>>(ActionPresenterFactory);
             RegisterInstance<Func<IAction, IProcessActionPresenter>>(ProcessActionPresenterFactory);
-            RegisterInstance<Func<IAction>>(()=>_container.Resolve<IAction>());
+            RegisterInstance<Func<IAction>>(() => _container.Resolve<IAction>());
             RegisterInstance<Func<IAction, IActionTreeNodePresenter>>(ActionTreeNodePresenterFactory);
             RegisterInstance<Func<IAction, IEnumerable<IActionProcessorPresenter>>>(ActionProcessorPresentersFactory);
+
+            RegisterType<ICachingDictionary<IAction, IProcessActionPresenter>,
+                FactoryCachingDictionary<IAction, IProcessActionPresenter>>();
         }
 
         private IActionTreeNodePresenter ActionTreeNodePresenterFactory(IAction arg)
         {
-            var childContainer = _container.CreateChildContainer();
+            IUnityContainer childContainer = _container.CreateChildContainer();
             childContainer.RegisterInstance(arg);
             return childContainer.Resolve<IActionTreeNodePresenter>();
         }
 
         private IActionPresenter ActionPresenterFactory(IAction arg)
         {
-            var childContainer = _container.CreateChildContainer();
+            IUnityContainer childContainer = _container.CreateChildContainer();
             childContainer.RegisterInstance(arg);
             return childContainer.Resolve<IActionPresenter>();
         }
 
         private IGtdContextPresenter GtdContextPresenterFactory(IGtdContext arg)
         {
-            var childContainer = _container.CreateChildContainer();
+            IUnityContainer childContainer = _container.CreateChildContainer();
             childContainer.RegisterInstance(arg);
             return childContainer.Resolve<IGtdContextPresenter>();
         }
 
         private IProcessActionPresenter ProcessActionPresenterFactory(IAction action)
         {
-            var childContainer = _container.CreateChildContainer();
+            IUnityContainer childContainer = _container.CreateChildContainer();
             childContainer.RegisterInstance(action);
             return childContainer.Resolve<IProcessActionPresenter>();
         }
 
         private IEnumerable<IActionProcessorPresenter> ActionProcessorPresentersFactory(IAction action)
         {
-            var childContainer = _container.CreateChildContainer();
+            IUnityContainer childContainer = _container.CreateChildContainer();
             childContainer.RegisterInstance(action);
             return childContainer.ResolveAll<IActionProcessorPresenter>();
         }

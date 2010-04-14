@@ -170,7 +170,9 @@
     <Compile Include="Policies\AlwaysSelectedPolicy.cs" />
     <Compile Include="Presenters\BlockingActionsPresenter.cs" />
     <Compile Include="Presenters\CollectPresenter.cs" />
-    <Compile Include="Presenters\ISelectionPolicy.cs" />
+    <Compile Include="Presenters\FactoryCachingDictionary.cs" />
+    <Compile Include="Presenters\Interfaces\ICachingDictionary.cs" />
+    <Compile Include="Presenters\Interfaces\ISelectionPolicy.cs" />
     <Compile Include="Presenters\OptionalProjectSelector.cs" />
     <Compile Include="Presenters\SingleContextSelector.cs" />
     <Compile Include="Presenters\ContextPresenter.cs" />

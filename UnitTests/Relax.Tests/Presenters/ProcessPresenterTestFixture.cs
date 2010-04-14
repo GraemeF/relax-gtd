@@ -1,4 +1,5 @@
 ﻿using Moq;
+using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters;
 using Relax.Presenters.Interfaces;
 using Relax.TestDataBuilders;
@@ -9,10 +10,14 @@ namespace Relax.Tests.Presenters
     public class ProcessPresenterTestFixture : TestDataBuilder
     {
         private readonly Mock<ISingleInboxActionSelector> _fakeInbox = new Mock<ISingleInboxActionSelector>();
+        private readonly Mock<ICachingDictionary<IAction, IProcessActionPresenter>> _fakePresenterProvider = new Mock<ICachingDictionary<IAction, IProcessActionPresenter>>();
 
         private ProcessPresenter BuildDefaultProcessPresenter()
         {
-            return new ProcessPresenter(_fakeInbox.Object, x => new Mock<IProcessActionPresenter>().Object);
+            _fakePresenterProvider.
+                Setup(x => x.GetOrCreate(It.IsAny<IAction>())).
+                Returns(() => new Mock<IProcessActionPresenter>().Object);
+            return new ProcessPresenter(_fakeInbox.Object, _fakePresenterProvider.Object);
         }
 
         [Fact]

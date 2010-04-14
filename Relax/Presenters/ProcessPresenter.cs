@@ -1,4 +1,3 @@
-using System;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using MvvmFoundation.Wpf;
@@ -10,13 +9,13 @@ namespace Relax.Presenters
     [Singleton(typeof (IProcessPresenter))]
     public class ProcessPresenter : MultiPresenterManager, IProcessPresenter
     {
-        private readonly Func<IAction, IProcessActionPresenter> _processActionPresenterFactory;
+        private readonly ICachingDictionary<IAction, IProcessActionPresenter> _processActionCachingDictionary;
         private PropertyObserver<ISingleInboxActionSelector> _currentActionObserver;
 
         public ProcessPresenter(ISingleInboxActionSelector inbox,
-                                Func<IAction, IProcessActionPresenter> processActionPresenterFactory)
+                                ICachingDictionary<IAction, IProcessActionPresenter> processActionCachingDictionary)
         {
-            _processActionPresenterFactory = processActionPresenterFactory;
+            _processActionCachingDictionary = processActionCachingDictionary;
             Inbox = inbox;
 
             _currentActionObserver = new PropertyObserver<ISingleInboxActionSelector>(Inbox).
@@ -35,7 +34,7 @@ namespace Relax.Presenters
             IAction action = Inbox.SelectedItem;
 
             if (action != null)
-                this.Open(_processActionPresenterFactory(action));
+                this.Open(_processActionCachingDictionary.GetOrCreate(action));
         }
 
         protected override void OnInitialize()

@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using Caliburn.Testability.Extensions;
 using Moq;
 using Relax.Presenters;
+using Relax.Presenters.Interfaces;
 using Relax.Tests.TestEntities;
 using Xunit;
 
