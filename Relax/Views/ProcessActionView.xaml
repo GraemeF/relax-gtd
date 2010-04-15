@@ -130,8 +130,7 @@
         <TextBox AutomationProperties.AutomationId="Title"
                  Text="{Binding Path=DisplayName, UpdateSourceTrigger=PropertyChanged}"
                  FontSize="30"
-                 DockPanel.Dock="Top"
-                 IsEnabled="{Binding IsProcessingAnAction}" />
+                 DockPanel.Dock="Top" />
         <Grid DockPanel.Dock="Top"
               Margin="0,0,9,0">
             <Grid.ColumnDefinitions>
