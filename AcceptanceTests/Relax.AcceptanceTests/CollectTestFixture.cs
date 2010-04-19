@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Linq;
 using Relax.AcceptanceTests.TestEntities;
 using Xunit;
 
@@ -17,7 +18,7 @@ namespace Relax.AcceptanceTests
                 relax.StartCollectingActions();
                 relax.AddInboxAction(newActionTitle);
 
-                relax.HasInboxActions(new[] {newActionTitle});
+                Assert.True(relax.InboxActions.SequenceEqual(new[] {newActionTitle}));
             }
         }
     }

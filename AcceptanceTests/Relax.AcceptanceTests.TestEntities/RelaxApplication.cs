@@ -156,10 +156,9 @@ namespace Relax.AcceptanceTests.TestEntities
             Button.In(inputContainer).Called("Add").First().Click();
         }
 
-        public void HasInboxActions(IEnumerable<string> actions)
+        public IEnumerable<string> InboxActions
         {
-            Assert.AreElementsEqualIgnoringOrder(actions,
-                                                 Shell.Workspace.CollectActivity.ActionList.Actions);
+            get { return Shell.Workspace.CollectActivity.ActionList.Actions; }
         }
 
         public void StartProcessingInbox()
