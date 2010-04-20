@@ -5,5 +5,6 @@
 
 Scenario: Enter an action
 	Given I am in the Collect activity
+	And the Inbox is empty
 	When I add an action titled "Hello"
 	Then the inbox should contain "Hello"
