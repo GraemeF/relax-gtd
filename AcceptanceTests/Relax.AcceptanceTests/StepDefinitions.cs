@@ -34,6 +34,18 @@ namespace Relax.AcceptanceTests
             Assert.False(_relax.Shell.Workspace.ProcessButton.IsEnabled);
         }
 
+        [Then(@"the Process button should be enabled")]
+        public void ThenTheProcessButtonShouldBeEnabled()
+        {
+            Assert.True(_relax.Shell.Workspace.ProcessButton.IsEnabled);
+        }
+
+        [Then(@"the Process button should show ""(.*)""")]
+        public void ThenTheProcessButtonShouldShowText(string buttonText)
+        {
+            Assert.Equal(buttonText, _relax.Shell.Workspace.ProcessButton.Text);
+        }
+
         [Given(@"I am in the Collect activity")]
         public void GivenIAmInTheCollectActivity()
         {
