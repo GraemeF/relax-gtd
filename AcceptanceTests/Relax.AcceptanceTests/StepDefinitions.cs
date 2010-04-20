@@ -29,10 +29,10 @@ namespace Relax.AcceptanceTests
             _relax.StartCollectingActions();
         }
 
-        [Given(@"the Inbox is empty")]
-        public void GivenTheInboxIsEmpty()
+        [Then(@"the Inbox is empty")]
+        public void ThenTheInboxIsEmpty()
         {
-            Assert.True(_relax.InboxActions.SequenceEqual(new[] {"arse"}));
+            Assert.False(_relax.InboxActions.Any());
         }
 
         [When(@"I add an action titled ""(.*)""")]
