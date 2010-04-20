@@ -60,8 +60,10 @@ this.ScenarioSetup(scenarioInfo);
 #line 7
  testRunner.Given("I am in the Collect activity");
 #line 8
- testRunner.When("I add an action titled \"Hello\"");
+ testRunner.And("the Inbox is empty");
 #line 9
+ testRunner.When("I add an action titled \"Hello\"");
+#line 10
  testRunner.Then("the inbox should contain \"Hello\"");
 #line hidden
             testRunner.CollectScenarioErrors();

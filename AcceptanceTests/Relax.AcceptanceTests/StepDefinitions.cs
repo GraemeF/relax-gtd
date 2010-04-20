@@ -32,6 +32,7 @@ namespace Relax.AcceptanceTests
         [Given(@"the Inbox is empty")]
         public void GivenTheInboxIsEmpty()
         {
+            Assert.True(_relax.InboxActions.SequenceEqual(new[] { "arse" }));
         }
 
         [When(@"I add an action titled ""(.*)""")]
