@@ -60,11 +60,30 @@ this.ScenarioSetup(scenarioInfo);
 #line 7
  testRunner.Given("I am in the Collect activity");
 #line 8
- testRunner.And("the Inbox is empty");
-#line 9
  testRunner.When("I add an action titled \"Hello\"");
-#line 10
+#line 9
  testRunner.Then("the inbox should contain \"Hello\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Enter two actions")]
+        public virtual void EnterTwoActions()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter two actions", ((string[])(null)));
+#line 11
+this.ScenarioSetup(scenarioInfo);
+#line 12
+ testRunner.Given("I am in the Collect activity");
+#line 13
+ testRunner.When("I add an action titled \"Hello\"");
+#line 14
+ testRunner.And("I add an action titled \"World\"");
+#line 15
+ testRunner.Then("the inbox should contain \"Hello\"");
+#line 16
+ testRunner.And("the inbox should contain \"World\"");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
