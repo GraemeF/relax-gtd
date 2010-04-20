@@ -7,15 +7,6 @@ namespace Relax.AcceptanceTests
     public class ProcessTestFixture
     {
         [Fact]
-        public void ProcessButtonIsDisabledWhenInboxIsEmpty()
-        {
-            using (RelaxApplication relax = RelaxApplication.Launch())
-            {
-                Assert.False(relax.Shell.Workspace.ProcessButton.IsEnabled);
-            }
-        }
-
-        [Fact]
         public void ProcessButtonIsEnabledWhenInboxContainsAnAction()
         {
             using (RelaxApplication relax = RelaxApplication.Launch())
