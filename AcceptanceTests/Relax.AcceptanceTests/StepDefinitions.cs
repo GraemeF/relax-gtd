@@ -32,7 +32,7 @@ namespace Relax.AcceptanceTests
         [Given(@"the Inbox is empty")]
         public void GivenTheInboxIsEmpty()
         {
-            Assert.True(_relax.InboxActions.SequenceEqual(new[] { "arse" }));
+            Assert.True(_relax.InboxActions.SequenceEqual(new[] {"arse"}));
         }
 
         [When(@"I add an action titled ""(.*)""")]
@@ -40,11 +40,11 @@ namespace Relax.AcceptanceTests
         {
             _relax.AddInboxAction(title);
         }
-    
+
         [Then(@"the inbox should contain ""(.*)""")]
         public void ThenTheInboxShouldContain(string title)
         {
-            Assert.True(_relax.InboxActions.SequenceEqual(new[] { title }));
+            Assert.True(_relax.InboxActions.Any(x => x == title));
         }
     }
 }

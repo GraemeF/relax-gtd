@@ -5,6 +5,12 @@
 
 Scenario: Enter an action
 	Given I am in the Collect activity
-	And the Inbox is empty
 	When I add an action titled "Hello"
 	Then the inbox should contain "Hello"
+
+Scenario: Enter two actions
+	Given I am in the Collect activity
+	When I add an action titled "Hello"
+	And I add an action titled "World"
+	Then the inbox should contain "Hello"
+	And the inbox should contain "World"
