@@ -23,6 +23,17 @@ namespace Relax.AcceptanceTests
             _relax = null;
         }
 
+        [Given(@"I have not added any actions")]
+        public void GivenIHaveNotAddedAnyActions()
+        {
+        }
+
+        [Then(@"the Process button should be disabled")]
+        public void ThenTheProcessButtonShouldBeDisabled()
+        {
+            Assert.False(_relax.Shell.Workspace.ProcessButton.IsEnabled);
+        }
+
         [Given(@"I am in the Collect activity")]
         public void GivenIAmInTheCollectActivity()
         {
