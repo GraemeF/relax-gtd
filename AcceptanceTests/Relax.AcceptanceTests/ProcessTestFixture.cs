@@ -7,39 +7,6 @@ namespace Relax.AcceptanceTests
     public class ProcessTestFixture
     {
         [Fact]
-        public void ActionTitleIsDisplayedWhenProcessing()
-        {
-            using (RelaxApplication relax = RelaxApplication.Launch())
-            {
-                relax.StartCollectingActions();
-                const string actionTitle = "This is an action in my inbox.";
-                relax.AddInboxAction(actionTitle);
-
-                relax.StartProcessingInbox();
-
-                Assert.Equal(actionTitle, relax.Shell.Workspace.ProcessActivity.CurrentActionTitle.Text);
-            }
-        }
-
-        [Fact]
-        public void ChangingActionTitleWhenProcessingUpdatesActionTitle()
-        {
-            using (RelaxApplication relax = RelaxApplication.Launch())
-            {
-                relax.StartCollectingActions();
-                relax.AddInboxAction("This is an action in my inbox.");
-
-                relax.StartProcessingInbox();
-
-                const string newTitle = "New title";
-                relax.Shell.Workspace.ProcessActivity.CurrentActionTitle.Text = newTitle;
-
-                Assert.Equal(newTitle,
-                             relax.Shell.Workspace.ProcessActivity.UnprocessedActionList.Actions.Single());
-            }
-        }
-
-        [Fact]
         public void MarkingAnInboxActionAsDoneRemovesItFromTheInbox()
         {
             using (RelaxApplication relax = RelaxApplication.Launch())

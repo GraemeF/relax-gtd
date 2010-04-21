@@ -69,5 +69,42 @@ namespace Relax.AcceptanceTests
         {
             Assert.True(_relax.InboxActions.Any(x => x == title));
         }
+
+        [Given(@"I have added an inbox action called ""(.*)""")]
+        public void GivenIHaveAddedAnInboxActionWIthTitle(string title)
+        {
+            _relax.StartCollectingActions();
+            _relax.AddInboxAction(title);
+        }
+
+        [When(@"I go to the Process activity")]
+        public void WhenIGoToTheProcessActivity()
+        {
+            _relax.StartProcessingInbox();
+        }
+
+        [Then(@"the title edit box should show ""(.*)""")]
+        public void ThenTheTitleEditBoxShouldShowTitle(string title)
+        {
+            Assert.Equal(title, _relax.Shell.Workspace.ProcessActivity.CurrentActionTitle.Text);
+        }
+
+        [Given(@"have gone to the Process activity")]
+        public void GivenHaveGoneToTheProcessActivity()
+        {
+            _relax.StartProcessingInbox();
+        }
+
+        [When(@"I enter ""(.*)"" in the title edit box")]
+        public void WhenIEnterTextInTheTitleEditBox(string text)
+        {
+            _relax.Shell.Workspace.ProcessActivity.CurrentActionTitle.Text = text;
+        }
+
+        [Then(@"the title of the first inbox action should be ""(.*)""")]
+        public void ThenTheTitleOfTheFirstInboxActionShouldBe(string title)
+        {
+            Assert.Equal(title, _relax.Shell.Workspace.ProcessActivity.UnprocessedActionList.Actions.First());
+        }
     }
 }

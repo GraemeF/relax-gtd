@@ -20,3 +20,20 @@ Scenario: Process button shows number of actions in the inbox
 	And I add an action titled "World"
 	Then the Process button should be enabled
 	And the Process button should show "Process (2)"
+
+Scenario: Action title is shown when processing
+	Given I have added an inbox action called "Hello"
+	When I go to the Process activity
+	Then the title edit box should show "Hello"
+
+Scenario: Changing the action title when processing updates the action title
+	Given I have added an inbox action called "Hello"
+	And have gone to the Process activity
+	When I enter "World" in the title edit box
+	Then the title of the first inbox action should be "World"
+	
+Scenario: Marking an inbox action as done removes it from the inbox
+	Given I have added an inbox action called "Hello"
+	And I have gone to the Process activity
+	When I mark the action as done
+	Then the inbox should be empty

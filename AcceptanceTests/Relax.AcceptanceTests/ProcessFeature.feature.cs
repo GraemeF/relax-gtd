@@ -106,5 +106,60 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Action title is shown when processing")]
+        public virtual void ActionTitleIsShownWhenProcessing()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Action title is shown when processing", ((string[])(null)));
+#line 24
+this.ScenarioSetup(scenarioInfo);
+#line 25
+ testRunner.Given("I have added an inbox action called \"Hello\"");
+#line 26
+ testRunner.When("I go to the Process activity");
+#line 27
+ testRunner.Then("the title edit box should show \"Hello\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Changing the action title when processing updates the action title")]
+        public virtual void ChangingTheActionTitleWhenProcessingUpdatesTheActionTitle()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Changing the action title when processing updates the action title", ((string[])(null)));
+#line 29
+this.ScenarioSetup(scenarioInfo);
+#line 30
+ testRunner.Given("I have added an inbox action called \"Hello\"");
+#line 31
+ testRunner.And("have gone to the Process activity");
+#line 32
+ testRunner.When("I enter \"World\" in the title edit box");
+#line 33
+ testRunner.Then("the title of the first inbox action should be \"World\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Marking an inbox action as done removes it from the inbox")]
+        public virtual void MarkingAnInboxActionAsDoneRemovesItFromTheInbox()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Marking an inbox action as done removes it from the inbox", ((string[])(null)));
+#line 35
+this.ScenarioSetup(scenarioInfo);
+#line 36
+ testRunner.Given("I have added an inbox action called \"Hello\"");
+#line 37
+ testRunner.And("I have gone to the Process activity");
+#line 38
+ testRunner.When("I mark the action as done");
+#line 39
+ testRunner.Then("the inbox should be empty");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
