@@ -106,5 +106,23 @@ namespace Relax.AcceptanceTests
         {
             Assert.Equal(title, _relax.Shell.Workspace.ProcessActivity.UnprocessedActionList.Actions.First());
         }
+
+        [Given(@"I have gone to the Process activity")]
+        public void GivenIHaveGoneToTheProcessActivity()
+        {
+            _relax.StartProcessingInbox();
+        }
+
+        [When(@"I mark the action as done")]
+        public void WhenIMarkTheActionAsDone()
+        {
+            _relax.InProcessActivity.MarkAsDone();
+        }
+
+        [Then(@"the inbox should be empty")]
+        public void ThenTheInboxShouldBeEmpty()
+        {
+            Assert.False(_relax.InProcessActivity.UnprocessedActionList.Actions.Any());
+        }
     }
 }
