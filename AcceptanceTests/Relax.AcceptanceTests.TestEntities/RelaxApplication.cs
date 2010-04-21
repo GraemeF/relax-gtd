@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Fluid;
-using MbUnit.Framework;
 
 namespace Relax.AcceptanceTests.TestEntities
 {
@@ -159,6 +158,17 @@ namespace Relax.AcceptanceTests.TestEntities
         public IEnumerable<string> InboxActions
         {
             get { return Shell.Workspace.CollectActivity.ActionList.Actions; }
+        }
+
+        public ProcessActivity InProcessActivity
+        {
+            get
+            {
+                if (!Shell.Workspace.ProcessActivity.IsVisible)
+                    StartProcessingInbox();
+
+                return Shell.Workspace.ProcessActivity;
+            }
         }
 
         public void StartProcessingInbox()

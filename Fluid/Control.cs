@@ -11,6 +11,11 @@ namespace Fluid
 
         #endregion
 
+        public bool IsVisible
+        {
+            get { return !AutomationElement.Current.IsOffscreen; }
+        }
+
         public static ControlFinder<TControl> In(IContainer container, params string[] path)
         {
             AutomationElement element = container.AutomationElement;

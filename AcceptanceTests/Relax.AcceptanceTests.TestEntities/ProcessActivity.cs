@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Fluid;
 
 namespace Relax.AcceptanceTests.TestEntities
@@ -40,6 +41,16 @@ namespace Relax.AcceptanceTests.TestEntities
                     In(_processActivityContainer, "ProcessAction").
                     Called("Apply").Single();
             }
+        }
+
+        public bool IsVisible
+        {
+            get { return _processActivityContainer.IsVisible; }
+        }
+
+        public void MarkAsDone()
+        {
+            ApplyButton.Click();
         }
     }
 }
