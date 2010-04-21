@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Fluid;
 
 namespace Relax.AcceptanceTests.TestEntities
@@ -46,6 +45,17 @@ namespace Relax.AcceptanceTests.TestEntities
         public bool IsVisible
         {
             get { return _processActivityContainer.IsVisible; }
+        }
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return !Container.
+                            In(_processActivityContainer).
+                            Called("ProcessAction").
+                            Any();
+            }
         }
 
         public void MarkAsDone()

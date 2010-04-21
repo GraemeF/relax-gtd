@@ -20,7 +20,7 @@ namespace Relax.Presenters
 
             _currentActionObserver = new PropertyObserver<ISingleInboxActionSelector>(Inbox).
                 RegisterHandler(x => x.SelectedItem,
-                                y => OpenProcessActionPresenter());
+                                y => OpenPresenterForSelectedInboxAction());
         }
 
         #region IProcessPresenter Members
@@ -29,12 +29,14 @@ namespace Relax.Presenters
 
         #endregion
 
-        private void OpenProcessActionPresenter()
+        private void OpenPresenterForSelectedInboxAction()
         {
             IAction action = Inbox.SelectedItem;
 
             if (action != null)
                 this.Open(_processActionCachingDictionary.GetOrCreate(action));
+            else
+                this.ShutdownCurrent();
         }
 
         protected override void OnInitialize()
@@ -42,7 +44,7 @@ namespace Relax.Presenters
             base.OnInitialize();
             Inbox.Initialize();
 
-            OpenProcessActionPresenter();
+            OpenPresenterForSelectedInboxAction();
         }
     }
 }

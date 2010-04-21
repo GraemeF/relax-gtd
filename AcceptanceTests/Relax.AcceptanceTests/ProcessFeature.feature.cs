@@ -161,5 +161,24 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Processing the last inbox action clears the Process activity")]
+        public virtual void ProcessingTheLastInboxActionClearsTheProcessActivity()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Processing the last inbox action clears the Process activity", ((string[])(null)));
+#line 41
+this.ScenarioSetup(scenarioInfo);
+#line 42
+ testRunner.Given("I have added an inbox action called \"Hello\"");
+#line 43
+ testRunner.And("I have gone to the Process activity");
+#line 44
+ testRunner.When("I mark the action as done");
+#line 45
+ testRunner.Then("the Process activity should be empty");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }

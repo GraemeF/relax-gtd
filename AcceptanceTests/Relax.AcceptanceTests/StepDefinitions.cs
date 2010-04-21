@@ -124,5 +124,11 @@ namespace Relax.AcceptanceTests
         {
             Assert.False(_relax.InProcessActivity.UnprocessedActionList.Actions.Any());
         }
+
+        [Then(@"the Process activity should be empty")]
+        public void ThenTheProcessActivityShouldBeEmpty()
+        {
+            Assert.True(_relax.Shell.Workspace.ProcessActivity.IsEmpty);
+        }
     }
 }

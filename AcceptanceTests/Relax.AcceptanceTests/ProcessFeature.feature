@@ -37,3 +37,9 @@ Scenario: Marking an inbox action as done removes it from the inbox
 	And I have gone to the Process activity
 	When I mark the action as done
 	Then the inbox should be empty
+
+Scenario: Processing the last inbox action clears the Process activity
+	Given I have added an inbox action called "Hello"
+	And I have gone to the Process activity
+	When I mark the action as done
+	Then the Process activity should be empty
