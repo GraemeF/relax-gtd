@@ -7,20 +7,6 @@ namespace Relax.AcceptanceTests
     public class ProcessTestFixture
     {
         [Fact]
-        public void MarkingAnInboxActionAsDoneRemovesItFromTheInbox()
-        {
-            using (RelaxApplication relax = RelaxApplication.Launch())
-            {
-                relax.StartCollectingActions();
-                relax.AddInboxAction("This is an action in my inbox.");
-                relax.StartProcessingInbox();
-                relax.Shell.Workspace.ProcessActivity.ApplyButton.Click();
-
-                Assert.False(relax.Shell.Workspace.ProcessActivity.UnprocessedActionList.Actions.Any());
-            }
-        }
-
-        [Fact]
         public void MarkingTheLastInboxActionAsDoneClearsAndDisablesTheTitle()
         {
             using (RelaxApplication relax = RelaxApplication.Launch())
