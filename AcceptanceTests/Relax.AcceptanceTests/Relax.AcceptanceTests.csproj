@@ -71,7 +71,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProcessFeature.feature</DependentUpon>
     </Compile>
-    <Compile Include="ProcessTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StepDefinitions.cs" />
   </ItemGroup>
