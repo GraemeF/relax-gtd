@@ -18,7 +18,7 @@ namespace Relax.Tests.Presenters
         [Fact]
         public void SettingDisplayName__DoesNothing()
         {
-            DoNowPresenter test = new DoNowPresenter(null);
+            var test = new DoNowPresenter(null);
 
             string originalName = test.DisplayName;
             test.DisplayName = "Another name";
