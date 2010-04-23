@@ -19,10 +19,11 @@ namespace Fluid
             if (Parent == null)
                 throw new UIElementNotFoundException("There is no parent element to look in.");
 
-            return Parent.
-                FindChildren(MeetingConditions).
-                Select(element => new TControl {AutomationElement = element}).
-                GetEnumerator();
+            return
+                Parent.
+                    FindChildren(MeetingConditions).
+                    Select(element => new TControl {AutomationElement = element}).
+                    GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

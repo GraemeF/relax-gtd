@@ -72,6 +72,8 @@
     <Compile Include="ListBoxItem.cs" />
     <Compile Include="PatternExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TabItem.cs" />
+    <Compile Include="TabItemFinderExtensions.cs" />
     <Compile Include="TextBox.cs" />
     <Compile Include="UIElementNotFoundException.cs" />
     <Compile Include="Window.cs" />

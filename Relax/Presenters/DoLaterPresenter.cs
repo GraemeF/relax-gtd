@@ -28,6 +28,12 @@ namespace Relax.Presenters
 
         #region IDoLaterPresenter Members
 
+        public override string DisplayName
+        {
+            get { return "Later"; }
+            set { }
+        }
+
         public ISingleSelector<IGtdContext> Contexts { get; private set; }
         public IActionDetailsPresenter Details { get; private set; }
         public IOptionalProjectSelector Projects { get; private set; }

@@ -38,6 +38,12 @@ Scenario: Marking an inbox action as done removes it from the inbox
 	When I mark the action as done
 	Then the inbox should be empty
 
+Scenario: Adding a new context displays it in the contexts list
+	Given I am processing an action
+	And I have chosen the Later tab
+	When I add a context called "MyContext"
+	Then the the context list should contain "MyContext"
+
 Scenario: Processing the last inbox action clears the Process activity
 	Given I have added an inbox action called "Hello"
 	And I have gone to the Process activity

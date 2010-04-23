@@ -251,23 +251,23 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <TabControl x:Name="Presenters"
-                    DockPanel.Dock="Bottom"
+        <TabControl DockPanel.Dock="Bottom"
                     ItemsSource="{Binding Presenters}"
-                    SelectedItem="{Binding CurrentPresenter}">
+                    SelectedItem="{Binding CurrentPresenter}"
+                    AutomationProperties.AutomationId="ProcessCommands">
             <TabControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid AutomationProperties.AutomationId="A">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding DisplayName}" />
+                        <TextBlock Text="{Binding DisplayName}" AutomationProperties.AutomationId="B"/>
                     </Grid>
                 </DataTemplate>
             </TabControl.ItemTemplate>
             <TabControl.ContentTemplate>
                 <DataTemplate>
-                    <ContentControl cal:View.Model="{Binding}" />
+                    <ContentControl cal:View.Model="{Binding}" AutomationProperties.AutomationId="C" />
                 </DataTemplate>
             </TabControl.ContentTemplate>
         </TabControl>

@@ -130,5 +130,19 @@ namespace Relax.AcceptanceTests
         {
             Assert.True(_relax.Shell.Workspace.ProcessActivity.IsEmpty);
         }
+
+        [Given(@"I am processing an action")]
+        public void GivenIAmProcessingAnAction()
+        {
+            _relax.StartCollectingActions();
+            _relax.AddInboxAction("An Action");
+            _relax.StartProcessingInbox();
+        }
+
+        [Given(@"I have chosen the (.*) tab")]
+        public void GivenIHaveChosenTheTab(string tab)
+        {
+            _relax.InProcessActivity.ChooseTab(tab);
+        }
     }
 }

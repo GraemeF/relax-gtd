@@ -26,6 +26,14 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
+        public void GettingDisplayName__ReturnsDoLater()
+        {
+            var test = BuildDefaultDoLaterPresenter();
+
+            Assert.Equal("Later", test.DisplayName);
+        }
+
+        [Fact]
         public void GettingApplyCommand__ReturnsDoLaterCommand()
         {
             DoLaterPresenter test = BuildDefaultDoLaterPresenter();
