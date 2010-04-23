@@ -16,6 +16,17 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
+        public void SettingDisplayName__DoesNothing()
+        {
+            DoNowPresenter test = new DoNowPresenter(null);
+
+            string originalName = test.DisplayName;
+            test.DisplayName = "Another name";
+
+            Assert.Equal(originalName, test.DisplayName);
+        }
+
+        [Fact]
         public void GettingApplyCommand__ReturnsDoNowCommand()
         {
             var doNowCommand = new DoNowCommand();
