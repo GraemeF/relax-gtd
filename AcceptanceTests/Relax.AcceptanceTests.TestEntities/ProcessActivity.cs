@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Fluid;
 
 namespace Relax.AcceptanceTests.TestEntities
@@ -61,6 +62,15 @@ namespace Relax.AcceptanceTests.TestEntities
         public void MarkAsDone()
         {
             ApplyButton.Click();
+        }
+
+        public void ChooseTab(string tab)
+        {
+            TabItem.
+                In(_processActivityContainer, "ProcessAction", "ProcessCommands").
+                WithHeading(tab).
+                Single().
+                Activate();
         }
     }
 }

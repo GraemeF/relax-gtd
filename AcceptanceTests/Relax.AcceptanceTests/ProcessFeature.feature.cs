@@ -163,19 +163,38 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Adding a new context displays it in the contexts list")]
+        public virtual void AddingANewContextDisplaysItInTheContextsList()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Adding a new context displays it in the contexts list", ((string[])(null)));
+#line 41
+this.ScenarioSetup(scenarioInfo);
+#line 42
+ testRunner.Given("I am processing an action");
+#line 43
+ testRunner.And("I have chosen the Later tab");
+#line 44
+ testRunner.When("I add a context called \"MyContext\"");
+#line 45
+ testRunner.Then("the the context list should contain \"MyContext\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Processing the last inbox action clears the Process activity")]
         public virtual void ProcessingTheLastInboxActionClearsTheProcessActivity()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Processing the last inbox action clears the Process activity", ((string[])(null)));
-#line 41
+#line 47
 this.ScenarioSetup(scenarioInfo);
-#line 42
+#line 48
  testRunner.Given("I have added an inbox action called \"Hello\"");
-#line 43
+#line 49
  testRunner.And("I have gone to the Process activity");
-#line 44
+#line 50
  testRunner.When("I mark the action as done");
-#line 45
+#line 51
  testRunner.Then("the Process activity should be empty");
 #line hidden
             testRunner.CollectScenarioErrors();

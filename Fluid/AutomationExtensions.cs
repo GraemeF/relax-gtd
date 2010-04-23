@@ -106,6 +106,16 @@ namespace Fluid
                     yield return child;
         }
 
+        public static IEnumerable<AutomationElement> FindRawChildren(this AutomationElement parent)
+        {
+            AutomationElement element = TreeWalker.RawViewWalker.GetFirstChild(parent);
+            while (element != null)
+            {
+                yield return element;
+                element = TreeWalker.RawViewWalker.GetNextSibling(element);
+            }
+        }
+
         public static AutomationElement FindChildById(this AutomationElement element, string automationId)
         {
             AutomationElement result =

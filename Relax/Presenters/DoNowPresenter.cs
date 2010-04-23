@@ -21,6 +21,12 @@ namespace Relax.Presenters
 
         public ICommand ApplyCommand { get; private set; }
 
+        public override string DisplayName
+        {
+            get { return "Now"; }
+            set { }
+        }
+
         #endregion
     }
 }
