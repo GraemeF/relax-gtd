@@ -13,7 +13,10 @@ namespace Relax.Tests.Presenters
     public class DoLaterPresenterTestFixture : TestDataBuilder
     {
         private readonly DoLaterCommand _applyCommand = new DoLaterCommand();
-        private readonly Mock<ISingleSelector<IGtdContext>> _stubContextChooser = new Mock<ISingleSelector<IGtdContext>>();
+
+        private readonly Mock<ISingleSelector<IGtdContext>> _stubContextChooser =
+            new Mock<ISingleSelector<IGtdContext>>();
+
         private readonly Mock<IActionDetailsPresenter> _stubDetails = new Mock<IActionDetailsPresenter>();
         private readonly Mock<IOptionalProjectSelector> _stubProjects = new Mock<IOptionalProjectSelector>();
 
@@ -26,11 +29,22 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
-        public void GettingDisplayName__ReturnsDoLater()
+        public void GettingDisplayName__ReturnsLater()
         {
-            var test = BuildDefaultDoLaterPresenter();
+            DoLaterPresenter test = BuildDefaultDoLaterPresenter();
 
             Assert.Equal("Later", test.DisplayName);
+        }
+
+        [Fact]
+        public void SettingDisplayName__DoesNothing()
+        {
+            DoLaterPresenter test = BuildDefaultDoLaterPresenter();
+
+            string originalName = test.DisplayName;
+            test.DisplayName = "Another name";
+
+            Assert.Equal(originalName, test.DisplayName);
         }
 
         [Fact]
