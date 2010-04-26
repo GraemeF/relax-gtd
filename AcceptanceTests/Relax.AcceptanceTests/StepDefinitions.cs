@@ -148,7 +148,7 @@ namespace Relax.AcceptanceTests
         [When(@"I add a context called ""(.*)""")]
         public void WhenIAddAContextCalled(string context)
         {
-            ScenarioContext.Current.Pending();
+            _relax.InProcessActivity.InDoLaterTab.AddContext(context);
         }
 
         [Then(@"the the context list should contain ""(.*)""")]

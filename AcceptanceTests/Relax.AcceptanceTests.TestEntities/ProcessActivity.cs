@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Fluid;
 
 namespace Relax.AcceptanceTests.TestEntities
@@ -56,6 +55,20 @@ namespace Relax.AcceptanceTests.TestEntities
                             In(_processActivityContainer).
                             Called("ProcessAction").
                             Any();
+            }
+        }
+
+        public ProcessDoLaterTab InDoLaterTab
+        {
+            get
+            {
+                TabItem tabItem = TabItem.
+                    In(_processActivityContainer, "ProcessAction", "ProcessCommands").
+                    WithHeading("Later").
+                    Single();
+                tabItem.Activate();
+
+                return new ProcessDoLaterTab(tabItem);
             }
         }
 
