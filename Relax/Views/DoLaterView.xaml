@@ -1,7 +1,8 @@
 ﻿<UserControl x:Class="Relax.Views.DoLaterView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:cal="clr-namespace:Caliburn.PresentationFramework.ApplicationModel;assembly=Caliburn.PresentationFramework">
+             xmlns:cal="clr-namespace:Caliburn.PresentationFramework.ApplicationModel;assembly=Caliburn.PresentationFramework"
+             AutomationProperties.AutomationId="DoLater">
     <DockPanel>
         <ContentControl cal:View.Model="{Binding Projects}" />
         <ContentControl cal:View.Model="{Binding Contexts}"
