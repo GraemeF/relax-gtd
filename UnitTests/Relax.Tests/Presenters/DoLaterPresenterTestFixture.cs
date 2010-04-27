@@ -14,17 +14,17 @@ namespace Relax.Tests.Presenters
     {
         private readonly DoLaterCommand _applyCommand = new DoLaterCommand();
 
-        private readonly Mock<ISingleSelector<IGtdContext>> _stubContextChooser =
+        private readonly Mock<ISingleSelector<IGtdContext>> _fakeContextChooser =
             new Mock<ISingleSelector<IGtdContext>>();
 
-        private readonly Mock<IActionDetailsPresenter> _stubDetails = new Mock<IActionDetailsPresenter>();
+        private readonly Mock<IActionDetailsPresenter> _fakeDetails = new Mock<IActionDetailsPresenter>();
         private readonly Mock<IOptionalProjectSelector> _stubProjects = new Mock<IOptionalProjectSelector>();
 
         private DoLaterPresenter BuildDefaultDoLaterPresenter()
         {
             return new DoLaterPresenter(_applyCommand,
-                                        _stubContextChooser.Object,
-                                        _stubDetails.Object,
+                                        _fakeContextChooser.Object,
+                                        _fakeDetails.Object,
                                         _stubProjects.Object);
         }
 
@@ -56,18 +56,23 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
-        public void GettingContexts__ReturnsContextsPresenter()
+        public void GettingContexts_WhenInitialized_ReturnsInitializedContextsPresenter()
         {
             DoLaterPresenter test = BuildDefaultDoLaterPresenter();
+            test.Initialize();
 
-            Assert.Same(_stubContextChooser.Object, test.Contexts);
+            Assert.Same(_fakeContextChooser.Object, test.Contexts);
+            _fakeContextChooser.Verify(x => x.Initialize());
         }
 
         [Fact]
-        public void GettingDetails__ReturnsActionDetailsPresenter()
+        public void GettingDetails_WhenInitialized_ReturnsInitializedActionDetailsPresenter()
         {
             DoLaterPresenter test = BuildDefaultDoLaterPresenter();
-            Assert.Same(_stubDetails.Object, test.Details);
+            test.Initialize();
+
+            Assert.Same(_fakeDetails.Object, test.Details);
+            _fakeDetails.Verify(x => x.Initialize());
         }
 
         [Fact]
@@ -86,7 +91,7 @@ namespace Relax.Tests.Presenters
             DoLaterPresenter test = BuildDefaultDoLaterPresenter();
             test.Initialize();
 
-            _stubContextChooser.VerifySet(x => x.SelectedItem = context);
+            _fakeContextChooser.VerifySet(x => x.SelectedItem = context);
         }
 
         [Fact]
@@ -117,8 +122,8 @@ namespace Relax.Tests.Presenters
 
         private void ContextIsSelected(IGtdContext gtdContext)
         {
-            _stubContextChooser.Setup(x => x.SelectedItem).Returns(gtdContext);
-            _stubContextChooser.Raise(x => x.PropertyChanged += null, new PropertyChangedEventArgs("SelectedItem"));
+            _fakeContextChooser.Setup(x => x.SelectedItem).Returns(gtdContext);
+            _fakeContextChooser.Raise(x => x.PropertyChanged += null, new PropertyChangedEventArgs("SelectedItem"));
         }
 
         private void ProjectIsSelected(IAction project)
