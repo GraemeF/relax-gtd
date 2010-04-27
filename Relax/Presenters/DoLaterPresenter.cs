@@ -49,6 +49,9 @@ namespace Relax.Presenters
         {
             base.OnInitialize();
 
+            Contexts.Initialize();
+            Details.Initialize();
+
             BindContext();
             BindProject();
         }
