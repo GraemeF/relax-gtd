@@ -171,6 +171,17 @@ namespace Relax.AcceptanceTests.TestEntities
             }
         }
 
+        public CollectActivity InCollectActivity
+        {
+            get
+            {
+                if (!Shell.Workspace.CollectActivity.IsVisible)
+                    StartCollectingActions();
+
+                return Shell.Workspace.CollectActivity;
+            }
+        }
+
         public void StartProcessingInbox()
         {
             Shell.Workspace.ProcessButton.Click();

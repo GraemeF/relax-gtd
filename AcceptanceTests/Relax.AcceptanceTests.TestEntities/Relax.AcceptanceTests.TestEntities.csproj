@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Action.cs" />
     <Compile Include="ActionList.cs" />
+    <Compile Include="ActivityTab.cs" />
     <Compile Include="CollectActivity.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="ContextList.cs" />

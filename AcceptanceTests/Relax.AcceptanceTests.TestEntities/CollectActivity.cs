@@ -3,13 +3,11 @@ using Fluid;
 
 namespace Relax.AcceptanceTests.TestEntities
 {
-    public class CollectActivity
+    public class CollectActivity : ActivityTab
     {
-        private readonly Container _container;
-
         public CollectActivity(Container container)
+            : base(container)
         {
-            _container = container;
         }
 
         public ActionList ActionList
@@ -17,8 +15,21 @@ namespace Relax.AcceptanceTests.TestEntities
             get
             {
                 return
-                    new ActionList(ListBox.In(_container, "ActionsView").Called("Actions").First());
+                    new ActionList(GetActionsListBox());
             }
+        }
+
+        private ListBox GetActionsListBox()
+        {
+            return ListBox.
+                In(ActivityContainer, "ActionsView").
+                Called("Actions").
+                First();
+        }
+
+        public void SelectInboxActionAt(int index)
+        {
+            GetActionsListBox().Items.ElementAt(index).Select();
         }
     }
 }
