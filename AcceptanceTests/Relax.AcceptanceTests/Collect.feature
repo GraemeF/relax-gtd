@@ -14,3 +14,9 @@ Scenario: Enter two actions
 	And I add an action titled "World"
 	Then the inbox should contain "Hello"
 	And the inbox should contain "World"
+
+Scenario: Rename an action
+	Given I have added an inbox action called "Hello"
+	When I select the first inbox action
+	And I rename to "World"
+	Then the inbox should contain "World"

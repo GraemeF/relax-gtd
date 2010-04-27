@@ -87,5 +87,24 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Rename an action")]
+        public virtual void RenameAnAction()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Rename an action", ((string[])(null)));
+#line 18
+this.ScenarioSetup(scenarioInfo);
+#line 19
+ testRunner.Given("I have added an inbox action called \"Hello\"");
+#line 20
+ testRunner.When("I select the first inbox action");
+#line 21
+ testRunner.And("I rename to \"World\"");
+#line 22
+ testRunner.Then("the inbox should contain \"World\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }

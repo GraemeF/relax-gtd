@@ -82,6 +82,18 @@ namespace Relax.AcceptanceTests
         {
             _relax.StartProcessingInbox();
         }
+        
+        [When(@"I select the first inbox action")]
+        public void WhenISelectTheFirstInboxAction()
+        {
+            _relax.InCollectActivity.SelectInboxActionAt(0);
+        }
+        
+        [When(@"I rename to ""(.*)""")]
+        public void WhenIRenameTo(string title)
+        {
+            ScenarioContext.Current.Pending();
+        }
 
         [Then(@"the title edit box should show ""(.*)""")]
         public void ThenTheTitleEditBoxShouldShowTitle(string title)

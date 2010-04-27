@@ -3,13 +3,11 @@ using Fluid;
 
 namespace Relax.AcceptanceTests.TestEntities
 {
-    public class ProcessActivity
+    public class ProcessActivity : ActivityTab
     {
-        private readonly Container _processActivityContainer;
-
-        public ProcessActivity(Container processActivityContainer)
+        public ProcessActivity(Container activityContainer)
+            : base(activityContainer)
         {
-            _processActivityContainer = processActivityContainer;
         }
 
         public ActionList UnprocessedActionList
@@ -17,7 +15,7 @@ namespace Relax.AcceptanceTests.TestEntities
             get
             {
                 return new ActionList(ListBox.
-                                          In(_processActivityContainer, "ActionsView").
+                                          In(ActivityContainer, "ActionsView").
                                           Called("Actions").Single());
             }
         }
@@ -27,7 +25,7 @@ namespace Relax.AcceptanceTests.TestEntities
             get
             {
                 return EditBox.
-                    In(_processActivityContainer, "ProcessAction").
+                    In(ActivityContainer, "ProcessAction").
                     Called("Title").Single();
             }
         }
@@ -37,14 +35,9 @@ namespace Relax.AcceptanceTests.TestEntities
             get
             {
                 return Button.
-                    In(_processActivityContainer, "ProcessAction").
+                    In(ActivityContainer, "ProcessAction").
                     Called("Apply").Single();
             }
-        }
-
-        public bool IsVisible
-        {
-            get { return _processActivityContainer.IsVisible; }
         }
 
         public bool IsEmpty
@@ -52,7 +45,7 @@ namespace Relax.AcceptanceTests.TestEntities
             get
             {
                 return !Container.
-                            In(_processActivityContainer).
+                            In(ActivityContainer).
                             Called("ProcessAction").
                             Any();
             }
@@ -63,7 +56,7 @@ namespace Relax.AcceptanceTests.TestEntities
             get
             {
                 TabItem tabItem = TabItem.
-                    In(_processActivityContainer, "ProcessAction", "ProcessCommands").
+                    In(ActivityContainer, "ProcessAction", "ProcessCommands").
                     WithHeading("Later").
                     Single();
                 tabItem.Activate();
@@ -80,7 +73,7 @@ namespace Relax.AcceptanceTests.TestEntities
         public void ChooseTab(string tab)
         {
             TabItem.
-                In(_processActivityContainer, "ProcessAction", "ProcessCommands").
+                In(ActivityContainer, "ProcessAction", "ProcessCommands").
                 WithHeading(tab).
                 Single().
                 Activate();
