@@ -51,10 +51,21 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TestApiCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=a069dee354d95f76, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\TestApi\TestApiCore.dll</HintPath>
+    </Reference>
+    <Reference Include="TestApiWpf, Version=4.0.0.0, Culture=neutral, PublicKeyToken=a069dee354d95f76, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\TestApi\TestApiWpf.dll</HintPath>
+    </Reference>
     <Reference Include="UIAutomationClient">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="UIAutomationTypes">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
   </ItemGroup>
@@ -68,6 +79,7 @@
     <Compile Include="EditBox.cs" />
     <Compile Include="IContainer.cs" />
     <Compile Include="IControl.cs" />
+    <Compile Include="Keyboard.cs" />
     <Compile Include="ListBox.cs" />
     <Compile Include="ListBoxItem.cs" />
     <Compile Include="PatternExtensions.cs" />
