@@ -1,5 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Threading;
+using System.Windows.Input;
 using Fluid;
+using ListBox = Fluid.ListBox;
 
 namespace Relax.AcceptanceTests.TestEntities
 {
@@ -30,6 +34,19 @@ namespace Relax.AcceptanceTests.TestEntities
         public void SelectInboxActionAt(int index)
         {
             GetActionsListBox().Items.ElementAt(index).Select();
+        }
+
+        public void RenameInboxAction(int index, string title)
+        {
+            ClickOnInboxActionAt(index);
+            Keyboard.Type(Key.F2);
+            Keyboard.Type(title);
+        }
+
+        private void ClickOnInboxActionAt(int index)
+        {
+            GetActionsListBox().Items.ElementAt(index);
+            throw new NotImplementedException();
         }
     }
 }

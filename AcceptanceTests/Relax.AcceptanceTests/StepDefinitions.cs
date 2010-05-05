@@ -92,7 +92,7 @@ namespace Relax.AcceptanceTests
         [When(@"I rename to ""(.*)""")]
         public void WhenIRenameTo(string title)
         {
-            ScenarioContext.Current.Pending();
+            _relax.InCollectActivity.RenameInboxAction(0, title);
         }
 
         [Then(@"the title edit box should show ""(.*)""")]

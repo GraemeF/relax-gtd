@@ -8,7 +8,7 @@ namespace Fluid
 {
     public class WindowFinder : ControlFinder<Window>
     {
-        private static readonly TimeSpan StartUpTimeout = new TimeSpan(0, 0, 10);
+        private static readonly TimeSpan StartUpTimeout = new TimeSpan(0, 0, 60);
         private Process _process;
 
         public Window Titled(string title)
