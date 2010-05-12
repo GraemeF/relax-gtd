@@ -19,6 +19,7 @@ namespace Relax.Tests.Presenters
             var mockPresenter = new Mock<ICollectPresenter>();
 
             var test = new WorkspacePresenter(AnInboxActionsFilter.Build(), mockPresenter.Object, null);
+            test.Activate();
 
             test.GoCollect();
 
@@ -31,6 +32,7 @@ namespace Relax.Tests.Presenters
             var mockPresenter = new Mock<IProcessPresenter>();
 
             var test = new WorkspacePresenter(AnInboxActionsFilter.Build(), null, mockPresenter.Object);
+            test.Activate();
 
             test.GoProcess();
 
