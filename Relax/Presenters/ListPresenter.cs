@@ -8,7 +8,8 @@ using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
-    public class ListPresenter<TModel, TModelPresenter> : ScreenConductor<TModelPresenter>, IListPresenter<TModel>
+    public class ListPresenter<TModel, TModelPresenter> :
+        ScreenConductor<TModelPresenter>.WithCollection.OneScreenActive, IListPresenter<TModel>
         where TModelPresenter : class, IModelPresenter<TModel>
         where TModel : class
     {
@@ -70,7 +71,7 @@ namespace Relax.Presenters
             foreach (TModel item in items)
                 this.OpenScreen(_itemPresenterFactory(item));
         }
-
+        
         protected virtual void CloseItems(IEnumerable<TModel> items)
         {
             ClosePresenters(

@@ -13,7 +13,7 @@
         </ItemsPanelTemplate>
     </UserControl.Resources>
     <Grid>
-        <ListBox ItemsSource="{Binding Presenters}"
+        <ListBox ItemsSource="{Binding Screens}"
                  ItemsPanel="{DynamicResource ItemsWrapPanel}"
                  Background="{x:Null}"
                  BorderBrush="{x:Null}"

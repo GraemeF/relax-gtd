@@ -47,7 +47,7 @@
                     Style="{DynamicResource ActivityNavigationButton}" />
         </StackPanel>
         <StackPanel x:Name="LayoutRoot">
-            <TextBlock Text="{Binding CurrentPresenter.DisplayName}"
+            <TextBlock Text="{Binding ActiveScreen.DisplayName}"
                        HorizontalAlignment="Center"
                        FontSize="18"
                        Margin="5" />

@@ -29,11 +29,11 @@ namespace Relax.Tests.Presenters
                                                                                       x => _stubItemPresenter.Object);
             test.Initialize();
 
-            _stubItemPresenter.Verify(x => x.Initialize());
+            Assert.Contains(_stubItemPresenter.Object, test.Screens);
         }
 
         [Fact]
-        public void GettingPresenters_WhenTheLastModelIsRemoved_IsEmpty()
+        public void GettingScreens_WhenTheLastModelIsRemoved_IsEmpty()
         {
             var stubItem = new Mock<ITestItem>();
             _stubItemPresenter.Setup(x => x.Model).Returns(stubItem.Object);
@@ -59,7 +59,7 @@ namespace Relax.Tests.Presenters
         }
 
         [Fact]
-        public void GettingPresenters_WhenTheModelsListIsCleared_IsEmpty()
+        public void GettingScreens_WhenTheModelsListIsCleared_IsEmpty()
         {
             var models = new ObservableCollection<ITestItem> {new Mock<ITestItem>().Object};
 
