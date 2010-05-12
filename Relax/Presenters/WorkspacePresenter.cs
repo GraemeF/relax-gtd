@@ -44,8 +44,8 @@ namespace Relax.Presenters
 
         private void OnInboxActionsChanged(object o, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
         {
-            NotifyOfPropertyChange("IsProcessingEnabled");
-            NotifyOfPropertyChange("ProcessButtonText");
+            NotifyOfPropertyChange(() => IsProcessingEnabled);
+            NotifyOfPropertyChange(() => ProcessButtonText);
         }
 
         public void GoCollect()
