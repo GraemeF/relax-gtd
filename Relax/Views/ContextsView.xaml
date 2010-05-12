@@ -15,7 +15,7 @@
                 DockPanel.Dock="Right"
                 AutomationProperties.AutomationId="AddButton"
                 cm:Message.Attach="[Event Click] = [Action AddContext]" />
-        <ListBox ItemsSource="{Binding Presenters}"
+        <ListBox ItemsSource="{Binding Screens}"
                  ItemsPanel="{DynamicResource ItemsWrapPanel}"
                  AutomationProperties.AutomationId="ContextsList">
             <ListBox.ItemTemplate>

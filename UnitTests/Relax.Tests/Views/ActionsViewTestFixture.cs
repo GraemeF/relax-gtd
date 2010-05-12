@@ -13,7 +13,7 @@ namespace Relax.Tests.Views
         }
 
         [Fact]
-        public void Presenters__IsBound()
+        public void Screens__IsBound()
         {
             Assert.True(BoundView().WasBoundTo(x => x.Screens));
         }

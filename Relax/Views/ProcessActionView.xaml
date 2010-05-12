@@ -250,8 +250,8 @@
             </TabItem>
         </TabControl>
         <TabControl DockPanel.Dock="Bottom"
-                    ItemsSource="{Binding Presenters}"
-                    SelectedItem="{Binding CurrentPresenter}"
+                    ItemsSource="{Binding Screens}"
+                    SelectedItem="{Binding ActiveScreen}"
                     AutomationProperties.AutomationId="ProcessCommands">
             <TabControl.ItemTemplate>
                 <DataTemplate>
