@@ -6,7 +6,7 @@
     <members>
         <member name="T:Caliburn.Autofac.AutofacAdapter">
             <summary>
-            An adapter allowing an <see cref="T:Autofac.IContext"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IConfigurator"/>.
+            An adapter allowing an <see cref="T:Autofac.IContainer"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IoC.IRegistry"/>.
             </summary>
         </member>
         <member name="M:Caliburn.Autofac.AutofacAdapter.#ctor(Autofac.IContainer)">
@@ -32,11 +32,20 @@
             <param name="serviceType">Type of service requested.</param>
             <returns>Sequence of service instance objects.</returns>
         </member>
-        <member name="M:Caliburn.Autofac.AutofacAdapter.ConfigureWith(System.Collections.Generic.IEnumerable{Caliburn.Core.ComponentInfo})">
+        <member name="M:Caliburn.Autofac.AutofacAdapter.Register(System.Collections.Generic.IEnumerable{Caliburn.Core.IoC.IComponentRegistration})">
             <summary>
-            Configures the container with the provided components.
+            Configures the container using the provided component registrations.
             </summary>
-            <param name="components">The components.</param>
+            <param name="registrations">The component registrations.</param>
+        </member>
+        <member name="M:Caliburn.Autofac.AutofacAdapter.WithProxyFactory``1">
+            <summary>
+            Installs a proxy factory.
+            </summary>
+            <typeparam name="T">The type of the proxy factory.</typeparam>
+            <returns>
+            A container with an installed proxy factory.
+            </returns>
         </member>
         <member name="P:Caliburn.Autofac.AutofacAdapter.Container">
             <summary>

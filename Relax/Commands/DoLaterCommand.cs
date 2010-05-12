@@ -1,4 +1,4 @@
-﻿using Caliburn.Core.Metadata;
+﻿using Caliburn.Core.IoC;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 

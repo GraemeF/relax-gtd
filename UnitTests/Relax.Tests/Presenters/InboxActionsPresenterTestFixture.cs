@@ -23,7 +23,7 @@ namespace Relax.Tests.Presenters
                                                      new AlwaysSelectedPolicy());
             test.Initialize();
 
-            Assert.Contains(stubActionPresenter.Object, test.Presenters);
+            Assert.Contains(stubActionPresenter.Object, test.Screens);
         }
     }
 }

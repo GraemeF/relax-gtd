@@ -1,6 +1,6 @@
 using System.Windows.Input;
-using Caliburn.Core.Metadata;
-using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.Core.IoC;
+using Caliburn.PresentationFramework.Screens;
 using MvvmFoundation.Wpf;
 using Relax.Commands;
 using Relax.Infrastructure.Models.Interfaces;
@@ -9,7 +9,7 @@ using Relax.Presenters.Interfaces;
 namespace Relax.Presenters
 {
     [PerRequest("Do Later", typeof (IActionProcessorPresenter))]
-    public class DoLaterPresenter : Presenter, IDoLaterPresenter
+    public class DoLaterPresenter : Screen, IDoLaterPresenter
     {
         private readonly DoLaterCommand _applyCommand;
         private PropertyObserver<ISingleSelector<IGtdContext>> _contextsObserver;

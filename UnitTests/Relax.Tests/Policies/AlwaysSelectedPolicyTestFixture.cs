@@ -1,5 +1,5 @@
 ﻿using Caliburn.PresentationFramework;
-using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Screens;
 using Moq;
 using Relax.Policies;
 using Relax.Presenters.Interfaces;
@@ -16,8 +16,13 @@ namespace Relax.Tests.Policies
             var stubFirstPresenter = new Mock<IModelPresenter<object>>();
             var firstItem = new object();
 
-            stubFirstPresenter.Setup(x => x.Model).Returns(firstItem);
-            stubSelector.Setup(x => x.Presenters).Returns(new BindableCollection<IPresenter> {stubFirstPresenter.Object});
+            stubFirstPresenter
+                .Setup(x => x.Model).
+                Returns(firstItem);
+
+            stubSelector.
+                Setup(x => x.Screens).
+                Returns(new BindableCollection<IScreen> {stubFirstPresenter.Object});
 
             var test = new AlwaysSelectedPolicy();
 

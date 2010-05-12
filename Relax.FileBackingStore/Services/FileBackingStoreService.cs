@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using Caliburn.Core.Metadata;
+using Caliburn.Core.IoC;
 using Relax.Domain.Models;
 using Relax.FileBackingStore.Services.Interfaces;
 using Relax.Infrastructure.Helpers;

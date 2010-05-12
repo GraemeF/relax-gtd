@@ -1,5 +1,5 @@
-using Caliburn.Core.Metadata;
-using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.Core.IoC;
+using Caliburn.PresentationFramework.Screens;
 using MvvmFoundation.Wpf;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters.Interfaces;
@@ -7,7 +7,7 @@ using Relax.Presenters.Interfaces;
 namespace Relax.Presenters
 {
     [Singleton(typeof (IProcessPresenter))]
-    public class ProcessPresenter : MultiPresenterManager, IProcessPresenter
+    public class ProcessPresenter : ScreenConductor<IScreen>, IProcessPresenter
     {
         private readonly ICachingDictionary<IAction, IProcessActionPresenter> _processActionCachingDictionary;
         private PropertyObserver<ISingleInboxActionSelector> _currentActionObserver;
@@ -34,9 +34,9 @@ namespace Relax.Presenters
             IAction action = Inbox.SelectedItem;
 
             if (action != null)
-                this.Open(_processActionCachingDictionary.GetOrCreate(action));
+                this.OpenScreen(_processActionCachingDictionary.GetOrCreate(action));
             else
-                this.ShutdownCurrent();
+                this.ShutdownActiveScreen();
         }
 
         protected override void OnInitialize()

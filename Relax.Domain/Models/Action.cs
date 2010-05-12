@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Runtime.Serialization;
-using Caliburn.Core.Metadata;
+using Caliburn.Core.IoC;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 

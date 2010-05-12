@@ -141,26 +141,6 @@
             </summary>
             <param name="propertyName">Name of the property.</param>
         </member>
-        <member name="M:Caliburn.ModelFramework.CollectionNode`1.AddMetadata(Caliburn.Core.Metadata.IMetadata)">
-            <summary>
-            Adds metadata to the store.
-            </summary>
-            <param name="metadata">The metadata.</param>
-        </member>
-        <member name="M:Caliburn.ModelFramework.CollectionNode`1.GetMetadata``1">
-            <summary>
-            Gets the metadata.
-            </summary>
-            <typeparam name="K"></typeparam>
-            <returns></returns>
-        </member>
-        <member name="M:Caliburn.ModelFramework.CollectionNode`1.GetMatchingMetadata``1">
-            <summary>
-            Gets the matching metadata.
-            </summary>
-            <typeparam name="K"></typeparam>
-            <returns></returns>
-        </member>
         <member name="P:Caliburn.ModelFramework.CollectionNode`1.Parent">
             <summary>
             Gets or sets the parent model.
@@ -308,6 +288,12 @@
             <param name="defaultValue">The default value.</param>
             <returns></returns>
         </member>
+        <member name="P:Caliburn.ModelFramework.IModelDefinition.Metadata">
+            <summary>
+            Gets the metadata.
+            </summary>
+            <value>The metadata.</value>
+        </member>
         <member name="T:Caliburn.ModelFramework.IModelRepository">
             <summary>
             A repository for instances of <see cref="T:Caliburn.ModelFramework.IModelDefinition"/>.
@@ -430,6 +416,12 @@
             </summary>
             <param name="parent">The parent.</param>
             <returns></returns>
+        </member>
+        <member name="P:Caliburn.ModelFramework.IPropertyDefinition.Metadata">
+            <summary>
+            Gets the metadata.
+            </summary>
+            <value>The metadata.</value>
         </member>
         <member name="P:Caliburn.ModelFramework.IPropertyDefinition.Name">
             <summary>
@@ -777,6 +769,12 @@
             A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the collection.
             </returns>
         </member>
+        <member name="P:Caliburn.ModelFramework.ModelDefinition.Metadata">
+            <summary>
+            Gets the metadata.
+            </summary>
+            <value>The metadata.</value>
+        </member>
         <member name="T:Caliburn.ModelFramework.ModelRepository">
             <summary>
             An implementation of <see cref="T:Caliburn.ModelFramework.IModelRepository"/>.
@@ -826,6 +824,20 @@
             <param name="model">The model.</param>
             <param name="parent">The parent.</param>
             <param name="value">The value.</param>
+        </member>
+        <member name="M:Caliburn.ModelFramework.Property`1.AttachView(System.Object,System.Object)">
+            <summary>
+            Called when the screen's view is loaded.
+            </summary>
+            <param name="view">The view.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Caliburn.ModelFramework.Property`1.GetView(System.Object)">
+            <summary>
+            Gets the view.
+            </summary>
+            <param name="context">The context.</param>
+            <returns>The view</returns>
         </member>
         <member name="M:Caliburn.ModelFramework.Property`1.BubbleModelChange(Caliburn.ModelFramework.IModelNode,Caliburn.ModelFramework.IUndoRedoHandle)">
             <summary>
@@ -948,6 +960,12 @@
             </summary>
             <param name="parent">The parent.</param>
             <returns></returns>
+        </member>
+        <member name="P:Caliburn.ModelFramework.PropertyDefinition`1.Metadata">
+            <summary>
+            Gets the metadata.
+            </summary>
+            <value>The metadata.</value>
         </member>
         <member name="P:Caliburn.ModelFramework.PropertyDefinition`1.Name">
             <summary>

@@ -1,13 +1,13 @@
 ﻿<UserControl x:Class="Relax.Views.CollectView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:cal="clr-namespace:Caliburn.PresentationFramework.ApplicationModel;assembly=Caliburn.PresentationFramework"
+             xmlns:Views="clr-namespace:Caliburn.PresentationFramework.Views;assembly=Caliburn.PresentationFramework"
              AutomationProperties.AutomationId="Collect">
     <DockPanel>
-        <ContentControl cal:View.Model="{Binding Input}"
+        <ContentControl Views:View.Model="{Binding Input}"
                         DockPanel.Dock="Top"
                         AutomationProperties.AutomationId="Input" />
-        <ContentControl cal:View.Model="{Binding InboxActions}"
+        <ContentControl Views:View.Model="{Binding InboxActions}"
                         DockPanel.Dock="Bottom"
                         AutomationProperties.AutomationId="Actions" />
     </DockPanel>

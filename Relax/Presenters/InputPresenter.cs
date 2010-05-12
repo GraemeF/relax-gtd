@@ -1,7 +1,7 @@
 using System;
-using Caliburn.Core.Metadata;
-using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.Filters;
+using Caliburn.PresentationFramework.Screens;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters.Interfaces;
@@ -9,7 +9,7 @@ using Relax.Presenters.Interfaces;
 namespace Relax.Presenters
 {
     [PerRequest(typeof (IInputPresenter))]
-    public class InputPresenter : Presenter, IInputPresenter
+    public class InputPresenter : Screen, IInputPresenter
     {
         private readonly Func<IAction> _actionFactory;
         private readonly IWorkspace _workspace;

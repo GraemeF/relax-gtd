@@ -4,9 +4,43 @@
         <name>Caliburn.Unity</name>
     </assembly>
     <members>
+        <member name="T:Caliburn.Unity.ProxyBuilderStrategy">
+            <summary>
+            A <see cref="T:Microsoft.Practices.ObjectBuilder2.BuilderStrategy"/> for proxies.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Unity.ProxyBuilderStrategy.#ctor(Microsoft.Practices.Unity.IUnityContainer,System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Unity.ProxyBuilderStrategy"/> class.
+            </summary>
+            <param name="container">The container.</param>
+            <param name="registry">The registry.</param>
+        </member>
+        <member name="M:Caliburn.Unity.ProxyBuilderStrategy.PreBuildUp(Microsoft.Practices.ObjectBuilder2.IBuilderContext)">
+            <summary>
+            Called during the chain of responsibility for a build operation. The
+            PreBuildUp method is called when the chain is being executed in the
+            forward direction.
+            </summary>
+            <param name="context">Context of the build operation.</param>
+        </member>
+        <member name="T:Caliburn.Unity.ProxyExtension">
+            <summary>
+            A <see cref="T:Microsoft.Practices.Unity.UnityContainerExtension"/> for proxies.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Unity.ProxyExtension.Initialize">
+            <summary>
+            Initial the container with this extension's functionality.
+            </summary>
+            <remarks>
+            When overridden in a derived class, this method will modify the given
+            <see cref="T:Microsoft.Practices.Unity.ExtensionContext"/> by adding strategies, policies, etc. to
+            install it's functions into the container.</remarks>
+        </member>
         <member name="T:Caliburn.Unity.UnityAdapter">
             <summary>
-            An adapter allowing an <see cref="T:Microsoft.Practices.Unity.IUnityContainer"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IConfigurator"/>.
+            An adapter allowing an <see cref="T:Microsoft.Practices.Unity.IUnityContainer"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IoC.IRegistry"/>.
             </summary>
         </member>
         <member name="M:Caliburn.Unity.UnityAdapter.#ctor(Microsoft.Practices.Unity.IUnityContainer)">
@@ -36,11 +70,14 @@
             Sequence of service instance objects.
             </returns>
         </member>
-        <member name="M:Caliburn.Unity.UnityAdapter.ConfigureWith(System.Collections.Generic.IEnumerable{Caliburn.Core.ComponentInfo})">
+        <member name="M:Caliburn.Unity.UnityAdapter.WithProxyFactory``1">
             <summary>
-            Configures the container with the provided components.
+            Installs a proxy factory.
             </summary>
-            <param name="components">The components.</param>
+            <typeparam name="T">The type of the proxy factory.</typeparam>
+            <returns>
+            A container with an installed proxy factory.
+            </returns>
         </member>
         <member name="P:Caliburn.Unity.UnityAdapter.Container">
             <summary>

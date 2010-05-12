@@ -1,5 +1,5 @@
 ﻿using System;
-using Caliburn.Core.Metadata;
+using Caliburn.Core.IoC;
 using Relax.FileBackingStore.Services.Interfaces;
 
 namespace Relax.FileBackingStore.Services
