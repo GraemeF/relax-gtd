@@ -1,12 +1,13 @@
-﻿using Caliburn.Core.Metadata;
+﻿using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Screens;
 using Relax.Infrastructure.Services.Interfaces;
 using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
     [Singleton(typeof (IShellPresenter))]
-    public class ShellPresenter : MultiPresenter, IShellPresenter
+    public class ShellPresenter : ScreenConductor<IScreen>, IShellPresenter
     {
         private readonly IBackingStore _backingStore;
 
@@ -14,7 +15,7 @@ namespace Relax.Presenters
         {
             _backingStore = backingStore;
 
-            Presenters.Add(workspacePresenter);
+            Screens.Add(workspacePresenter);
             Workspace = workspacePresenter;
         }
 

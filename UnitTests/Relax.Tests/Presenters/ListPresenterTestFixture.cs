@@ -44,7 +44,7 @@ namespace Relax.Tests.Presenters
 
             _stubModels.RemoveAt(0);
 
-            Assert.Empty(test.Presenters);
+            Assert.Empty(test.Screens);
         }
 
         [Fact]
@@ -55,7 +55,7 @@ namespace Relax.Tests.Presenters
 
             _stubModels.Add(new Mock<ITestItem>().Object);
 
-            Assert.Equal(1, test.Presenters.Count);
+            Assert.Equal(1, test.Screens.Count);
         }
 
         [Fact]
@@ -68,7 +68,7 @@ namespace Relax.Tests.Presenters
 
             models.Clear();
 
-            Assert.Equal(0, test.Presenters.Count);
+            Assert.Equal(0, test.Screens.Count);
         }
 
         [Fact]

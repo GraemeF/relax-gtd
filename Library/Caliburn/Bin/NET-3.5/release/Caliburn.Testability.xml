@@ -282,7 +282,6 @@
             Add a type hint for a property path, specifying the actual type returned 
             by the last property of the property path chain
             </summary>
-            <typeparam name="K"></typeparam>
             <param name="propertyPath">The property path.</param>
             <param name="hint">The Type actually returned.</param>
             <returns></returns>
@@ -427,6 +426,13 @@
             <param name="basePath">The base path.</param>
             /// <param name="hints">Hints propagated from parent.</param>
         </member>
+        <member name="M:Caliburn.Testability.BoundType.AddHint(System.String,System.Type)">
+            <summary>
+            Adds a hint for polymorphic type checking.
+            </summary>
+            <param name="propertyPath">The property path.</param>
+            <param name="hint">The hint.</param>
+        </member>
         <member name="M:Caliburn.Testability.BoundType.ValidateAgainst(Caliburn.Testability.IElement,System.Windows.DependencyProperty,System.Windows.Data.Binding)">
             <summary>
             Validates the information against this type.
@@ -479,6 +485,11 @@
         <member name="T:Caliburn.Testability.DependencyObjectElement">
             <summary>
             Represents a data bound element.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Testability.IBoundElement">
+            <summary>
+            Represents an element which can be bound.
             </summary>
         </member>
         <member name="T:Caliburn.Testability.IElement">
@@ -959,7 +970,7 @@
             by the last property of the property path chain
             </summary>
             <typeparam name="K"></typeparam>
-            <param name="propertyPath">The property path.</param>
+            <param name="property">The property</param>
             <param name="hint">The Type actually returned.</param>
             <returns></returns>
         </member>
@@ -1227,6 +1238,24 @@
             <summary>
             Validates the bindings.
             </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Caliburn.Testability.TestResultEnumerator">
+            <summary>
+            Enumerates <see cref="T:Caliburn.PresentationFramework.RoutedMessaging.IResult"/> instances without calling execute or waiting for completion.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Testability.TestResultEnumerator.#ctor(System.Collections.Generic.IEnumerable{Caliburn.PresentationFramework.RoutedMessaging.IResult})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Testability.TestResultEnumerator"/> class.
+            </summary>
+            <param name="enumerator">The enumerator.</param>
+        </member>
+        <member name="M:Caliburn.Testability.TestResultEnumerator.Next``1">
+            <summary>
+            Returns the next <see cref="T:Caliburn.PresentationFramework.RoutedMessaging.IResult"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
         <member name="T:Caliburn.Testability.TriggerValidator">

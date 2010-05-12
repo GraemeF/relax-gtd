@@ -1,4 +1,4 @@
-﻿using Caliburn.Core.Metadata;
+﻿using Caliburn.Core.IoC;
 using Relax.Domain.Models;
 using Relax.FileBackingStore.Services.Interfaces;
 

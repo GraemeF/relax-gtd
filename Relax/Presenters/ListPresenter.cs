@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
-using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Screens;
 using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
-    public class ListPresenter<TModel, TModelPresenter> : MultiPresenter, IListPresenter<TModel>
-        where TModelPresenter : IModelPresenter<TModel>
+    public class ListPresenter<TModel, TModelPresenter> : ScreenConductor<TModelPresenter>, IListPresenter<TModel>
+        where TModelPresenter : class, IModelPresenter<TModel>
         where TModel : class
     {
         private readonly ObservableCollection<TModel> _collection;
@@ -55,11 +55,11 @@ namespace Relax.Presenters
 
         private void PopulateWithAllItems()
         {
-            ClosePresenters(Presenters.ToList());
+            ClosePresenters(Screens.ToList());
             OpenItems(_collection);
         }
 
-        private void ClosePresenters(IEnumerable<IPresenter> presenters)
+        private void ClosePresenters(IEnumerable<TModelPresenter> presenters)
         {
             foreach (TModelPresenter presenter in presenters)
                 ClosePresenter(presenter);
@@ -68,20 +68,20 @@ namespace Relax.Presenters
         protected virtual void OpenItems(IEnumerable<TModel> items)
         {
             foreach (TModel item in items)
-                this.Open(_itemPresenterFactory(item));
+                this.OpenScreen(_itemPresenterFactory(item));
         }
 
         protected virtual void CloseItems(IEnumerable<TModel> items)
         {
             ClosePresenters(
-                items.Select(closedModel => Presenters.First(x => closedModel.Equals(((TModelPresenter) x).Model))).
+                items.Select(closedModel => Screens.First(x => closedModel.Equals((x).Model))).
                     ToList());
         }
 
         protected virtual void ClosePresenter(TModelPresenter presenter)
         {
-            this.Shutdown(presenter);
-            Presenters.Remove(presenter);
+            this.ShutdownScreen(presenter);
+            Screens.Remove(presenter);
         }
     }
 }

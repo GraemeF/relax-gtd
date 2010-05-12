@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Relax.Presenters;
 using Relax.Presenters.Interfaces;
 
 namespace Relax.Policies
@@ -14,7 +13,7 @@ namespace Relax.Policies
             if (item == null)
             {
                 IModelPresenter<TItem> firstPresenter =
-                    selector.Presenters.Cast<IModelPresenter<TItem>>().FirstOrDefault();
+                    selector.Screens.Cast<IModelPresenter<TItem>>().FirstOrDefault();
                 if (firstPresenter != null)
                     return firstPresenter.Model;
             }

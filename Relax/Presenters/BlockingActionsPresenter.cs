@@ -1,6 +1,7 @@
 using System;
-using Caliburn.Core.Metadata;
+using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Views;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters.Interfaces;
 using Relax.Views;

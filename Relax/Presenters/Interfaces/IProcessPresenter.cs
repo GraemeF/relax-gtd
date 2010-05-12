@@ -1,8 +1,8 @@
-using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Screens;
 
 namespace Relax.Presenters.Interfaces
 {
-    public interface IProcessPresenter : IPresenter
+    public interface IProcessPresenter : IScreen
     {
         ISingleInboxActionSelector Inbox { get; }
     }

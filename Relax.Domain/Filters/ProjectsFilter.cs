@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Caliburn.Core.Metadata;
+using Caliburn.Core.IoC;
 using Relax.Domain.Filters.Interfaces;
 using Relax.Infrastructure.Models.Interfaces;
 

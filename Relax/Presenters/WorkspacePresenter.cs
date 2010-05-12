@@ -1,14 +1,14 @@
 ﻿using System.Collections.Specialized;
 using System.Linq;
-using Caliburn.Core.Metadata;
-using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.Core.IoC;
+using Caliburn.PresentationFramework.Screens;
 using Relax.Domain.Filters.Interfaces;
 using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
     [PerRequest(typeof (IWorkspacePresenter))]
-    public class WorkspacePresenter : Navigator, IWorkspacePresenter
+    public class WorkspacePresenter : Navigator<IScreen>, IWorkspacePresenter
     {
         private readonly ICollectPresenter _collectPresenter;
         private readonly IInboxActionsFilter _inboxActionsFilter;
@@ -50,12 +50,12 @@ namespace Relax.Presenters
 
         public void GoCollect()
         {
-            Open(_collectPresenter, success => { });
+            this.OpenScreen(_collectPresenter);
         }
 
         public void GoProcess()
         {
-            Open(_processPresenter, success => { });
+            this.OpenScreen(_processPresenter);
         }
     }
 }

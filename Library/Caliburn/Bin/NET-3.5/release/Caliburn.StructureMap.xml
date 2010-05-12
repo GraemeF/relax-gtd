@@ -6,7 +6,7 @@
     <members>
         <member name="T:Caliburn.StructureMap.StructureMapAdapter">
             <summary>
-            An adapter allowing an <see cref="T:Caliburn.Core.IContainer"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IConfigurator"/>.
+            An adapter allowing an <see cref="T:Caliburn.Core.IoC.IContainer"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IoC.IRegistry"/>.
             </summary>
         </member>
         <member name="M:Caliburn.StructureMap.StructureMapAdapter.#ctor(StructureMap.IContainer)">
@@ -36,11 +36,20 @@
             Sequence of service instance objects.
             </returns>
         </member>
-        <member name="M:Caliburn.StructureMap.StructureMapAdapter.ConfigureWith(System.Collections.Generic.IEnumerable{Caliburn.Core.ComponentInfo})">
+        <member name="M:Caliburn.StructureMap.StructureMapAdapter.Register(System.Collections.Generic.IEnumerable{Caliburn.Core.IoC.IComponentRegistration})">
             <summary>
-            Configures the container with the provided components.
+            Configures the container using the provided component registrations.
             </summary>
-            <param name="components">The components.</param>
+            <param name="registrations">The component registrations.</param>
+        </member>
+        <member name="M:Caliburn.StructureMap.StructureMapAdapter.WithProxyFactory``1">
+            <summary>
+            Installs a proxy factory.
+            </summary>
+            <typeparam name="T">The type of the proxy factory.</typeparam>
+            <returns>
+            A container with an installed proxy factory.
+            </returns>
         </member>
         <member name="P:Caliburn.StructureMap.StructureMapAdapter.Container">
             <summary>

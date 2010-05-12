@@ -30,7 +30,7 @@ namespace Relax.Tests.Presenters
                                             new AllowNullSelectionPolicy());
             test.Initialize();
 
-            Assert.Contains(stubProjectPresenter.Object, test.Presenters);
+            Assert.Contains(stubProjectPresenter.Object, test.Screens);
         }
 
         [Fact]

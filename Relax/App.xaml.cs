@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.ViewModels;
 using Caliburn.Unity;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
@@ -117,9 +118,8 @@ namespace Relax
 
             ConfigureContainer();
 
-            var binder = (DefaultBinder) Container.GetInstance<IBinder>();
-            binder.EnableMessageConventions();
-            binder.EnableBindingConventions();
+            var binder = (DefaultViewModelBinder) Container.GetInstance<IViewModelBinder>();
+            binder.ApplyConventionsByDefault = true;
 
             var shell = Container.GetInstance<IShellPresenter>();
 

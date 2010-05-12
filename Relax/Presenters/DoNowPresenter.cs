@@ -1,6 +1,6 @@
 using System.Windows.Input;
-using Caliburn.Core.Metadata;
-using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.Core.IoC;
+using Caliburn.PresentationFramework.Screens;
 using Relax.Commands;
 using Relax.Presenters.Interfaces;
 
@@ -10,7 +10,7 @@ namespace Relax.Presenters
     /// Presents the UI allowing the action being processed to be marked as done.
     /// </summary>
     [PerRequest("Do Now", typeof (IActionProcessorPresenter))]
-    public class DoNowPresenter : Presenter, IActionProcessorPresenter
+    public class DoNowPresenter : Screen, IActionProcessorPresenter
     {
         public DoNowPresenter(DoNowCommand applyCommand)
         {

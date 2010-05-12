@@ -1,5 +1,5 @@
 using System;
-using Caliburn.Core.Metadata;
+using Caliburn.Core.IoC;
 using Relax.Domain.Filters;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters.Interfaces;

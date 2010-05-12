@@ -1,10 +1,10 @@
-using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Screens;
 using MvvmFoundation.Wpf;
 using Relax.Infrastructure.Models.Interfaces;
 
 namespace Relax.Presenters
 {
-    public abstract class ItemPresenter<TItem> : Presenter where TItem : IItem
+    public abstract class ItemPresenter<TItem> : Screen where TItem : IItem
     {
         protected bool _isReadOnly;
         private PropertyObserver<TItem> _itemObserver;

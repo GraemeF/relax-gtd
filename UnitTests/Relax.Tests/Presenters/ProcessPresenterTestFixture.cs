@@ -46,7 +46,7 @@ namespace Relax.Tests.Presenters
 
             test.Initialize();
 
-            Assert.NotNull(test.CurrentPresenter);
+            Assert.NotNull(test.ActiveScreen);
         }
 
         [Fact]
@@ -56,7 +56,7 @@ namespace Relax.Tests.Presenters
 
             test.Initialize();
 
-            Assert.Null(test.CurrentPresenter);
+            Assert.Null(test.ActiveScreen);
         }
     }
 }

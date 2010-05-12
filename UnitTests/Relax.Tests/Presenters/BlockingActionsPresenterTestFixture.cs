@@ -23,7 +23,7 @@ namespace Relax.Tests.Presenters
                                                         });
             test.Initialize();
 
-            Assert.Contains(stubPresenter.Object, test.Presenters);
+            Assert.Contains(stubPresenter.Object, test.Screens);
         }
     }
 }

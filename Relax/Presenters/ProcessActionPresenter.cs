@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Caliburn.Core.Metadata;
-using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.Core.IoC;
+using Caliburn.PresentationFramework.Screens;
 using MvvmFoundation.Wpf;
 using Relax.Infrastructure.Models.Interfaces;
 using Relax.Presenters.Interfaces;
@@ -9,7 +9,7 @@ using Relax.Presenters.Interfaces;
 namespace Relax.Presenters
 {
     [PerRequest(typeof (IProcessActionPresenter))]
-    public class ProcessActionPresenter : MultiPresenterManager, IProcessActionPresenter
+    public class ProcessActionPresenter : ScreenConductor<IActionProcessorPresenter>, IProcessActionPresenter
     {
         private readonly IAction _action;
         private PropertyObserver<IAction> _propertyObserver;
@@ -52,13 +52,12 @@ namespace Relax.Presenters
         private void OpenProcessors()
         {
             foreach (IActionProcessorPresenter processor in ActionProcessors)
-                this.Open(processor);
+                this.OpenScreen(processor);
         }
 
         public void Apply()
         {
-            var actionProcessorPresenter = (IActionProcessorPresenter) CurrentPresenter;
-            actionProcessorPresenter.ApplyCommand.Execute(_action);
+            ActiveScreen.ApplyCommand.Execute(_action);
         }
     }
 }

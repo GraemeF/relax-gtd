@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Screens;
 using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
     public class SingleItemSelector<TModel, TModelPresenter> : ListPresenter<TModel, TModelPresenter>,
                                                                ISingleSelector<TModel>
-        where TModelPresenter : IModelPresenter<TModel>
+        where TModelPresenter : class, IModelPresenter<TModel>
         where TModel : class
     {
         private readonly ISelectionPolicy _selectionPolicy;
@@ -33,9 +33,8 @@ namespace Relax.Presenters
             {
                 _selectedItem = _selectionPolicy.ModifySelectedItem(this, value);
                 if (_selectedItem != null)
-                    this.Open(Presenters.
-                                  Cast<TModelPresenter>().
-                                  First(x => x.Model == _selectedItem));
+                    this.OpenScreen(Screens.First(x => x.Model == _selectedItem));
+
                 NotifyOfPropertyChange(() => SelectedItem);
             }
         }

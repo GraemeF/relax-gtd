@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
-using Caliburn.Core.Metadata;
+using Caliburn.Core.IoC;
 using Relax.Infrastructure.Helpers;
 using Relax.Infrastructure.Models;
 using Relax.Infrastructure.Models.Interfaces;

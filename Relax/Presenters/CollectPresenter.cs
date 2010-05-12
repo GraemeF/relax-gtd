@@ -1,11 +1,11 @@
-﻿using Caliburn.Core.Metadata;
-using Caliburn.PresentationFramework.ApplicationModel;
+﻿using Caliburn.Core.IoC;
+using Caliburn.PresentationFramework.Screens;
 using Relax.Presenters.Interfaces;
 
 namespace Relax.Presenters
 {
     [Singleton(typeof (ICollectPresenter))]
-    public class CollectPresenter : MultiPresenter, ICollectPresenter
+    public class CollectPresenter : ScreenConductor<IScreen>, ICollectPresenter
     {
         public CollectPresenter(IInputPresenter inputPresenter, ISingleInboxActionSelector inboxPresenter)
         {
@@ -13,15 +13,15 @@ namespace Relax.Presenters
             InboxActions = inboxPresenter;
         }
 
+        public ISingleInboxActionSelector InboxActions { get; private set; }
+        public IInputPresenter Input { get; private set; }
+
         protected override void OnInitialize()
         {
             base.OnInitialize();
 
-            this.Open(Input);
-            this.Open(InboxActions);
+            this.OpenScreen(Input);
+            this.OpenScreen(InboxActions);
         }
-
-        public ISingleInboxActionSelector InboxActions { get; private set; }
-        public IInputPresenter Input { get; private set; }
     }
 }

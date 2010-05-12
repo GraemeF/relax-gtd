@@ -56,7 +56,7 @@ namespace Relax.Tests.Presenters
 
             test.Initialize();
 
-            Assert.NotEmpty(test.Presenters);
+            Assert.NotEmpty(test.Screens);
         }
 
         [Fact]

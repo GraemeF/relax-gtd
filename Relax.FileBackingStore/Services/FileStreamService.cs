@@ -1,5 +1,5 @@
 using System.IO;
-using Caliburn.Core.Metadata;
+using Caliburn.Core.IoC;
 using Relax.FileBackingStore.Services.Interfaces;
 using Relax.Infrastructure.Helpers;
 
