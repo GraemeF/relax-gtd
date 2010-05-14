@@ -68,13 +68,11 @@ namespace Relax
 
         private static IEnumerable<Assembly> FindAssemblies(DirectoryCatalog catalog)
         {
-            yield return Assembly.GetEntryAssembly();
-
-            foreach (Assembly assembly in
-                catalog.LoadedFiles.Select(loadedFile => GetAssembly(loadedFile)).Where(assembly => assembly != null))
-            {
-                yield return assembly;
-            }
+            return catalog.LoadedFiles.
+                Select(loadedFile => GetAssembly(loadedFile)).
+                Where(assembly => assembly != null).
+                Where(assembly => assembly.FullName.StartsWith("Relax")).
+                Concat(new[] {Assembly.GetEntryAssembly()});
         }
 
         private static Assembly GetAssembly(string file)
